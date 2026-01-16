@@ -9,6 +9,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import background1 from '@/public/house1.png'
 import background2 from '@/public/house2.png'
 import background3 from '@/public/IMG_20241010_175833.jpg'
+import logo from '@/public/ASA logo.jpg'
 
 
 export function EmblaCarousel() {
@@ -65,6 +66,14 @@ export default function Home() {
         {/* Background Carousel */}
         <div className="w-full">
           <EmblaCarousel />
+          <div className="absolute top-8 w-full h-[95vh] flex flex-col px-12 py-8 border">
+            <div className="flex items-center justify-between">
+              <div className="flex gap-2 items-center">
+                <Image src={logo} alt="Agroterra Logo" height={20}  />
+                <h3 className="uppercase">Agroterra</h3>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
