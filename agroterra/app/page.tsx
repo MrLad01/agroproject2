@@ -8,6 +8,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import background1 from '@/public/house1.png'
 import background2 from '@/public/house2.png'
+import background3 from '@/public/IMG_20241010_175833.jpg'
 
 
 export function EmblaCarousel() {
@@ -24,8 +25,11 @@ export function EmblaCarousel() {
         <div className="embla__slide relative">
           <Image src={background2} alt="House background image 2" fill loading="lazy" />
         </div>
+  
+        <div className="embla__slide relative">
+          <Image src={background3} alt="House background image 2" fill loading="lazy" />
+        </div>
         
-        <div className="embla__slide">Slide 3</div>
       
       </div>
 
