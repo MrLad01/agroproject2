@@ -15,7 +15,7 @@ export function EmblaCarousel() {
 
   return (
     <div className="embla" ref={emblaRef}>
-      <div className="embla__container h-[95vh]">
+      <div className="embla__container h-[95.8vh]">
 
         <div className="embla__slide relative">
           <Image src={background1} alt="House background image" fill loading="eager" />
