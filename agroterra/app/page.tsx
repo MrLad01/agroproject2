@@ -1,7 +1,38 @@
+'use client'
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoIosPhonePortrait, IoMdMailOpen } from "react-icons/io";
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
+import background1 from '@/public/house1.png'
+import background2 from '@/public/house2.png'
+
+
+export function EmblaCarousel() {
+  const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()])
+
+  return (
+    <div className="embla" ref={emblaRef}>
+      <div className="embla__container h-[95vh]">
+
+        <div className="embla__slide relative">
+          <Image src={background1} alt="House background image" fill loading="eager" />
+        </div>
+
+        <div className="embla__slide relative">
+          <Image src={background2} alt="House background image 2" fill loading="lazy" />
+        </div>
+        
+        <div className="embla__slide">Slide 3</div>
+      
+      </div>
+
+    </div>
+  )
+}
+
 
 export default function Home() {
   return (
@@ -26,6 +57,10 @@ export default function Home() {
               <h3>info@agroterraresort.com</h3>
             </div>
           </div>
+        </div>
+        {/* Background Carousel */}
+        <div className="w-full">
+          <EmblaCarousel />
         </div>
       </main>
     </div>
