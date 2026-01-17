@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoIosPhonePortrait, IoMdMailOpen } from "react-icons/io";
+import { FaConciergeBell } from "react-icons/fa";
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import background1 from '@/public/house1.png'
@@ -66,13 +67,26 @@ export default function Home() {
         {/* Background Carousel */}
         <div className="w-full">
           <EmblaCarousel />
-          <div className="absolute top-8 w-full h-[95vh] flex flex-col px-12 py-8 border">
-            <div className="flex items-center justify-between">
+          <div className="absolute top-8 w-full h-[95vh] bg-[#00000045] flex flex-col px-12 py-6">
+            {/* Nav */}
+            <nav className="flex items-center justify-between shadow-2xl">
+              {/* Logo */}
               <div className="flex gap-2 items-center">
-                <Image src={logo} alt="Agroterra Logo" height={20}  />
-                <h3 className="uppercase">Agroterra</h3>
+                <Image src={logo} alt="Agroterra Logo" height={30}  />
+                <h3 className="uppercase eb-garamond-extrabold text-[17px] text-white">Agroterra</h3>
               </div>
-            </div>
+              <div className="flex gap-12 items-center text-[14px] normal-font pt-0.5">
+                <Link href={``} className=" text-white">Home</Link>
+                <Link href={``} className=" text-white">Resort</Link>
+                <Link href={``} className=" text-white">Golf</Link>
+                <Link href={``} className=" text-white">Sport Academy</Link>
+                <Link href={``} className=" text-white">Contact</Link>
+              </div>
+              <button className="work-sans-bold text-[12px] mr-10 uppercase px-6 py-2.5 bg-white rounded-4xl flex items-center gap-2">
+                <FaConciergeBell size={14} />
+                Book Now
+              </button>
+            </nav>
           </div>
         </div>
       </main>

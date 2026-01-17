@@ -44,6 +44,30 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+.eb-garamond-medium {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.eb-garamond-semibold {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.eb-garamond-bold {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.eb-garamond-extrabold {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
 
 .embla {
   overflow: hidden;
@@ -54,6 +78,10 @@ body {
 .embla__slide {
   flex: 0 0 100%;
   min-width: 0;
+}
+
+.normal-font {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -74,5 +102,29 @@ body {
   font-family: "Work Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
+  font-style: normal;
+}
+.work-sans-medium {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.work-sans-semibold {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.work-sans-bold {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.work-sans-extrabold {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
   font-style: normal;
 }
