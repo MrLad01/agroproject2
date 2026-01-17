@@ -50,6 +50,12 @@ body {
   font-weight: 500;
   font-style: normal;
 }
+.eb-garamond-italic{
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: italic;
+}
 .eb-garamond-semibold {
   font-family: "EB Garamond", serif;
   font-optical-sizing: auto;
