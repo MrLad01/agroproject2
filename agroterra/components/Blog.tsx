@@ -1,18 +1,77 @@
+'use client'
+
 import React from 'react'
+import AnimatedBlogImage from '@/components/AnimatedBlogImage'
+
+import g1 from '../public/09.png'
+import g2 from '../public/11.png'
+import g3 from '../public/13.png'
+import g4 from '../public/15.png'
+import g5 from '../public/17.png'
+import g6 from '../public/agroterra.png'
 
 const Blog = () => {
   return (
-    <div className='bg-white py-4 px-6 flex-col items-center justify-center'>
-      <h1 className='text-[#1A1A1A] text-center work-sans text-[16px] font-bold'>BLOG</h1>
-      <h2 className='text-[#1A1A1A] text-center text-[46px] font-semibold eb-garamond'>Latest From Our Blog</h2>
-      <p className='text-[#5A5A5A] text-center work-sans text-[16px] font-normal'>Lorem ipsum dolor sit amet, consectetur<br />adipiscing elit. Sed et rhoncus lacus.</p>
-      <div className='flex justify-center items-center'>
-        <div></div>
-        <div></div>
-        <div></div>
+    <div className="bg-white py-12 px-14">
+      <h1 className="text-[#1A1A1A] text-center text-[16px] font-bold">
+        BLOG
+      </h1>
+
+      <h2 className="text-[#1A1A1A] text-center text-[46px] font-semibold eb-garamond">
+        Latest From Our Blog
+      </h2>
+
+      <p className="text-[#5A5A5A] text-center text-[16px]">
+        Lorem ipsum dolor sit amet, consectetur <br />
+        adipiscing elit. Sed et rhoncus lacus.
+      </p>
+
+      {/* Images */}
+      <div className="flex justify-center py-12 px-24 gap-6">
+        {/* Column 1 */}
+        <div className="flex flex-col w-1/3 gap-6">
+          <AnimatedBlogImage
+            src={g1}
+            title="Golf Course"
+          />
+          <AnimatedBlogImage
+            src={g2}
+            title="Cottonwood Cove established Resort & Marina"
+            reverse
+          />
+        </div>
+
+        {/* Column 2 */}
+        <div className="flex flex-col w-1/3 gap-6">
+          <AnimatedBlogImage
+            src={g3}
+            title="Benefits of Having Online Registration at Your Hotel"
+            reverse
+          />
+          <AnimatedBlogImage
+            src={g4}
+            title="Headwaters at Eagle Ranch Resort"
+          />
+        </div>
+
+        {/* Column 3 */}
+        <div className="flex flex-col w-1/3 gap-6">
+          <AnimatedBlogImage
+            src={g5}
+            title="Food Rocks food festival, Lyme Regis"
+          />
+          <AnimatedBlogImage
+            src={g6}
+            title="Your Hotel Digital Marketing Checklist"
+            reverse
+          />
+        </div>
       </div>
-      <div  className='flex justify-center items-center'>
-      <button className='border text-[#101996] rounded-3xl border-[#101996] px-5 py-2 work-sans text-[16px] font-normal'>VIEW ALL BLOG</button>
+
+      <div className="flex justify-center">
+        <button className="border text-[#101996] rounded-3xl border-[#101996] px-5 py-2">
+          VIEW ALL BLOG
+        </button>
       </div>
     </div>
   )
