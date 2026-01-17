@@ -84,7 +84,7 @@ export default function Home() {
         {/* Background Carousel */}
         <div className="w-full">
           <EmblaCarousel />
-          <div className="absolute top-8 w-full h-[95vh] bg-[#00000045] flex flex-col px-12 py-6">
+          <div className="absolute top-8 w-full h-[95vh] bg-[#00000075] flex flex-col px-12 py-6">
             {/* Nav */}
             <nav className="flex items-center justify-between shadow-2xl">
               {/* Logo */}
@@ -105,9 +105,9 @@ export default function Home() {
               </button>
             </nav>
             <div className="h-full flex flex-col text-white items-center justify-center leading-relaxed">
-              <div className="flex flex-col justify-center items-center -mt-12">
-                <h2 className="text-center eb-garamond-semibold text-[42px]">WELCOME TO AGROTERRA</h2>
-                <p className="eb-garamond-italic text-[26px] max-w-110 text-center">&ldquo;A place that celebrates life rather than sucks life out of it.&rdquo;
+              <div className="flex flex-col justify-center items-center -mt-16">
+                <h2 className="text-center eb-garamond-semibold text-[62px]">WELCOME TO AGROTERRA</h2>
+                <p className="eb-garamond-italic text-[32px] max-w-140 text-center">&ldquo;A place that celebrates life rather than sucks life out of it.&rdquo;
                 </p>
               </div>
               {/* <p className="eb-garamond-italic text-[18px] max-w-230 text-center">&ldquo;Nestled in the heart of pristine countryside, Agroterra Resort offers an unparalleled luxury experience 
