@@ -11,31 +11,48 @@ import background1 from '@/public/house1.png'
 import background2 from '@/public/house2.png'
 import background3 from '@/public/IMG_20241010_175833.jpg'
 import logo from '@/public/ASA logo.jpg'
+import { DotButton, useDotButton } from "@/components/Embla/EmblaCarouselDotButton";
 
 
 export function EmblaCarousel() {
-  const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()])
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay()])
+  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
+
+  // Array of images for the carousel
+  const images = [background1, background2, background3]
 
   return (
-    <div className="embla" ref={emblaRef}>
-      <div className="embla__container h-[95.8vh]">
+    <section className="embla">
+      <div className="embla__viewport" ref={emblaRef}>
+        <div className="embla__container h-[95.8vh]">
 
-        <div className="embla__slide relative">
-          <Image src={background1} alt="House background image" fill loading="eager" />
-        </div>
+          <div className="embla__slide relative">
+            <Image src={background1} alt="House background image" fill loading="eager" />
+          </div>
 
-        <div className="embla__slide relative">
-          <Image src={background2} alt="House background image 2" fill loading="lazy" />
+          <div className="embla__slide relative">
+            <Image src={background2} alt="House background image 2" fill loading="lazy" />
+          </div>
+    
+          <div className="embla__slide relative">
+            <Image src={background3} alt="House background image 2" fill loading="lazy" />
+          </div>
+          
         </div>
-  
-        <div className="embla__slide relative">
-          <Image src={background3} alt="House background image 2" fill loading="lazy" />
+        <div className="embla__controls">
+          <div className="embla__dots">
+            {scrollSnaps.map((_, index) => (
+              <DotButton
+                key={index}
+                onClick={() => onDotButtonClick(index)}
+                image={images[index]}
+                isSelected={index === selectedIndex}
+              />
+            ))}
+          </div>
         </div>
-        
-      
       </div>
-
-    </div>
+    </section>
   )
 }
 
@@ -88,10 +105,11 @@ export default function Home() {
               </button>
             </nav>
             <div className="h-full flex flex-col text-white items-center justify-center leading-relaxed">
-              <h2 className="text-center eb-garamond-semibold text-[42px]">WELCOME TO AGROTERRA</h2>
-              <p className="eb-garamond-italic text-[26px] max-w-110 text-center">&ldquo;A place that celebrates life rather than
-sucks life out of it.&rdquo;
-              </p>
+              <div className="flex flex-col justify-center items-center -mt-12">
+                <h2 className="text-center eb-garamond-semibold text-[42px]">WELCOME TO AGROTERRA</h2>
+                <p className="eb-garamond-italic text-[26px] max-w-110 text-center">&ldquo;A place that celebrates life rather than sucks life out of it.&rdquo;
+                </p>
+              </div>
               {/* <p className="eb-garamond-italic text-[18px] max-w-230 text-center">&ldquo;Nestled in the heart of pristine countryside, Agroterra Resort offers an unparalleled luxury experience 
               where nature meets sophistication. Our world-class facilities include premium accommodations, 
               a championship golf course, and an elite sports academy that caters to athletes of all levels.

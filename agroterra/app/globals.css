@@ -75,16 +75,60 @@ body {
   font-style: normal;
 }
 
+
 .embla {
   overflow: hidden;
+  position: relative; 
 }
+
 .embla__container {
   display: flex;
 }
+
 .embla__slide {
   flex: 0 0 100%;
   min-width: 0;
 }
+
+.embla__controls {
+  position: absolute; 
+  bottom: 2rem; 
+  left: 50%;
+  transform: translateX(-50%);  
+  z-index: 10; 
+}
+
+.embla__dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.embla__dot {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.embla__dot:after {
+  display: none;
+}
+
+.embla__dot--selected:after {
+  display: none;
+}
+
 
 .normal-font {
   font-family: Arial, Helvetica, sans-serif;
