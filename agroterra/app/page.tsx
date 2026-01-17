@@ -12,6 +12,7 @@ import background2 from '@/public/house2.png'
 import background3 from '@/public/IMG_20241010_175833.jpg'
 import logo from '@/public/ASA logo.jpg'
 import { DotButton, useDotButton } from "@/components/Embla/EmblaCarouselDotButton";
+import Blog from "@/components/Blog";
 
 
 export function EmblaCarousel() {
@@ -59,6 +60,7 @@ export function EmblaCarousel() {
 
 export default function Home() {
   return (
+    <>
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-col min-h-screen w-full bg-white dark:bg-black sm:items-start">
         {/* TOP nav */}
@@ -122,5 +124,7 @@ export default function Home() {
         </div>
       </main>
     </div>
+      <Blog />
+    </>
   );
 }
