@@ -33,7 +33,7 @@ const AnimatedBlogImage = ({ src, title, reverse = false }: Props) => {
       <div className="absolute inset-0 bg-black/30" />
 
       {/* Text overlay */}
-      <h3 className="absolute bottom-10 left-15 text-white text-[28px] font-semibold eb-garamond">
+      <h3 className="absolute bottom-10 left-8 text-white text-[22px] max-w-80 font-semibold eb-garamond">
         {title}
       </h3>
     </motion.div>
