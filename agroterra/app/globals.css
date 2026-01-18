@@ -98,12 +98,21 @@ body {
   z-index: 10; 
 }
 
+.embla__dots-container {
+  position: relative;
+}
+
+.embla__dots-container::-webkit-scrollbar {
+  display: none;
+}
+
 .embla__dots {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
   gap: 0.75rem;
+  padding: 0.5rem;
 }
 
 .embla__dot {

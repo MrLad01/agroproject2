@@ -8,10 +8,12 @@ import { FaConciergeBell } from "react-icons/fa";
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import background1 from '@/public/house1.png'
-import background2 from '@/public/house2.png'
-import background3 from '@/public/IMG_20241010_175833.jpg'
+import background2 from '@/public/IMG_20241010_175833.jpg'
+import background3 from '@/public/kitchen.png'
+import background4 from '@/public/IMG_20240627_163644.jpg'
+import background5 from '@/public/relaxation2.png'
 import logo from '@/public/ASA logo.jpg'
-import { DotButton, useDotButton } from "@/components/Embla/EmblaCarouselDotButton";
+import { DotButton, ScrollingDots, useDotButton } from "@/components/Embla/EmblaCarouselDotButton";
 import Blog from "@/components/Blog";
 
 
@@ -20,7 +22,7 @@ export function EmblaCarousel() {
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 
   // Array of images for the carousel
-  const images = [background1, background2, background3]
+  const images = [background1, background2, background3, background4, background5]
 
   return (
     <section className="embla">
@@ -32,24 +34,40 @@ export function EmblaCarousel() {
           </div>
 
           <div className="embla__slide relative">
-            <Image src={background2} alt="House background image 2" fill loading="lazy" />
+            <Image src={background2} alt="Golf Course background image" fill loading="lazy" />
           </div>
     
           <div className="embla__slide relative">
-            <Image src={background3} alt="House background image 2" fill loading="lazy" />
+            <Image src={background3} alt="Kitchen background image 3" fill loading="lazy" />
+          </div>
+          
+          <div className="embla__slide relative">
+            <Image src={background4} alt="Football background image 4" fill loading="lazy" />
+          </div>
+
+          <div className="embla__slide relative">
+            <Image src={background5} alt="Recreation background image 4" fill loading="lazy" />
           </div>
           
         </div>
         <div className="embla__controls">
           <div className="embla__dots">
-            {scrollSnaps.map((_, index) => (
+            {images.length <= 3 ? scrollSnaps.map((_, index) => (
               <DotButton
                 key={index}
                 onClick={() => onDotButtonClick(index)}
                 image={images[index]}
                 isSelected={index === selectedIndex}
               />
-            ))}
+            )): 
+            
+            <ScrollingDots 
+              images={images}
+              selectedIndex={selectedIndex}
+              onDotButtonClick={onDotButtonClick}
+            />
+
+            }
           </div>
         </div>
       </div>
