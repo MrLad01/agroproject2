@@ -15,6 +15,8 @@ import background5 from '@/public/relaxation2.png'
 import logo from '@/public/ASA logo.jpg'
 import { DotButton, ScrollingDots, useDotButton } from "@/components/Embla/EmblaCarouselDotButton";
 import Blog from "@/components/Blog";
+import SectionOne from "@/components/Section1";
+import SectionTwo from "@/components/Section2";
 
 
 export function EmblaCarousel() {
@@ -142,7 +144,9 @@ export default function Home() {
         </div>
       </main>
     </div>
-      <Blog />
+    <SectionOne />
+    <SectionTwo />
+    <Blog />
     </>
   );
 }

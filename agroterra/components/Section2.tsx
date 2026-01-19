@@ -10,15 +10,15 @@ import g4 from '../public/15.png'
 import g5 from '../public/17.png'
 import g6 from '../public/agroterra.png'
 
-const Blog = () => {
+const SectionTwo = () => {
   return (
     <div className="bg-white py-12 px-14">
-      <h1 className="text-[#1A1A1A] text-center tracking-[0.28rem] text-[16px] font-bold">
-        BLOG
+      <h1 className="text-[#1A1A1A] uppercase text-center tracking-[0.28rem] text-[16px] font-bold">
+        explore
       </h1>
 
       <h2 className="text-[#1A1A1A] text-center text-[46px] font-semibold eb-garamond">
-        Latest From Our Blog
+        A Place That Fits You
       </h2>
 
       <p className="text-[#5A5A5A] text-center text-[16px]">
@@ -67,14 +67,8 @@ const Blog = () => {
           />
         </div>
       </div>
-
-      <div className="flex justify-center">
-        <button className="border text-[#101996] rounded-3xl border-[#101996] px-5 py-2">
-          VIEW ALL BLOG
-        </button>
-      </div>
     </div>
   )
 }
 
-export default Blog
+export default SectionTwo
