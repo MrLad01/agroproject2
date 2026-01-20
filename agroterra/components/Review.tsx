@@ -56,12 +56,12 @@ export default function Review() {
               ${index === active ? 'scale-105 shadow-xl' : 'opacity-70'}
             `}
           >
-            <div className="absolute -top-4 right-6">
+            <div className="absolute -top-2 right-6">
               <Image src={quote} alt="quote" />
             </div>
 
             <p className="text-[14px] text-[#555555] work-sans leading-relaxed mb-6">
-              “{review.text}”
+              &ldquo;{review.text}&rdquo;
             </p>
 
             <div className="flex items-center gap-3">

@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 const ExperienceCard = () => {
   return (
-    <div className="relative w-105 h-130 rounded-2xl overflow-hidden shadow-lg">
+    <div className="relative w-180 h-116 rounded-2xl overflow-hidden shadow-lg">
       {/* Background Image */}
       <Image
         src={golf}

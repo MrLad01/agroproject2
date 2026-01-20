@@ -151,11 +151,11 @@ const SectionTwo = () => {
         )
       }
 
-      <div className="bg-white py-12 mt-4">
-        <h1 className="text-[#1A1A1A] text-center tracking-[0.28rem] text-[16px] font-bold">
+      <div className="bg-white py-12 mt-24">
+        <h1 className="text-[#1A1A1A] text-center tracking-[0.28rem] mb-2 text-[16px] font-bold">
         EXPERIENCES
       </h1>
-      <h2 className="text-[#1A1A1A] text-center text-[46px] font-semibold eb-garamond">
+      <h2 className="text-[#1A1A1A] text-center text-[46px] mb-8 font-semibold eb-garamond">
         Harmony With Nature
       </h2>
        {/* Content */}
