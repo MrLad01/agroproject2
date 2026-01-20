@@ -1,18 +1,34 @@
 'use client'
 
-import React from 'react'
-import AnimatedBlogImage from '@/components/AnimatedBlogImage'
+import { useState, useEffect } from "react"
+import junior from '@/public/juniorBed.png'
+import family from '@/public/familyBed.jpg'
+import deluxe from '@/public/deluxeBed.jpg'
+import Image from "next/image"
+import { TbCrosshair } from "react-icons/tb";
+import { IoBedOutline } from "react-icons/io5";
+import { MdOutlineBathtub, MdOutlinePeopleOutline } from "react-icons/md";
 
-import g1 from '../public/09.png'
-import g2 from '../public/11.png'
-import g3 from '../public/13.png'
-import g4 from '../public/15.png'
-import g5 from '../public/17.png'
-import g6 from '../public/agroterra.png'
 
 const SectionTwo = () => {
+  const [activeTab, setActiveTab] = useState<string>('')
+
+  // Load from localStorage only after component mounts (client-side only)
+  useEffect(() => {
+    const tabFromLocal = localStorage.getItem('tab')
+    if (tabFromLocal) {
+      setActiveTab(tabFromLocal)
+    }
+  }, [])
+
+  const handleTabSwitch = (tabStart: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    setActiveTab(tabStart);
+    localStorage.setItem("tab", tabStart) 
+  }
+
   return (
-    <div className="bg-white py-12 px-14">
+    <div className="bg-white py-12 mb-10 px-40">
       <h1 className="text-[#1A1A1A] uppercase text-center tracking-[0.28rem] text-[16px] font-bold">
         explore
       </h1>
@@ -26,47 +42,116 @@ const SectionTwo = () => {
         adipiscing elit. Sed et rhoncus lacus.
       </p>
 
-      {/* Images */}
-      <div className="flex justify-center py-12 px-24 gap-6">
-        {/* Column 1 */}
-        <div className="flex flex-col w-1/3 gap-6">
-          <AnimatedBlogImage
-            src={g1}
-            title="Golf Course"
-          />
-          <AnimatedBlogImage
-            src={g2}
-            title="Cottonwood Cove established Resort & Marina"
-            reverse
-          />
-        </div>
-
-        {/* Column 2 */}
-        <div className="flex flex-col w-1/3 gap-6">
-          <AnimatedBlogImage
-            src={g3}
-            title="Benefits of Having Online Registration at Your Hotel"
-            reverse
-          />
-          <AnimatedBlogImage
-            src={g4}
-            title="Headwaters at Eagle Ranch Resort"
-          />
-        </div>
-
-        {/* Column 3 */}
-        <div className="flex flex-col w-1/3 gap-6">
-          <AnimatedBlogImage
-            src={g5}
-            title="Food Rocks food festival, Lyme Regis"
-          />
-          <AnimatedBlogImage
-            src={g6}
-            title="Your Hotel Digital Marketing Checklist"
-            reverse
-          />
-        </div>
+      <div className="flex items-center-safe w-full mt-8 mb-16">
+        <button className={`w-full py-4 text-[16px] uppercase eb-garamond-bold ${activeTab === "family" ? "border-b-[#101996] text-[#101996] border-b" : "opacity-40 cursor-pointer"}`} onClick={(e) => handleTabSwitch("family", e)}>
+          Family Suite
+        </button>
+        <button className={`w-full py-4 text-[16px] uppercase eb-garamond-bold ${activeTab === "junior" ? "border-b-[#101996] text-[#101996] border-b" : "opacity-40 cursor-pointer"}`} onClick={(e) => handleTabSwitch("junior", e)}>
+          Junior Suite
+        </button>
+        <button className={`w-full py-4 text-[16px] uppercase eb-garamond-bold ${activeTab === "deluxe" ? "border-b-[#101996] text-[#101996] border-b" : "opacity-40 cursor-pointer"}`} onClick={(e) => handleTabSwitch("deluxe", e)}>
+          Deluxe Double Room
+        </button>
       </div>
+
+      {
+        activeTab === "family" && (
+          <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4">
+              <h3 className="eb-garamond-semibold text-[18px] uppercase">Family Suite</h3>
+              <p className="text-[#5A5A5A] work-sans tracking-wider text-[16px] max-w-lg">
+                The Family Suite is perfect for families looking for a comfortable and spacious accommodation option. This suite features two bedrooms, a living area, and a private balcony with stunning views of the resort's gardens.
+              </p>
+              <div className="flex text-[12px] items-center-safe gap-8">
+                <div className="flex items-center gap-2">
+                  <TbCrosshair size={15} />
+                  <h4>45 sqm</h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <IoBedOutline size={15} />
+                  <h4>2 Beds</h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MdOutlineBathtub size={15} />
+                  <h4>1 Bath</h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MdOutlinePeopleOutline size={15} />
+                  <h4>4 Guests</h4>
+                </div>
+              </div>
+            </div>
+            <Image src={family} alt="Family Suite" width={600} className="rounded-2xl"  />
+          </div>
+        )
+      }
+
+      {
+        activeTab === "junior" && (
+          <div className="flex items-center justify-between">
+            <Image src={junior} alt="Junior Suite" width={600} className="rounded-2xl"  />
+            <div className="flex flex-col gap-4">
+              <h3 className="eb-garamond-semibold text-[18px] uppercase">Junior Suite</h3>
+              <p className="text-[#5A5A5A] work-sans tracking-wider text-[16px] max-w-lg">
+                The Junior Suite offers a blend of comfort and style, ideal for solo travelers or couples. This suite includes a spacious bedroom, a cozy seating area, and modern amenities to ensure a relaxing stay.
+              </p>
+              <div className="flex text-[12px] items-center-safe gap-8">
+                <div className="flex items-center gap-2">
+                  <TbCrosshair size={15} />
+                  <h4>35 sqm</h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <IoBedOutline size={15} />
+                  <h4>1 Bed</h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MdOutlineBathtub size={15} />
+                  <h4>1 Bath</h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MdOutlinePeopleOutline size={15} />
+                  <h4>2 Guests</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      {
+        activeTab === "deluxe" && (
+          <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4">
+              <h3 className="eb-garamond-semibold text-[18px] uppercase">Deluxe Suite</h3>
+              <p className="text-[#5A5A5A] work-sans tracking-wider text-[16px] max-w-lg">
+                The Deluxe Suite is perfect for families looking for a comfortable and spacious accommodation option. This suite features two bedrooms, a living area, and a private balcony with stunning views of the resort's gardens.
+              </p>
+              <div className="flex text-[12px] items-center-safe gap-8">
+                <div className="flex items-center gap-2">
+                  <TbCrosshair size={15} />
+                  <h4>50 sqm</h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <IoBedOutline size={15} />
+                  <h4>2 Beds</h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MdOutlineBathtub size={15} />
+                  <h4>1 Bath</h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MdOutlinePeopleOutline size={15} />
+                  <h4>4 Guests</h4>
+                </div>
+              </div>
+            </div>
+            <Image src={deluxe} alt="Deluxe Suite" width={600} className="rounded-2xl"  />
+          </div>
+        )
+      }
+
+
+
     </div>
   )
 }

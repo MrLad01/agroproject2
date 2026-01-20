@@ -69,7 +69,7 @@ const Blog = () => {
       </div>
 
       <div className="flex justify-center">
-        <button className="border text-[#101996] rounded-3xl border-[#101996] px-5 py-2">
+        <button className="border text-[#101996] rounded-3xl border-[#101996] px-5 py-3 text-[12px]">
           VIEW ALL BLOG
         </button>
       </div>

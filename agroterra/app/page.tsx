@@ -132,19 +132,14 @@ export default function Home() {
                 <p className="eb-garamond-italic text-[32px] max-w-140 text-center">&ldquo;A place that celebrates life rather than sucks life out of it.&rdquo;
                 </p>
               </div>
-              {/* <p className="eb-garamond-italic text-[18px] max-w-230 text-center">&ldquo;Nestled in the heart of pristine countryside, Agroterra Resort offers an unparalleled luxury experience 
-              where nature meets sophistication. Our world-class facilities include premium accommodations, 
-              a championship golf course, and an elite sports academy that caters to athletes of all levels.
-              Whether you&apos;re seeking a peaceful retreat, an exciting golf adventure, or professional sports training, 
-              Agroterra provides the perfect setting for your ultimate getaway. Experience the harmony of luxury, 
-              recreation, and natural beauty in one extraordinary destination.&rdquo;
-              </p> */}
             </div>
           </div>
         </div>
       </main>
     </div>
+    {/* Welcome Section */}
     <SectionOne />
+    {/* Explore Section */}
     <SectionTwo />
     <Blog />
     </>
