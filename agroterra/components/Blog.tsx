@@ -69,7 +69,7 @@ const Blog = () => {
       </div>
 
       <div className="flex justify-center">
-        <button className="border text-[#101996] rounded-3xl border-[#101996] px-5 py-3 text-[12px]">
+        <button className="border text-[#101996] rounded-3xl cursor-pointer hover:scale-125 transition duration-500 ease-in-out border-[#101996] px-5 py-3 text-[12px]">
           VIEW ALL BLOG
         </button>
       </div>

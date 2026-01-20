@@ -17,6 +17,7 @@ import { DotButton, ScrollingDots, useDotButton } from "@/components/Embla/Embla
 import Blog from "@/components/Blog";
 import SectionOne from "@/components/Section1";
 import SectionTwo from "@/components/Section2";
+import Review from "@/components/Review";
 
 
 export function EmblaCarousel() {
@@ -141,6 +142,9 @@ export default function Home() {
     <SectionOne />
     {/* Explore Section */}
     <SectionTwo />
+    {/* Reviews Section */}
+    <Review />
+    {/* Blog Section */}
     <Blog />
     </>
   );

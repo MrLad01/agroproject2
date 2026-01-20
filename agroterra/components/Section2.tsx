@@ -8,10 +8,11 @@ import Image from "next/image"
 import { TbCrosshair } from "react-icons/tb";
 import { IoBedOutline } from "react-icons/io5";
 import { MdOutlineBathtub, MdOutlinePeopleOutline } from "react-icons/md";
+import ExperienceCard from "./ExperienceCard"
 
 
 const SectionTwo = () => {
-  const [activeTab, setActiveTab] = useState<string>('')
+  const [activeTab, setActiveTab] = useState<string>('family')
 
   // Load from localStorage only after component mounts (client-side only)
   useEffect(() => {
@@ -150,6 +151,25 @@ const SectionTwo = () => {
         )
       }
 
+      <div className="bg-white py-12 mt-4">
+        <h1 className="text-[#1A1A1A] text-center tracking-[0.28rem] text-[16px] font-bold">
+        EXPERIENCES
+      </h1>
+      <h2 className="text-[#1A1A1A] text-center text-[46px] font-semibold eb-garamond">
+        Harmony With Nature
+      </h2>
+       {/* Content */}
+      <div className="relative max-w-6xl mx-auto flex justify-center">
+        <ExperienceCard />
+        </div>
+
+      {/* Bottom Indicator */}
+      <div className="mt-10 flex items-center justify-center gap-6 text-sm">
+        <span className="font-medium text-[#111111] eb-garamond text-[20px]">01</span>
+        <span className="w-56 h-px bg-[#111111]" />
+        <span className="font-medium text-[#111111] eb-garamond text-[20px]">Activities</span>
+      </div>
+      </div>
 
 
     </div>
