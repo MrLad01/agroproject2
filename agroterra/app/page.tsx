@@ -81,29 +81,9 @@ export function EmblaCarousel() {
 
 export default function Home() {
   return (
-    <>
+    <div className="pb-130">
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-col min-h-screen w-full bg-white dark:bg-black sm:items-start">
-        {/* TOP nav */}
-        <div className="w-full py-2 px-6 bg-black text-white work-sans text-[11px] flex items-center justify-between">
-          {/* Location */}
-          <Link className="flex gap-1 items-center" href="https://www.google.com/maps/place/Agroterra+Farm+Resort/@7.0972934,3.1209846,15z/data=!4m6!3m5!1s0x103a55f97786c3cb:0x5dca0bc8e4d4de1!8m2!3d7.0979033!4d3.1207854!16s%2Fg%2F11hjxgkkzr?entry=ttu&g_ep=EgoyMDI1MDYxNi4wIKXMDSoASAFQAw%3D%3D" target='_blank'>
-            <IoLocationSharp size={15} />
-            <h3>Joga-Orile, Iboro/Joga 110123, Ogun State | 34XC+58 Alade, Nigeria</h3>
-          </Link>
-          <div className="flex items-center gap-6">
-            {/* Phone */}
-            <div className="flex gap-1">
-              <IoIosPhonePortrait size={15} />
-              <h3>(+234) 803 319 4444</h3>
-            </div>
-            {/* Mail */}
-            <div className="flex gap-1">
-              <IoMdMailOpen size={15} />
-              <h3>info@agroterraresort.com</h3>
-            </div>
-          </div>
-        </div>
         {/* Background Carousel */}
         <div className="w-full">
           <EmblaCarousel />
@@ -116,11 +96,11 @@ export default function Home() {
                 <h3 className="uppercase eb-garamond-extrabold text-[17px] text-white">Agroterra</h3>
               </div>
               <div className="flex gap-12 items-center text-[14px] normal-font pt-0.5">
-                <Link href={``} className=" text-white">Home</Link>
-                <Link href={``} className=" text-white">Resort</Link>
-                <Link href={``} className=" text-white">Golf</Link>
-                <Link href={``} className=" text-white">Sport Academy</Link>
-                <Link href={``} className=" text-white">Contact</Link>
+                <Link href={`/`} className=" text-white">Home</Link>
+                <Link href={`/resort`} className=" text-white">Resort</Link>
+                <Link href={`/golf`} className=" text-white">Golf</Link>
+                <Link href={`/sport-academy`} className=" text-white">Sport Academy</Link>
+                <Link href={`/contact`} className=" text-white">Contact</Link>
               </div>
               <button className="work-sans-bold text-[12px] mr-10 uppercase px-6 py-2.5 bg-white rounded-4xl flex items-center gap-2">
                 <FaConciergeBell size={14} />
@@ -146,6 +126,6 @@ export default function Home() {
     <Review />
     {/* Blog Section */}
     <Blog />
-    </>
+    </div>
   );
 }
