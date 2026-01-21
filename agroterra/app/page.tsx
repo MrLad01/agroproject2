@@ -1,9 +1,7 @@
 'use client'
-import { useEffect } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
-import { IoLocationSharp } from "react-icons/io5";
-import { IoIosPhonePortrait, IoMdMailOpen } from "react-icons/io";
 import { FaConciergeBell } from "react-icons/fa";
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
@@ -18,6 +16,11 @@ import Blog from "@/components/Blog";
 import SectionOne from "@/components/Section1";
 import SectionTwo from "@/components/Section2";
 import Review from "@/components/Review";
+import { gsap } from "gsap";
+    
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(TextPlugin);
 
 
 export function EmblaCarousel() {
@@ -109,7 +112,7 @@ export default function Home() {
             </nav>
             <div className="h-full flex flex-col text-white items-center justify-center leading-relaxed">
               <div className="flex flex-col justify-center items-center -mt-16">
-                <h2 className="text-center eb-garamond-semibold text-[62px]">WELCOME TO AGROTERRA</h2>
+                <h2 className="text-center eb-garamond-semibold text-[62px] welcome-text">WELCOME TO AGROTERRA</h2>
                 <p className="eb-garamond-italic text-[32px] max-w-140 text-center">&ldquo;A place that celebrates life rather than sucks life out of it.&rdquo;
                 </p>
               </div>

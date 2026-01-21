@@ -42,7 +42,7 @@ export default function RootLayout({
             {/* Phone */}
             <div className="flex gap-1">
               <IoIosPhonePortrait size={15} />
-              <h3>(+234) 803 319 4444</h3>
+              <Link href={`tel: +2347036536705`}>(+234) 803 319 4444</Link>
             </div>
             {/* Mail */}
             <div className="flex gap-1">
