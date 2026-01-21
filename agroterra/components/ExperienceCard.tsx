@@ -83,21 +83,21 @@ const ExperienceCard = () => {
 
       <div className="relative z-10 h-full flex flex-col justify-between p-6 text-white">
         <div>
-          <p className="text-sm tracking-widest text-black font-bold">
+          <p className="text-sm tracking-wider text-white work-sans font-bold">
             {String(currentIndex + 1).padStart(2, '0')} /{' '}
             {String(totalSlides).padStart(2, '0')}
           </p>
 
-          <h3 className="text-[48px] text-black font-extrabold eb-garamond mt-2">
+          <h3 className="text-[48px] text-white font-extrabold eb-garamond">
             {currentSlide.title}
           </h3>
 
-          <p className="text-sm mt-4 leading-relaxed max-w-[90%] opacity-90">
+          <p className="text-sm leading-relaxed max-w-100 opacity-90">
             {currentSlide.description}
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col absolute bottom-2 left-[38%] items-center gap-3">
           <button className="px-6 py-2 rounded-full border border-white text-xs font-semibold tracking-wider hover:bg-white hover:text-black transition cursor-pointer">
             {currentSlide.cta}
           </button>
@@ -105,14 +105,14 @@ const ExperienceCard = () => {
           <div className="flex gap-3">
             <button
               onClick={handlePrev}
-              className="w-10 h-10 rounded-full bg-[#1E3A8A] flex items-center justify-center hover:scale-105 transition"
+              className="w-10 h-10 rounded-full bg-[#1E3A8A] cursor-pointer flex items-center justify-center hover:scale-105 transition"
             >
               <ArrowLeft className="text-white" />
             </button>
 
             <button
               onClick={handleNext}
-              className="w-10 h-10 rounded-full bg-[#1E3A8A] flex items-center justify-center hover:scale-105 transition"
+              className="w-10 h-10 rounded-full bg-[#1E3A8A] cursor-pointer flex items-center justify-center hover:scale-105 transition"
             >
               <ArrowRight className="text-white" />
             </button>

@@ -168,11 +168,11 @@ const SectionTwo = () => {
         </div>
 
         {/* Bottom Indicator */}
-        <div className="mt-10 flex items-center justify-center gap-6 text-sm">
+        {/* <div className="mt-10 flex items-center justify-center gap-6 text-sm">
           <span className="font-medium text-[#111111] eb-garamond text-[20px]">01</span>
           <span className="w-56 h-px bg-[#111111]" />
           <span className="font-medium text-[#111111] eb-garamond text-[20px]">Activities</span>
-        </div>
+        </div> */}
       </div>
 
 
