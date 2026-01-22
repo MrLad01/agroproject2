@@ -25,14 +25,14 @@ const Footer = () => {
                         <input type="mail" placeholder='example@gmail.com' className='outline-0 w-full' onChange={(e) => handleInputChange(e)} value={email} />
                         <button className='work-sans text-[12px] w-30 px-6 py-2'>SIGN UP</button>
                     </div>
-                    <div className='flex items-center justify-start gap-2 mb-4'>
-                        <MapPin/>
-                        <p className='work-sans text-[12px]'>Joga-Orile, Iboro/Joga 110123, Ogun State</p>
-                    </div>
-                    <div className='flex items-center justify-start gap-2 mb-4'>
+                    <Link className="flex gap-2 items-center mb-4 text-[12px]"  href="https://www.google.com/maps/place/Agroterra+Farm+Resort/@7.0972934,3.1209846,15z/data=!4m6!3m5!1s0x103a55f97786c3cb:0x5dca0bc8e4d4de1!8m2!3d7.0979033!4d3.1207854!16s%2Fg%2F11hjxgkkzr?entry=ttu&g_ep=EgoyMDI1MDYxNi4wIKXMDSoASAFQAw%3D%3D" target='_blank'>
+                        <MapPin />
+                        <h3>Joga-Orile, Iboro/Joga 110123, Ogun State</h3>
+                    </Link>
+                    <Link href={`tel: +2347036536705`} className='flex items-center justify-start gap-2 mb-4'>
                         <PhoneCall/>
                         <p className='work-sans text-[12px]'>(+234) 803 319 4444</p>
-                    </div>
+                    </Link>
                     <div className='flex items-center justify-start gap-2'>
                         <Mail/>
                         <p className='work-sans text-[12px]'>info@agroterraresort.com</p>
