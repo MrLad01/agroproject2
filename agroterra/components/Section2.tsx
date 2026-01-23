@@ -10,6 +10,7 @@ import { IoBedOutline } from "react-icons/io5";
 import { MdOutlineBathtub, MdOutlinePeopleOutline } from "react-icons/md";
 import ExperienceCard from "./ExperienceCard"
 import { ArrowUpRight } from "lucide-react"
+import Link from "next/link"
 
 
 const SectionTwo = () => {
@@ -82,7 +83,7 @@ const SectionTwo = () => {
                   <h4>4 Guests</h4>
                 </div>
               </div>
-              <button className="flex border justify-center items-center gap-2 w-[30%] text-[#101996] border-[#101996] rounded-2xl p-2 work-sans text-[12px] cursor-pointer hover:scale-110 transition duration-500 ease-in-out uppercase"> Room Details <ArrowUpRight size={16} /></button>
+              <Link href={`/room/family`} className="flex border justify-center items-center gap-2 w-[30%] text-[#101996] border-[#101996] rounded-2xl p-2 work-sans text-[12px] cursor-pointer hover:scale-110 transition duration-500 ease-in-out uppercase"> Room Details <ArrowUpRight size={16} /></Link>
             </div>
             <Image src={family} alt="Family Suite" width={600} className="rounded-2xl" />
           </div>
@@ -116,7 +117,7 @@ const SectionTwo = () => {
                   <h4>2 Guests</h4>
                 </div>
               </div>
-              <button className="flex border justify-center items-center gap-2 w-[30%] text-[#101996] border-[#101996] rounded-2xl p-2 work-sans text-[12px] cursor-pointer hover:scale-110 transition duration-500 ease-in-out uppercase"> Room Details <ArrowUpRight size={16} /></button>
+              <Link href={`/room/junior`} className="flex border justify-center items-center gap-2 w-[30%] text-[#101996] border-[#101996] rounded-2xl p-2 work-sans text-[12px] cursor-pointer hover:scale-110 transition duration-500 ease-in-out uppercase"> Room Details <ArrowUpRight size={16} /></Link>
             </div>
           </div>
         )
@@ -148,7 +149,7 @@ const SectionTwo = () => {
                   <h4>4 Guests</h4>
                 </div>
               </div>
-              <button className="flex border justify-center items-center gap-2 w-[30%] text-[#101996] border-[#101996] rounded-2xl p-2 work-sans text-[14px] cursor-pointer hover:scale-110 transition duration-500 ease-in-out uppercase"> Room Details <ArrowUpRight size={16} /></button>
+              <Link href={`/room/deluxe`} className="flex border justify-center items-center gap-2 w-[30%] text-[#101996] border-[#101996] rounded-2xl p-2 work-sans text-[14px] cursor-pointer hover:scale-110 transition duration-500 ease-in-out uppercase"> Room Details <ArrowUpRight size={16} /></Link>
             </div>
             <Image src={deluxe} alt="Deluxe Suite" width={600} className="rounded-2xl" />
           </div>
