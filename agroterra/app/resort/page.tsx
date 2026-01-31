@@ -105,7 +105,7 @@ export default function page() {
               </nav>
               <div className="h-full flex flex-col text-white items-center justify-center leading-relaxed">
                 <div className="flex flex-col justify-center items-center -mt-26">
-                  <h2 className="text-center eb-garamond-semibold text-[62px] welcome-text">AGROTERRA</h2>
+                  <h2 className="text-center eb-garamond-semibold text-[52px] welcome-text">AGROTERRA</h2>
                   <p className="eb-garamond-italic text-[28px] max-w-140 text-center">Where nature, comfort, and experience meet.
                   </p>
                 </div>
@@ -115,7 +115,9 @@ export default function page() {
         </main>
       </div>
 
-      <div className="flex px-40 py-20 gap-20 items-center justify-center">
+      <div className="overlay bg-white w-full z-50 top-200 absolute h-25"></div>
+
+      <div className="flex px-40 pb-14 gap-20 items-center justify-center">
         <div className="flex flex-col gap-3">
           <h2 className="cormorant-garamond-medium-italic text-4xl">About Agroterra Resort</h2>
           <p className="cormorant-garamond-light-italic text-[18px]">Agroterra Resort is a peaceful destination designed to bring people closer to nature while offering comfort and relaxation. Surrounded by open landscapes and natural beauty, the resort provides a calm escape from busy everyday life. Every space is created to feel at home<br />welcoming, spacious, and refreshing, allowing guests to slow down, breathe deeply, and enjoy meaningful moments. From leisure experiences to quiet retreats, Agroterra combines nature, comfort, and thoughtful design to create a stay that feels both restful and memorable.</p>
@@ -123,7 +125,7 @@ export default function page() {
         <Image src={aboutImage} alt="About Agroterra Resort" width={1000} height={600} className="ml-12" />
       </div>
 
-      <div className="flex px-40 py-20 gap-20 items-center justify-center">
+      <div className="flex px-30 py-20 gap-20 items-center justify-between bg-zinc-100">
         <Image src={aboutImage} alt="About Agroterra Resort" width={1000} height={600} className="ml-12" />
         <div className="flex flex-col gap-3">
           <h2 className="cormorant-garamond-medium-italic text-4xl">Surrounded by Natural Beauty</h2>
@@ -131,7 +133,7 @@ export default function page() {
         </div>
       </div>
 
-      <div className="flex px-40 py-20 gap-20 items-start justify-between">
+      <div className="flex px-40 py-14 gap-20 items-center justify-between">
         <div className="flex flex-col gap-3">
           <h2 className="cormorant-garamond-medium-italic text-4xl">Golf at Agroterra</h2>
           <p className="cormorant-garamond-light-italic text-[18px]">Set within a peaceful natural landscape, the golf experience at Agroterra Resort is designed to be both relaxing and engaging. The course stretches across a wide portion of land, surrounded by trees and open skies that create a calm and refreshing environment. Every hole offers a blend of space, scenery, and thoughtful design, making each round feel enjoyable and unhurried.<br />
