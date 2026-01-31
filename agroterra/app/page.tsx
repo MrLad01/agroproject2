@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaConciergeBell } from "react-icons/fa";
+import { FaConciergeBell } from "react-icons/fa"
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import background1 from '@/public/house1.png'
