@@ -123,7 +123,7 @@ export default function page() {
       {/* <div className="overlay bg-white w-full z-50 top-200 absolute h-25"></div> */}
 
       {/* ====================== ABOUT SECTION ====================== */}
-      <div className="flex px-40 pb-14 gap-20 items-center justify-center">
+      <div className="flex px-40 pb-20 pt-8 gap-20 items-center justify-center">
         <div className="flex flex-col gap-3">
           <h2 className="cormorant-garamond-medium-italic text-4xl">About Agroterra Resort</h2>
           <p className="cormorant-garamond-light-italic text-[18px]">Agroterra Resort is a peaceful destination designed to bring people closer to nature while offering comfort and relaxation. Surrounded by open landscapes and natural beauty, the resort provides a calm escape from busy everyday life. Every space is created to feel at home<br />welcoming, spacious, and refreshing, allowing guests to slow down, breathe deeply, and enjoy meaningful moments. From leisure experiences to quiet retreats, Agroterra combines nature, comfort, and thoughtful design to create a stay that feels both restful and memorable.</p>
@@ -132,7 +132,7 @@ export default function page() {
       </div>
 
       {/* ====================== RELAXATION SECTION ====================== */}
-      <div className="flex px-30 py-20 gap-20 items-center justify-between bg-zinc-100">
+      <div className="flex px-30 py-24 gap-20 items-center justify-between bg-zinc-100">
         <Image src={background1} alt="About Agroterra Resort" className="w-160 h-90" />
         <div className="flex flex-col gap-3">
           <h2 className="cormorant-garamond-medium-italic text-4xl">Surrounded by Natural Beauty</h2>
@@ -141,7 +141,7 @@ export default function page() {
       </div>
 
       {/* ====================== GOLF SECTION ====================== */}
-      <div className="flex px-40 py-14 gap-20 items-center justify-between">
+      <div className="flex px-40 py-24 gap-20 items-center justify-between">
         <div className="flex flex-col gap-3">
           <h2 className="cormorant-garamond-medium-italic text-4xl">Golf at Agroterra</h2>
           <p className="cormorant-garamond-light-italic text-[18px]">Set within a peaceful natural landscape, the golf experience at Agroterra Resort is designed to be both relaxing and engaging. The course stretches across a wide portion of land, surrounded by trees and open skies that create a calm and refreshing environment. Every hole offers a blend of space, scenery, and thoughtful design, making each round feel enjoyable and unhurried.<br />
@@ -151,7 +151,7 @@ export default function page() {
       </div>
 
       {/* ====================== KITCHEN SECTION ====================== */}
-      <div className="flex px-40 py-14 gap-20 items-center justify-between bg-zinc-100">
+      <div className="flex px-40 py-24 gap-20 items-center justify-between bg-zinc-100">
         <Image src={background3} alt="Kitchen at Agroterra Resort" className="w-140 h-90" />
         <div className="flex flex-col gap-3">
           <h2 className="cormorant-garamond-medium-italic text-4xl">Kitchen at Agroterra</h2>
@@ -160,7 +160,7 @@ export default function page() {
       </div>
 
       {/* ====================== SHEEDXFM SECTION ====================== */}
-      <div className="flex px-30 py-20 gap-20 items-center justify-between">
+      <div className="flex px-30 py-24 gap-20 items-center justify-between">
         <div className="flex flex-col gap-3">
           <h2 className="cormorant-garamond-medium-italic text-4xl">SheedXfm at Agroterra</h2>
           <p className="cormorant-garamond-light-italic text-[18px]">Located at Agroterra Resort, SheedXfm is a radio station that serves not only the guests of the resort but also citizens across the country. It broadcasts local updates, resort events, cultural content, and international news, showcasing Yewa cultural pride through Nigeria's vibe. Focusing on culture, groove, and gist, it offers a unique blend of information and entertainment. Equipped with modern studios and accessible listening options, SheedXfm keeps listeners informed and connected, whether on-site or nationwide. SheedXfm is currently awaiting full approval from the Federal Government of Nigeria.</p>
@@ -169,7 +169,7 @@ export default function page() {
       </div>
 
       {/* ====================== SPORT ACADEMY SECTION ====================== */}
-      <div className="flex px-40 py-14 gap-20 items-center justify-between bg-zinc-100">
+      <div className="flex px-40 py-24 gap-20 items-center justify-between bg-zinc-100">
         <Image src={background6} alt="Sport Academy at Agroterra Resort" className="w-140 h-90" />
         <div className="flex flex-col gap-3">
           <h2 className="cormorant-garamond-medium-italic text-4xl">Sport Academy at Agroterra</h2>
@@ -178,7 +178,7 @@ export default function page() {
       </div>
 
       {/* ====================== SECURITY SECTION ====================== */}
-      <div className="flex px-40 py-14 gap-20 items-center justify-between">
+      <div className="flex px-40 py-24 gap-20 items-center justify-between">
         <div className="flex flex-col gap-3">
           <h2 className="cormorant-garamond-medium-italic text-4xl">Security at Agroterra</h2>
           <p className="cormorant-garamond-light-italic text-[18px]">
@@ -189,7 +189,7 @@ export default function page() {
       </div>
 
       {/* ====================== EXTRA SECTION ====================== */}
-      <div className="flex px-40 py-14 items-center relative justify-center bg-zinc-100 text-white">
+      <div className="flex px-40 py-24 items-center relative justify-center bg-zinc-100 text-white">
         <div className="relative">
           <Image src={background8} alt="Sport Academy at Agroterra Resort" className="w-280 h-120" />
           <div className="absolute top-0 w-full h-full bg-[#00000045]"></div>
