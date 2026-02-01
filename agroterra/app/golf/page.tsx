@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import logo from '@/public/ASA logo.jpg'
 import { FaConciergeBell } from 'react-icons/fa'
+// import bg from '@/public/09.png'
 import bg from '@/public/image_14.png'
 import video from "@/public/golf course side.png"
 import block1 from "@/public/Golf image block 1.png"
@@ -31,11 +32,11 @@ export default function page() {
 
   return (
     <div className="pb-130">
-      <div className="flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans">
+      <div className="flex-col min-h-screen overflow-x-hidden items-center justify-center bg-zinc-50 font-sans">
         <main className="flex flex-col min-h-screen w-full bg-white dark:bg-black sm:items-start">
           {/* Background Carousel */}
-          <div className="w-full">
-            <Image src={bg} alt='bg-image' className='w-screen -ml-14' />
+          <div className="w-[108vw]">
+            <Image src={bg} alt='bg-image' className='w-full border object-fill -ml-28' />
             <div className="absolute top-8 w-full h-[110vh] flex flex-col px-12 py-6">
               {/* Nav */}
               <nav className="flex items-center justify-between shadow-3xl">
@@ -96,7 +97,7 @@ export default function page() {
               Each hole has its own atmosphere. Some open up to broad views of sky and greenery, while others feel more enclosed and quiet, encouraging focus and precision. The journey between holes becomes part of the enjoyment, offering moments to take in the scenery and relax before the next shot.
             </p>
             <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
-              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal. 
+              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal.
             </p>
               <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
                 The golf course at Agroterra Resort is also a place for connection. Friends, families, and colleagues gather here to share time outdoors in a welcoming setting. The spacious design allows everyone to enjoy their game without feeling crowded, creating a comfortable and social environment.
@@ -133,7 +134,7 @@ export default function page() {
               Each hole has its own atmosphere. Some open up to broad views of sky and greenery, while others feel more enclosed and quiet, encouraging focus and precision. The journey between holes becomes part of the enjoyment, offering moments to take in the scenery and relax before the next shot.
             </p>
             <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
-              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal. 
+              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal.
             </p>
               <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
                 The golf course at Agroterra Resort is also a place for connection. Friends, families, and colleagues gather here to share time outdoors in a welcoming setting. The spacious design allows everyone to enjoy their game without feeling crowded, creating a comfortable and social environment.
@@ -171,7 +172,7 @@ export default function page() {
               Each hole has its own atmosphere. Some open up to broad views of sky and greenery, while others feel more enclosed and quiet, encouraging focus and precision. The journey between holes becomes part of the enjoyment, offering moments to take in the scenery and relax before the next shot.
             </p>
             <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
-              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal. 
+              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal.
             </p>
               <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
                 The golf course at Agroterra Resort is also a place for connection. Friends, families, and colleagues gather here to share time outdoors in a welcoming setting. The spacious design allows everyone to enjoy their game without feeling crowded, creating a comfortable and social environment.
