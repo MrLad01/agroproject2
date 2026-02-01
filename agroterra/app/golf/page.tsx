@@ -11,6 +11,18 @@ import block2 from "@/public/Golf image block 2.png"
 import block3 from "@/public/Golf image block 3.png"
 import block4 from "@/public/Golf image block 4.png"
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+}
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+}
+
 
 export default function page() {
   const [activeTab, setActiveTab] = useState<string>('about');
@@ -79,9 +91,24 @@ export default function page() {
         </div>
         {activeTab === "about" && (
           <div className='flex-col justify-center items-center px-60 py-8 gap-2'>
-            <div className='flex items-center justify-center'>
-              <Image src={video} alt='video' className='h-[50%] w-[70%]' />
-            </div>
+            {/* VIDEO */}
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 1 }}
+          className="flex justify-center"
+        >
+          <div className="relative w-[70%] aspect-video rounded-xl overflow-hidden shadow-xl">
+            <iframe
+              src="https://www.youtube.com/embed/Hc0KW9WMBpU?autoplay=1&mute=1&loop=1&playlist=Hc0KW9WMBpU&controls=0&modestbranding=1"
+              title="Golf Course Video"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full"
+            />
+          </div>
+        </motion.div>
             <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
               Welcome to the golf course at Agroterra Resort, where nature and recreation come together in a peaceful, open setting. Surrounded by trees and spread across a large portion of land, the course offers an experience that is both relaxing and rewarding. From the moment you step onto the grounds, you are welcomed by fresh air, wide green views, and a calm atmosphere that makes every visit feel like an escape.
             </p>
@@ -96,7 +123,7 @@ export default function page() {
               Each hole has its own atmosphere. Some open up to broad views of sky and greenery, while others feel more enclosed and quiet, encouraging focus and precision. The journey between holes becomes part of the enjoyment, offering moments to take in the scenery and relax before the next shot.
             </p>
             <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
-              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal. 
+              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal.
             </p>
               <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
                 The golf course at Agroterra Resort is also a place for connection. Friends, families, and colleagues gather here to share time outdoors in a welcoming setting. The spacious design allows everyone to enjoy their game without feeling crowded, creating a comfortable and social environment.
@@ -133,7 +160,7 @@ export default function page() {
               Each hole has its own atmosphere. Some open up to broad views of sky and greenery, while others feel more enclosed and quiet, encouraging focus and precision. The journey between holes becomes part of the enjoyment, offering moments to take in the scenery and relax before the next shot.
             </p>
             <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
-              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal. 
+              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal.
             </p>
               <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
                 The golf course at Agroterra Resort is also a place for connection. Friends, families, and colleagues gather here to share time outdoors in a welcoming setting. The spacious design allows everyone to enjoy their game without feeling crowded, creating a comfortable and social environment.
@@ -171,7 +198,7 @@ export default function page() {
               Each hole has its own atmosphere. Some open up to broad views of sky and greenery, while others feel more enclosed and quiet, encouraging focus and precision. The journey between holes becomes part of the enjoyment, offering moments to take in the scenery and relax before the next shot.
             </p>
             <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
-              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal. 
+              The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal.
             </p>
               <p className="work-sans font-bold text-black tracking-wide text-[16px] mt-12">
                 The golf course at Agroterra Resort is also a place for connection. Friends, families, and colleagues gather here to share time outdoors in a welcoming setting. The spacious design allows everyone to enjoy their game without feeling crowded, creating a comfortable and social environment.
