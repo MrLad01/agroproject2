@@ -13,6 +13,7 @@ import background4 from '@/public/radio.jpg'
 import background5 from '@/public/relaxation2.png'
 import background6 from '@/public/dorm6.png'
 import background7 from '@/public/golf3.png'
+import background8 from '@/public/top-view.png'
 import securityImage from '@/public/security.png' 
 import aboutImage from '@/public/house2.png'
 import aboutImage2 from '@/public/house3.png'
@@ -79,7 +80,7 @@ export function EmblaCarousel() {
 
 export default function page() {
   return (
-    <div className="pb-130">
+    <div className="pb-116">
       <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
         <main className="flex flex-col min-h-screen w-full bg-white dark:bg-black sm:items-start">
           {/* Background Carousel */}
@@ -96,11 +97,11 @@ export default function page() {
                 </div>
                 <div className="flex gap-12 items-center text-[14px] normal-font pt-0.5">
                   <Link href={`/`} className=" text-white">Home</Link>
-                  <Link href={`/about`} className=" text-white">About Us</Link>
                   <Link href={`/resort`} className=" text-white">Resort</Link>
                   <Link href={`/golf`} className=" text-white">Golf</Link>
                   <Link href={`/sport-academy`} className=" text-white">Sport Academy</Link>
                   <Link href={`/contact`} className=" text-white">Contact</Link>
+                  <Link href={`/about`} className=" text-white">About Us</Link>
                 </div>
                 <button className="work-sans-bold text-[12px] mr-10 uppercase px-6 py-2.5 bg-white rounded-4xl flex items-center gap-2">
                   <FaConciergeBell size={14} />
@@ -187,6 +188,17 @@ export default function page() {
         <Image src={securityImage} alt="Security at Agroterra Resort" className="w-140 h-90 rounded-lg object-cover" />
       </div>
 
+      {/* ====================== EXTRA SECTION ====================== */}
+      <div className="flex px-40 py-14 items-center relative justify-center bg-zinc-100 text-white">
+        <div className="relative">
+          <Image src={background8} alt="Sport Academy at Agroterra Resort" className="w-280 h-120" />
+          <div className="absolute top-0 w-full h-full bg-[#00000045]"></div>
+        </div>
+        <div className="flex flex-col absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 gap-3">
+          <h2 className="cormorant-garamond-medium-italic text-[34px]">Where Nature Meets Relaxation</h2>
+          <p className="cormorant-garamond-light-italic text-[20px] max-w-140 ">Agroterra Resort is designed to bring you closer to nature, offering peaceful spaces, open landscapes, and a calm environment where every moment feels refreshing and unhurried.</p>
+        </div>
+      </div>
     </div>
   )
 }

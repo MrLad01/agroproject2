@@ -100,11 +100,11 @@ export default function Home() {
                 </div>
                 <div className="flex gap-12 items-center text-[14px] normal-font pt-0.5">
                   <Link href={`/`} className=" text-white">Home</Link>
-                  <Link href={`/about`} className=" text-white">About Us</Link>
                   <Link href={`/resort`} className=" text-white">Resort</Link>
                   <Link href={`/golf`} className=" text-white">Golf</Link>
                   <Link href={`/sport-academy`} className=" text-white">Sport Academy</Link>
                   <Link href={`/contact`} className=" text-white">Contact</Link>
+                  <Link href={`/about`} className=" text-white">About Us</Link>
                 </div>
                 <button className="work-sans-bold text-[12px] mr-10 uppercase px-6 py-2.5 bg-white rounded-4xl flex items-center gap-2">
                   <FaConciergeBell size={14} />
@@ -123,16 +123,16 @@ export default function Home() {
         </main>
       </div>
 
-      {/* Welcome Section */}
+      {/* ============ WELCOME SECTION ============ */}
       <SectionOne />
 
-      {/* Explore Section */}
+      {/* ============ EXPLORE SECTION ============ */}
       <SectionTwo />
 
-      {/* Reviews Section */}
+      {/* ============ REVIEW SECTION ============ */}
       <Review />
       
-      {/* Blog Section */}
+      {/* ============ BLOG SECTION ============ */}
       <Blog />
     </div>
   );
