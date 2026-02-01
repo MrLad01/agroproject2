@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import logo from '@/public/ASA logo.jpg'
 import { FaConciergeBell } from 'react-icons/fa'
+// import bg from '@/public/09.png'
 import bg from '@/public/image_14.png'
 import video from "@/public/golf course side.png"
 import block1 from "@/public/Golf image block 1.png"
@@ -43,11 +44,11 @@ export default function page() {
 
   return (
     <div className="pb-130">
-      <div className="flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans">
+      <div className="flex-col min-h-screen overflow-x-hidden items-center justify-center bg-zinc-50 font-sans">
         <main className="flex flex-col min-h-screen w-full bg-white dark:bg-black sm:items-start">
           {/* Background Carousel */}
-          <div className="w-full">
-            <Image src={bg} alt='bg-image' className='w-screen -ml-14' />
+          <div className="w-[108vw]">
+            <Image src={bg} alt='bg-image' className='w-full border object-fill -ml-28' />
             <div className="absolute top-8 w-full h-[110vh] flex flex-col px-12 py-6">
               {/* Nav */}
               <nav className="flex items-center justify-between shadow-3xl">
