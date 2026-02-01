@@ -9,7 +9,7 @@ import background from '@/public/17.png'
 import background1 from '@/public/09.png'
 import background2 from '@/public/IMG_20241010_175833.jpg'
 import background3 from '@/public/kitchen.png'
-import background4 from '@/public/IMG_20240627_163644.jpg'
+import background4 from '@/public/radio.jpg'
 import background5 from '@/public/relaxation2.png'
 import aboutImage from '@/public/house2.png'
 import logo from '@/public/ASA logo.jpg'
@@ -142,6 +142,12 @@ export default function page() {
         <Image src={background1} alt="About Agroterra Resort" className="w-140 h-90" />
       </div>
 
+      <div className="flex px-30 py-20 gap-20 items-center justify-between bg-zinc-100">
+        <Image src={background4} alt="SheedXfm at Agroterra Resort"  className="ml-12 w-120 h-80" />
+        <div className="flex flex-col gap-3">
+          <h2 className="cormorant-garamond-medium-italic text-4xl">SheedXfm at Agroterra</h2>
+          <p className="cormorant-garamond-light-italic text-[18px]">Located at Agroterra Resort, SheedXfm is a radio station that serves not only the guests of the resort but also citizens across the country. It broadcasts local updates, resort events, cultural content, and international news, showcasing Yewa cultural pride through Nigeria's vibe. Focusing on culture, groove, and gist, it offers a unique blend of information and entertainment. Equipped with modern studios and accessible listening options, SheedXfm keeps listeners informed and connected, whether on-site or nationwide. SheedXfm is currently awaiting full approval from the Federal Government of Nigeria.</p></div>
+      </div>
     </div>
   )
 }
