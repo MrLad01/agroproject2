@@ -18,7 +18,7 @@ export default function page() {
 
   // Load from localStorage only after component mounts (client-side only)
   useEffect(() => {
-    const tabFromLocal = localStorage.getItem('tab')
+    const tabFromLocal = localStorage.getItem('tab2')
     if (tabFromLocal) {
       setActiveTab(tabFromLocal)
     }
@@ -27,7 +27,7 @@ export default function page() {
   const handleTabSwitch = (tabStart: string, e: React.MouseEvent) => {
     e.preventDefault();
     setActiveTab(tabStart);
-    localStorage.setItem("tab", tabStart)
+    localStorage.setItem("tab2", tabStart)
   }
 
   return (
@@ -37,6 +37,7 @@ export default function page() {
           {/* Background Carousel */}
           <div className="w-[108vw]">
             <Image src={bg} alt='bg-image' className='w-full border object-fill -ml-28' />
+            <div className="absolute top-8 w-full h-[108vh] bg-[#00000075] flex flex-col px-12 py-6"></div>
             <div className="absolute top-8 w-full h-[110vh] flex flex-col px-12 py-6">
               {/* Nav */}
               <nav className="flex items-center justify-between shadow-3xl">
@@ -47,6 +48,7 @@ export default function page() {
                 </div>
                 <div className="flex gap-12 items-center text-[14px] normal-font pt-0.5">
                   <Link href={`/`} className=" text-white">Home</Link>
+                  <Link href={`/about`} className=" text-white">About Us</Link>
                   <Link href={`/resort`} className=" text-white">Resort</Link>
                   <Link href={`/golf`} className=" text-white">Golf</Link>
                   <Link href={`/sport-academy`} className=" text-white">Sport Academy</Link>

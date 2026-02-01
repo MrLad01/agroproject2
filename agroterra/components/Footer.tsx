@@ -43,6 +43,7 @@ const Footer = () => {
                         <h1 className='eb-garamond font-medium text-[22px] mb-2'>General</h1>
                         <ul>
                             <li className='work-sans text-[13px] mb-2'><Link href={'/'}>Home</Link></li>
+                            <li className='work-sans text-[13px] mb-2'><Link href={'/about'}>About</Link></li>
                             <li className='work-sans text-[13px] mb-2'><Link href={'/resort'}>Resort</Link></li>
                             <li className='work-sans text-[13px] mb-2'><Link href={'/golf'}>Golf</Link></li>
                             <li className='work-sans text-[13px] mb-2'><Link href={'/sport-academy'}>Sport Academy</Link></li>
