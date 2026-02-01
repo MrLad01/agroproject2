@@ -100,7 +100,7 @@ export default function Home() {
                 </div>
                 <div className="flex gap-12 items-center text-[14px] normal-font pt-0.5">
                   <Link href={`/`} className=" text-white">Home</Link>
-                  <Link href={`/resort`} className=" text-white">Reservation</Link>
+                  <Link href={`/reservation`} className=" text-white">Reservation</Link>
                   <Link href={`/golf`} className=" text-white">Golf Course</Link>
                   <Link href={`/sport-academy`} className=" text-white">Sport Academy</Link>
                   <Link href={`/contact`} className=" text-white">Contact</Link>
