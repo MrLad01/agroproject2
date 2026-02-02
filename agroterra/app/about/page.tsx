@@ -5,7 +5,6 @@ import Link from "next/link";
 import { FaConciergeBell } from "react-icons/fa";
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import background from '@/public/17.png'
 import background1 from '@/public/relaxation3.png'
 import background2 from '@/public/IMG_20241010_175833.jpg'
 import background3 from '@/public/kitchen.png'

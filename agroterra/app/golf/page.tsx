@@ -6,13 +6,17 @@ import logo from '@/public/ASA logo.jpg'
 import { FaConciergeBell } from 'react-icons/fa'
 // import bg from '@/public/09.png'
 import bg from '@/public/image_14.png'
-import video from "@/public/golf course side.png"
+import bg1 from '@/public/golf2.png'
+import bg2 from '@/public/golf3.png'
 import block1 from "@/public/Golf image block 1.png"
 import block2 from "@/public/Golf image block 2.png"
 import block3 from "@/public/Golf image block 3.png"
 import block4 from "@/public/Golf image block 4.png"
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import useEmblaCarousel from 'embla-carousel-react'
+import { DotButton, ScrollingDots, useDotButton } from '@/components/Embla/EmblaCarouselDotButton'
+import Autoplay from 'embla-carousel-autoplay'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -22,6 +26,57 @@ const fadeUp = {
 const fadeIn = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
+}
+
+export function EmblaCarousel() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay()])
+  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
+
+  // Array of images for the carousel
+  const images = [bg, bg1, bg2]
+
+  return (
+    <section className="embla">
+      <div className="embla__viewport" ref={emblaRef}>
+        <div className="embla__container h-[95.8vh]">
+
+          <div className="embla__slide relative">
+            <Image src={bg} alt="House background image" fill loading="eager" />
+          </div>
+
+          <div className="embla__slide relative">
+            <Image src={bg1} alt="Golf Course background image" fill loading="lazy" />
+          </div>
+    
+          <div className="embla__slide relative">
+            <Image src={bg2} alt="Kitchen background image 3" fill loading="lazy" />
+          </div>
+          
+          
+        </div>
+        <div className="embla__controls">
+          <div className="embla__dots">
+            {images.length <= 3 ? scrollSnaps.map((_, index) => (
+              <DotButton
+                key={index}
+                onClick={() => onDotButtonClick(index)}
+                image={images[index]}
+                isSelected={index === selectedIndex}
+              />
+            )): 
+            
+            <ScrollingDots 
+              images={images}
+              selectedIndex={selectedIndex}
+              onDotButtonClick={onDotButtonClick}
+            />
+
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }
 
 
@@ -47,9 +102,9 @@ export default function page() {
       <div className="flex-col min-h-screen overflow-x-hidden items-center justify-center bg-zinc-50 font-sans">
         <main className="flex flex-col min-h-screen w-full bg-white dark:bg-black sm:items-start">
           {/* Background Carousel */}
-          <div className="w-[108vw]">
-            <Image src={bg} alt='bg-image' className='w-full border object-fill -ml-28' />
-            <div className="absolute top-8 w-full h-[108vh] bg-[#00000075] flex flex-col px-12 py-6"></div>
+          <div className="w-full">
+            <EmblaCarousel />
+            <div className="absolute top-8 w-full h-[102vh] bg-[#00000075] flex flex-col px-12 py-6"></div>
             <div className="absolute top-8 w-full h-[110vh] flex flex-col px-12 py-6">
               {/* Nav */}
               <nav className="flex items-center justify-between shadow-3xl">

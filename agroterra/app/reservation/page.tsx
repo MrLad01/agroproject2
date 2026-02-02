@@ -180,7 +180,7 @@ export default function Page() {
               <button
                 key={tab.key}
                 onClick={(e) => handleTabSwitch(tab.key as TabType, e)}
-                className={`w-full py-4 text-[16px] eb-garamond-bold transition
+                className={`w-full py-4 text-[16px] eb-garamond-bold transition cursor-pointer
                   ${activeTab === tab.key
                     ? 'border-b-2 border-b-[#101996] text-[#101996]'
                     : 'text-[#111111] opacity-30'
