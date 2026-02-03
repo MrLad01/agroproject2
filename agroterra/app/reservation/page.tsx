@@ -196,7 +196,7 @@ export default function Page() {
             {suiteData[activeTab].map((suite, index) => (
               <div key={index}>
                 {/* Purple demarcation line */}
-                <div className="w-full h-1 bg-[#E55ED5] mb-16" />
+                <div className="w-full h-px bg-gray-400 mb-16" />
 
                 {/* Suite Card */}
                 <div className="flex items-center justify-between px-48 gap-12">
