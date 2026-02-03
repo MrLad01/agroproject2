@@ -4,10 +4,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaConciergeBell } from 'react-icons/fa'
 import logo from '@/public/ASA logo.jpg'
-import bg from '@/public/book background.png'
+import bg from '@/public/Screenshot 2026-02-03 040000.png'
 import golfIcon from "@/public/Golf image block 1.png"
-import palm from '@/public/half 1.png'
-import palm2 from '@/public/half 2.png'
+import palm2 from '@/public/Screenshot 2026-02-03 040130.png'
+import palm from '@/public/Screenshot 2026-02-03 040106.png'
 
 const Feature = ({
   icon,
@@ -47,7 +47,7 @@ const Reason = ({
 
 export default function page() {
   return (
-    <div className='pb-130'>
+    <div className='pb-105'>
       <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
         <main className="flex flex-col min-h-screen w-full bg-white sm:items-start">
           {/* Background Carousel */}
@@ -164,7 +164,7 @@ export default function page() {
             </form>
           </div>
 
-          <div className="relative w-full h-235 my-4">
+          <div className="relative w-full h-215 my-4">
             <Image
               src={palm}
               alt="Palm background"
@@ -174,7 +174,7 @@ export default function page() {
             />
             <div className="absolute inset-0 bg-black/25" />
 
-            <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white mt-48">
+            <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white mt-20">
               <h2 className="text-[48px] eb-garamond-bold uppercase mb-4">
                 Stay With Us
               </h2>
@@ -205,8 +205,8 @@ export default function page() {
               </div>
             </div>
           </div>
-          <div className="relative w-full h-205">
-      <Image
+          {/* <div className="relative w-full h-205"> */}
+      {/* <Image
         src={palm2}
         alt="Palm tree"
         fill
@@ -237,8 +237,8 @@ export default function page() {
             text="Access open green spaces and resort amenities."
           />
         </div>
-      </div>
-    </div>
+      </div> */}
+    {/* </div> */}
         </main>
       </div>
     </div>
