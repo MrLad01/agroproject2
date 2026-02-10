@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";  
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoIosPhonePortrait, IoMdMailOpen } from "react-icons/io";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "Agroterra",
@@ -29,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen relative`}
+        className={`${GeistSans.variable} ${GeistMono.variable} antialiased min-h-screen relative`}
       >
         {/* TOP nav */}
         <div className="w-full py-2 px-6 bg-black text-white work-sans text-[11px] flex items-center justify-between">
