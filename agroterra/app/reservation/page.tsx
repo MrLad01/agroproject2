@@ -15,6 +15,7 @@ import { IoBedOutline } from "react-icons/io5"
 import { TbCrosshair } from "react-icons/tb"
 import { MdOutlineBathtub, MdOutlinePeopleOutline } from "react-icons/md"
 import { ArrowUpRight } from "lucide-react"
+import Navbar from "@/components/Navbar"
 
 
 export function EmblaCarousel() {
@@ -129,7 +130,7 @@ export default function Page() {
   }
 
   return (
-    <div className="pb-130">
+    <div className="">
       <div className="flex-col min-h-screen bg-zinc-50 dark:bg-black">
         <main className="flex flex-col min-h-screen w-full bg-white">
 
@@ -138,28 +139,7 @@ export default function Page() {
             <EmblaCarousel />
             <div className="absolute top-1 w-full h-[95vh] bg-[#00000075] flex flex-col px-12 py-6">
               {/* Nav */}
-              <nav className="flex items-center justify-between">
-                <div className="flex gap-2 items-center">
-                  <Image src={logo} alt="Agroterra Logo" height={30} />
-                  <h3 className="uppercase eb-garamond-extrabold text-[17px] text-white">
-                    Agroterra
-                  </h3>
-                </div>
-
-                <div className="flex gap-12 text-[14px] text-white">
-                  <Link href="/">Home</Link>
-                  <Link href="/reservation">Reservation</Link>
-                  <Link href="/golf">Golf Course</Link>
-                  <Link href="/sport-academy">Sport Academy</Link>
-                  <Link href="/contact">Contact</Link>
-                  <Link href="/about">About Us</Link>
-                </div>
-
-                <button className="work-sans-bold text-[12px] text-[#111111] uppercase px-6 py-2.5 bg-white rounded-4xl flex items-center gap-2">
-                  <FaConciergeBell size={14} />
-                  Book Now
-                </button>
-              </nav>
+              <Navbar />
               <div className="h-full flex flex-col text-white items-center justify-center leading-relaxed">
                 <div className="flex flex-col justify-center items-center -mt-16">
                   <h2 className="text-center eb-garamond-semibold text-[62px] welcome-text">AGROTERRA</h2>

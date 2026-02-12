@@ -1,22 +1,11 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
-import { GeistSans } from "geist/font/sans";  
+import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoIosPhonePortrait, IoMdMailOpen } from "react-icons/io";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata: Metadata = {
   title: "Agroterra",
@@ -33,26 +22,45 @@ export default function RootLayout({
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} antialiased min-h-screen relative`}
       >
-        {/* TOP nav */}
-        <div className="w-full py-2 px-6 bg-black text-white work-sans text-[11px] flex items-center justify-between">
+        {/* ── TOP INFO BAR ── */}
+        {/* Hidden on mobile, compact on tablet, full on desktop */}
+        <div className="hidden sm:flex w-full py-2 px-4 sm:px-6 bg-black text-white work-sans text-[10px] sm:text-[11px] items-center justify-between gap-4 flex-wrap">
+
           {/* Location */}
-          <Link className="flex gap-1 items-center" href="https://www.google.com/maps/place/Agroterra+Farm+Resort/@7.0972934,3.1209846,15z/data=!4m6!3m5!1s0x103a55f97786c3cb:0x5dca0bc8e4d4de1!8m2!3d7.0979033!4d3.1207854!16s%2Fg%2F11hjxgkkzr?entry=ttu&g_ep=EgoyMDI1MDYxNi4wIKXMDSoASAFQAw%3D%3D" target='_blank'>
-            <IoLocationSharp size={15} />
-            <h3>Joga-Orile, Iboro/Joga 110123, Ogun State | 34XC+58 Alade, Nigeria</h3>
+          <Link
+            className="flex gap-1 items-center hover:text-zinc-300 transition-colors min-w-0"
+            href="https://www.google.com/maps/place/Agroterra+Farm+Resort/@7.0972934,3.1209846,15z/data=!4m6!3m5!1s0x103a55f97786c3cb:0x5dca0bc8e4d4de1!8m2!3d7.0979033!4d3.1207854!16s%2Fg%2F11hjxgkkzr?entry=ttu&g_ep=EgoyMDI1MDYxNi4wIKXMDSoASAFQAw%3D%3D"
+            target='_blank'
+          >
+            <IoLocationSharp size={13} className="shrink-0" />
+            {/* Short address on tablet, full on desktop */}
+            <span className="hidden md:inline truncate">
+              Joga-Orile, Iboro/Joga 110123, Ogun State | 34XC+58 Alade, Nigeria
+            </span>
+            <span className="md:hidden truncate">
+              Joga-Orile, Ogun State
+            </span>
           </Link>
-          <div className="flex items-center gap-6">
-            {/* Phone */}
-            <div className="flex gap-1">
-              <IoIosPhonePortrait size={15} />
-              <Link href={`tel: +2347036536705`}>(+234) 803 319 4444</Link>
+
+          {/* Phone + Mail */}
+          <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+            <div className="flex gap-1 items-center">
+              <IoIosPhonePortrait size={13} className="shrink-0" />
+              <Link
+                href={`tel:+2347036536705`}
+                className="hover:text-zinc-300 transition-colors whitespace-nowrap"
+              >
+                (+234) 803 319 4444
+              </Link>
             </div>
-            {/* Mail */}
-            <div className="flex gap-1">
-              <IoMdMailOpen size={15} />
-              <h3>info@agroterraresort.com</h3>
+            {/* Mail hidden on small tablets to avoid overflow */}
+            <div className="hidden lg:flex gap-1 items-center">
+              <IoMdMailOpen size={13} className="shrink-0" />
+              <span>info@agroterraresort.com</span>
             </div>
           </div>
         </div>
+
         {children}
         <Footer />
       </body>

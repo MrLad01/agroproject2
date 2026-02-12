@@ -8,6 +8,7 @@ import bg from '@/public/Screenshot 2026-02-03 040000.png'
 import golfIcon from "@/public/Golf image block 1.png"
 import palm2 from '@/public/Screenshot 2026-02-03 040130.png'
 import palm from '@/public/Screenshot 2026-02-03 040106.png'
+import Navbar from '@/components/Navbar'
 
 const Feature = ({
   icon,
@@ -47,7 +48,7 @@ const Reason = ({
 
 export default function page() {
   return (
-    <div className='pb-105'>
+    <div className=''>
       <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
         <main className="flex flex-col min-h-screen w-full bg-white sm:items-start">
           {/* Background Carousel */}
@@ -56,25 +57,7 @@ export default function page() {
             <Image src={bg} alt="Background image" className="w-screen" />
             <div className="absolute top-8 w-full h-[93vh] flex flex-col px-12 py-6">
               {/* Nav */}
-              <nav className="flex items-center justify-between shadow-2xl">
-                {/* Logo */}
-                <div className="flex gap-2 items-center">
-                  <Image src={logo} alt="Agroterra Logo" height={30} />
-                  <h3 className="uppercase eb-garamond-extrabold text-[17px] text-white">Agroterra</h3>
-                </div>
-                <div className="flex gap-12 items-center text-[14px] normal-font pt-0.5">
-                  <Link href={`/`} className=" text-white">Home</Link>
-                  <Link href={`/reservation`} className=" text-white">Reservation</Link>
-                  <Link href={`/golf`} className=" text-white">Golf Course</Link>
-                  <Link href={`/sport-academy`} className=" text-white">Sport Academy</Link>
-                  <Link href={`/contact`} className=" text-white">Contact</Link>
-                  <Link href={`/about`} className=" text-white">About Us</Link>
-                </div>
-                <button className="work-sans-bold text-[12px] text-[#111111] mr-10 uppercase px-6 py-2.5 bg-white rounded-4xl flex items-center gap-2">
-                  <FaConciergeBell size={14} />
-                  Book Now
-                </button>
-              </nav>
+              <Navbar />
               <div className="h-full flex flex-col text-white items-center justify-center leading-relaxed">
                 <div className="flex flex-col justify-center items-center mt-12">
                   <h2 className="text-center uppercase eb-garamond-semibold text-[40px] welcome-text">Book Your Stay at Agroterra <br /> Resort</h2>
