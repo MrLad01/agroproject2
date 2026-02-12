@@ -72,7 +72,7 @@ const Footer = () => {
                         <ul className='flex flex-col gap-1.5'>
                             {[
                                 { href: '/', label: 'Home' },
-                                { href: '/resort', label: 'Resort' },
+                                { href: '/reservation', label: 'Reservation' },
                                 { href: '/golf', label: 'Golf' },
                                 { href: '/sport-academy', label: 'Sport Academy' },
                                 { href: '/contact', label: 'Contact' },

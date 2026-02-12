@@ -143,7 +143,7 @@ export default function page() {
   }, []);
 
   return (
-    <div className="pb-10 sm:pb-10">
+    <div className="pb-16 sm:pb-10">
       <div className="flex min-h-screen items-center justify-center font-sans">
         <main className="flex flex-col min-h-screen w-full sm:items-start">
 
