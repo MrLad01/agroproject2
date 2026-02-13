@@ -60,35 +60,34 @@ function MobileNav() {
 
 export default function Navbar() {
   return (
-    <div>
-        <nav className="flex items-center justify-between shadow-2xl">
-                {/* Logo */}
-                <div className="flex gap-2 items-center">
-                  <Image src={logo} alt="Agroterra Logo" height={30} />
-                  <h3 className="uppercase eb-garamond-extrabold text-[15px] sm:text-[17px] text-white">
-                    Agroterra
-                  </h3>
-                </div>
+      <nav className="flex items-center justify-between shadow-2xl">
+        {/* Logo */}
+        <div className="flex gap-2 items-center">
+          <Image src={logo} alt="Agroterra Logo" height={30} />
+          <h3 className="uppercase eb-garamond-extrabold text-[15px] sm:text-[17px] text-white">
+            Agroterra
+          </h3>
+        </div>
 
-                {/* Desktop links */}
-                <div className="hidden lg:flex gap-8 xl:gap-12 items-center text-[13px] xl:text-[14px] normal-font pt-0.5">
-                  <Link href="/" className="text-white hover:text-zinc-200 transition-colors">Home</Link>
-                  <Link href="/reservation" className="text-white hover:text-zinc-200 transition-colors">Reservation</Link>
-                  <Link href="/golf" className="text-white hover:text-zinc-200 transition-colors">Golf Course</Link>
-                  <Link href="/sport-academy" className="text-white hover:text-zinc-200 transition-colors">Sport Academy</Link>
-                  <Link href="/contact" className="text-white hover:text-zinc-200 transition-colors">Contact</Link>
-                  <Link href="/about" className="text-white hover:text-zinc-200 transition-colors">About Us</Link>
-                </div>
+        {/* Desktop links */}
+        <div className="hidden lg:flex gap-8 xl:gap-12 items-center text-[13px] xl:text-[14px] normal-font pt-0.5">
+          <Link href="/" className="text-white hover:text-zinc-200 transition-colors">Home</Link>
+          <Link href="/reservation" className="text-white hover:text-zinc-200 transition-colors">Reservation</Link>
+          <Link href="/golf" className="text-white hover:text-zinc-200 transition-colors">Golf Course</Link>
+          <Link href="/sport-academy" className="text-white hover:text-zinc-200 transition-colors">Sport Academy</Link>
+          <Link href="/contact" className="text-white hover:text-zinc-200 transition-colors">Contact</Link>
+          <Link href="/about" className="text-white hover:text-zinc-200 transition-colors">About Us</Link>
+        </div>
 
-                {/* Desktop Book Now */}
-                <button className="hidden lg:flex work-sans-bold text-[12px] text-[#111111] mr-10 uppercase px-6 py-2.5 bg-white rounded-4xl items-center gap-2 hover:bg-zinc-100 transition-colors">
-                  <FaConciergeBell size={14} />
-                  Book Now
-                </button>
+        {/* Desktop Book Now */}
+        <button className="hidden lg:flex work-sans-bold text-[12px] text-[#111111] mr-10 uppercase px-6 py-2.5 bg-white rounded-4xl items-center gap-2 hover:bg-zinc-100 transition-colors">
+          <FaConciergeBell size={14} />
+          Book Now
+        </button>
 
-                {/* Mobile hamburger */}
-                <MobileNav />
-              </nav>
-    </div>
+        {/* Mobile hamburger */}
+        <MobileNav />
+      </nav>
+
   )
 }

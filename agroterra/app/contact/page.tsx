@@ -105,7 +105,7 @@ export default function page() {
   return (
     <div className=''>
       <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-        <main className="flex flex-col min-h-screen w-full bg-white sm:items-start">
+        <main className="flex flex-col min-h-screen w-full bg-white items-center">
           {/* Background Hero Section */}
           <div className="w-full mb-6 sm:mb-8 lg:mb-10 relative">
             <div className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[93vh]">
@@ -315,7 +315,7 @@ export default function page() {
           </div>
 
           {/* Why Book With Us Section - Uncommented and Responsive */}
-          <div className="relative w-full h-auto sm:h-112.5 md:h-137.5 lg:h-205 mb-6 sm:mb-8">
+          {/* <div className="relative w-full h-auto sm:h-112.5 md:h-137.5 lg:h-205 mb-6 sm:mb-8">
             <div className="relative w-full h-full min-h-137.5 sm:min-h-0">
               <Image
                 src={palm2}
@@ -365,7 +365,7 @@ export default function page() {
                 </motion.div>
               </div>
             </div>
-          </div>
+          </div> */}
         </main>
       </div>
     </div>

@@ -23,54 +23,54 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useState } from 'react';
 import Navbar from "@/components/Navbar";
 
-export function EmblaCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay()])
-  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
+// export function EmblaCarousel() {
+//   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay()])
+//   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 
-  const images = [background1, background2, background3, background4, background5]
+//   const images = [background1, background2, background3, background4, background5]
 
-  return (
-    <section className="embla">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container h-[95.8vh]">
-          <div className="embla__slide relative">
-            <Image src={background1} alt="House background image" fill loading="eager" />
-          </div>
-          <div className="embla__slide relative">
-            <Image src={background2} alt="Golf Course background image" fill loading="lazy" />
-          </div>
-          <div className="embla__slide relative">
-            <Image src={background3} alt="Kitchen background image 3" fill loading="lazy" />
-          </div>
-          <div className="embla__slide relative">
-            <Image src={background4} alt="Radio background image" fill loading="lazy" />
-          </div>
-          <div className="embla__slide relative">
-            <Image src={background5} alt="Recreation background image" fill loading="lazy" />
-          </div>
-        </div>
-        <div className="embla__controls">
-          <div className="embla__dots">
-            {images.length <= 3 ? scrollSnaps.map((_, index) => (
-              <DotButton
-                key={index}
-                onClick={() => onDotButtonClick(index)}
-                image={images[index]}
-                isSelected={index === selectedIndex}
-              />
-            )) :
-              <ScrollingDots
-                images={images}
-                selectedIndex={selectedIndex}
-                onDotButtonClick={onDotButtonClick}
-              />
-            }
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
+//   return (
+//     <section className="embla">
+//       <div className="embla__viewport" ref={emblaRef}>
+//         <div className="embla__container h-[95.8vh]">
+//           <div className="embla__slide relative">
+//             <Image src={background1} alt="House background image" fill loading="eager" />
+//           </div>
+//           <div className="embla__slide relative">
+//             <Image src={background2} alt="Golf Course background image" fill loading="lazy" />
+//           </div>
+//           <div className="embla__slide relative">
+//             <Image src={background3} alt="Kitchen background image 3" fill loading="lazy" />
+//           </div>
+//           <div className="embla__slide relative">
+//             <Image src={background4} alt="Radio background image" fill loading="lazy" />
+//           </div>
+//           <div className="embla__slide relative">
+//             <Image src={background5} alt="Recreation background image" fill loading="lazy" />
+//           </div>
+//         </div>
+//         <div className="embla__controls">
+//           <div className="embla__dots">
+//             {images.length <= 3 ? scrollSnaps.map((_, index) => (
+//               <DotButton
+//                 key={index}
+//                 onClick={() => onDotButtonClick(index)}
+//                 image={images[index]}
+//                 isSelected={index === selectedIndex}
+//               />
+//             )) :
+//               <ScrollingDots
+//                 images={images}
+//                 selectedIndex={selectedIndex}
+//                 onDotButtonClick={onDotButtonClick}
+//               />
+//             }
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   )
+// }
 
 
 
@@ -144,25 +144,27 @@ export default function page() {
 
   return (
     <div className="pb-16 sm:pb-10">
-      <div className="flex min-h-screen items-center justify-center font-sans">
-        <main className="flex flex-col min-h-screen w-full sm:items-start">
+      <div className=" font-sans">
+        <main className=" w-full">
 
           {/* ====================== HERO ====================== */}
-          <div className="w-full relative">
-            <Image
-              src={aboutImage2}
-              alt="Background image"
-              className="w-screen h-svh object-cover"
-              priority
-            />
+          <div className="relative w-full h-svh">
+            <div className="relative w-full h-full">
+              <Image
+                src={aboutImage2}
+                alt="Background image"
+                className="w-screen h-svh object-cover"
+                priority
+              />
+            </div>
             {/* Overlay */}
-            <div className="absolute inset-0 bg-[#00000075] flex flex-col px-4 sm:px-8 md:px-12 py-4 sm:py-6">
+            <div className="absolute inset-0 bg-[#00000075] flex flex-col px-4 sm:px-8 md:px-12 py-4 sm:py-6 z-10">
 
               {/* ─── Navbar ─── */}
               <Navbar />
 
               {/* ─── Hero Text ─── */}
-              <div className="h-full flex flex-col text-white items-center justify-center leading-relaxed">
+              <div className="flex-1 flex flex-col text-white items-center justify-center leading-relaxed px-4">
                 <div className="flex flex-col justify-center items-center -mt-16 sm:-mt-20 md:-mt-26 px-4">
                   <h2 className="text-center eb-garamond-semibold text-[36px] sm:text-[44px] md:text-[52px] welcome-text hero-text">
                     AGROTERRA
@@ -172,7 +174,9 @@ export default function page() {
                   </p>
                 </div>
               </div>
+
             </div>
+            
           </div>
         </main>
       </div>
