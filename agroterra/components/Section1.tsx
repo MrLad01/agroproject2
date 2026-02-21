@@ -13,7 +13,7 @@ const SectionOne = () => {
       </h2>
 
       <p className="text-[#5A5A5A] text-center text-[18px] sm:text-[22px] md:text-[26px] lg:text-[28px] max-w-[90vw] sm:max-w-120 md:max-w-120 eb-garamond-italic mt-3">
-        &ldquo;A place that celebrates life rather than sucks life out of it.&rdquo;
+        &ldquo;A place that celebrates life.&rdquo;
       </p>
 
       {/* Images: stack on mobile, side by side on md+ */}

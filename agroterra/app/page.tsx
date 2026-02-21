@@ -111,7 +111,7 @@ export default function Home() {
                   <p className="eb-garamond-italic
                     text-[17px] sm:text-[24px] md:text-[28px] lg:text-[32px]
                     max-w-[90vw] sm:max-w-150 md:max-w-140">
-                    &ldquo;A place that celebrates life rather than sucks life out of it.&rdquo;
+                    &ldquo;A place that celebrates life.&rdquo;
                   </p>
                 </div>
               </div>
