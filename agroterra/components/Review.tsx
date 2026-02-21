@@ -11,19 +11,19 @@ import kevin from '../public/kevin.svg'
 
 const reviews = [
   {
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
+    text: 'Our stay at Agroterra Resort was absolutely wonderful. The Family Suite was spacious, clean, and perfect for our needs. The environment was peaceful, the staff were friendly, and the gardens created a relaxing atmosphere. It felt like a true escape from the busy city life.',
     name: 'Mira',
     role: 'Marketing',
     avatar: mira,
   },
   {
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
+    text: 'Agroterra exceeded my expectations. The rooms were comfortable, the service was professional, and the overall experience was seamless from check-in to checkout. It is the perfect place for both relaxation and small corporate retreats. I will definitely be visiting again.',
     name: 'Kevin',
     role: 'CEO',
     avatar: kevin,
   },
   {
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
+    text: 'I loved the calm and natural setting of the resort. The rooms were beautifully maintained, and every space felt fresh and inviting. The attention to detail and the quiet surroundings made my stay inspiring and refreshing. Highly recommended for a peaceful getaway.',
     name: 'Jenny',
     role: 'Designer',
     avatar: jenny,

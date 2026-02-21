@@ -22,7 +22,7 @@ const Blog = () => {
         Latest From Our Blog
       </h2>
       <p className="text-[#5A5A5A] text-center text-[14px] sm:text-[16px] mt-1">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et rhoncus lacus.
+        Stay updated with the latest news, experiences, and insights from Agroterra Resort. Discover travel tips, upcoming events, wellness ideas, and highlights designed to help you make the most of your stay and enjoy every moment with us.
       </p>
 
       {/* ── Blog grid ──

@@ -111,10 +111,10 @@ const SectionTwo = () => {
   ]
 
   const familySpecs = [
-    { icon: <TbCrosshair size={15} />,           label: '45 sqm' },
-    { icon: <IoBedOutline size={15} />,          label: '2 Beds' },
-    { icon: <MdOutlineBathtub size={15} />,      label: '1 Bath' },
-    { icon: <MdOutlinePeopleOutline size={15} />,label: '4 Guests' },
+    { icon: <TbCrosshair size={15} />,           label: '45-60 sqm' },
+    { icon: <IoBedOutline size={15} />,          label: '2-3 Beds' },
+    { icon: <MdOutlineBathtub size={15} />,      label: '1-2 Bath' },
+    { icon: <MdOutlinePeopleOutline size={15} />,label: '4-6 Guests' },
   ]
   const juniorSpecs = [
     { icon: <TbCrosshair size={15} />,           label: '35 sqm' },
@@ -130,7 +130,7 @@ const SectionTwo = () => {
   ]
 
   return (
-    <div className="bg-white py-12 mb-10 px-6 sm:px-12 md:px-20 lg:px-40">
+    <div className="bg-white py-12 px-6 sm:px-12 md:px-20 lg:px-40">
 
       {/* Section header */}
       <h1 className="text-[#1A1A1A] uppercase text-center tracking-[0.28rem] text-[13px] sm:text-[16px] font-bold">
@@ -140,7 +140,7 @@ const SectionTwo = () => {
         A Place That Fits You
       </h2>
       <p className="text-[#5A5A5A] text-center text-[14px] sm:text-[16px] mt-1">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et rhoncus lacus.
+        Choose from spacious suites designed to give you and your loved ones the comfort, privacy, and serenity you deserve.
       </p>
 
       {/* Tab bar — scrollable on mobile so nothing overflows */}
@@ -169,7 +169,8 @@ const SectionTwo = () => {
       {activeTab === 'family' && (
         <RoomCard
           title="Family Suite"
-          description="The Family Suite is perfect for families looking for a comfortable and spacious accommodation option. This suite features two bedrooms, a living area, and a private balcony with stunning views of the resort's gardens."
+          description="The Family Suite is perfect for families and groups looking for a comfortable and spacious accommodation option. This suite features well-appointed bedrooms, a cozy living area, and a private balcony with relaxing views of the resort&apos;s gardens, creating a warm and welcoming home-like atmosphere. For guests who require additional space and privacy, the Family Suite category also includes a 3 Bedroom Detached option. This standalone unit offers three spacious bedrooms, a larger living and dining area, and a private outdoor space surrounded by lush greenery. Ideal for extended families or group stays, it provides the comfort of a private residence while enjoying full access to the resort&apos;s facilities.
+"
           specs={familySpecs}
           href="/room/family"
           image={family}
