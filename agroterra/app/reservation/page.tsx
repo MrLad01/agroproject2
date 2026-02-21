@@ -193,9 +193,9 @@ export default function Page() {
   const [activeTab, setActiveTab] = useState<TabType>('family')
 
   useEffect(() => {
-    const saved = localStorage.getItem('tab3') as TabType | null
-    if (saved) setActiveTab(saved)
-  }, [])
+  const saved = localStorage.getItem('tab3') as TabType | null
+  if (saved && saved in suiteData) setActiveTab(saved)
+}, [])
 
   const handleTabSwitch = (tab: TabType, e: React.MouseEvent) => {
     e.preventDefault()
