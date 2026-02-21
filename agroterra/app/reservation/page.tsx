@@ -37,7 +37,7 @@ export function EmblaCarousel() {
   ]
 
   return (
-    <section className="embla w-full">
+    <section className="embla w-full relative">
       {/* ── Viewport ── */}
       <div
         className="embla__viewport overflow-hidden"
@@ -65,7 +65,7 @@ export function EmblaCarousel() {
       </div>
 
       {/* ── Dot controls ── */}
-      <div className="embla__controls absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20">
+      <div className="embla__controls absolute bottom-4 sm:bottom-6 left-0 right-0 z-20 flex justify-center">
         <div className="embla__dots flex items-center gap-2">
           {scrollSnaps.length <= 3
             ? scrollSnaps.map((_, i) => (
@@ -215,7 +215,7 @@ export default function Page() {
           <div
             className="
               absolute inset-0 z-10
-              bg-lunear-to-b from-black/60 via-black/40 to-black/20
+              bg-gradient-to-b from-black/60 via-black/40 to-black/20
               flex flex-col
               px-4 sm:px-6 md:px-10 lg:px-12
               py-4 sm:py-5 lg:py-6
@@ -247,7 +247,7 @@ export default function Page() {
                 className="
                   eb-garamond-italic mt-3
                   text-[clamp(14px,3.5vw,28px)]
-                  max-w-[90%] sm:max-w-130 md:max-w-160
+                  max-w-[90%] sm:max-w-[520px] md:max-w-[640px]
                   leading-snug
                 "
               >
@@ -271,7 +271,7 @@ export default function Page() {
           "
         >
           {/* Scrollable on tiny screens */}
-          <div className="flex overflow-x-auto no-scrollbar border-b border-gray-200">
+          <div className="flex flex-wrap border-b border-gray-200">
             {([
               { key: 'family', label: 'Family Suite' },
               { key: 'junior', label: 'Junior Suite' },
@@ -285,11 +285,11 @@ export default function Page() {
                 whileTap={{ scale: 0.97 }}
                 onClick={(e) => handleTabSwitch(tab.key, e)}
                 className={`
-                  shrink-0
-                  px-4 sm:px-0 sm:flex-1
+                  flex-1
+                  px-2 sm:px-0
                   py-3 sm:py-4
                   text-[13px] sm:text-[14px] lg:text-[15px]
-                  eb-garamond-bold whitespace-nowrap
+                  eb-garamond-bold text-center
                   border-b-2 -mb-px transition-all duration-200 cursor-pointer
                   ${activeTab === tab.key
                     ? 'border-[#101996] text-[#101996]'
@@ -337,7 +337,7 @@ export default function Page() {
                   <motion.div
                     whileHover={{ scale: 1.04, rotate: 0.8 }}
                     transition={{ duration: 0.35 }}
-                    className="w-full max-w-130 lg:max-w-none"
+                    className="w-full max-w-[520px] lg:max-w-none"
                   >
                     <Image
                       src={suite.image}
