@@ -215,7 +215,7 @@ export default function Page() {
           <div
             className="
               absolute inset-0 z-10
-              bg-gradient-to-b from-black/60 via-black/40 to-black/20
+              bg-linear-to-b from-black/60 via-black/40 to-black/20
               flex flex-col
               px-4 sm:px-6 md:px-10 lg:px-12
               py-4 sm:py-5 lg:py-6
@@ -247,7 +247,7 @@ export default function Page() {
                 className="
                   eb-garamond-italic mt-3
                   text-[clamp(14px,3.5vw,28px)]
-                  max-w-[90%] sm:max-w-[520px] md:max-w-[640px]
+                  max-w-[90%] sm:max-w-130 md:max-w-160
                   leading-snug
                 "
               >
@@ -337,7 +337,7 @@ export default function Page() {
                   <motion.div
                     whileHover={{ scale: 1.04, rotate: 0.8 }}
                     transition={{ duration: 0.35 }}
-                    className="w-full max-w-[520px] lg:max-w-none"
+                    className="w-full max-w-130 lg:max-w-none"
                   >
                     <Image
                       src={suite.image}
