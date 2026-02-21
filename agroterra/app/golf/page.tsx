@@ -56,8 +56,8 @@ export function EmblaCarousel() {
           
         </div>
       </div>
-      <div className="embla__controls">
-        <div className="embla__dots">
+      <div className="embla__controls absolute bottom-4 sm:bottom-6 left-0 right-0 z-20 flex justify-center">
+        <div className="embla__dots flex items-center gap-2">
           {images.length <= 3 ? scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
