@@ -289,7 +289,7 @@ export default function page() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="flex flex-col md:flex-row gap-8 sm:gap-10 lg:gap-16 w-full max-w-5xl px-4"
+                  className="flex flex-col md:flex-row gap-8 sm:gap-10 lg:gap-16 w-full items-center max-w-5xl px-4"
                 >
                   <Feature
                     icon={golfIcon}
