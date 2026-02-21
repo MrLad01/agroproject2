@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoIosPhonePortrait, IoMdMailOpen } from "react-icons/io";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "Agroterra",
@@ -19,6 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Analytics />
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} antialiased min-h-screen relative`}
       >
