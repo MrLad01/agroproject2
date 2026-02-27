@@ -8,6 +8,7 @@ import golf from '../public/golf carousel.svg'
 import kitchen from '@/public/kitchen.png'
 import background4 from '@/public/house1.png'
 import relaxation from '@/public/relaxation2.png'
+import Link from 'next/link'
 
 const slides = [
   {
@@ -16,6 +17,7 @@ const slides = [
       'Tee off on a world-class golf course surrounded by rolling greens, palm trees, and tranquil landscapes designed for both leisure and competition.',
     cta: 'GOLF WITH US',
     image: golf,
+    href:"/golf"
   },
   {
     title: 'NATURE WALK',
@@ -23,6 +25,7 @@ const slides = [
       'Reconnect with nature as you stroll through serene walking paths, lush gardens, and scenic trails crafted for relaxation and mindfulness.',
     cta: 'EXPLORE THE TRAILS',
     image: background4,
+    href: '/',
   },
   {
     title: 'RELAXATION',
@@ -30,6 +33,7 @@ const slides = [
       'Indulge in a calming escape with rejuvenating spa therapies and peaceful spaces designed to restore balance to your body and mind.',
     cta: 'BOOK A SESSION',
     image: relaxation,
+    href: '/',
   },
   {
     title: 'OUTDOOR DINING',
@@ -37,6 +41,7 @@ const slides = [
       'Savor thoughtfully prepared meals made from fresh ingredients, served in an open-air setting that blends fine dining with nature.',
     cta: 'VIEW THE MENU',
     image: kitchen,
+    href: '/',
   },
 ]
 
@@ -98,9 +103,11 @@ const ExperienceCard = () => {
         </div>
 
         <div className="flex flex-col absolute bottom-2 left-[38%] items-center gap-3">
+          <Link href={currentSlide.href}>
           <button className="px-6 py-2 rounded-full border border-white text-xs font-semibold tracking-wider hover:bg-white hover:text-black transition cursor-pointer">
             {currentSlide.cta}
           </button>
+          </Link>
 
           <div className="flex gap-3">
             <button

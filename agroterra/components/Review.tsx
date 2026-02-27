@@ -8,6 +8,7 @@ import quote from '../public/icon2.svg'
 import jenny from '../public/jenny.svg'
 import mira from '../public/mira.svg'
 import kevin from '../public/kevin.svg'
+import { User } from 'lucide-react'
 
 const reviews = [
   {
@@ -89,7 +90,8 @@ export default function Review() {
                 &ldquo;{review.text}&rdquo;
               </p>
               <div className="flex items-center gap-3">
-                <Image src={review.avatar} alt={review.name} className="rounded-full w-10 h-10" />
+                {/* <Image src={review.avatar} alt={review.name} className="rounded-full w-10 h-10" /> */}
+                <User color='black' />
                 <div>
                   <h4 className="text-[#5A5A5A] font-medium text-[15px] sm:text-[16px] work-sans">{review.name}</h4>
                   <p className="text-[#5A5A5A] font-medium text-[13px] sm:text-[14px] work-sans">{review.role}</p>

@@ -9,6 +9,7 @@ import { FaConciergeBell } from 'react-icons/fa';
 
 /* ─── Mobile Navigation ─── */
 function MobileNav() {
+  
   const [open, setOpen] = useState(false);
 
   return (
@@ -45,13 +46,15 @@ function MobileNav() {
             {label}
           </Link>
         ))}
+        <Link href={'/contact'}>
         <button
           onClick={() => setOpen(false)}
-          className="work-sans-bold text-[13px] text-[#111111] uppercase px-8 py-3 bg-white rounded-full flex items-center gap-2 mt-4"
+          className="work-sans-bold text-[13px] text-[#111111] uppercase px-8 py-3 bg-white rounded-full flex items-center gap-2 mt-4 cursor-pointer"
         >
           <FaConciergeBell size={14} />
           Book Now
         </button>
+        </Link>
       </div>
     </>
   );
@@ -80,10 +83,12 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Book Now */}
-        <button className="hidden lg:flex work-sans-bold text-[12px] text-[#111111] mr-10 uppercase px-6 py-2.5 bg-white rounded-4xl items-center gap-2 hover:bg-zinc-100 transition-colors">
+        <Link href={'/contact'}>
+        <button className="hidden lg:flex work-sans-bold text-[12px] text-[#111111] mr-10 uppercase px-6 py-2.5 bg-white rounded-4xl items-center gap-2 hover:bg-zinc-100 transition-colors cursor-pointer">
           <FaConciergeBell size={14} />
           Book Now
         </button>
+        </Link>
 
         {/* Mobile hamburger */}
         <MobileNav />

@@ -249,7 +249,7 @@ export default function page() {
           </motion.div>
 
           {/* Stay With Us Section */}
-          <div className="relative w-full h-auto sm:h-125 md:h-150 lg:h-215 my-4 sm:my-6 lg:my-4">
+          <div className="relative w-full h-auto sm:h-125 md:h-150 lg:h-215 mt-4 sm:mt-6 lg:mt-4">
             <div className="relative w-full h-full min-h-150 sm:min-h-0">
               <Image
                 src={palm}
@@ -289,7 +289,7 @@ export default function page() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="flex flex-col md:flex-row gap-8 sm:gap-10 lg:gap-16 w-full items-center max-w-5xl px-4"
+                  className="flex flex-col md:flex-row gap-8 sm:gap-10 lg:gap-16 w-full items-center justify-center max-w-5xl px-4"
                 >
                   <Feature
                     icon={golfIcon}

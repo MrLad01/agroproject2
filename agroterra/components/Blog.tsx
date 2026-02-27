@@ -6,7 +6,7 @@ import AnimatedBlogImage from '@/components/AnimatedBlogImage'
 import g1 from '../public/09.png'
 import g2 from '../public/11.png'
 import g3 from '../public/13.png'
-import g4 from '../public/15.png'
+import g4 from '@/public/relaxation2.png'
 import g5 from '../public/17.png'
 import g6 from '../public/agroterra.png'
 
@@ -35,9 +35,9 @@ const Blog = () => {
         {/* Mobile: single column */}
         <div className="flex flex-col gap-6 sm:hidden">
           <AnimatedBlogImage src={g1} title="Golf Course" />
-          <AnimatedBlogImage src={g2} title="Cottonwood Cove established Resort & Marina" reverse />
+          <AnimatedBlogImage src={g2} title="Fountain Center" reverse />
           <AnimatedBlogImage src={g3} title="Benefits of Having Online Registration at Your Hotel" reverse />
-          <AnimatedBlogImage src={g4} title="Headwaters at Eagle Ranch Resort" />
+          <AnimatedBlogImage src={g4} title="Recreational Space" />
           <AnimatedBlogImage src={g5} title="Food Rocks food festival, Lyme Regis" />
           <AnimatedBlogImage src={g6} title="Your Hotel Digital Marketing Checklist" reverse />
         </div>
@@ -50,8 +50,8 @@ const Blog = () => {
             <AnimatedBlogImage src={g5} title="Food Rocks food festival, Lyme Regis" />
           </div>
           <div className="flex flex-col gap-6">
-            <AnimatedBlogImage src={g2} title="Cottonwood Cove established Resort & Marina" reverse />
-            <AnimatedBlogImage src={g4} title="Headwaters at Eagle Ranch Resort" />
+            <AnimatedBlogImage src={g2} title="Fountain Center" reverse />
+            <AnimatedBlogImage src={g4} title="Recreational Space" />
             <AnimatedBlogImage src={g6} title="Your Hotel Digital Marketing Checklist" reverse />
           </div>
         </div>
@@ -60,11 +60,11 @@ const Blog = () => {
         <div className="hidden md:flex justify-center gap-6">
           <div className="flex flex-col w-1/3 gap-6">
             <AnimatedBlogImage src={g1} title="Golf Course" />
-            <AnimatedBlogImage src={g2} title="Cottonwood Cove established Resort & Marina" reverse />
+            <AnimatedBlogImage src={g2} title="Fountain Center" reverse />
           </div>
           <div className="flex flex-col w-1/3 gap-6">
             <AnimatedBlogImage src={g3} title="Benefits of Having Online Registration at Your Hotel" reverse />
-            <AnimatedBlogImage src={g4} title="Headwaters at Eagle Ranch Resort" />
+            <AnimatedBlogImage src={g4} title="Recreational Space" />
           </div>
           <div className="flex flex-col w-1/3 gap-6">
             <AnimatedBlogImage src={g5} title="Food Rocks food festival, Lyme Regis" />
