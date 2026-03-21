@@ -1,16 +1,15 @@
 'use client'
 
-import React from 'react'
 import AnimatedBlogImage from '@/components/AnimatedBlogImage'
-
-import g1 from '../public/09.png'
-import g2 from '../public/11.png'
-import g3 from '../public/13.png'
-import g4 from '@/public/relaxation2.png'
-import g5 from '../public/17.png'
-import g6 from '../public/agroterra.png'
+import { blogPosts } from '@/data/blogData'
 
 const Blog = () => {
+  const [col1, col2, col3] = [
+    blogPosts.slice(0, 2),
+    blogPosts.slice(2, 4),
+    blogPosts.slice(4, 6),
+  ]
+
   return (
     <div className="bg-white py-12 px-6 sm:px-10 md:px-14">
 
@@ -25,51 +24,63 @@ const Blog = () => {
         Stay updated with the latest news, experiences, and insights from Agroterra Resort. Discover travel tips, upcoming events, wellness ideas, and highlights designed to help you make the most of your stay and enjoy every moment with us.
       </p>
 
-      {/* ── Blog grid ──
-          Mobile  : single column, images full width
-          Tablet  : 2 columns
-          Desktop : 3 columns (original layout)
-      */}
+      {/* ── Blog grid ── */}
       <div className="py-10 sm:py-12 px-0 sm:px-4 md:px-8 lg:px-16">
 
         {/* Mobile: single column */}
         <div className="flex flex-col gap-6 sm:hidden">
-          <AnimatedBlogImage src={g1} title="Golf Course" />
-          <AnimatedBlogImage src={g2} title="Fountain Center" reverse />
-          <AnimatedBlogImage src={g3} title="Benefits of Having Online Registration at Your Hotel" reverse />
-          <AnimatedBlogImage src={g4} title="Recreational Space" />
-          <AnimatedBlogImage src={g5} title="Food Rocks food festival, Lyme Regis" />
-          <AnimatedBlogImage src={g6} title="Your Hotel Digital Marketing Checklist" reverse />
+          {blogPosts.map((post) => (
+            <AnimatedBlogImage
+              key={post.slug}
+              src={post.src}
+              title={post.title}
+              slug={post.slug}
+              reverse={post.reverse}
+            />
+          ))}
         </div>
 
         {/* Tablet: 2 columns */}
         <div className="hidden sm:grid md:hidden grid-cols-2 gap-6">
           <div className="flex flex-col gap-6">
-            <AnimatedBlogImage src={g1} title="Golf Course" />
-            <AnimatedBlogImage src={g3} title="Benefits of Having Online Registration at Your Hotel" reverse />
-            <AnimatedBlogImage src={g5} title="Food Rocks food festival, Lyme Regis" />
+            {[blogPosts[0], blogPosts[2], blogPosts[4]].map((post) => (
+              <AnimatedBlogImage
+                key={post.slug}
+                src={post.src}
+                title={post.title}
+                slug={post.slug}
+                reverse={post.reverse}
+              />
+            ))}
           </div>
           <div className="flex flex-col gap-6">
-            <AnimatedBlogImage src={g2} title="Fountain Center" reverse />
-            <AnimatedBlogImage src={g4} title="Recreational Space" />
-            <AnimatedBlogImage src={g6} title="Your Hotel Digital Marketing Checklist" reverse />
+            {[blogPosts[1], blogPosts[3], blogPosts[5]].map((post) => (
+              <AnimatedBlogImage
+                key={post.slug}
+                src={post.src}
+                title={post.title}
+                slug={post.slug}
+                reverse={post.reverse}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Desktop: 3 columns (original) */}
+        {/* Desktop: 3 columns */}
         <div className="hidden md:flex justify-center gap-6">
-          <div className="flex flex-col w-1/3 gap-6">
-            <AnimatedBlogImage src={g1} title="Golf Course" />
-            <AnimatedBlogImage src={g2} title="Fountain Center" reverse />
-          </div>
-          <div className="flex flex-col w-1/3 gap-6">
-            <AnimatedBlogImage src={g3} title="Benefits of Having Online Registration at Your Hotel" reverse />
-            <AnimatedBlogImage src={g4} title="Recreational Space" />
-          </div>
-          <div className="flex flex-col w-1/3 gap-6">
-            <AnimatedBlogImage src={g5} title="Food Rocks food festival, Lyme Regis" />
-            <AnimatedBlogImage src={g6} title="Your Hotel Digital Marketing Checklist" reverse />
-          </div>
+          {[col1, col2, col3].map((col, i) => (
+            <div key={i} className="flex flex-col w-1/3 gap-6">
+              {col.map((post) => (
+                <AnimatedBlogImage
+                  key={post.slug}
+                  src={post.src}
+                  title={post.title}
+                  slug={post.slug}
+                  reverse={post.reverse}
+                />
+              ))}
+            </div>
+          ))}
         </div>
       </div>
 
