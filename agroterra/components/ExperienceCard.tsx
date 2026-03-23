@@ -41,7 +41,7 @@ const slides = [
       'Savor thoughtfully prepared meals made from fresh ingredients, served in an open-air setting that blends fine dining with nature.',
     cta: 'VIEW THE MENU',
     image: kitchen,
-    href: '/',
+    href: '/dining',
   },
 ]
 

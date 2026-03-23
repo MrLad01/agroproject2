@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { blogPosts } from '@/data/blogData'
 import Navbar from '@/components/Navbar'
 import { EmblaCarousel } from '@/app/page'
+import Link from 'next/link'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -135,8 +136,9 @@ export default async function BlogDetailPage({ params }: Props) {
                     index % 2 !== 0 ? 'sm:flex-row-reverse' : ''
                   }`}
                 >
+                  
                   {/* Image */}
-                  <div className="w-full sm:w-70 h-52 relative rounded-md overflow-hidden shrink-0">
+                  <div className="w-full sm:w-96 h-60 relative rounded-md overflow-hidden shrink-0">
                     <Image
                       src={related.src}
                       alt={related.title}
@@ -146,6 +148,7 @@ export default async function BlogDetailPage({ params }: Props) {
                   </div>
 
                   {/* Text */}
+                  <Link href={`/blog/${related.slug}`}>
                   <div className="flex-1 text-center px-2 sm:px-4">
                     <h3 className="eb-garamond-semibold text-[18px] sm:text-[20px] font-semibold text-gray-900 mb-3">
                       {related.title}
@@ -154,6 +157,7 @@ export default async function BlogDetailPage({ params }: Props) {
                       {related.excerpt}
                     </p>
                   </div>
+                  </Link>
                 </div>
               ))}
           </div>

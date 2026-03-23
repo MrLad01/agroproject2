@@ -116,7 +116,7 @@ export default function page() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 w-full h-full flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5 lg:py-6">
+              <div className="absolute inset-0 bg-[#00000075] w-full h-full flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5 lg:py-6">
                 {/* Nav */}
                 <Navbar />
                 <div className="h-full flex flex-col text-white items-center justify-center leading-relaxed">
