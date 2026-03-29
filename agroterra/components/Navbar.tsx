@@ -8,7 +8,7 @@ import { FaConciergeBell } from 'react-icons/fa';
 
 
 /* ─── Mobile Navigation ─── */
-function MobileNav() {
+export function MobileNav() {
   
   const [open, setOpen] = useState(false);
 
@@ -93,6 +93,5 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <MobileNav />
       </nav>
-
   )
 }

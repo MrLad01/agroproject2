@@ -7,6 +7,7 @@ import { FaConciergeBell } from "react-icons/fa"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import family from "@/public/familyBed.jpg"
+import Navbar, { MobileNav } from "@/components/Navbar"
 
 const fadeIn = {
   hidden: { opacity: 0 },
@@ -30,7 +31,7 @@ export default function Page() {
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden bg-zinc-50 font-sans">
       {/* ================= NAV ================= */}
-      <nav className="flex items-center justify-between shadow-2xl px-4 sm:px-8 md:px-16 lg:px-28 h-16 bg-white">
+      {/* <nav className="flex items-center justify-between shadow-2xl px-4 sm:px-8 md:px-16 lg:px-28 h-16 bg-white">
         <Link href="/" className="flex items-center gap-2">
           <Image src={logo} alt="Agroterra Logo" height={30} />
           <h3 className="uppercase eb-garamond-extrabold text-[15px] sm:text-[17px] text-[#111111]">
@@ -46,6 +47,37 @@ export default function Page() {
           <FaConciergeBell size={13} />
           Book Now
         </button>
+      </nav> */}
+
+      <nav className="flex items-center justify-between shadow-lg px-4 sm:px-8 md:px-16 lg:px-28 h-16 text-gray-600 dark:bg-gray-100">
+        {/* Logo */}
+        <div className="flex gap-2 items-center">
+          <Image src={logo} alt="Agroterra Logo" height={30} />
+          <h3 className="uppercase eb-garamond-extrabold text-[15px] sm:text-[17px]">
+            Agroterra
+          </h3>
+        </div>
+
+        {/* Desktop links */}
+        <div className="hidden lg:flex gap-8 xl:gap-12 items-center text-[13px] xl:text-[14px] normal-font pt-0.5">
+          <Link href="/" className="hover:text-zinc-400 transition-colors">Home</Link>
+          <Link href="/reservation" className=" hover:text-zinc-400 transition-colors">Reservation</Link>
+          <Link href="/golf" className=" hover:text-zinc-400 transition-colors">Golf Course</Link>
+          <Link href="/sport-academy" className=" hover:text-zinc-400 transition-colors">Sport Academy</Link>
+          <Link href="/contact" className=" hover:text-zinc-400 transition-colors">Contact</Link>
+          <Link href="/about" className=" hover:text-zinc-400 transition-colors">About Us</Link>
+        </div>
+
+        {/* Desktop Book Now */}
+        <Link href={'/contact'}>
+        <button className="hidden lg:flex work-sans-bold text-[12px] text-[#111111] mr-10 uppercase px-6 py-2.5 bg-white rounded-4xl items-center gap-2 hover:bg-zinc-100 transition-colors cursor-pointer">
+          <FaConciergeBell size={14} />
+          Book Now
+        </button>
+        </Link>
+
+        {/* Mobile hamburger */}
+        <MobileNav />
       </nav>
 
       {/* ================= TABS ================= */}
