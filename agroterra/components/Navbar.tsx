@@ -78,6 +78,7 @@ export default function Navbar() {
           <Link href="/reservation" className="text-white hover:text-zinc-200 transition-colors">Reservation</Link>
           <Link href="/golf" className="text-white hover:text-zinc-200 transition-colors">Golf Course</Link>
           <Link href="/sport-academy" className="text-white hover:text-zinc-200 transition-colors">Sport Academy</Link>
+          <Link href="/sheedxfm" className="text-white hover:text-zinc-200 transition-colors">Sheedx FM</Link>
           <Link href="/contact" className="text-white hover:text-zinc-200 transition-colors">Contact</Link>
           <Link href="/about" className="text-white hover:text-zinc-200 transition-colors">About Us</Link>
         </div>

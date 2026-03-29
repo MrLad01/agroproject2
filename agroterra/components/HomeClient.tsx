@@ -65,15 +65,6 @@ export default function HomeClient({ politics, entertainment, sports, featured }
                     SHEEDX FM
                   </motion.h2>
 
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-white/70 text-sm sm:text-base mt-2 italic tracking-wide"
-                  >
-                    Where nation&apos;s pulse beats loudest
-                  </motion.p>
-
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
