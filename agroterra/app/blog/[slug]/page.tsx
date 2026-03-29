@@ -26,10 +26,10 @@ export default async function BlogDetailPage({ params }: Props) {
         <main className="w-full">
 
           {/* ── Hero: carousel + overlay ── */}
-          <div className="relative w-full h-svh">
+          <div className="relative w-full h-[30vh]">
 
             {/* Carousel fills the hero — same as home page */}
-            <EmblaCarousel />
+            {/* <EmblaCarousel /> */}
 
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-[#00000075] flex flex-col px-4 sm:px-8 md:px-12 py-4 sm:py-6 z-10">
@@ -39,17 +39,12 @@ export default async function BlogDetailPage({ params }: Props) {
 
               {/* Hero text — shows the selected blog title */}
               <div className="flex-1 flex flex-col text-white items-center justify-center leading-relaxed px-4">
-                <div className="flex flex-col justify-center items-center -mt-10 sm:-mt-14 md:-mt-16 text-center">
+                <div className="flex flex-col justify-end items-center text-center">
                   <h2 className="eb-garamond-semibold welcome-text
-                    text-[28px] sm:text-[40px] md:text-[50px] lg:text-[58px]
+                    text-[28px] sm:text-[40px] md:text-[44px] lg:text-[50px]
                     max-w-[95vw] sm:max-w-[80vw] md:max-w-3xl">
                       AGROTERRA BLOG
                   </h2>
-                  <p className="eb-garamond-italic
-                    text-[17px] sm:text-[24px] md:text-[28px] lg:text-[32px]
-                    max-w-[90vw] sm:max-w-150 md:max-w-140 mt-2">
-                    &ldquo;A place that celebrates life.&rdquo;
-                  </p>
                 </div>
               </div>
 
