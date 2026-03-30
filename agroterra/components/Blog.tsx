@@ -2,6 +2,7 @@
 
 import AnimatedBlogImage from '@/components/AnimatedBlogImage'
 import { blogPosts } from '@/data/blogData'
+import Link from 'next/link'
 
 const Blog = () => {
   const [col1, col2, col3] = [
@@ -85,11 +86,11 @@ const Blog = () => {
       </div>
 
       {/* CTA */}
-      <div className="flex justify-center mt-2">
+      <Link className="flex justify-center mt-2" href="/blog">
         <button className="border text-[#101996] rounded-3xl cursor-pointer hover:scale-110 transition duration-300 ease-in-out border-[#101996] px-6 py-3 text-[12px] sm:text-[13px]">
           VIEW ALL BLOG
         </button>
-      </div>
+      </Link>
     </div>
   )
 }

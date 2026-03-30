@@ -24,7 +24,7 @@ export default async function BlogDetailPage({ params }: Props) {
     <div className="min-h-screen bg-[#FAF8F4]">
 
       {/* ── Hero ── */}
-      <div className="relative w-full h-[55vh] min-h-[340px] overflow-hidden">
+      <div className="relative w-full h-[55vh] min-h-85 overflow-hidden">
         <Image
           src={post.src}
           alt={post.title}
@@ -33,7 +33,7 @@ export default async function BlogDetailPage({ params }: Props) {
           priority
         />
         {/* Gradient overlay — dark at bottom for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/75" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/30 to-black/75" />
 
         {/* Navbar sits at top */}
         <div className="absolute inset-x-0 top-0 z-20 px-6 sm:px-10 md:px-16 py-5">
@@ -114,7 +114,7 @@ export default async function BlogDetailPage({ params }: Props) {
               </p>
 
               {/* Inline image break */}
-              <div className="my-10 w-full aspect-[16/9] relative rounded-sm overflow-hidden">
+              <div className="my-10 w-full aspect-video relative rounded-sm overflow-hidden">
                 <Image
                   src={post.src}
                   alt="Agroterra Golf Course"
@@ -161,7 +161,7 @@ export default async function BlogDetailPage({ params }: Props) {
           </article>
 
           {/* ── Sidebar ── */}
-          <aside className="w-full lg:w-[280px] shrink-0 space-y-10">
+          <aside className="w-full lg:w-70 shrink-0 space-y-10">
 
             {/* Sticky wrapper */}
             <div className="lg:sticky lg:top-10 space-y-10">
@@ -171,7 +171,7 @@ export default async function BlogDetailPage({ params }: Props) {
                 <p className="text-[10px] tracking-[0.2em] uppercase text-[#8A7A5C] mb-4">
                   You Might Also Like
                 </p>
-                <div className="h-[1px] bg-[#DDD5C3]" />
+                <div className="h-px bg-[#DDD5C3]" />
               </div>
 
               {/* Related posts */}
@@ -183,7 +183,7 @@ export default async function BlogDetailPage({ params }: Props) {
                     className="group flex items-start gap-4 py-5 transition-opacity hover:opacity-80"
                   >
                     {/* Thumbnail */}
-                    <div className="w-20 h-[52px] relative shrink-0 overflow-hidden rounded-sm">
+                    <div className="w-20 h-13 relative shrink-0 overflow-hidden rounded-sm">
                       <Image
                         src={rel.src}
                         alt={rel.title}
