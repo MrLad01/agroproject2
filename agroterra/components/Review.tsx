@@ -8,7 +8,6 @@ import quote from '../public/icon2.svg'
 import jenny from '../public/jenny.svg'
 import mira from '../public/mira.svg'
 import kevin from '../public/kevin.svg'
-import { User } from 'lucide-react'
 
 const reviews = [
   {
@@ -35,66 +34,103 @@ export default function Review() {
   const [active, setActive] = useState(1)
 
   return (
-    <section className="bg-blue-50 py-12 sm:py-16 md:py-20">
+    <section className="bg-[#F8FAF6] py-14 sm:py-20">
 
       {/* Header */}
-      <div className="flex flex-col items-center mb-10 sm:mb-14 px-4">
-        <Image src={icon} alt="icon" className="w-8 h-8 sm:w-10 sm:h-10" />
-        <h2 className="mt-4 text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] text-[#1A1A1A] font-semibold eb-garamond text-center">
+      <div className="flex flex-col items-center mb-12 sm:mb-16 px-4">
+        <Image src={icon} alt="" className="w-8 h-8 sm:w-10 sm:h-10" />
+        <h2 className="mt-4 text-[28px] sm:text-[36px] md:text-[44px] text-[#1B201E] eb-garamond font-semibold text-center">
           Happy Customers
         </h2>
+        {/* Accent line */}
+        <div className="mt-3 w-10 h-0.5 bg-[#28683E]" />
       </div>
 
-      {/* ── Cards ──
-          Mobile  : single card (show only active)
-          Tablet+ : all three cards side by side
-      */}
+      {/* ── Cards ── */}
       <div className="px-4 sm:px-8 md:px-12">
 
-        {/* Mobile: show only the active card */}
+        {/* Mobile: single active card */}
         <div className="sm:hidden flex justify-center">
-          <div className="relative w-full max-w-sm rounded-xl bg-white p-6 shadow-xl">
-            <div className="absolute -top-2 right-6">
-              <Image src={quote} alt="quote" className="w-6 h-6" />
+          <div className="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-lg border border-gray-100">
+            <div className="absolute -top-3 right-5">
+              <Image src={quote} alt="" className="w-7 h-7" />
             </div>
-            <p className="text-[14px] text-[#555555] work-sans leading-relaxed mb-6">
+            <p className="text-[14px] text-gray-500 work-sans leading-[1.75] mb-6">
               &ldquo;{reviews[active].text}&rdquo;
             </p>
-            <div className="flex items-center gap-3">
-              <Image src={reviews[active].avatar} alt={reviews[active].name} className="rounded-full w-10 h-10" />
+            <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+              <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-100 shrink-0">
+                <Image
+                  src={reviews[active].avatar}
+                  alt={reviews[active].name}
+                  width={40}
+                  height={40}
+                  className="object-cover w-full h-full"
+                />
+              </div>
               <div>
-                <h4 className="text-[#5A5A5A] font-medium text-[15px] work-sans">{reviews[active].name}</h4>
-                <p className="text-[#5A5A5A] font-medium text-[13px] work-sans">{reviews[active].role}</p>
+                <p className="text-[14px] font-semibold text-[#1B201E] work-sans">{reviews[active].name}</p>
+                <p className="text-[12px] text-gray-400 work-sans">{reviews[active].role}</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Tablet+: all cards */}
-        <div className="hidden sm:flex justify-center gap-4 md:gap-6 flex-wrap lg:flex-nowrap">
+        {/* Tablet+: all three cards */}
+        <div className="hidden sm:flex justify-center items-stretch gap-4 md:gap-6">
           {reviews.map((review, index) => (
             <div
               key={index}
               onClick={() => setActive(index)}
-              className={`
-                relative rounded-xl cursor-pointer bg-white p-6
-                w-full sm:w-70 md:w-75 lg:w-[320px]
-                transition-all duration-300
-                ${index === active ? 'scale-105 shadow-xl' : 'opacity-70 hover:opacity-90'}
-              `}
+              className="relative rounded-2xl bg-white p-6 cursor-pointer border transition-all duration-300 flex flex-col"
+              style={{
+                width: '300px',
+                flexShrink: 0,
+                // Fix: add z-index so active card scales above siblings
+                zIndex: index === active ? 10 : 1,
+                transform: index === active ? 'scale(1.04)' : 'scale(1)',
+                boxShadow:
+                  index === active
+                    ? '0 20px 40px rgba(0,0,0,0.10)'
+                    : '0 2px 8px rgba(0,0,0,0.04)',
+                borderColor: index === active ? '#28683E' : '#f0f0f0',
+                opacity: index === active ? 1 : 0.65,
+                transition: 'all 0.3s ease',
+              }}
             >
-              <div className="absolute -top-2 right-6">
-                <Image src={quote} alt="quote" className="w-6 h-6" />
+              {/* Quote icon */}
+              <div className="absolute -top-3 right-5">
+                <Image src={quote} alt="" className="w-6 h-6" />
               </div>
-              <p className="text-[13px] sm:text-[14px] text-[#555555] work-sans leading-relaxed mb-6">
+
+              {/* Active indicator dot */}
+              {index === active && (
+                <div
+                  className="absolute top-4 left-4 w-1.5 h-1.5 rounded-full"
+                  style={{ backgroundColor: '#28683E' }}
+                />
+              )}
+
+              <p className="text-[13px] sm:text-[14px] text-gray-500 work-sans leading-[1.8] mb-6 flex-1">
                 &ldquo;{review.text}&rdquo;
               </p>
+
+              {/* Divider */}
+              <div className="h-px bg-gray-100 mb-4" />
+
               <div className="flex items-center gap-3">
-                {/* <Image src={review.avatar} alt={review.name} className="rounded-full w-10 h-10" /> */}
-                <User color='black' />
+                <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-100 shrink-0">
+                  <Image
+                    src={review.avatar}
+                    alt={review.name}
+                    width={40}
+                    height={40}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
                 <div>
-                  <h4 className="text-[#5A5A5A] font-medium text-[15px] sm:text-[16px] work-sans">{review.name}</h4>
-                  <p className="text-[#5A5A5A] font-medium text-[13px] sm:text-[14px] work-sans">{review.role}</p>
+                  <p className="text-[14px] font-semibold text-[#1B201E] work-sans">{review.name}</p>
+                  <p className="text-[12px] text-gray-400 work-sans">{review.role}</p>
                 </div>
               </div>
             </div>
@@ -102,15 +138,18 @@ export default function Review() {
         </div>
       </div>
 
-      {/* Dots */}
-      <div className="mt-8 sm:mt-10 flex justify-center gap-2">
+      {/* Dots — shared between mobile and desktop */}
+      <div className="mt-10 flex justify-center gap-2">
         {reviews.map((_, index) => (
           <button
             key={index}
             onClick={() => setActive(index)}
-            className={`h-2 rounded-full transition-all cursor-pointer
-              ${active === index ? 'bg-blue-600 w-5' : 'bg-gray-300 w-2'}
-            `}
+            aria-label={`View review ${index + 1}`}
+            className="h-2 rounded-full cursor-pointer transition-all duration-300"
+            style={{
+              width: active === index ? '20px' : '8px',
+              backgroundColor: active === index ? '#28683E' : '#d1d5db',
+            }}
           />
         ))}
       </div>

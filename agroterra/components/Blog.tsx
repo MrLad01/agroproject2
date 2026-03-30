@@ -12,7 +12,7 @@ const Blog = () => {
   ]
 
   return (
-    <div className="bg-white py-12 px-6 sm:px-10 md:px-14">
+    <div className="bg-white py-12 -mb-10 px-6 sm:px-10 md:px-14">
 
       {/* Header */}
       <h1 className="text-[#1A1A1A] text-center tracking-[0.28rem] text-[13px] sm:text-[16px] font-bold">
