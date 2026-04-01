@@ -154,6 +154,7 @@ export default function page() {
                 src={aboutImage2}
                 alt="Background image"
                 className="w-screen h-svh object-cover"
+                style={{ background: 'linear-gradient(to bottom, rgba(27,32,30,0.6), rgba(27,32,30,0.82))' }}
                 priority
               />
             </div>

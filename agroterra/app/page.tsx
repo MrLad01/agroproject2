@@ -31,7 +31,7 @@ export function EmblaCarousel() {
   const images = [background1, background2, background3, background4, background5]
 
   return (
-    <section className="embla w-full h-full">
+    <section className="embla w-full h-full" style={{ background: 'linear-gradient(to bottom, rgba(27,32,30,0.6), rgba(27,32,30,0.82))' }}>
       <div className="embla__viewport h-full" ref={emblaRef}>
         <div className="embla__container h-full">
 
