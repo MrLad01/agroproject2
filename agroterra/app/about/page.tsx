@@ -149,6 +149,8 @@ export default function page() {
 
           {/* ====================== HERO ====================== */}
           <div className="relative w-full h-svh">
+            {/* ─── Navbar ─── */}
+            <Navbar />
             <div className="relative w-full h-full">
               <Image
                 src={aboutImage2}
@@ -161,8 +163,6 @@ export default function page() {
             {/* Overlay */}
             <div className="absolute inset-0 bg-[#00000075] flex flex-col px-4 sm:px-8 md:px-12 py-4 sm:py-6 z-10">
 
-              {/* ─── Navbar ─── */}
-              <Navbar />
 
               {/* ─── Hero Text ─── */}
               <div className="flex-1 flex flex-col text-white items-center justify-center leading-relaxed px-4">

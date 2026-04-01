@@ -34,6 +34,7 @@ export function MobileNav() {
           { href: '/reservation', label: 'Reservation' },
           { href: '/golf', label: 'Golf Course' },
           { href: '/sport-academy', label: 'Sport Academy' },
+          { href: '/sheedxfm', label: 'SheedX FM' },
           { href: '/contact', label: 'Contact' },
           { href: '/about', label: 'About Us' },
         ].map(({ href, label }) => (
