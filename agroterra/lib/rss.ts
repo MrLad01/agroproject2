@@ -1,6 +1,4 @@
 // lib/rss.ts
-// Fetches and parses RSS feeds into a unified Article shape.
-// Add or swap feed URLs freely — anything with a standard RSS/Atom feed works.
 
 export interface Article {
   id: string
@@ -19,92 +17,19 @@ interface FeedConfig {
   category: Article['category']
 }
 
-// ── Feed list ──────────────────────────────────────────────────────────────
-// Swap / add any RSS feed URL here. These all support CORS-free server-side fetching.
 export const FEEDS: FeedConfig[] = [
-  // Politics / World News
-  { url: 'https://feeds.bbci.co.uk/news/world/rss.xml',          source: 'BBC News',      category: 'politics' },
-  { url: 'https://feeds.reuters.com/reuters/worldNews',           source: 'Reuters',       category: 'politics' },
-  { url: 'https://punchng.com/feed/',                             source: 'Punch NG',      category: 'politics' },
-  { url: 'https://www.vanguardngr.com/feed/',                     source: 'Vanguard',      category: 'politics' },
-
-  // Entertainment
-  { url: 'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml', source: 'BBC Entertainment', category: 'entertainment' },
-  { url: 'https://www.pulse.ng/entertainment/rss',                source: 'Pulse NG',      category: 'entertainment' },
-
-  // Sports
-  { url: 'https://feeds.bbci.co.uk/sport/rss.xml',               source: 'BBC Sport',     category: 'sports' },
-  { url: 'https://completesports.com/feed/',                      source: 'Complete Sports', category: 'sports' },
+  { url: 'https://feeds.bbci.co.uk/news/world/rss.xml',                   source: 'BBC News',          category: 'politics'      },
+  { url: 'https://feeds.reuters.com/reuters/worldNews',                    source: 'Reuters',           category: 'politics'      },
+  { url: 'https://punchng.com/feed/',                                      source: 'Punch NG',          category: 'politics'      },
+  { url: 'https://www.vanguardngr.com/feed/',                              source: 'Vanguard',          category: 'politics'      },
+  { url: 'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',  source: 'BBC Entertainment', category: 'entertainment' },
+  { url: 'https://www.pulse.ng/entertainment/rss',                         source: 'Pulse NG',          category: 'entertainment' },
+  { url: 'https://feeds.bbci.co.uk/sport/rss.xml',                        source: 'BBC Sport',         category: 'sports'        },
+  { url: 'https://completesports.com/feed/',                               source: 'Complete Sports',   category: 'sports'        },
 ]
-
-// ── Parser ─────────────────────────────────────────────────────────────────
-function extractImage(item: Element, xmlText: string): string | null {
-  // 1. <media:content url="...">
-  const media = item.querySelector('content')
-  if (media?.getAttribute('url')) return media.getAttribute('url')
-
-  // 2. <enclosure url="..." type="image/...">
-  const enclosure = item.querySelector('enclosure')
-  if (enclosure?.getAttribute('type')?.startsWith('image')) {
-    return enclosure.getAttribute('url')
-  }
-
-  // 3. First <img src="..."> inside <description>
-  const desc = item.querySelector('description')?.textContent ?? ''
-  const imgMatch = desc.match(/<img[^>]+src=["']([^"']+)["']/)
-  if (imgMatch) return imgMatch[1]
-
-  return null
-}
 
 function slugify(str: string): string {
   return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 60)
-}
-
-async function parseFeed(config: FeedConfig): Promise<Article[]> {
-  try {
-    const res = await fetch(config.url, {
-      next: { revalidate: 600 }, // ISR: cache for 10 minutes
-      headers: { 'User-Agent': 'SheedXFM/1.0 RSS Reader' },
-    })
-    if (!res.ok) return []
-
-    const xml = await res.text()
-
-    // Use DOMParser on the server via the 'node-html-parser' or plain regex fallback.
-    // Since Next.js 13+ runs on Node we use a lightweight regex-based parse
-    // to avoid adding a dependency. For production, swap with 'fast-xml-parser'.
-    const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)]
-
-    return items.slice(0, 6).map((match, i) => {
-      const block = match[1]
-
-      const title       = stripCdata(block.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? 'Untitled')
-      const description = stripCdata(stripHtml(block.match(/<description>([\s\S]*?)<\/description>/)?.[1] ?? ''))
-      const url         = stripCdata(block.match(/<link>([\s\S]*?)<\/link>/)?.[1] ?? block.match(/<guid[^>]*>([\s\S]*?)<\/guid>/)?.[1] ?? '')
-      const publishedAt = block.match(/<pubDate>([\s\S]*?)<\/pubDate>/)?.[1] ?? new Date().toUTCString()
-
-      // Image: try media:content, enclosure, then description img tag
-      const mediaUrl    = block.match(/media:content[^>]+url=["']([^"']+)["']/)?.[1]
-      const enclosureUrl = block.match(/<enclosure[^>]+url=["']([^"']+)["'][^>]+type=["']image/)?.[1]
-      const descImgUrl  = block.match(/<description>[\s\S]*?<img[^>]+src=["']([^"']+)["']/)?.[1]
-      const image       = mediaUrl ?? enclosureUrl ?? descImgUrl ?? null
-
-      return {
-        id:          `${slugify(title)}-${i}`,
-        title:       title.trim(),
-        description: description.trim().slice(0, 180),
-        url:         url.trim(),
-        image,
-        publishedAt,
-        source:      config.source,
-        category:    config.category,
-      }
-    })
-  } catch {
-    console.error(`[RSS] Failed to fetch ${config.url}`)
-    return []
-  }
 }
 
 function stripCdata(s: string): string {
@@ -112,10 +37,103 @@ function stripCdata(s: string): string {
 }
 
 function stripHtml(s: string): string {
-  return s.replace(/<[^>]+>/g, '').replace(/&[a-z]+;/gi, ' ').trim()
+  return s.replace(/<[^>]+>/g, ' ').replace(/&[a-z]+;/gi, ' ').replace(/\s+/g, ' ').trim()
 }
 
-// ── Public API ─────────────────────────────────────────────────────────────
+function extractImage(block: string): string | null {
+  // Try every known pattern, in order of reliability
+
+  // 1. media:content url="..."  or  media:content url='...'
+  const m1 = block.match(/media:content[^>]+url=["']([^"']+)["']/)
+  if (m1?.[1]) return m1[1]
+
+  // 2. media:thumbnail url="..."
+  const m2 = block.match(/media:thumbnail[^>]+url=["']([^"']+)["']/)
+  if (m2?.[1]) return m2[1]
+
+  // 3. <enclosure url="..." type="image/...">
+  const m3 = block.match(/<enclosure[^>]+type=["']image[^"']*["'][^>]+url=["']([^"']+)["']/)
+  if (m3?.[1]) return m3[1]
+
+  // 4. <enclosure url="..." ...> (any order)
+  const m4 = block.match(/<enclosure[^>]+url=["']([^"']+)["']/)
+  if (m4?.[1] && /\.(jpg|jpeg|png|webp|gif)/i.test(m4[1])) return m4[1]
+
+  // 5. <img src="..."> anywhere in the block (description, content:encoded, etc.)
+  const m5 = block.match(/<img[^>]+src=["']([^"']+)["']/)
+  if (m5?.[1]) return m5[1]
+
+  // 6. WordPress featured image pattern in content:encoded
+  const m6 = block.match(/wp:image[^}]*"url"\s*:\s*"([^"]+)"/)
+  if (m6?.[1]) return m6[1]
+
+  // 7. og:image or any absolute image URL pattern inside the block
+  const m7 = block.match(/https?:\/\/[^\s"'<>]+\.(?:jpg|jpeg|png|webp|gif)(?:\?[^\s"'<>]*)?/i)
+  if (m7?.[0]) return m7[0]
+
+  return null
+}
+
+async function parseFeed(config: FeedConfig): Promise<Article[]> {
+  try {
+    const res = await fetch(config.url, {
+      next: { revalidate: 600 },
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; SheedXFM/1.0; +https://sheedxfm.com)',
+        'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+      },
+    })
+    if (!res.ok) return []
+
+    const xml = await res.text()
+
+    // Match both <item>...</item> (RSS) and <entry>...</entry> (Atom)
+    const itemMatches = [
+      ...xml.matchAll(/<item>([\s\S]*?)<\/item>/g),
+      ...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g),
+    ]
+
+    return itemMatches.slice(0, 6).map((match, i) => {
+      const block = match[1]
+
+      const title       = stripCdata(block.match(/<title[^>]*>([\s\S]*?)<\/title>/)?.[1] ?? 'Untitled')
+      const description = stripHtml(stripCdata(
+        block.match(/<description[^>]*>([\s\S]*?)<\/description>/)?.[1] ??
+        block.match(/<summary[^>]*>([\s\S]*?)<\/summary>/)?.[1] ?? ''
+      )).slice(0, 200)
+
+      // Link: try <link> text node, then href attr (Atom), then <guid>
+      const url = stripCdata(
+        block.match(/<link>([\s\S]*?)<\/link>/)?.[1] ??
+        block.match(/<link[^>]+href=["']([^"']+)["']/)?.[1] ??
+        block.match(/<guid[^>]*>([\s\S]*?)<\/guid>/)?.[1] ?? ''
+      ).trim()
+
+      const publishedAt =
+        block.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/)?.[1] ??
+        block.match(/<published[^>]*>([\s\S]*?)<\/published>/)?.[1] ??
+        block.match(/<updated[^>]*>([\s\S]*?)<\/updated>/)?.[1] ??
+        new Date().toUTCString()
+
+      const image = extractImage(block)
+
+      return {
+        id:          `${slugify(title)}-${i}`,
+        title:       title.trim(),
+        description,
+        url,
+        image,
+        publishedAt,
+        source:      config.source,
+        category:    config.category,
+      }
+    })
+  } catch (err) {
+    console.error(`[RSS] Failed to fetch ${config.url}:`, err)
+    return []
+  }
+}
+
 export async function fetchAllFeeds(): Promise<{
   politics:      Article[]
   entertainment: Article[]
@@ -123,8 +141,7 @@ export async function fetchAllFeeds(): Promise<{
   featured:      Article
 }> {
   const results = await Promise.allSettled(FEEDS.map(parseFeed))
-
-  const all: Article[] = results.flatMap((r) => (r.status === 'fulfilled' ? r.value : []))
+  const all: Article[] = results.flatMap((r) => r.status === 'fulfilled' ? r.value : [])
 
   const byCategory = (cat: Article['category']) =>
     all.filter((a) => a.category === cat).slice(0, 6)
@@ -133,8 +150,14 @@ export async function fetchAllFeeds(): Promise<{
   const entertainment = byCategory('entertainment')
   const sports        = byCategory('sports')
 
-  // Featured = most recent article that has an image
+  // Featured = first article with an image, falling back to first article overall
   const featured = all.find((a) => a.image) ?? all[0]
+
+  // Debug: log image extraction results in development
+  if (process.env.NODE_ENV === 'development') {
+    console.log('[RSS] Image extraction results:')
+    all.slice(0, 10).forEach((a) => console.log(`  ${a.source}: ${a.image ? '✓ ' + a.image.slice(0, 60) : '✗ no image'}`))
+  }
 
   return { politics, entertainment, sports, featured }
 }
