@@ -1,8 +1,6 @@
 'use client'
 
 import Image from "next/image";
-import Link from "next/link";
-import { FaConciergeBell } from "react-icons/fa"
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import background1 from '@/public/house1.png'
@@ -10,7 +8,6 @@ import background2 from '@/public/IMG_20241010_175833.jpg'
 import background3 from '@/public/kitchen.png'
 import background4 from '@/public/IMG_20240627_163644.jpg'
 import background5 from '@/public/relaxation2.png'
-import logo from '@/public/ASA logo.jpg'
 import { DotButton, ScrollingDots, useDotButton } from "@/components/Embla/EmblaCarouselDotButton";
 import Blog from "@/components/Blog";
 import SectionOne from "@/components/Section1";
@@ -19,7 +16,10 @@ import Review from "@/components/Review";
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import Navbar from "@/components/Navbar";
-import { useEffect, useState } from "react";
+// import Link from "next/link";
+// import { FaConciergeBell } from "react-icons/fa"
+// import { useEffect, useState } from "react";
+// import logo from '@/public/ASA logo.jpg'
 
 gsap.registerPlugin(TextPlugin);
 
