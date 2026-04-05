@@ -335,7 +335,7 @@ export default function ContactPage() {
       <button
         onClick={() => setDark(d => !d)}
         aria-label="Toggle dark mode"
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-all duration-300"
+        className="fixed bottom-6 cursor-pointer right-6 z-50 w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-all duration-300"
         style={{
           backgroundColor: t.toggleBg,
           color: t.toggleText,
