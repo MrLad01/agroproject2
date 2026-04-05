@@ -1,12 +1,12 @@
 "use client"
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import bg from '@/public/Screenshot 2026-02-03 040000.png'
 import palm from '@/public/Screenshot 2026-02-03 040106.png'
 import Navbar from '@/components/Navbar'
 import { motion, cubicBezier, AnimatePresence } from 'framer-motion'
-import { Leaf, Wind, Dumbbell, Clock, CheckCircle, X, MessageCircle } from 'lucide-react'
+import { Leaf, Wind, Dumbbell, Clock, CheckCircle, X, MessageCircle, Sun, Moon } from 'lucide-react'
 
 // ── Animation variants ────────────────────────────────────────────
 const stagger = {
@@ -32,53 +32,128 @@ type FormData = {
   guests: string
 }
 
+// ── Theme tokens ──────────────────────────────────────────────────
+type Theme = {
+  page:         string
+  card:         string
+  cardBorder:   string
+  label:        string
+  accent:       string
+  headingColor: string
+  bodyText:     string
+  inputText:    string
+  inputBorder:  string
+  inputBg:      string
+  mutedText:    string
+  divider:      string
+  toggleBg:     string
+  toggleText:   string
+  featureIcon:  string
+  featureTitle: string
+  featureText:  string
+  badgeColor:   string
+}
+
+const lightTheme: Theme = {
+  page:         'bg-white',
+  card:         'bg-white',
+  cardBorder:   '#28683E',
+  label:        '#28683E',
+  accent:       '#28683E',
+  headingColor: '#1B201E',
+  bodyText:     '#3a5c3a',
+  inputText:    '#1B201E',
+  inputBorder:  '#d1d5db',
+  inputBg:      'transparent',
+  mutedText:    '#6b7280',
+  divider:      '#f0f0f0',
+  toggleBg:     '#f3f7f0',
+  toggleText:   '#1a3d1a',
+  featureIcon:  '#61A962',
+  featureTitle: 'text-white',
+  featureText:  'text-white/70',
+  badgeColor:   '#61A962',
+}
+
+const darkTheme: Theme = {
+  page:         'bg-[#0f1a0f]',
+  card:         'bg-[#141f14]',
+  cardBorder:   '#7ec850',
+  label:        '#7ec850',
+  accent:       '#7ec850',
+  headingColor: '#c8e6a0',
+  bodyText:     '#9bbf85',
+  inputText:    '#c8e6a0',
+  inputBorder:  '#2d4d2d',
+  inputBg:      'transparent',
+  mutedText:    '#6b8f6b',
+  divider:      '#1e3a1e',
+  toggleBg:     '#1e3a1e',
+  toggleText:   '#c8e6a0',
+  featureIcon:  '#7ec850',
+  featureTitle: 'text-white',
+  featureText:  'text-white/70',
+  badgeColor:   '#7ec850',
+}
+
 // ── Feature card ─────────────────────────────────────────────────
 const Feature = ({
   icon: Icon,
   title,
   text,
+  t,
 }: {
   icon: React.ElementType
   title: string
   text: string
+  t: Theme
 }) => (
   <motion.div variants={fadeIn} className="flex flex-col items-center text-center max-w-50">
     <div
       className="w-14 h-14 rounded-full flex items-center justify-center mb-4"
-      style={{ backgroundColor: 'rgba(97,169,98,0.2)', border: '1px solid rgba(97,169,98,0.4)' }}
+      style={{ backgroundColor: 'rgba(97,169,98,0.2)', border: `1px solid rgba(97,169,98,0.4)` }}
     >
-      <Icon size={22} color="#61A962" />
+      <Icon size={22} color={t.featureIcon} />
     </div>
-    <h4 className="text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.12em] text-white mb-2">
+    <h4 className={`text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.12em] mb-2 ${t.featureTitle}`}>
       {title}
     </h4>
-    <p className="text-[12px] sm:text-[13px] text-white/70 leading-relaxed">{text}</p>
+    <p className={`text-[12px] sm:text-[13px] leading-relaxed ${t.featureText}`}>{text}</p>
   </motion.div>
 )
 
 // ── Form field wrapper ────────────────────────────────────────────
-const Field = ({ label, children }: { label: string; children: React.ReactNode }) => (
+const Field = ({
+  label,
+  children,
+  t,
+}: {
+  label: string
+  children: React.ReactNode
+  t: Theme
+}) => (
   <motion.div variants={fadeIn} className="flex flex-col gap-1.5">
-    <label className="text-[10px] font-semibold uppercase tracking-[0.14em]" style={{ color: '#28683E' }}>
+    <label
+      className="text-[10px] font-semibold uppercase tracking-[0.14em]"
+      style={{ color: t.label }}
+    >
       {label}
     </label>
     {children}
   </motion.div>
 )
 
-const inputClass =
-  'w-full border-b bg-transparent px-0 py-2 text-[13px] text-[#1B201E] placeholder:text-gray-400 focus:outline-none transition-colors'
-const inputStyle = { borderColor: '#d1d5db', borderBottomWidth: '1px' as const }
-
 // ── Confirmation Modal ────────────────────────────────────────────
 function ConfirmModal({
   data,
   onConfirm,
   onCancel,
+  t,
 }: {
   data: FormData
   onConfirm: () => void
   onCancel: () => void
+  t: Theme
 }) {
   const details = [
     data.checkIn  && `Check-in: ${data.checkIn}`,
@@ -103,70 +178,70 @@ function ConfirmModal({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 10, scale: 0.97 }}
         transition={{ duration: 0.25, ease: cubicBezier(0.25, 0.46, 0.45, 0.94) }}
-        className="relative w-full max-w-md bg-white shadow-2xl"
-        style={{ borderTop: '3px solid #28683E' }}
+        className={`relative w-full max-w-md shadow-2xl ${t.card}`}
+        style={{ borderTop: `3px solid ${t.cardBorder}` }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close */}
         <button
           onClick={onCancel}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+          className="absolute top-4 right-4 transition-colors cursor-pointer"
+          style={{ color: t.mutedText }}
           aria-label="Close"
         >
           <X size={17} />
         </button>
 
         <div className="px-7 sm:px-9 py-8">
-
-          {/* Header */}
           <div className="flex items-center gap-3 mb-5">
-            <div
-              className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-              style={{ backgroundColor: '#25D366' }}
-            >
+            <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+              style={{ backgroundColor: '#25D366' }}>
               <MessageCircle size={18} color="white" fill="white" />
             </div>
             <div>
-              <p className="text-[10px] tracking-[0.16em] uppercase mb-0.5" style={{ color: '#28683E' }}>
+              <p className="text-[10px] tracking-[0.16em] uppercase mb-0.5"
+                style={{ color: t.label }}>
                 Opening WhatsApp
               </p>
-              <h3 className="eb-garamond-semibold text-[22px] text-[#1B201E] leading-none">
+              <h3 className="eb-garamond-semibold text-[22px] leading-none"
+                style={{ color: t.headingColor }}>
                 Confirm &amp; Send
               </h3>
             </div>
           </div>
 
-          <p className="text-[12px] text-gray-400 leading-relaxed mb-5">
-            This will open <strong className="text-gray-600">WhatsApp</strong> with a pre-filled message to our team. They'll confirm your room availability shortly.
+          <p className="text-[12px] leading-relaxed mb-5" style={{ color: t.mutedText }}>
+            This will open <strong style={{ color: t.bodyText }}>WhatsApp</strong> with a pre-filled
+            message to our team. They'll confirm your room availability shortly.
           </p>
 
-          {/* Message preview */}
           <div
             className="px-4 py-4 mb-6 space-y-1 text-[12px] leading-relaxed"
-            style={{ backgroundColor: '#F8FAF6', border: '1px solid #e6e1d8' }}
+            style={{
+              backgroundColor: t.page === 'bg-white' ? '#F8FAF6' : '#0f1a0f',
+              border: `1px solid ${t.inputBorder}`,
+            }}
           >
-            <p className="text-[10px] tracking-[0.14em] uppercase text-gray-400 mb-2">
+            <p className="text-[10px] tracking-[0.14em] uppercase mb-2" style={{ color: t.mutedText }}>
               Message preview
             </p>
-            <p className="text-gray-700">
+            <p style={{ color: t.bodyText }}>
               Hi, I'm{' '}
-              <span className="font-semibold text-[#1B201E]">{data.name || 'a guest'}</span>.
-              I'd like to check availability at Agroterra Resort.
+              <span className="font-semibold" style={{ color: t.headingColor }}>
+                {data.name || 'a guest'}
+              </span>
+              . I'd like to check availability at Agroterra Resort.
             </p>
             {details.map((line, i) => (
-              <p key={i} className="text-gray-500">{line}</p>
+              <p key={i} style={{ color: t.mutedText }}>{line}</p>
             ))}
-            <p className="text-gray-500">Please let me know if this is available. Thank you!</p>
+            <p style={{ color: t.mutedText }}>Please let me know if this is available. Thank you!</p>
           </div>
 
-          {/* Actions */}
           <div className="flex gap-3">
             <button
               onClick={onCancel}
               className="flex-1 py-3 text-[11px] tracking-[0.12em] uppercase transition-colors cursor-pointer"
-              style={{ border: '1px solid #d1d5db', color: '#999' }}
-              onMouseOver={(e) => (e.currentTarget.style.borderColor = '#aaa')}
-              onMouseOut={(e) => (e.currentTarget.style.borderColor = '#d1d5db')}
+              style={{ border: `1px solid ${t.inputBorder}`, color: t.mutedText }}
             >
               Cancel
             </button>
@@ -189,6 +264,9 @@ function ConfirmModal({
 
 // ── Page ─────────────────────────────────────────────────────────
 export default function ContactPage() {
+  const [dark, setDark] = useState(false)
+  const t = dark ? darkTheme : lightTheme
+
   const [form, setForm] = useState<FormData>({
     checkIn: '',
     checkOut: '',
@@ -199,7 +277,11 @@ export default function ContactPage() {
   })
   const [showModal, setShowModal] = useState(false)
 
-  // Today's date in YYYY-MM-DD — used as min for date inputs
+  // Sync OS preference on first load
+  useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) setDark(true)
+  }, [])
+
   const today = new Date().toISOString().split('T')[0]
 
   const set =
@@ -237,22 +319,55 @@ export default function ContactPage() {
     setShowModal(false)
   }
 
+  // Shared input style derived from theme
+  const inputClass = 'w-full border-b px-0 py-2 text-[13px] placeholder:text-gray-400 focus:outline-none transition-colors'
+  const inputStyle = {
+    borderColor: t.inputBorder,
+    borderBottomWidth: '1px' as const,
+    color: t.inputText,
+    backgroundColor: t.inputBg,
+  }
+
   return (
-    <>
+    <div className={`${t.page} min-h-screen transition-colors duration-300`}>
+
+      {/* ── Dark / Light Toggle ───────────────────────────── */}
+      <button
+        onClick={() => setDark(d => !d)}
+        aria-label="Toggle dark mode"
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-all duration-300"
+        style={{
+          backgroundColor: t.toggleBg,
+          color: t.toggleText,
+          border: `1px solid ${t.inputBorder}`,
+        }}
+      >
+        {dark ? <Sun size={18} /> : <Moon size={18} />}
+      </button>
+
       <AnimatePresence>
         {showModal && (
-          <ConfirmModal data={form} onConfirm={handleConfirm} onCancel={() => setShowModal(false)} />
+          <ConfirmModal
+            data={form}
+            onConfirm={handleConfirm}
+            onCancel={() => setShowModal(false)}
+            t={t}
+          />
         )}
       </AnimatePresence>
 
-      <main className="flex flex-col w-full bg-white">
+      <main className="flex flex-col w-full">
 
         {/* ── Hero ──────────────────────────────────────────── */}
         <div className="relative w-full h-[55vh] sm:h-[65vh] lg:h-[92vh]">
           <Image src={bg} alt="Agroterra Resort" fill className="object-cover" priority />
           <div
             className="absolute inset-0"
-            style={{ background: 'linear-gradient(to bottom, rgba(27,32,30,0.6), rgba(27,32,30,0.82))' }}
+            style={{
+              background: dark
+                ? 'linear-gradient(to bottom, rgba(15,26,15,0.75), rgba(15,26,15,0.90))'
+                : 'linear-gradient(to bottom, rgba(27,32,30,0.6), rgba(27,32,30,0.82))',
+            }}
           />
           <div className="absolute inset-x-0 top-0 z-20 px-4 sm:px-8 lg:px-12 py-4 sm:py-5">
             <Navbar />
@@ -262,7 +377,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="text-[10px] tracking-[0.25em] uppercase mb-4"
-              style={{ color: '#61A962' }}
+              style={{ color: t.badgeColor }}
             >
               Agroterra Resort
             </motion.p>
@@ -300,14 +415,17 @@ export default function ContactPage() {
           className="w-full flex justify-center px-4 -mt-10 sm:-mt-14 relative z-10 pb-16 sm:pb-24"
         >
           <div
-            className="w-full max-w-3xl bg-white shadow-2xl px-6 sm:px-10 lg:px-14 py-10 sm:py-12"
-            style={{ borderTop: '3px solid #28683E' }}
+            className={`w-full max-w-3xl shadow-2xl px-6 sm:px-10 lg:px-14 py-10 sm:py-12 ${t.card}`}
+            style={{ borderTop: `3px solid ${t.cardBorder}` }}
           >
             <div className="mb-8 sm:mb-10">
-              <p className="text-[10px] tracking-[0.2em] uppercase mb-2" style={{ color: '#28683E' }}>
+              <p className="text-[10px] tracking-[0.2em] uppercase mb-2" style={{ color: t.label }}>
                 Availability
               </p>
-              <h2 className="eb-garamond-semibold text-[24px] sm:text-[30px]" style={{ color: '#1B201E' }}>
+              <h2
+                className="eb-garamond-semibold text-[24px] sm:text-[30px]"
+                style={{ color: t.headingColor }}
+              >
                 Check Availability
               </h2>
             </div>
@@ -320,30 +438,27 @@ export default function ContactPage() {
               onSubmit={handleSubmit}
               className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7"
             >
-              <Field label="Check-in Date">
+              <Field label="Check-in Date" t={t}>
                 <input type="date" value={form.checkIn} onChange={set('checkIn')}
-                  min={today}
-                  className={inputClass} style={inputStyle} />
+                  min={today} className={inputClass} style={inputStyle} />
               </Field>
 
-              <Field label="Check-out Date">
+              <Field label="Check-out Date" t={t}>
                 <input type="date" value={form.checkOut} onChange={set('checkOut')}
-                  min={form.checkIn || today}
-                  className={inputClass} style={inputStyle} />
+                  min={form.checkIn || today} className={inputClass} style={inputStyle} />
               </Field>
 
-              <Field label="Room Type">
+              <Field label="Room Type" t={t}>
                 <select value={form.roomType} onChange={set('roomType')}
-                  className={inputClass} style={inputStyle}>
-                  <option value="" disabled>Select room type</option>
-                  <option>Deluxe Room</option>
-                  <option>Executive Suite</option>
-                  <option>Family Villa</option>
+                  className={inputClass} style={{ ...inputStyle, backgroundColor: dark ? '#141f14' : 'transparent' }}>
+                  <option value="" disabled style={{ color: t.mutedText, backgroundColor: dark ? '#141f14' : 'white' }}>Select room type</option>
+                  <option style={{ backgroundColor: dark ? '#141f14' : 'white', color: t.inputText }}>Deluxe Room</option>
+                  <option style={{ backgroundColor: dark ? '#141f14' : 'white', color: t.inputText }}>Executive Suite</option>
+                  <option style={{ backgroundColor: dark ? '#141f14' : 'white', color: t.inputText }}>Family Villa</option>
                 </select>
               </Field>
 
-              {/* Name — only required field */}
-              <Field label="Your Name *">
+              <Field label="Your Name *" t={t}>
                 <input
                   id="field-name"
                   type="text"
@@ -356,12 +471,12 @@ export default function ContactPage() {
                 />
               </Field>
 
-              <Field label="Phone (optional)">
-                <input type="tel" placeholder="+234..." value={form.phone} onChange={set('phone')}
-                  className={inputClass} style={inputStyle} />
+              <Field label="Phone (optional)" t={t}>
+                <input type="tel" placeholder="+234..." value={form.phone}
+                  onChange={set('phone')} className={inputClass} style={inputStyle} />
               </Field>
 
-              <Field label="Number of Guests">
+              <Field label="Number of Guests" t={t}>
                 <input type="number" placeholder="e.g. 2" min={1} value={form.guests}
                   onChange={set('guests')} className={inputClass} style={inputStyle} />
               </Field>
@@ -370,7 +485,7 @@ export default function ContactPage() {
               <motion.div
                 variants={fadeIn}
                 className="sm:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 mt-2"
-                style={{ borderTop: '1px solid #f0f0f0' }}
+                style={{ borderTop: `1px solid ${t.divider}` }}
               >
                 <div className="flex items-center gap-4">
                   {[
@@ -378,8 +493,8 @@ export default function ContactPage() {
                     { icon: Clock, text: 'Instant reply' },
                   ].map(({ icon: Icon, text }) => (
                     <div key={text} className="flex items-center gap-1.5">
-                      <Icon size={13} color="#28683E" />
-                      <span className="text-[11px] text-gray-400">{text}</span>
+                      <Icon size={13} color={t.accent} />
+                      <span className="text-[11px]" style={{ color: t.mutedText }}>{text}</span>
                     </div>
                   ))}
                 </div>
@@ -389,9 +504,7 @@ export default function ContactPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="flex items-center gap-2 px-8 py-3 text-[11px] font-semibold tracking-[0.15em] uppercase text-white transition-colors cursor-pointer whitespace-nowrap"
-                  style={{ backgroundColor: '#28683E' }}
-                  onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#1f5432')}
-                  onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#28683E')}
+                  style={{ backgroundColor: t.accent }}
                 >
                   <MessageCircle size={14} />
                   Check Availability
@@ -406,14 +519,18 @@ export default function ContactPage() {
           <Image src={palm} alt="Resort grounds" fill className="object-cover" />
           <div
             className="absolute inset-0"
-            style={{ background: 'linear-gradient(to bottom, rgba(27,32,30,0.6), rgba(27,32,30,0.82))' }}
+            style={{
+              background: dark
+                ? 'linear-gradient(to bottom, rgba(15,26,15,0.78), rgba(15,26,15,0.92))'
+                : 'linear-gradient(to bottom, rgba(27,32,30,0.6), rgba(27,32,30,0.82))',
+            }}
           />
           <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-20 sm:py-28">
             <motion.p
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="text-[10px] tracking-[0.22em] uppercase mb-4"
-              style={{ color: '#61A962' }}
+              style={{ color: t.badgeColor }}
             >
               The Experience
             </motion.p>
@@ -424,7 +541,7 @@ export default function ContactPage() {
             >
               Stay With Us
             </motion.h2>
-            <div className="w-10 h-0.5 mb-8 sm:mb-10" style={{ backgroundColor: '#61A962' }} />
+            <div className="w-10 h-0.5 mb-8 sm:mb-10" style={{ backgroundColor: t.badgeColor }} />
             <motion.p
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2 }}
@@ -438,14 +555,14 @@ export default function ContactPage() {
               variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}
               className="flex flex-col sm:flex-row gap-10 sm:gap-16 lg:gap-24 items-center justify-center"
             >
-              <Feature icon={Dumbbell} title="Access to Golf Areas" text="Enjoy open green spaces and leisure activities." />
-              <Feature icon={Leaf} title="Natural Open Spaces" text="Fresh air, greenery, and peaceful surroundings." />
-              <Feature icon={Wind} title="Relaxing Environment" text="Designed for comfort, calm, and quiet moments." />
+              <Feature icon={Dumbbell} title="Access to Golf Areas" text="Enjoy open green spaces and leisure activities." t={t} />
+              <Feature icon={Leaf} title="Natural Open Spaces" text="Fresh air, greenery, and peaceful surroundings." t={t} />
+              <Feature icon={Wind} title="Relaxing Environment" text="Designed for comfort, calm, and quiet moments." t={t} />
             </motion.div>
           </div>
         </section>
 
       </main>
-    </>
+    </div>
   )
-}
+}``

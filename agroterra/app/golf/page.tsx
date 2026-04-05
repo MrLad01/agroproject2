@@ -2,9 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import logo from '@/public/ASA logo.jpg'
-import { FaConciergeBell } from 'react-icons/fa'
-// import bg from '@/public/09.png'
 import bg from '@/public/image_14.png'
 import bg1 from '@/public/golf2.png'
 import bg2 from '@/public/golf3.png'
@@ -13,498 +10,444 @@ import block2 from "@/public/Golf image block 2.png"
 import block3 from "@/public/Golf image block 3.png"
 import block4 from "@/public/Golf image block 4.png"
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import useEmblaCarousel from 'embla-carousel-react'
-import { DotButton, ScrollingDots, useDotButton } from '@/components/Embla/EmblaCarouselDotButton'
+import { useDotButton } from '@/components/Embla/EmblaCarouselDotButton'
 import Autoplay from 'embla-carousel-autoplay'
 import Navbar from '@/components/Navbar'
+import { Sun, Moon } from 'lucide-react'
 
+// ── Animation variants ────────────────────────────────────────────
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 32 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
+  }),
 }
 
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
+const tabContent = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
+  exit:   { opacity: 0, y: -8, transition: { duration: 0.25 } },
 }
 
-export function EmblaCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay()])
-  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
+// ── Theme tokens ──────────────────────────────────────────────────
+type Theme = {
+  page:        string
+  surface:     string
+  surfaceAlt:  string
+  border:      string
+  borderVal:   string
+  accent:      string
+  accentVal:   string
+  heading:     string
+  headingVal:  string
+  body:        string
+  bodyVal:     string
+  muted:       string
+  mutedVal:    string
+  tabActive:   string
+  tabInactive: string
+  ruleLine:    string
+  quoteBar:    string
+}
 
-  // Array of images for the carousel
-  const images = [bg, bg1, bg2]
+const light: Theme = {
+  page:        'bg-[#f8f5ef]',
+  surface:     'bg-white',
+  surfaceAlt:  'bg-[#f0ebe1]',
+  border:      'border-[#d8cfc0]',
+  borderVal:   '#d8cfc0',
+  accent:      'text-[#28683E]',
+  accentVal:   '#28683E',
+  heading:     'text-[#1a2e1a]',
+  headingVal:  '#1a2e1a',
+  body:        'text-[#2c3e2c]',
+  bodyVal:     '#2c3e2c',
+  muted:       'text-[#7a8c6a]',
+  mutedVal:    '#7a8c6a',
+  tabActive:   'text-[#28683E] border-b-[#28683E]',
+  tabInactive: 'text-[#8a9c7a] border-b-transparent',
+  ruleLine:    '#c5d4b0',
+  quoteBar:    '#28683E',
+}
 
+const dark: Theme = {
+  page:        'bg-[#0a120a]',
+  surface:     'bg-[#111a11]',
+  surfaceAlt:  'bg-[#0d160d]',
+  border:      'border-[#2a3d2a]',
+  borderVal:   '#2a3d2a',
+  accent:      'text-[#7ec850]',
+  accentVal:   '#7ec850',
+  heading:     'text-[#d4ebb0]',
+  headingVal:  '#d4ebb0',
+  body:        'text-[#a8c890]',
+  bodyVal:     '#a8c890',
+  muted:       'text-[#5a7a4a]',
+  mutedVal:    '#5a7a4a',
+  tabActive:   'text-[#7ec850] border-b-[#7ec850]',
+  tabInactive: 'text-[#3a5a3a] border-b-transparent',
+  ruleLine:    '#2a3d2a',
+  quoteBar:    '#7ec850',
+}
+
+// ── Slim carousel dots (mobile-safe) ─────────────────────────────
+function CarouselDots({
+  count,
+  selected,
+  onSelect,
+  t,
+}: {
+  count: number
+  selected: number
+  onSelect: (i: number) => void
+  t: Theme
+}) {
   return (
-    <section className="embla relative">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[95.8vh]">
-
-          <div className="embla__slide relative">
-            <Image src={bg} alt="House background image" fill loading="eager" className="object-cover" />
-          </div>
-
-          <div className="embla__slide relative">
-            <Image src={bg1} alt="Golf Course background image" fill loading="lazy" className="object-cover" />
-          </div>
-    
-          <div className="embla__slide relative">
-            <Image src={bg2} alt="Kitchen background image 3" fill loading="lazy" className="object-cover" />
-          </div>
-          
-          
-        </div>
-      </div>
-      <div className="embla__controls absolute bottom-4 sm:bottom-6 left-0 right-0 z-20 flex justify-center">
-        <div className="embla__dots flex items-center gap-2">
-          {images.length <= 3 ? scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              image={images[index]}
-              isSelected={index === selectedIndex}
-            />
-          )): 
-          
-          <ScrollingDots 
-            images={images}
-            selectedIndex={selectedIndex}
-            onDotButtonClick={onDotButtonClick}
-          />
-
-          }
-        </div>
-      </div>
-    </section>
+    <div className="flex items-center justify-center gap-2">
+      {Array.from({ length: count }).map((_, i) => (
+        <button
+          key={i}
+          onClick={() => onSelect(i)}
+          aria-label={`Slide ${i + 1}`}
+          className="transition-all duration-300 rounded-full"
+          style={{
+            width:  i === selected ? 28 : 8,
+            height: 8,
+            backgroundColor: i === selected ? t.accentVal : t.ruleLine,
+            opacity: i === selected ? 1 : 0.6,
+          }}
+        />
+      ))}
+    </div>
   )
 }
 
+// ── Carousel ──────────────────────────────────────────────────────
+function HeroCarousel({ t }: { t: Theme }) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000 })])
+  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
+  const slides = [bg, bg1, bg2]
 
-export default function page() {
-  const [activeTab, setActiveTab] = useState<string>('about');
+  return (
+    <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[95vh]">
+      {/* Viewport */}
+      <div className="overflow-hidden w-full h-full" ref={emblaRef}>
+        <div className="flex h-full">
+          {slides.map((src, i) => (
+            <div key={i} className="relative flex-[0_0_100%] h-full">
+              <Image
+                src={src}
+                alt={`Golf slide ${i + 1}`}
+                fill
+                className="object-cover"
+                loading={i === 0 ? 'eager' : 'lazy'}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
 
-  // Load from localStorage only after component mounts (client-side only)
+      {/* Gradient overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.72) 100%)',
+        }}
+      />
+
+      {/* Navbar */}
+      <div className="absolute inset-x-0 top-0 z-20 px-4 sm:px-8 md:px-12 py-4 sm:py-6">
+        <Navbar />
+      </div>
+
+      {/* Hero text */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10 px-6 text-center">
+        <motion.p
+          initial={{ opacity: 0, letterSpacing: '0.4em' }}
+          animate={{ opacity: 1, letterSpacing: '0.28em' }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="text-[10px] sm:text-[11px] uppercase font-semibold mb-4 text-white/60"
+          style={{ letterSpacing: '0.28em' }}
+        >
+          Agroterra Resort
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="eb-garamond-semibold text-[42px] sm:text-[58px] md:text-[70px] lg:text-[84px] leading-none uppercase"
+        >
+          Golf Course
+        </motion.h1>
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="w-16 h-px bg-white/50 mt-5 mb-4 origin-left"
+        />
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.65 }}
+          className="eb-garamond-italic text-[18px] sm:text-[22px] md:text-[26px] text-white/80 max-w-lg"
+        >
+          Where nature, comfort, and experience meet.
+        </motion.p>
+      </div>
+
+      {/* Dots — slim pill style, always centered, mobile-safe */}
+      <div className="absolute bottom-5 sm:bottom-7 inset-x-0 z-20 flex justify-center px-4">
+        <CarouselDots
+          count={slides.length}
+          selected={selectedIndex}
+          onSelect={onDotButtonClick}
+          t={t}
+        />
+      </div>
+    </div>
+  )
+}
+
+// ── Tab definitions ───────────────────────────────────────────────
+const TABS = [
+  { key: 'about',         label: 'About' },
+  { key: 'driving-range', label: 'Driving Range' },
+  { key: 'club-house',    label: 'Club House' },
+] as const
+type TabKey = typeof TABS[number]['key']
+
+// ── Tab content data ──────────────────────────────────────────────
+const TAB_DATA: Record<TabKey, { intro: string; paragraphs: string[] }> = {
+  about: {
+    intro: 'A place where every round feels like an escape into nature.',
+    paragraphs: [
+      "Welcome to the golf course at Agroterra Resort, where nature and recreation come together in a peaceful, open setting. Surrounded by trees and spread across a large portion of land, the course offers an experience that is both relaxing and rewarding. From the moment you step onto the grounds, you are welcomed by fresh air, wide green views, and a calm atmosphere that makes every visit feel like an escape.",
+      "One of the most distinctive features of the course is its sense of space. The generous layout allows each hole to feel open and inviting, giving players room to focus and play comfortably. Fairways stretch naturally across the landscape, while greens sit in quiet clearings framed by trees.",
+      "The surrounding trees shape the character of the golf course. They form a natural border that brings privacy and serenity, while also adding beauty and shade throughout the day. Sunlight filtering through the branches creates soft patterns on the grass, and the gentle sounds of leaves and birds enhance the peaceful environment.",
+      "Designed to follow the natural contours of the land, the course flows smoothly with gentle slopes and subtle changes in elevation. Beginners can feel at ease on the open fairways, while experienced golfers enjoy the variety and strategy offered by the terrain and green placements. Each hole has its own atmosphere — some open to broad views of sky and greenery, others feel more enclosed, encouraging focus and precision.",
+      "The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well-kept condition reflects the care given to the course while preserving its natural charm. More than just a sports facility, the golf course is a space to slow down and recharge — a landscape designed to inspire comfort, focus, and enjoyment.",
+    ],
+  },
+  'driving-range': {
+    intro: 'The perfect space to practice, warm up, and build confidence.',
+    paragraphs: [
+      "The driving range at Agroterra Resort is designed as the perfect space to practice, warm up, and build confidence in a calm natural environment. Just like the main course, the range is surrounded by trees and open landscape, creating a setting that feels peaceful and focused rather than busy or crowded.",
+      "Set within a spacious portion of land, the driving range offers plenty of room to practice full shots comfortably. The open layout allows you to see the full flight of the ball against the wide sky, helping you better understand distance, direction, and control.",
+      "The natural surroundings play an important role in the experience. Trees line the edges of the range, offering shade and a sense of privacy while also reducing outside distractions. The sound of clubs connecting with balls blends with the quiet atmosphere of nature, creating a setting that feels both active and relaxing.",
+      "The surface of the range is carefully maintained to ensure a comfortable and consistent practice experience. From short controlled shots to powerful drives, the range supports every aspect of long game practice.",
+      "The driving range is ideal for beginners getting comfortable with the fundamentals, while experienced golfers can fine-tune mechanics and prepare mentally before stepping onto the course. Surrounded by trees, open air, and natural beauty, it turns practice into a refreshing and enjoyable part of your visit.",
+    ],
+  },
+  'club-house': {
+    intro: 'The heart of the golf experience — where comfort and connection meet.',
+    paragraphs: [
+      "The clubhouse at Agroterra Resort is the heart of the golf experience, a welcoming space where comfort, connection, and relaxation come together. Designed to complement the natural beauty of the surrounding course, the clubhouse offers a calm and inviting environment where players and visitors can unwind before or after their time on the greens.",
+      "Set against the backdrop of trees and open landscape, the clubhouse blends seamlessly with its surroundings. Large windows and open views allow natural light to fill the space, creating a bright and refreshing atmosphere where guests remain connected to the course.",
+      "The clubhouse serves as a gathering place for golfers, families, and friends — where rounds begin with anticipation and end with shared stories of the day's best shots. The relaxed environment encourages conversation, laughter, and moments of rest.",
+      "Comfort is at the center of the clubhouse experience. Seating areas are arranged to help guests feel at ease. The atmosphere is calm and unhurried, reflecting the overall pace of life at Agroterra Resort. After spending time outdoors, the clubhouse offers a welcome transition where you can cool down, refresh, and reflect on your game.",
+      "At Agroterra Resort, the clubhouse represents hospitality and comfort set within nature. Surrounded by trees and open air, it brings together the beauty of the outdoors with the ease of an indoor retreat, creating a space where every visit feels complete.",
+    ],
+  },
+}
+
+// ── Image grid ────────────────────────────────────────────────────
+function ImageGrid({ t }: { t: Theme }) {
+  const pairs = [[block1, block2], [block3, block4]]
+  return (
+    <div className="space-y-4 sm:space-y-5 mt-14 sm:mt-20">
+      {pairs.map((pair, pi) => (
+        <div key={pi} className="grid grid-cols-2 gap-4 sm:gap-5">
+          {pair.map((img, ii) => (
+            <motion.div
+              key={ii}
+              custom={pi * 2 + ii}
+              // variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="overflow-hidden rounded-xl"
+              style={{ boxShadow: `0 8px 32px ${t.accentVal}15` }}
+            >
+              <Image
+                src={img}
+                alt={`Golf image ${pi * 2 + ii + 1}`}
+                className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </motion.div>
+          ))}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// ── Tab body ──────────────────────────────────────────────────────
+function TabBody({ tabKey, t }: { tabKey: TabKey; t: Theme }) {
+  const data = TAB_DATA[tabKey]
+
+  return (
+    <motion.div
+      key={tabKey}
+      // variants={tabContent}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="w-full"
+    >
+      {/* Video */}
+      <motion.div
+        custom={0} 
+        // variants={fadeUp} 
+        initial="hidden" animate="visible"
+        className="flex justify-center mb-12 sm:mb-16"
+      >
+        <div className="relative w-full sm:w-[88%] md:w-[78%] aspect-video rounded-2xl overflow-hidden shadow-2xl"
+          style={{ boxShadow: `0 20px 60px ${t.accentVal}25` }}>
+          <iframe
+            src="https://www.youtube.com/embed/Hc0KW9WMBpU?autoplay=1&mute=1&loop=1&playlist=Hc0KW9WMBpU&controls=0&modestbranding=1"
+            title="Golf Course Video"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full"
+          />
+        </div>
+      </motion.div>
+
+      {/* Pull-quote intro */}
+      <motion.div
+        custom={1} 
+        // variants={fadeUp} 
+        initial="hidden" animate="visible"
+        className="relative pl-5 sm:pl-7 mb-10 sm:mb-14"
+        style={{ borderLeft: `3px solid ${t.quoteBar}` }}
+      >
+        <p
+          className="cormorant-garamond-medium-italic text-[22px] sm:text-[26px] md:text-[30px] leading-snug"
+          style={{ color: t.accentVal }}
+        >
+          {data.intro}
+        </p>
+      </motion.div>
+
+      {/* Rule */}
+      <div className="w-full h-px mb-10 sm:mb-12" style={{ backgroundColor: t.ruleLine }} />
+
+      {/* Paragraphs — alternating layout on larger screens */}
+      <div className="space-y-8 sm:space-y-10">
+        {data.paragraphs.map((text, i) => (
+          <motion.p
+            key={i}
+            custom={i + 2}
+            // variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            className="cormorant-garamond-light-italic text-[17px] sm:text-[18px] md:text-[19px] lg:text-[20px] leading-[1.85]"
+            style={{ color: t.bodyVal }}
+          >
+            {text}
+          </motion.p>
+        ))}
+      </div>
+
+      {/* Decorative mid-rule */}
+      <div className="flex items-center gap-4 my-14 sm:my-20">
+        <div className="flex-1 h-px" style={{ backgroundColor: t.ruleLine }} />
+        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: t.accentVal }} />
+        <div className="flex-1 h-px" style={{ backgroundColor: t.ruleLine }} />
+      </div>
+
+      {/* Image grid */}
+      <ImageGrid t={t} />
+    </motion.div>
+  )
+}
+
+// ── Page ──────────────────────────────────────────────────────────
+export default function GolfPage() {
+  const [isDark, setIsDark] = useState(false)
+  const t = isDark ? dark : light
+
+  const [activeTab, setActiveTab] = useState<TabKey>('about')
+
   useEffect(() => {
-    const tabFromLocal = localStorage.getItem('tab2')
-    if (tabFromLocal) {
-      setActiveTab(tabFromLocal)
-    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) setIsDark(true)
+    const saved = localStorage.getItem('golf-tab') as TabKey | null
+    if (saved && TABS.some(tb => tb.key === saved)) setActiveTab(saved)
   }, [])
 
-  const handleTabSwitch = (tabStart: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    setActiveTab(tabStart);
-    localStorage.setItem("tab2", tabStart)
+  const handleTab = (key: TabKey) => {
+    setActiveTab(key)
+    localStorage.setItem('golf-tab', key)
   }
 
   return (
-    <div className="">
-      <div className="flex-col min-h-screen overflow-x-hidden items-center justify-center bg-zinc-50 font-sans">
-        <main className="flex flex-col -[65%] md:min-h-screen w-full bg-white dark:bg-black sm:items-start">
-          {/* Background Carousel */}
-          <div className="w-full relative">
-            <EmblaCarousel />
-            <div className="absolute inset-0 w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[95.8vh] bg-[#00000075] flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5 lg:py-6 pointer-events-none">
-              {/* Nav */}
-              <div className="pointer-events-auto">
-                <Navbar />
-              </div>
-              <div className="h-full flex flex-col text-white items-center justify-center leading-relaxed">
-                <div className="flex flex-col justify-center items-center -mt-8 sm:-mt-12 lg:-mt-16">
-                  <motion.h2 
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="text-center eb-garamond-semibold text-[32px] sm:text-[42px] md:text-[52px] lg:text-[62px] welcome-text"
-                  >
-                    AGROTERRA
-                  </motion.h2>
-                  <motion.p 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                    className="eb-garamond-italic text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] max-w-[90%] sm:max-w-140 text-center px-4"
-                  >
-                    &ldquo;Where nature, comfort, and experience meet.&rdquo;
-                  </motion.p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
+    <div className={`${t.page} min-h-screen transition-colors duration-300`}>
 
-        {/* Tabs */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center-safe w-full mt-6 sm:mt-8 mb-10 sm:mb-12 lg:mb-16 px-4 sm:px-12 md:px-24 lg:px-40 xl:px-60"
-        >
-          {[
-            { key: 'about', label: 'About' },
-            { key: 'driving range', label: 'Driving Range' },
-            { key: 'club house', label: 'Club House' },
-          ].map((tab, index) => (
-            <motion.button
-              key={tab.key}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 + (index * 0.1) }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className={`w-full py-3 sm:py-4 text-[14px] sm:text-[15px] lg:text-[16px] eb-garamond-semibold transition
-                ${activeTab === tab.key
-                  ? "border-b-[#101996] text-[#101996] border-b-2"
-                  : "text-[#111111] opacity-30 cursor-pointer"
-                }`}
-              onClick={(e) => handleTabSwitch(tab.key, e)}
+      {/* ── Toggle ───────────────────────────────────────── */}
+      <button
+        onClick={() => setIsDark(d => !d)}
+        aria-label="Toggle dark mode"
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-all duration-300"
+        style={{
+          backgroundColor: isDark ? '#111a11' : '#f0ebe1',
+          color: t.accentVal,
+          border: `1px solid ${t.borderVal}`,
+          boxShadow: `0 4px 20px ${t.accentVal}20`,
+        }}
+      >
+        {isDark ? <Sun size={18} /> : <Moon size={18} />}
+      </button>
+
+      {/* ── Hero Carousel ─────────────────────────────── */}
+      <HeroCarousel t={t} />
+
+      {/* ── Tabs ──────────────────────────────────────── */}
+      <div
+        className={`sticky top-0 z-30 ${t.surface} border-b ${t.border} transition-colors duration-300`}
+        style={{ backdropFilter: 'blur(12px)' }}
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 flex">
+          {TABS.map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => handleTab(key)}
+              className={`
+                flex-1 py-4 sm:py-5
+                text-[13px] sm:text-[14px] font-semibold tracking-[0.08em] uppercase
+                border-b-2 transition-all duration-250
+                ${activeTab === key ? t.tabActive : t.tabInactive}
+              `}
             >
-              {tab.label}
-            </motion.button>
+              {label}
+            </button>
           ))}
-        </motion.div>
-
-        {/* About Tab Content */}
-        {activeTab === "about" && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className='flex-col justify-center items-center px-4 sm:px-8 md:px-16 lg:px-32 xl:px-60 py-6 sm:py-8 gap-2'
-          >
-            {/* VIDEO */}
-            <motion.div
-              variants={fadeIn}
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 1 }}
-              className="flex justify-center"
-            >
-              <div className="relative w-full sm:w-[85%] md:w-[75%] lg:w-[70%] aspect-video rounded-xl overflow-hidden shadow-xl">
-                <iframe
-                  src="https://www.youtube.com/embed/Hc0KW9WMBpU?autoplay=1&mute=1&loop=1&playlist=Hc0KW9WMBpU&controls=0&modestbranding=1"
-                  title="Golf Course Video"
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                />
-              </div>
-            </motion.div>
-            
-            {[
-              "Welcome to the golf course at Agroterra Resort, where nature and recreation come together in a peaceful, open setting. Surrounded by trees and spread across a large portion of land, the course offers an experience that is both relaxing and rewarding. From the moment you step onto the grounds, you are welcomed by fresh air, wide green views, and a calm atmosphere that makes every visit feel like an escape.",
-              "One of the most distinctive features of the course is its sense of space. The generous layout allows each hole to feel open and inviting, giving players room to focus and play comfortably. Fairways stretch naturally across the landscape, while greens sit in quiet clearings framed by trees. This openness creates an unhurried pace, making the course enjoyable for both casual rounds and focused games.",
-              "The surrounding trees shape the character of the golf course. They form a natural border that brings privacy and serenity, while also adding beauty and shade throughout the day. Sunlight filtering through the branches creates soft patterns on the grass, and the gentle sounds of leaves and birds enhance the peaceful environment. The presence of nature is felt at every step, turning a simple game into a refreshing outdoor experience.",
-              "Designed to follow the natural contours of the land, the course flows smoothly with gentle slopes and subtle changes in elevation. This thoughtful layout makes the course welcoming to players of all skill levels. Beginners can feel at ease on the open fairways, while more experienced golfers can enjoy the variety and strategy offered by the terrain and green placements. Each hole has its own atmosphere. Some open up to broad views of sky and greenery, while others feel more enclosed and quiet, encouraging focus and precision. The journey between holes becomes part of the enjoyment, offering moments to take in the scenery and relax before the next shot.",
-              "The greens are carefully maintained, providing a smooth and satisfying surface for play. Their well kept condition reflects the care given to the course while preserving its natural charm. The balance between maintained playing areas and the surrounding landscape gives the course its unique appeal.",
-              "The golf course at Agroterra Resort is also a place for connection. Friends, families, and colleagues gather here to share time outdoors in a welcoming setting. The spacious design allows everyone to enjoy their game without feeling crowded, creating a comfortable and social environment. More than just a sports facility, the golf course is a space to slow down and recharge. Its large open areas, tree lined surroundings, and calm atmosphere create a setting where you can enjoy both the game and the beauty of nature. At Agroterra Resort, every round of golf becomes a relaxing journey through a landscape designed to inspire comfort, focus, and enjoyment"
-            ].map((text, index) => (
-              <motion.p 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="work-sans font-bold text-black tracking-wide text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] mt-8 sm:mt-10 lg:mt-12"
-              >
-                {text}
-              </motion.p>
-            ))}
-            
-            {/* Image Blocks */}
-            <div className="py-12 sm:py-16 lg:py-24 space-y-8 sm:space-y-10 lg:space-y-14">
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
-              >
-                {[block1, block2].map((img, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.2 }}
-                    whileHover={{ scale: 1.05, rotate: 2 }}
-                    className="w-full sm:w-auto"
-                  >
-                    <Image src={img} alt="image" className="w-full h-auto rounded-lg shadow-lg" />
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
-              >
-                {[block3, block4].map((img, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.2 }}
-                    whileHover={{ scale: 1.05, rotate: -2 }}
-                    className="w-full sm:w-auto"
-                  >
-                    <Image src={img} alt="image" className="w-full h-auto rounded-lg shadow-lg" />
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Driving Range Tab Content */}
-        {activeTab === "driving range" && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className='flex-col justify-center items-center px-4 sm:px-8 md:px-16 lg:px-32 xl:px-60 py-6 sm:py-8 gap-2'
-          >
-            {/* VIDEO */}
-            <motion.div
-              variants={fadeIn}
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 1 }}
-              className="flex justify-center"
-            >
-              <div className="relative w-full sm:w-[85%] md:w-[75%] lg:w-[70%] aspect-video rounded-xl overflow-hidden shadow-xl">
-                <iframe
-                  src="https://www.youtube.com/embed/Hc0KW9WMBpU?autoplay=1&mute=1&loop=1&playlist=Hc0KW9WMBpU&controls=0&modestbranding=1"
-                  title="Golf Course Video"
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                />
-              </div>
-            </motion.div>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6 }}
-              className="work-sans font-bold text-black tracking-wide text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] mt-8 sm:mt-10 lg:mt-12"
-            >
-              The driving range at Agroterra Resort is designed as the perfect space to practice, warm up, and build confidence in a calm natural environment. Just like the main course, the range is surrounded by trees and open landscape, creating a setting that feels peaceful and focused rather than busy or crowded. It is a place where players of all levels can take their time, work on their swing, and enjoy the simple rhythm of the game.
-            </motion.p>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="work-sans font-bold text-black tracking-wide text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] mt-8 sm:mt-10 lg:mt-12"
-            >
-              Set within a spacious portion of land, the driving range offers plenty of room to practice full shots comfortably. The open layout allows you to see the full flight of the ball against the wide sky, helping you better understand distance, direction, and control. Whether you are preparing for a round on the course or simply visiting to improve your technique, the range provides an environment that supports steady progress.
-            </motion.p>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="work-sans font-bold text-black tracking-wide text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] mt-8 sm:mt-10 lg:mt-12"
-            >
-              The natural surroundings play an important role in the experience. Trees line the edges of the range, offering shade and a sense of privacy while also reducing outside distractions. The sound of clubs connecting with balls blends with the quiet atmosphere of nature, creating a setting that feels both active and relaxing. Practicing here does not feel rushed or pressured. Instead, it feels like time well spent outdoors.
-            </motion.p>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="work-sans font-bold text-black tracking-wide text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] mt-8 sm:mt-10 lg:mt-12"
-            >
-              The surface of the range is carefully maintained to ensure a comfortable and consistent practice experience. Players can focus on refining their stance, swing path, and timing with confidence. The open target area gives a clear view, making it easier to set personal goals and track improvement over time. From short controlled shots to powerful drives, the range supports every aspect of long game practice.
-            </motion.p>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="work-sans font-bold text-black tracking-wide text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] mt-8 sm:mt-10 lg:mt-12"
-            >
-              The driving range is ideal for beginners who are just getting comfortable with the fundamentals of golf. The welcoming and open environment helps reduce tension, allowing new players to learn at their own pace. At the same time, experienced golfers can use the space to fine tune their mechanics, build consistency, and prepare mentally before stepping onto the course.
-              More than just a practice area, the driving range at Agroterra Resort is part of the overall experience of relaxation and recreation. It offers a quiet corner of the resort where focus and calm come together. Surrounded by trees, open air, and natural beauty, it turns practice into a refreshing and enjoyable part of your visit.
-            </motion.p>
-            
-            {/* Image Blocks */}
-            <div className="py-12 sm:py-16 lg:py-24 space-y-8 sm:space-y-10 lg:space-y-14">
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
-              >
-                {[block1, block2].map((img, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.2 }}
-                    whileHover={{ scale: 1.05, rotate: 2 }}
-                    className="w-full sm:w-auto"
-                  >
-                    <Image src={img} alt="image" className="w-full h-auto rounded-lg shadow-lg" />
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
-              >
-                {[block3, block4].map((img, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.2 }}
-                    whileHover={{ scale: 1.05, rotate: -2 }}
-                    className="w-full sm:w-auto"
-                  >
-                    <Image src={img} alt="image" className="w-full h-auto rounded-lg shadow-lg" />
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Club House Tab Content */}
-        {activeTab === "club house" && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className='flex-col justify-center items-center px-4 sm:px-8 md:px-16 lg:px-32 xl:px-60 py-6 sm:py-8 gap-2'
-          >
-            {/* VIDEO */}
-            <motion.div
-              variants={fadeIn}
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 1 }}
-              className="flex justify-center"
-            >
-              <div className="relative w-full sm:w-[85%] md:w-[75%] lg:w-[70%] aspect-video rounded-xl overflow-hidden shadow-xl">
-                <iframe
-                  src="https://www.youtube.com/embed/Hc0KW9WMBpU?autoplay=1&mute=1&loop=1&playlist=Hc0KW9WMBpU&controls=0&modestbranding=1"
-                  title="Golf Course Video"
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                />
-              </div>
-            </motion.div>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6 }}
-              className="work-sans font-bold text-black tracking-wide text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] mt-8 sm:mt-10 lg:mt-12"
-            >
-              The clubhouse at Agroterra Resort is the heart of the golf experience, a welcoming space where comfort, connection, and relaxation come together. Designed to complement the natural beauty of the surrounding course, the clubhouse offers a calm and inviting environment where players and visitors can unwind before or after their time on the greens.
-            </motion.p>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="work-sans font-bold text-black tracking-wide text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] mt-8 sm:mt-10 lg:mt-12"
-            >
-              Set against the backdrop of trees and open landscape, the clubhouse blends seamlessly with its surroundings. Large windows and open views allow natural light to fill the space, creating a bright and refreshing atmosphere. From inside, guests can still feel connected to the course, with views of the greenery that extend the outdoor experience into a comfortable indoor setting.
-            </motion.p>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="work-sans font-bold text-black tracking-wide text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] mt-8 sm:mt-10 lg:mt-12"
-            >
-              The clubhouse serves as a gathering place for golfers, families, and friends. It is where rounds begin with anticipation and end with shared stories of the day's best shots. The relaxed environment encourages conversation, laughter, and moments of rest. Whether you are meeting fellow players, taking a quiet break, or simply enjoying the peaceful setting, the clubhouse provides a space that feels both social and serene.
-            </motion.p>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="work-sans font-bold text-black tracking-wide text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] mt-8 sm:mt-10 lg:mt-12"
-            >
-              Comfort is at the center of the clubhouse experience. Seating areas are arranged to help guests feel at ease, offering a place to sit back and recharge. The atmosphere is calm and unhurried, reflecting the overall pace of life at Agroterra Resort. After spending time outdoors, the clubhouse offers a welcome transition where you can cool down, refresh, and reflect on your game.
-              The clubhouse also supports the practical side of your visit, helping ensure a smooth and enjoyable day at the course. It is a convenient point of arrival and departure, where guests can prepare for their round and wind down afterward. Its thoughtful design and welcoming feel make it more than just a building. It is an essential part of the overall golf experience.
-            </motion.p>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="work-sans font-bold text-black tracking-wide text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] mt-8 sm:mt-10 lg:mt-12"
-            >
-              At Agroterra Resort, the clubhouse represents hospitality and comfort set within nature. Surrounded by trees and open air, it brings together the beauty of the outdoors with the ease of an indoor retreat, creating a space where every visit to the golf course feels complete.
-            </motion.p>
-            
-            {/* Image Blocks */}
-            <div className="py-12 sm:py-16 lg:py-24 space-y-8 sm:space-y-10 lg:space-y-14">
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
-              >
-                {[block1, block2].map((img, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.2 }}
-                    whileHover={{ scale: 1.05, rotate: 2 }}
-                    className="w-full sm:w-auto"
-                  >
-                    <Image src={img} alt="image" className="w-full h-auto rounded-lg shadow-lg" />
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
-              >
-                {[block3, block4].map((img, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.2 }}
-                    whileHover={{ scale: 1.05, rotate: -2 }}
-                    className="w-full sm:w-auto"
-                  >
-                    <Image src={img} alt="image" className="w-full h-auto rounded-lg shadow-lg" />
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
+        </div>
       </div>
+
+      {/* ── Tab Content ───────────────────────────────── */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 md:px-12 py-12 sm:py-16 md:py-20">
+        <AnimatePresence mode="wait">
+          <TabBody key={activeTab} tabKey={activeTab} t={t} />
+        </AnimatePresence>
+      </div>
+
+      {/* ── Footer ────────────────────────────────────── */}
+      <footer
+        className="py-8 px-6 text-center"
+        style={{ borderTop: `1px solid ${t.borderVal}` }}
+      >
+        <p
+          className="text-[11px] tracking-widest uppercase"
+          style={{ color: t.mutedVal }}
+        >
+          © {new Date().getFullYear()} Agroterra Resort · Golf Course
+        </p>
+      </footer>
+
     </div>
   )
 }

@@ -1,102 +1,51 @@
 'use client'
 
 import Image from "next/image";
-import Link from "next/link";
-import { FaConciergeBell } from "react-icons/fa";
-import useEmblaCarousel from 'embla-carousel-react'
-import Autoplay from 'embla-carousel-autoplay'
 import background1 from '@/public/relaxation3.png'
-import background2 from '@/public/IMG_20241010_175833.jpg'
 import background3 from '@/public/kitchen.png'
 import background4 from '@/public/radio.jpg'
-import background5 from '@/public/relaxation2.png'
 import background6 from '@/public/dorm6.png'
 import background7 from '@/public/golf3.png'
 import background8 from '@/public/top-view.png'
 import securityImage from '@/public/security.png'
 import aboutImage from '@/public/house2.png'
 import aboutImage2 from '@/public/house3.png'
-import logo from '@/public/ASA logo.jpg'
-import { DotButton, ScrollingDots, useDotButton } from "@/components/Embla/EmblaCarouselDotButton";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useState } from 'react';
 import Navbar from "@/components/Navbar";
 
-// export function EmblaCarousel() {
-//   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay()])
-//   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
+export default function Page() {
+  const [dark, setDark] = useState(false);
 
-//   const images = [background1, background2, background3, background4, background5]
+  // Sync dark class on <html>
+  useEffect(() => {
+    const root = document.documentElement;
+    if (dark) root.classList.add('dark');
+    else root.classList.remove('dark');
+  }, [dark]);
 
-//   return (
-//     <section className="embla">
-//       <div className="embla__viewport" ref={emblaRef}>
-//         <div className="embla__container h-[95.8vh]">
-//           <div className="embla__slide relative">
-//             <Image src={background1} alt="House background image" fill loading="eager" />
-//           </div>
-//           <div className="embla__slide relative">
-//             <Image src={background2} alt="Golf Course background image" fill loading="lazy" />
-//           </div>
-//           <div className="embla__slide relative">
-//             <Image src={background3} alt="Kitchen background image 3" fill loading="lazy" />
-//           </div>
-//           <div className="embla__slide relative">
-//             <Image src={background4} alt="Radio background image" fill loading="lazy" />
-//           </div>
-//           <div className="embla__slide relative">
-//             <Image src={background5} alt="Recreation background image" fill loading="lazy" />
-//           </div>
-//         </div>
-//         <div className="embla__controls">
-//           <div className="embla__dots">
-//             {images.length <= 3 ? scrollSnaps.map((_, index) => (
-//               <DotButton
-//                 key={index}
-//                 onClick={() => onDotButtonClick(index)}
-//                 image={images[index]}
-//                 isSelected={index === selectedIndex}
-//               />
-//             )) :
-//               <ScrollingDots
-//                 images={images}
-//                 selectedIndex={selectedIndex}
-//                 onDotButtonClick={onDotButtonClick}
-//               />
-//             }
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   )
-// }
+  // Respect OS preference on first load
+  useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) setDark(true);
+  }, []);
 
-
-
-export default function page() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero text animation on load
     gsap.fromTo(".hero-text",
       { y: 50, opacity: 0 },
       { y: 0, opacity: 1, duration: 1.8, ease: "power4.out", stagger: 0.3 }
     );
 
-    // Nav animation on load
     gsap.fromTo("nav",
       { y: -50, opacity: 0 },
       { y: 0, opacity: 1, duration: 1.5, ease: "power4.out" }
     );
 
-    // Animate sections on scroll.
-    // Using fromTo + immediateRender:false prevents GSAP from applying
-    // opacity:0 before the ScrollTrigger fires — which was causing sections
-    // already visible in the viewport to stay invisible.
     const sections = gsap.utils.toArray<HTMLElement>(".animate-section");
     sections.forEach((section) => {
-      const textElements = section.querySelectorAll<HTMLElement>('h2, p, span');
+      const textElements = section.querySelectorAll<HTMLElement>('h2, p, span, .badge');
       const img = section.querySelector<HTMLElement>('.animate-image');
 
       gsap.fromTo(
@@ -142,173 +91,246 @@ export default function page() {
     };
   }, []);
 
+  // ─── Theme tokens ───────────────────────────────────────────────
+  const bg         = dark ? 'bg-[#0f1a0f]'       : 'bg-white';
+  const bgAlt      = dark ? 'bg-[#151f15]'       : 'bg-[#f3f7f0]';
+  const textHead   = dark ? 'text-[#c8e6a0]'     : 'text-[#1a3d1a]';
+  const textBody   = dark ? 'text-[#9bbf85]'     : 'text-[#3a5c3a]';
+  const accent     = dark ? 'text-[#7ec850]'     : 'text-[#3a7d1a]';
+  const divider    = dark ? 'border-[#2d4d2d]'   : 'border-[#c5ddb5]';
+
+  // ─── Reusable section layout ─────────────────────────────────────
+  type SectionProps = {
+    title: string;
+    body: React.ReactNode;
+    image: any;
+    imageAlt: string;
+    reverse?: boolean;
+    bgClass?: string;
+    badge?: string;
+  };
+
+  function Section({ title, body, image, imageAlt, reverse = false, bgClass, badge }: SectionProps) {
+    const base = bgClass ?? bg;
+    return (
+      <div className={`
+        animate-section
+        ${base}
+        flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}
+        px-6 sm:px-10 md:px-20 lg:px-32
+        py-14 sm:py-20 md:py-24
+        gap-10 lg:gap-20
+        items-center
+        border-t ${divider}
+      `}>
+        {/* Text */}
+        <div className="flex flex-col gap-4 w-full lg:flex-1">
+          {badge && (
+            <span className={`badge inline-block self-start text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full border ${divider} ${accent}`}>
+              {badge}
+            </span>
+          )}
+          <h2 className={`cormorant-garamond-medium-italic text-3xl sm:text-4xl md:text-[2.6rem] leading-snug ${textHead}`}>
+            {title}
+          </h2>
+          <div className={`w-10 h-0.5 rounded-full bg-current ${accent} opacity-60`} />
+          <p className={`cormorant-garamond-light-italic text-[17px] sm:text-[18px] md:text-[19px] leading-relaxed ${textBody}`}>
+            {body}
+          </p>
+        </div>
+
+        {/* Image */}
+        <div className="w-full lg:flex-1 overflow-hidden rounded-xl shadow-lg">
+          <Image
+            src={image}
+            alt={imageAlt}
+            className="animate-image w-full h-64 sm:h-80 md:h-96 lg:h-104 object-cover transition-transform duration-700 hover:scale-105"
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="pb-16 sm:pb-10">
-      <div className=" font-sans">
-        <main className=" w-full">
+    <div className={`${dark ? 'dark' : ''} min-h-screen transition-colors duration-300`}>
 
-          {/* ====================== HERO ====================== */}
-          <div className="relative w-full h-svh">
-            {/* ─── Navbar ─── */}
+      {/* ── Dark / Light Toggle ─────────────────────────────────── */}
+      <button
+        onClick={() => setDark(d => !d)}
+        aria-label="Toggle dark mode"
+        className={`
+          fixed bottom-6 right-6 z-50
+          w-12 h-12 rounded-full shadow-xl
+          flex items-center justify-center text-xl
+          transition-all duration-300
+          border ${divider}
+          ${dark ? 'bg-[#1e3a1e] text-[#c8e6a0]' : 'bg-white text-[#1a3d1a]'}
+        `}
+      >
+        {dark ? '☀️' : '🌙'}
+      </button>
+
+      {/* ====================== HERO ====================== */}
+      <div className="relative w-full h-svh">
+        <Image
+          src={aboutImage2}
+          alt="Agroterra aerial view"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Gradient overlay — heavier at bottom for text legibility */}
+        <div className={`absolute inset-0 ${dark
+          ? 'bg-linear-to-b from-black/70 via-black/55 to-black/80'
+          : 'bg-linear-to-b from-black/50 via-black/40 to-black/70'
+        } flex flex-col`}>
+          {/* Navbar sits inside the overlay so it's above the image but shares the dark gradient */}
+          <div className="w-full px-4 sm:px-8 md:px-12 pt-4 sm:pt-6 z-10">
             <Navbar />
-            <div className="relative w-full h-full">
-              <Image
-                src={aboutImage2}
-                alt="Background image"
-                className="w-screen h-svh object-cover"
-                style={{ background: 'linear-gradient(to bottom, rgba(27,32,30,0.6), rgba(27,32,30,0.82))' }}
-                priority
-              />
-            </div>
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-[#00000075] flex flex-col px-4 sm:px-8 md:px-12 py-4 sm:py-6 z-10">
-
-
-              {/* ─── Hero Text ─── */}
-              <div className="flex-1 flex flex-col text-white items-center justify-center leading-relaxed px-4">
-                <div className="flex flex-col justify-center items-center -mt-16 sm:-mt-20 md:-mt-26 px-4">
-                  <h2 className="text-center eb-garamond-semibold text-[36px] sm:text-[44px] md:text-[52px] welcome-text hero-text">
-                    AGROTERRA
-                  </h2>
-                  <p className="eb-garamond-italic text-[18px] sm:text-[22px] md:text-[28px] max-w-[90vw] sm:max-w-140 md:max-w-140 text-center hero-text">
-                    Where nature, comfort, and experience meet.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-            
           </div>
-        </main>
-      </div>
 
-      {/* ====================== ABOUT SECTION ====================== */}
-      <div className="flex flex-col lg:flex-row px-6 sm:px-10 md:px-20 lg:px-40 pb-12 sm:pb-16 md:pb-20 pt-8 gap-10 lg:gap-20 items-center justify-center animate-section bg-white">
-        <div className="flex flex-col gap-3 max-w-xl lg:max-w-none">
-          <h2 className="cormorant-garamond-medium-italic text-3xl sm:text-4xl text-zinc-800">About Agroterra Resort</h2>
-          <p className="cormorant-garamond-light-italic text-[16px] sm:text-[17px] md:text-[18px] text-zinc-700">
-            Agroterra Resort is a peaceful destination designed to bring people closer to nature while offering comfort and relaxation. Surrounded by open landscapes and natural beauty, the resort provides a calm escape from busy everyday life. Every space is created to feel at home—welcoming, spacious, and refreshing, allowing guests to slow down, breathe deeply, and enjoy meaningful moments. From leisure experiences to quiet retreats, Agroterra combines nature, comfort, and thoughtful design to create a stay that feels both restful and memorable.
-          </p>
-        </div>
-        <Image
-          src={aboutImage}
-          alt="About Agroterra Resort"
-          className="w-full sm:w-[85%] md:w-[75%] lg:w-160 h-64 sm:h-80 md:h-96 lg:h-100 object-cover animate-image"
-        />
-      </div>
+          {/* Hero text */}
+          <div className="flex-1 flex flex-col items-center justify-center px-6 text-white -mt-16 sm:-mt-20 md:-mt-24">
+            {/* Thin decorative line above title */}
+            <div className="hero-text w-16 h-px bg-[#8bc34a] mb-5 opacity-80" />
 
-      {/* ====================== RELAXATION SECTION ====================== */}
-      <div className="flex flex-col-reverse lg:flex-row px-6 sm:px-10 md:px-20 lg:px-30 py-12 sm:py-16 md:py-24 gap-10 lg:gap-20 items-center justify-between bg-zinc-100 animate-section">
-        <Image
-          src={background1}
-          alt="About Agroterra Resort"
-          className="w-full sm:w-[85%] md:w-[75%] lg:w-160 h-64 sm:h-80 md:h-88 lg:h-90 object-cover animate-image"
-        />
-        <div className="flex flex-col gap-3 max-w-xl lg:max-w-none">
-          <h2 className="cormorant-garamond-medium-italic text-3xl sm:text-4xl text-zinc-800">Surrounded by Natural Beauty</h2>
-          <p className="cormorant-garamond-light-italic text-[16px] sm:text-[17px] md:text-[18px] text-zinc-700">
-            Nature is at the heart of the Agroterra experience. The resort is embraced by trees, open skies, and fresh air that create a peaceful and grounding atmosphere. The natural setting adds beauty to every moment, from morning walks to quiet evenings. This connection to the outdoors is what makes every visit feel refreshing and different from daily life. It is a setting that encourages calm, reflection, and comfort.
-          </p>
+            <h1 className="hero-text text-center eb-garamond-semibold text-[42px] sm:text-[56px] md:text-[68px] tracking-widest uppercase leading-none">
+              AGROTERRA
+            </h1>
+
+            <p className="hero-text eb-garamond-italic text-[18px] sm:text-[22px] md:text-[26px] text-center mt-4 text-white/85 max-w-xl">
+              Where nature, comfort, and experience meet.
+            </p>
+
+            {/* Scroll hint */}
+            <div className="hero-text mt-10 flex flex-col items-center gap-1 opacity-60">
+              <span className="text-xs tracking-widest uppercase text-white/70">Scroll</span>
+              <div className="w-px h-8 bg-white/50 animate-pulse" />
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* ====================== GOLF SECTION ====================== */}
-      <div className="flex flex-col lg:flex-row px-6 sm:px-10 md:px-20 lg:px-40 py-12 sm:py-16 md:py-24 gap-10 lg:gap-20 items-center justify-between animate-section bg-white">
-        <div className="flex flex-col gap-3 max-w-xl lg:max-w-none">
-          <h2 className="cormorant-garamond-medium-italic text-3xl sm:text-4xl text-zinc-800">Golf at Agroterra</h2>
-          <p className="cormorant-garamond-light-italic text-[16px] sm:text-[17px] md:text-[18px] text-zinc-700">
-            Set within a peaceful natural landscape, the golf experience at Agroterra Resort is designed to be both relaxing and engaging. The course stretches across a wide portion of land, surrounded by trees and open skies that create a calm and refreshing environment. Every hole offers a blend of space, scenery, and thoughtful design, making each round feel enjoyable and unhurried.<br />
-            Whether you are an experienced golfer or new to the game, the course provides a welcoming setting where you can focus, improve, and enjoy time outdoors. The natural surroundings reduce distractions and create a sense of privacy, turning each round into a quiet escape. From smooth greens to open fairways, the course balances recreation with the peaceful atmosphere that defines Agroterra Resort.
-          </p>
-        </div>
-        <Image
-          src={background7}
-          alt="Golf at Agroterra Resort"
-          className="w-full sm:w-[85%] md:w-[75%] lg:w-160 h-64 sm:h-80 md:h-96 lg:h-100 object-cover animate-image"
-        />
-      </div>
+      {/* ====================== ABOUT ====================== */}
+      <Section
+        title="About Agroterra Resort"
+        badge="Our Story"
+        body="Agroterra Resort is a peaceful destination designed to bring people closer to nature while offering comfort and relaxation. Surrounded by open landscapes and natural beauty, the resort provides a calm escape from busy everyday life. Every space is created to feel at home — welcoming, spacious, and refreshing, allowing guests to slow down, breathe deeply, and enjoy meaningful moments. From leisure experiences to quiet retreats, Agroterra combines nature, comfort, and thoughtful design to create a stay that feels both restful and memorable."
+        image={aboutImage}
+        imageAlt="About Agroterra Resort"
+        bgClass={bg}
+      />
 
-      {/* ====================== KITCHEN SECTION ====================== */}
-      <div className="flex flex-col-reverse lg:flex-row px-6 sm:px-10 md:px-20 lg:px-40 py-12 sm:py-16 md:py-24 gap-10 lg:gap-20 items-center justify-between bg-zinc-100 animate-section">
-        <Image
-          src={background3}
-          alt="Kitchen at Agroterra Resort"
-          className="w-full sm:w-[85%] md:w-[75%] lg:w-140 h-64 sm:h-80 md:h-88 lg:h-90 object-cover animate-image"
-        />
-        <div className="flex flex-col gap-3 max-w-xl lg:max-w-none">
-          <h2 className="cormorant-garamond-medium-italic text-3xl sm:text-4xl text-zinc-800">Kitchen at Agroterra</h2>
-          <p className="cormorant-garamond-light-italic text-[16px] sm:text-[17px] md:text-[18px] text-zinc-700">
-            Step into the lively heart of Agroterra—the kitchen, where flavors dance and good vibes flow endlessly! As the ultimate relaxation spot in the compound, it's buzzing with energy, offering a perfect blend of chill-out zones and fun relaxation sports like pool or darts to keep the fun going. Open for a whopping 16 to 18 hours a day, our culinary wizards whip up mouthwatering meals from dawn till dusk, using fresh, local ingredients that turn every bite into a celebration of taste and togetherness. Whether you're craving a hearty breakfast, a leisurely lunch, or a late-night snack, the kitchen is your go-to haven for delicious eats and unforgettable moments.
-          </p>
-        </div>
-      </div>
+      {/* ====================== NATURAL BEAUTY ====================== */}
+      <Section
+        title="Surrounded by Natural Beauty"
+        badge="Nature"
+        body="Nature is at the heart of the Agroterra experience. The resort is embraced by trees, open skies, and fresh air that create a peaceful and grounding atmosphere. The natural setting adds beauty to every moment, from morning walks to quiet evenings. This connection to the outdoors is what makes every visit feel refreshing and different from daily life — a setting that encourages calm, reflection, and comfort."
+        image={background1}
+        imageAlt="Natural surroundings at Agroterra"
+        reverse
+        bgClass={bgAlt}
+      />
 
-      {/* ====================== SHEEDXFM SECTION ====================== */}
-      <div className="flex flex-col lg:flex-row px-6 sm:px-10 md:px-20 lg:px-30 py-12 sm:py-16 md:py-24 gap-10 lg:gap-20 items-center justify-between animate-section bg-white">
-        <div className="flex flex-col gap-3 max-w-xl lg:max-w-none">
-          <h2 className="cormorant-garamond-medium-italic text-3xl sm:text-4xl text-zinc-800">SheedXfm at Agroterra</h2>
-          <p className="cormorant-garamond-light-italic text-[16px] sm:text-[17px] md:text-[18px] text-zinc-700">
-            Located at Agroterra Resort, SheedXfm is a radio station that serves not only the guests of the resort but also citizens across the country. It broadcasts local updates, resort events, cultural content, and international news, showcasing Yewa cultural pride through Nigeria's vibe. Focusing on culture, groove, and gist, it offers a unique blend of information and entertainment. Equipped with modern studios and accessible listening options, SheedXfm keeps listeners informed and connected, whether on-site or nationwide. SheedXfm is currently awaiting full approval from the Federal Government of Nigeria.
-          </p>
-        </div>
-        <Image
-          src={background4}
-          alt="SheedXfm at Agroterra Resort"
-          className="w-full sm:w-[85%] md:w-[75%] lg:w-140 h-64 sm:h-80 md:h-88 lg:h-90 object-cover animate-image"
-        />
-      </div>
+      {/* ====================== GOLF ====================== */}
+      <Section
+        title="Golf at Agroterra"
+        badge="Recreation"
+        body={
+          <>
+            Set within a peaceful natural landscape, the golf experience at Agroterra Resort is designed to be both relaxing and engaging. The course stretches across a wide portion of land, surrounded by trees and open skies that create a calm and refreshing environment. Every hole offers a blend of space, scenery, and thoughtful design, making each round feel enjoyable and unhurried.
+            <br /><br />
+            Whether you are an experienced golfer or new to the game, the course provides a welcoming setting where you can focus, improve, and enjoy time outdoors. From smooth greens to open fairways, the course balances recreation with the peaceful atmosphere that defines Agroterra Resort.
+          </>
+        }
+        image={background7}
+        imageAlt="Golf course at Agroterra"
+        bgClass={bg}
+      />
 
-      {/* ====================== SPORT ACADEMY SECTION ====================== */}
-      <div className="flex flex-col-reverse lg:flex-row px-6 sm:px-10 md:px-20 lg:px-40 py-12 sm:py-16 md:py-24 gap-10 lg:gap-20 items-center justify-between bg-zinc-100 animate-section">
-        <Image
-          src={background6}
-          alt="Sport Academy at Agroterra Resort"
-          className="w-full sm:w-[85%] md:w-[75%] lg:w-140 h-64 sm:h-80 md:h-88 lg:h-90 object-cover animate-image"
-        />
-        <div className="flex flex-col gap-3 max-w-xl lg:max-w-none">
-          <h2 className="cormorant-garamond-medium-italic text-3xl sm:text-4xl text-zinc-800">Sport Academy at Agroterra</h2>
-          <p className="cormorant-garamond-light-italic text-[16px] sm:text-[17px] md:text-[18px] text-zinc-700">
-            Agroterra Sport Academy offers youth sports training programs for boys and girls aged 3–15, focusing on professional athlete development, skill-building, and fitness transformation. With a mission to transform athletes into champions through world-class training, professional coaching, and inclusive environments, the academy features state-of-the-art facilities including an elite performance gym, championship sports arena, athletic track, and natural training fields. Programs range from elite performance academies and youth development to specialized camps in sports like soccer, basketball, tennis, athletics, and swimming, emphasizing safety, character building, and sports science.
-          </p>
-        </div>
-      </div>
+      {/* ====================== KITCHEN ====================== */}
+      <Section
+        title="Kitchen at Agroterra"
+        badge="Dining"
+        body="Step into the lively heart of Agroterra — the kitchen, where flavours dance and good vibes flow endlessly! As the ultimate relaxation spot in the compound, it's buzzing with energy, offering a perfect blend of chill-out zones and fun relaxation sports like pool or darts. Open for 16 to 18 hours a day, our culinary team whips up mouthwatering meals from dawn till dusk using fresh, local ingredients that turn every bite into a celebration of taste and togetherness."
+        image={background3}
+        imageAlt="Kitchen at Agroterra Resort"
+        reverse
+        bgClass={bgAlt}
+      />
 
-      {/* ====================== SECURITY SECTION ====================== */}
-      <div className="flex flex-col lg:flex-row px-6 sm:px-10 md:px-20 lg:px-40 py-12 sm:py-16 md:py-24 gap-10 lg:gap-20 items-center justify-between animate-section bg-white">
-        <div className="flex flex-col gap-3 max-w-xl lg:max-w-none">
-          <h2 className="cormorant-garamond-medium-italic text-3xl sm:text-4xl text-zinc-800">Security at Agroterra</h2>
-          <p className="cormorant-garamond-light-italic text-[16px] sm:text-[17px] md:text-[18px] text-zinc-700">
-            Kick back and enjoy every second — we've got your safety on lock! Agroterra is seriously guarded with a <span className="font-semibold text-zinc-900">heavy, round-the-clock presence of Ogun State So-Safe Corps officers</span> patrolling the entire property. These are not just any officers — they're some of the sharpest, most dedicated security professionals in the state, trained to keep everything calm, safe, and under control. Combined with CCTV coverage, controlled access points, and rapid-response teams, you can play golf at midnight, dance in the kitchen at 3 AM, or stroll the grounds whenever you feel like it… knowing nothing can disturb your peace. At Agroterra, true relaxation starts with unbreakable security.
-          </p>
-        </div>
-        <Image
-          src={securityImage}
-          alt="Security at Agroterra Resort"
-          className="w-full sm:w-[85%] md:w-[75%] lg:w-140 h-64 sm:h-80 md:h-88 lg:h-90 rounded-lg object-cover animate-image"
-        />
-      </div>
+      {/* ====================== SHEEDXFM ====================== */}
+      <Section
+        title="SheedXfm at Agroterra"
+        badge="Media"
+        body="Located at Agroterra Resort, SheedXfm is a radio station that serves not only guests of the resort but also citizens across the country. It broadcasts local updates, resort events, cultural content, and international news, showcasing Yewa cultural pride through Nigeria's vibrant voice. Focusing on culture, groove, and gist, it offers a unique blend of information and entertainment. SheedXfm is currently awaiting full approval from the Federal Government of Nigeria."
+        image={background4}
+        imageAlt="SheedXfm at Agroterra"
+        bgClass={bg}
+      />
 
-      {/* ====================== EXTRA / CLOSING SECTION ====================== */}
-      <div className="relative flex items-center justify-center bg-zinc-100 animate-section overflow-hidden min-h-100 sm:min-h-120 md:min-h-130">
+      {/* ====================== SPORT ACADEMY ====================== */}
+      <Section
+        title="Sport Academy at Agroterra"
+        badge="Academy"
+        body="Agroterra Sport Academy offers youth sports training programs for boys and girls aged 3–15, focusing on professional athlete development, skill-building, and fitness transformation. With a mission to transform athletes into champions through world-class training and professional coaching, the academy features an elite performance gym, championship sports arena, athletic track, and natural training fields — encompassing soccer, basketball, tennis, athletics, and swimming."
+        image={background6}
+        imageAlt="Sport Academy at Agroterra"
+        reverse
+        bgClass={bgAlt}
+      />
+
+      {/* ====================== SECURITY ====================== */}
+      <Section
+        title="Security at Agroterra"
+        badge="Safety"
+        body={
+          <>
+            Kick back and enjoy every second — we've got your safety on lock! Agroterra is seriously guarded with a{' '}
+            <strong className={`font-semibold ${textHead}`}>
+              heavy, round-the-clock presence of Ogun State So-Safe Corps officers
+            </strong>{' '}
+            patrolling the entire property. These are not just any officers — they're some of the sharpest, most dedicated security professionals in the state. Combined with CCTV coverage, controlled access points, and rapid-response teams, you can play golf at midnight or stroll the grounds at 3 AM, knowing nothing can disturb your peace.
+          </>
+        }
+        image={securityImage}
+        imageAlt="Security at Agroterra"
+        bgClass={bg}
+      />
+
+      {/* ====================== CLOSING PARALLAX ====================== */}
+      <div className={`animate-section relative flex items-center justify-center overflow-hidden min-h-112 sm:min-h-144 border-t ${divider}`}>
         <Image
           src={background8}
           alt="Aerial view of Agroterra Resort"
           fill
-          className="object-cover animate-image"
+          className="animate-image object-cover"
         />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-[#00000055]" />
+        <div className="absolute inset-0 bg-black/60" />
 
-        {/* Text centred over image */}
-        <div className="relative z-10 flex flex-col gap-3 text-white items-center text-center px-6 sm:px-10 md:px-20 py-16 sm:py-20 md:py-24">
-          <h2 className="cormorant-garamond-medium-italic text-[26px] sm:text-[30px] md:text-[34px]">
+        <div className="relative z-10 flex flex-col gap-4 text-white items-center text-center px-6 sm:px-10 md:px-20 py-20">
+          {/* Decorative leaf / line motif */}
+          <div className="w-12 h-px bg-[#8bc34a] mb-2" />
+          <h2 className="cormorant-garamond-medium-italic text-[28px] sm:text-[34px] md:text-[40px] leading-snug max-w-2xl">
             Where Nature Meets Relaxation
           </h2>
-          <p className="cormorant-garamond-light-italic text-[16px] sm:text-[18px] md:text-[20px] max-w-[90vw] sm:max-w-lg md:max-w-140">
+          <p className="cormorant-garamond-light-italic text-[17px] sm:text-[19px] md:text-[21px] max-w-xl text-white/80">
             Agroterra Resort is designed to bring you closer to nature, offering peaceful spaces, open landscapes, and a calm environment where every moment feels refreshing and unhurried.
           </p>
+          <div className="w-12 h-px bg-[#8bc34a] mt-2" />
         </div>
       </div>
+
+      {/* ====================== FOOTER ====================== */}
+      <footer className={`${bgAlt} border-t ${divider} py-8 px-6 sm:px-10 md:px-20 flex flex-col sm:flex-row items-center justify-between gap-4`}>
+        <p className={`cormorant-garamond-light-italic text-sm ${textBody}`}>
+          © {new Date().getFullYear()} Agroterra Resort. All rights reserved.
+        </p>
+        <p className={`text-xs tracking-widest uppercase ${accent} opacity-70`}>
+          Nature · Comfort · Experience
+        </p>
+      </footer>
+
     </div>
-  )
+  );
 }

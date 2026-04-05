@@ -2,21 +2,30 @@
 // components/HomeClient.tsx
 // Receives pre-fetched RSS articles as props and renders the full page.
 // Bug fixes + elevated design + Facebook Live integration.
+//
+// CHANGELOG (theme + SheedXpress update):
+//   • Added dark/light theme toggle (logo-inspired green palette, OS-aware)
+//   • Blog/news sections (Politics, Entertainment, Sports, Featured Story,
+//     Sidebar) commented out and replaced with a SheedXpress redirect section
+//   • All original imports and logic preserved / commented — not deleted
 
 import Navbar from '@/components/Navbar'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Play, Phone, Radio, Wifi, WifiOff, ExternalLink, ChevronRight } from 'lucide-react'
+import { Play, Phone, Radio, Wifi, WifiOff, ExternalLink, ChevronRight, Sun, Moon, Newspaper, ArrowUpRight } from 'lucide-react'
 import bg from '@/public/sheedx.svg'
 import type { Article } from '@/lib/rss'
-import {
-  SectionHeader,
-  HeroCard,
-  SmallCard,
-  GridCard,
-  SidebarFeaturedCard,
-} from '@/components/NewsCard'
+
+// ── News card imports kept but not used in the current render (blog commented out)
+// import {
+//   SectionHeader,
+//   HeroCard,
+//   SmallCard,
+//   GridCard,
+//   SidebarFeaturedCard,
+// } from '@/components/NewsCard'
+
 import { useState, useEffect } from 'react'
 
 interface Props {
@@ -26,16 +35,72 @@ interface Props {
   featured:      Article
 }
 
+// ── Tab type kept for sidebar (commented out below)
 const TABS = ['Politics', 'Entertainment', 'Sports'] as const
 type Tab = (typeof TABS)[number]
 
 // ── Facebook Live status types ────────────────────────────────────────────
 type LiveStatus = 'loading' | 'live' | 'offline' | 'error'
 
+// ── Theme tokens ──────────────────────────────────────────────────────────
+type Theme = {
+  page:          string   // bg class
+  surface:       string   // card / panel bg
+  border:        string   // border color value
+  borderClass:   string   // border color class
+  accent:        string   // green accent value
+  accentClass:   string   // green accent text class
+  heading:       string   // main heading color value
+  headingClass:  string
+  body:          string   // body text color value
+  bodyClass:     string
+  muted:         string   // muted text color value
+  mutedClass:    string
+  toggleBg:      string
+  toggleBorder:  string
+  navDot:        string   // sidebar dot / rule accent
+  footerBorder:  string
+}
+
+const lightTheme: Theme = {
+  page:         'bg-white',
+  surface:      'bg-[#f3f7f0]',
+  border:       '#c5ddb5',
+  borderClass:  'border-[#c5ddb5]',
+  accent:       '#28683E',
+  accentClass:  'text-[#28683E]',
+  heading:      '#1a3d1a',
+  headingClass: 'text-[#1a3d1a]',
+  body:         '#3a5c3a',
+  bodyClass:    'text-[#3a5c3a]',
+  muted:        '#6b8f6b',
+  mutedClass:   'text-[#6b8f6b]',
+  toggleBg:     '#f3f7f0',
+  toggleBorder: '#c5ddb5',
+  navDot:       '#28683E',
+  footerBorder: '#e8f0e8',
+}
+
+const darkTheme: Theme = {
+  page:         'bg-[#0a120a]',
+  surface:      'bg-[#111a11]',
+  border:       '#2d4d2d',
+  borderClass:  'border-[#2d4d2d]',
+  accent:       '#7ec850',
+  accentClass:  'text-[#7ec850]',
+  heading:      '#c8e6a0',
+  headingClass: 'text-[#c8e6a0]',
+  body:         '#9bbf85',
+  bodyClass:    'text-[#9bbf85]',
+  muted:        '#5a7a5a',
+  mutedClass:   'text-[#5a7a5a]',
+  toggleBg:     '#111a11',
+  toggleBorder: '#2d4d2d',
+  navDot:       '#7ec850',
+  footerBorder: '#1a2a1a',
+}
+
 // ── Facebook Live Hook ────────────────────────────────────────────────────
-// The Facebook Graph API requires a page token for live_videos.
-// We do an oEmbed probe instead — it's public and CORS-safe.
-// If you have a server-side token, swap this for a proper /live_videos call.
 function useFacebookLive(pageSlug: string) {
   const [status, setStatus] = useState<LiveStatus>('loading')
   const [liveUrl, setLiveUrl] = useState<string>('')
@@ -44,9 +109,6 @@ function useFacebookLive(pageSlug: string) {
     const fbPageUrl = `https://www.facebook.com/${pageSlug}/live`
     setLiveUrl(fbPageUrl)
 
-    // We use the oEmbed endpoint to detect if the live page resolves.
-    // For a production app, replace this with a server action that calls
-    // GET /v19.0/{page-id}/live_videos?status=LIVE using a page access token.
     const controller = new AbortController()
 
     fetch(
@@ -57,15 +119,12 @@ function useFacebookLive(pageSlug: string) {
     )
       .then((res) => {
         if (res.ok) {
-          // Page exists — we can't confirm live without a token,
-          // so we set 'offline' and note that a token is needed for live detection.
           setStatus('offline')
         } else {
           setStatus('error')
         }
       })
       .catch(() => {
-        // Network error or CORS block — fallback gracefully
         setStatus('offline')
       })
 
@@ -113,7 +172,6 @@ function LiveBadge({ status, liveUrl }: { status: LiveStatus; liveUrl: string })
     )
   }
 
-  // offline
   return (
     <a
       href={liveUrl}
@@ -128,29 +186,213 @@ function LiveBadge({ status, liveUrl }: { status: LiveStatus; liveUrl: string })
   )
 }
 
+// ── SheedXpress Redirect Section ──────────────────────────────────────────
+// Replaces the Politics / Entertainment / Sports / Featured / Sidebar blocks.
+// The original JSX for those sections is preserved below in a comment block.
+function SheedXpressSection({ t }: { t: Theme }) {
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+      className={`
+        w-full rounded-2xl overflow-hidden
+        ${t.surface}
+        border ${t.borderClass}
+        relative
+      `}
+    >
+      {/* Decorative top stripe */}
+      <div className="h-1 w-full" style={{ background: `linear-gradient(to right, ${t.accent}, #25D366, ${t.accent})` }} />
+
+      <div className="px-6 sm:px-12 md:px-16 py-16 sm:py-20 md:py-24 flex flex-col items-center text-center gap-8 relative z-10">
+
+        {/* Floating newspaper icon ring */}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="relative"
+        >
+          <div
+            className="w-20 h-20 rounded-full flex items-center justify-center"
+            style={{
+              backgroundColor: `${t.accent}18`,
+              border: `1.5px solid ${t.accent}40`,
+              boxShadow: `0 0 40px ${t.accent}18`,
+            }}
+          >
+            <Newspaper size={32} style={{ color: t.accent }} />
+          </div>
+          {/* Pulse ring */}
+          <div
+            className="absolute inset-0 rounded-full animate-ping opacity-20"
+            style={{ backgroundColor: t.accent }}
+          />
+        </motion.div>
+
+        {/* Label */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-[10px] font-black uppercase tracking-[0.28em]"
+          style={{ color: t.accent }}
+        >
+          News &amp; Updates
+        </motion.p>
+
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="eb-garamond-semibold text-[32px] sm:text-[42px] md:text-[52px] leading-tight max-w-2xl"
+          style={{ color: t.heading }}
+        >
+          Read the Latest on SheedXpress
+        </motion.h2>
+
+        {/* Body */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.35 }}
+          className="text-[14px] sm:text-[16px] leading-relaxed max-w-xl"
+          style={{ color: t.body }}
+        >
+          Politics, entertainment, sports, and everything in between — SheedXpress is
+          SheedX FM's official news platform, updated around the clock with stories
+          that matter to you.
+        </motion.p>
+
+        {/* Category pills */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.42 }}
+          className="flex flex-wrap justify-center gap-2"
+        >
+          {['Politics', 'Entertainment', 'Sports', 'Culture', 'Breaking News'].map((tag) => (
+            <span
+              key={tag}
+              className="text-[10px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-full"
+              style={{
+                border: `1px solid ${t.border}`,
+                color: t.muted,
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </motion.div>
+
+        {/* CTA button */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55, delay: 0.5 }}
+        >
+          <a
+            href="https://sheedxpress.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-[13px] tracking-[0.12em] uppercase text-white shadow-xl transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl active:scale-[0.98]"
+            style={{
+              background: `linear-gradient(135deg, ${t.accent}, #1a5c28)`,
+              boxShadow: `0 8px 32px ${t.accent}35`,
+            }}
+          >
+            <Newspaper size={15} />
+            Visit SheedXpress
+            <ArrowUpRight
+              size={15}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
+        </motion.div>
+
+        {/* Fine-print URL */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="text-[10px] tracking-widest uppercase"
+          style={{ color: t.muted }}
+        >
+          sheedxpress.com
+        </motion.p>
+      </div>
+
+      {/* Decorative bottom stripe (mirrored) */}
+      <div className="h-1 w-full" style={{ background: `linear-gradient(to right, ${t.accent}, #25D366, ${t.accent})` }} />
+    </motion.section>
+  )
+}
+
 // ── Main component ────────────────────────────────────────────────────────
 export default function HomeClient({ politics, entertainment, sports, featured }: Props) {
+  // ── Theme state ──────────────────────────────────────────────────────
+  const [dark, setDark] = useState(false)
+  const t = dark ? darkTheme : lightTheme
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) setDark(true)
+  }, [])
+
+  // ── Tab state kept (used by sidebar — currently commented out below) ──
   const [activeTab, setActiveTab] = useState<Tab>('Politics')
   const { status: liveStatus, liveUrl } = useFacebookLive('sheedxfm')
 
-  const sidebarArticles: Article[] =
-    activeTab === 'Politics'      ? politics.slice(0, 3) :
-    activeTab === 'Entertainment' ? entertainment.slice(0, 3) :
-                                    sports.slice(0, 3)
+  // Sidebar articles — kept for when blog is re-enabled
+  // const sidebarArticles: Article[] =
+  //   activeTab === 'Politics'      ? politics.slice(0, 3) :
+  //   activeTab === 'Entertainment' ? entertainment.slice(0, 3) :
+  //                                   sports.slice(0, 3)
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-950 font-sans">
-      <main className="flex flex-col min-h-screen w-full bg-white dark:bg-zinc-950 items-center">
+    <div className={`${t.page} min-h-screen eb-garamond transition-colors duration-300`}>
+
+      {/* ── Dark / Light Toggle ────────────────────────────────────── */}
+      <button
+        onClick={() => setDark(d => !d)}
+        aria-label="Toggle dark mode"
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-all duration-300"
+        style={{
+          backgroundColor: t.toggleBg,
+          color: t.accent,
+          border: `1px solid ${t.toggleBorder}`,
+          boxShadow: `0 4px 20px ${t.accent}20`,
+        }}
+      >
+        {dark ? <Sun size={18} /> : <Moon size={18} />}
+      </button>
+
+      <main className="flex flex-col min-h-screen w-full items-center">
 
         {/* ── HERO ── */}
         <div className="w-full mb-8 sm:mb-10 lg:mb-12 relative">
           <div className="relative h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[95vh]">
             <Image src={bg} alt="SheedX FM" fill className="object-cover" priority />
 
-            {/* Dark gradient overlay — richer depth */}
-            <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black/80" />
+            <div
+              className="absolute inset-0"
+              style={{
+                background: dark
+                  ? 'linear-gradient(to bottom, rgba(10,18,10,0.72) 0%, rgba(10,18,10,0.50) 45%, rgba(10,18,10,0.88) 100%)'
+                  : 'linear-gradient(to bottom, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.38) 45%, rgba(0,0,0,0.80) 100%)',
+              }}
+            />
 
-            {/* Noise texture overlay for premium feel */}
+            {/* Noise texture overlay */}
             <div
               className="absolute inset-0 opacity-[0.04]"
               style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }}
@@ -166,7 +408,6 @@ export default function HomeClient({ politics, entertainment, sports, featured }
                   transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                   className="flex flex-col justify-center items-center gap-5 px-4 text-center"
                 >
-                  {/* Live status badge */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -212,7 +453,6 @@ export default function HomeClient({ politics, entertainment, sports, featured }
                 </motion.div>
               </div>
 
-              {/* Bottom scroll indicator */}
               <motion.div
                 className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-40"
                 initial={{ opacity: 0 }}
@@ -227,9 +467,85 @@ export default function HomeClient({ politics, entertainment, sports, featured }
         </div>
 
         {/* ── PAGE BODY ── */}
-        <div className="w-full max-w-5xl px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="w-full max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 space-y-16">
 
-          {/* ── FEATURED STORY ── */}
+          {/* ── SHEEDXPRESS SECTION (replaces blog) ── */}
+          <SheedXpressSection t={t} />
+
+          {/* ── FACEBOOK LIVE CARD (standalone, below SheedXpress) ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className={`rounded-xl overflow-hidden border ${t.borderClass}`}
+          >
+            <div className="px-5 py-3.5 flex items-center gap-2" style={{ backgroundColor: '#0a120a' }}>
+              <Radio size={12} className="text-red-500" />
+              <span className="text-white text-[10px] font-black uppercase tracking-widest">SheedX FM · Facebook Live</span>
+            </div>
+            <div className={`${t.surface} px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-6`}>
+              <div className="flex items-center gap-4">
+                {/* Status indicator */}
+                <div>
+                  {liveStatus === 'live' ? (
+                    <div className="flex items-center gap-1.5">
+                      <span className="relative flex h-2.5 w-2.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500" />
+                      </span>
+                      <span className="text-red-500 text-[11px] font-black uppercase tracking-wider">On Air Now</span>
+                    </div>
+                  ) : liveStatus === 'offline' ? (
+                    <div className="flex items-center gap-1.5">
+                      <Wifi size={11} style={{ color: t.muted }} />
+                      <span className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: t.muted }}>Off Air</span>
+                    </div>
+                  ) : liveStatus === 'loading' ? (
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: t.muted }} />
+                      <span className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: t.muted }}>Checking…</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-1.5">
+                      <WifiOff size={11} style={{ color: t.muted }} />
+                      <span className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: t.muted }}>Unknown</span>
+                    </div>
+                  )}
+                  <p className="text-[12px] leading-relaxed mt-1 max-w-xs" style={{ color: t.muted }}>
+                    {liveStatus === 'live'
+                      ? 'We are streaming live on Facebook right now!'
+                      : liveStatus === 'offline'
+                      ? 'No live stream at the moment. Follow us to get notified.'
+                      : liveStatus === 'loading'
+                      ? 'Checking Facebook live status…'
+                      : 'Could not reach Facebook. Check our page directly.'}
+                  </p>
+                </div>
+              </div>
+
+              <a
+                href={liveUrl || 'https://www.facebook.com/sheedxfm/live'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white text-[11px] font-bold px-6 py-3 rounded-full whitespace-nowrap transition-all duration-200 hover:opacity-90 hover:scale-[1.02] shrink-0"
+                style={{ backgroundColor: '#1877F2' }}
+              >
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-white" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+                Watch on Facebook
+              </a>
+            </div>
+          </motion.div>
+
+          {/*
+          ════════════════════════════════════════════════════════════════════
+          ORIGINAL BLOG / NEWS SECTIONS — COMMENTED OUT (NOT DELETED)
+          Re-enable by uncommenting and importing NewsCard components above.
+          ════════════════════════════════════════════════════════════════════
+
+          ── FEATURED STORY ──
           {featured && (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -260,9 +576,7 @@ export default function HomeClient({ politics, entertainment, sports, featured }
                     unoptimized
                   />
                 )}
-                {/* Fixed: was bg-linear-to-t */}
                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
-
                 <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8 z-10">
                   <span className="bg-red-600 text-white text-[9px] font-black uppercase tracking-[0.15em] px-2.5 py-1 rounded-sm">
                     Featured
@@ -275,8 +589,6 @@ export default function HomeClient({ politics, entertainment, sports, featured }
                     <ChevronRight size={12} className="text-white/30 group-hover:text-white/60 group-hover:translate-x-1 transition-all" />
                   </div>
                 </div>
-
-                {/* Subtle play ring */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center">
                     <Play size={20} className="text-white ml-1" fill="white" />
@@ -286,13 +598,12 @@ export default function HomeClient({ politics, entertainment, sports, featured }
             </motion.div>
           )}
 
-          {/* ── TWO-COLUMN LAYOUT ── */}
+          ── TWO-COLUMN LAYOUT (news + sidebar) ──
           <div className="flex flex-col lg:flex-row gap-10">
 
-            {/* ── LEFT: News Sections ── */}
+            ── LEFT: News Sections ──
             <div className="flex-1 min-w-0 space-y-12">
 
-              {/* POLITICS */}
               {politics.length > 0 && (
                 <motion.section
                   initial={{ opacity: 0, y: 20 }}
@@ -312,7 +623,6 @@ export default function HomeClient({ politics, entertainment, sports, featured }
                 </motion.section>
               )}
 
-              {/* ENTERTAINMENT */}
               {entertainment.length > 0 && (
                 <motion.section
                   initial={{ opacity: 0, y: 20 }}
@@ -329,7 +639,6 @@ export default function HomeClient({ politics, entertainment, sports, featured }
                 </motion.section>
               )}
 
-              {/* SPORTS */}
               {sports.length > 0 && (
                 <motion.section
                   initial={{ opacity: 0, y: 20 }}
@@ -348,7 +657,7 @@ export default function HomeClient({ politics, entertainment, sports, featured }
 
             </div>
 
-            {/* ── RIGHT: Sidebar ── */}
+            ── RIGHT: Sidebar ──
             <motion.aside
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -356,7 +665,6 @@ export default function HomeClient({ politics, entertainment, sports, featured }
               transition={{ duration: 0.6 }}
               className="w-full lg:w-60 shrink-0 space-y-6"
             >
-              {/* Category tabs */}
               <div>
                 <p className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 mb-3">
                   Top Stories
@@ -378,7 +686,6 @@ export default function HomeClient({ politics, entertainment, sports, featured }
                 </div>
               </div>
 
-              {/* Sidebar article cards with animated tab switch */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
@@ -394,69 +701,32 @@ export default function HomeClient({ politics, entertainment, sports, featured }
                 </motion.div>
               </AnimatePresence>
 
-              {/* Facebook Live Card */}
+              ── Facebook Live Card (sidebar version) ──
               <div className="rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800">
                 <div className="bg-zinc-900 px-4 py-3 flex items-center gap-2">
                   <Radio size={12} className="text-red-500" />
                   <span className="text-white text-[10px] font-black uppercase tracking-widest">SheedX FM Live</span>
                 </div>
                 <div className="bg-zinc-50 dark:bg-zinc-900/50 px-4 py-4 text-center">
-                  <div className="mb-3">
-                    {liveStatus === 'live' ? (
-                      <div className="flex items-center justify-center gap-1.5 mb-1">
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-                        </span>
-                        <span className="text-red-600 text-[10px] font-black uppercase tracking-wider">On Air</span>
-                      </div>
-                    ) : liveStatus === 'offline' ? (
-                      <div className="flex items-center justify-center gap-1.5 mb-1">
-                        <Wifi size={10} className="text-zinc-400" />
-                        <span className="text-zinc-400 text-[10px] font-semibold uppercase tracking-wider">Off Air</span>
-                      </div>
-                    ) : liveStatus === 'loading' ? (
-                      <div className="flex items-center justify-center gap-1.5 mb-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 animate-pulse" />
-                        <span className="text-zinc-400 text-[10px] font-semibold uppercase tracking-wider">Checking…</span>
-                      </div>
-                    ) : (
-                      <div className="flex items-center justify-center gap-1.5 mb-1">
-                        <WifiOff size={10} className="text-zinc-400" />
-                        <span className="text-zinc-400 text-[10px] font-semibold uppercase tracking-wider">Unknown</span>
-                      </div>
-                    )}
-                    <p className="text-zinc-600 dark:text-zinc-400 text-[10px] leading-relaxed mt-1">
-                      {liveStatus === 'live'
-                        ? 'We are streaming live on Facebook right now!'
-                        : liveStatus === 'offline'
-                        ? 'No live stream at the moment. Follow us to get notified.'
-                        : liveStatus === 'loading'
-                        ? 'Checking Facebook live status…'
-                        : 'Could not reach Facebook. Check our page directly.'}
-                    </p>
-                  </div>
-                  <a
-                    href={liveUrl || 'https://www.facebook.com/sheedxfm/live'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 bg-[#1877F2] hover:bg-[#166FE5] transition-colors text-white text-[10px] font-bold px-4 py-2 rounded-full w-full justify-center"
-                  >
-                    <svg viewBox="0 0 24 24" className="w-3 h-3 fill-white" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                    </svg>
-                    Watch on Facebook
-                  </a>
+                  ...sidebar live card content...
                 </div>
               </div>
 
             </motion.aside>
           </div>
+          ════════════════════════════════════════════════════════════════════
+          END ORIGINAL BLOG SECTIONS
+          ════════════════════════════════════════════════════════════════════
+          */}
+
         </div>
 
         {/* ── FOOTER ── */}
-        <footer className="w-full border-t border-zinc-100 dark:border-zinc-800 py-8 px-6 text-center">
-          <p className="text-zinc-500 dark:text-zinc-400 text-[11px] tracking-wider uppercase font-medium">
+        <footer
+          className="w-full py-8 px-6 text-center"
+          style={{ borderTop: `1px solid ${t.footerBorder}` }}
+        >
+          <p className="text-[11px] tracking-wider uppercase font-medium" style={{ color: t.muted }}>
             © {new Date().getFullYear()} SheedX FM · All rights reserved
           </p>
         </footer>

@@ -12,6 +12,7 @@ const navLinks = [
   { href: '/reservation', label: 'Reservation' },
   { href: '/golf', label: 'Golf' },
   { href: '/sport-academy', label: 'Sport Academy' },
+  { href: '/sheedxfm', label: 'SheedX FM' },
   { href: '/contact', label: 'Contact' },
   { href: '/about', label: 'About Us' },
 ]
