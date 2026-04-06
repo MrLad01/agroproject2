@@ -4,7 +4,41 @@ import AnimatedBlogImage from '@/components/AnimatedBlogImage'
 import { blogPosts } from '@/data/blogData'
 import Link from 'next/link'
 
-const Blog = () => {
+// ── Theme tokens ──────────────────────────────────────────────────
+const themes = {
+  light: {
+    bg:          '#f8f5ef',
+    border:      '#ddd5c4',
+    heading:     '#0f1f0f',
+    body:        '#3a4e3a',
+    muted:       '#7a8c6a',
+    accent:      '#1e5e32',
+    ctaBorder:   '#1e5e32',
+    ctaText:     '#1e5e32',
+    ctaHoverBg:  '#1e5e32',
+    ctaHoverText:'#ffffff',
+    ruleLine:    '#cec8bc',
+  },
+  dark: {
+    bg:          '#080e08',
+    border:      '#243424',
+    heading:     '#e0f0c8',
+    body:        '#9abf7e',
+    muted:       '#4e6e3e',
+    accent:      '#7ec850',
+    ctaBorder:   '#7ec850',
+    ctaText:     '#7ec850',
+    ctaHoverBg:  '#7ec850',
+    ctaHoverText:'#080e08',
+    ruleLine:    '#1a2a1a',
+  },
+}
+
+type Props = { dark?: boolean }
+
+const Blog = ({ dark = false }: Props) => {
+  const tk = dark ? themes.dark : themes.light
+
   const [col1, col2, col3] = [
     blogPosts.slice(0, 2),
     blogPosts.slice(2, 4),
@@ -12,20 +46,43 @@ const Blog = () => {
   ]
 
   return (
-    <div className="bg-white py-12 -mb-10 px-6 sm:px-10 md:px-14">
+    <section
+      style={{
+        backgroundColor: tk.bg,
+        borderTop:       `1px solid ${tk.border}`,
+        transition:      'background-color 0.3s, border-color 0.3s',
+      }}
+      className="py-14 sm:py-20 md:py-28 -mb-10 px-6 sm:px-10 md:px-14 eb-garamond"
+    >
+      {/* ── Header ─────────────────────────────────────────── */}
+      <div className="text-center mb-2">
+        <p
+          className="text-[10px] font-bold uppercase tracking-[0.28em] mb-3"
+          style={{ color: tk.accent, transition: 'color 0.3s' }}
+        >
+          Blog
+        </p>
+        <h2
+          className="eb-garamond-semibold leading-tight"
+          style={{ fontSize: 'clamp(26px,5vw,48px)', color: tk.heading, transition: 'color 0.3s' }}
+        >
+          Latest From Our Blog
+        </h2>
+        <div
+          className="w-10 h-px mx-auto mt-4 mb-4 rounded-full"
+          style={{ backgroundColor: tk.accent, opacity: 0.65, transition: 'background-color 0.3s' }}
+        />
+        <p
+          className="cormorant-garamond-light-italic text-[16px] sm:text-[18px] max-w-2xl mx-auto leading-relaxed"
+          style={{ color: tk.body, transition: 'color 0.3s' }}
+        >
+          Stay updated with the latest news, experiences, and insights from Agroterra Resort.
+          Discover travel tips, upcoming events, wellness ideas, and highlights designed to help
+          you make the most of your stay.
+        </p>
+      </div>
 
-      {/* Header */}
-      <h1 className="text-[#1A1A1A] text-center tracking-[0.28rem] text-[13px] sm:text-[16px] font-bold">
-        BLOG
-      </h1>
-      <h2 className="text-[#1A1A1A] text-center text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-semibold eb-garamond">
-        Latest From Our Blog
-      </h2>
-      <p className="text-[#5A5A5A] text-center text-[14px] sm:text-[16px] mt-1">
-        Stay updated with the latest news, experiences, and insights from Agroterra Resort.<br /> Discover travel tips, upcoming events, wellness ideas, and highlights designed to help you make the most of your stay and enjoy every moment with us.
-      </p>
-
-      {/* ── Blog grid ── */}
+      {/* ── Blog grid ──────────────────────────────────────── */}
       <div className="py-10 sm:py-12 px-0 sm:px-4 md:px-8 lg:px-16">
 
         {/* Mobile: single column */}
@@ -85,13 +142,36 @@ const Blog = () => {
         </div>
       </div>
 
-      {/* CTA */}
-      <Link className="flex justify-center mt-2" href="/blog">
-        <button className="border text-[#101996] rounded-3xl cursor-pointer hover:scale-110 transition duration-300 ease-in-out border-[#101996] px-6 py-3 text-[12px] sm:text-[13px]">
-          VIEW ALL BLOG
-        </button>
-      </Link>
-    </div>
+      {/* ── CTA ────────────────────────────────────────────── */}
+      <div className="flex justify-center mt-2">
+        <Link
+          href="/blog"
+          className="group inline-flex items-center gap-2 rounded-full px-8 py-3.5
+            text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.14em]
+            transition-all duration-300"
+          style={{
+            border:          `1.5px solid ${tk.ctaBorder}`,
+            color:           tk.ctaText,
+            backgroundColor: 'transparent',
+            transition:      'background-color 0.3s, color 0.3s, border-color 0.3s',
+          }}
+          onMouseOver={e => {
+            const el = e.currentTarget
+            el.style.backgroundColor = tk.ctaHoverBg
+            el.style.color           = tk.ctaHoverText
+            el.style.boxShadow       = `0 8px 28px ${tk.accent}40`
+          }}
+          onMouseOut={e => {
+            const el = e.currentTarget
+            el.style.backgroundColor = 'transparent'
+            el.style.color           = tk.ctaText
+            el.style.boxShadow       = 'none'
+          }}
+        >
+          View All Posts
+        </Link>
+      </div>
+    </section>
   )
 }
 
