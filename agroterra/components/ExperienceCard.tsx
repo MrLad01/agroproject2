@@ -36,7 +36,7 @@ const slides = [
     href: '/',
   },
   {
-    title: 'OUTDOOR DINING',
+    title: 'INDOOR DINING',
     description:
       'Savor thoughtfully prepared meals made from fresh ingredients, served in an open-air setting that blends fine dining with nature.',
     cta: 'VIEW THE MENU',

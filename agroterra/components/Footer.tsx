@@ -116,16 +116,28 @@ const Footer = () => {
                 </span>
               </Link>
 
+              <div className='flex gap-2'>
               <Link
                 href="tel:+2348033194444"
                 className="flex items-center gap-2.5 group"
                 style={{ color: '#aaaaaa' }}
-              >
+                >
                 <PhoneCall size={14} className="shrink-0 group-hover:text-white transition-colors" />
                 <span className="work-sans text-[12px] sm:text-[13px] group-hover:text-white transition-colors">
-                  (+234) 803 319 4444
+                  (+234) 803 319 4444 ,
+                </span>
+                
+              </Link>
+              <Link
+                href="tel:+2348023181018"
+                className="flex items-center gap-2.5 group"
+                style={{ color: '#aaaaaa' }}
+                >
+                 <span className="work-sans text-[12px] sm:text-[13px] group-hover:text-white transition-colors">
+                  (+234) 802 318 1018
                 </span>
               </Link>
+              </div>
 
               <a
                 href="mailto:info@agroterraresort.com"

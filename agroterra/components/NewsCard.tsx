@@ -143,7 +143,7 @@ export function GridCard({ article }: { article: Article }) {
       className="group flex flex-col rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors shadow-sm hover:shadow-md"
     >
       {/* aspect-[4/3] — explicit arbitrary value, not aspect-4/3 */}
-      <div className="relative w-full aspect-4/3 bg-zinc-800 overflow-hidden">
+      <div className="relative w-full m bg-zinc-800 overflow-hidden">
         <ArticleImage src={article.image ?? undefined} alt={article.title} />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
       </div>

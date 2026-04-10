@@ -218,7 +218,7 @@ export default function Home() {
       {/* ── Sections — all receive isDark ── */}
       <SectionOne dark={isDark} />
       <SectionTwo dark={isDark} />
-      <Review dark={isDark} />
+      {/* <Review dark={isDark} /> */}
       <Blog dark={isDark} />
     </div>
   )
