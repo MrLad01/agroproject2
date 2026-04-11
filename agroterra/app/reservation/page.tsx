@@ -5,7 +5,8 @@ import Link from "next/link"
 import junior from '@/public/juniorBed.png'
 import family from '@/public/familyBed.jpg'
 import deluxe from '@/public/deluxeBed.jpg'
-import { useEffect, useState, useCallback, useRef } from "react"
+import bg from '@/public/kitchen.png'
+import { useEffect, useState, useCallback } from "react"
 import { IoBedOutline } from "react-icons/io5"
 import { TbCrosshair } from "react-icons/tb"
 import { MdOutlineBathtub, MdOutlinePeopleOutline } from "react-icons/md"
@@ -21,60 +22,60 @@ const EASE = [0.22, 1, 0.36, 1] as const
 
 // ── Theme ─────────────────────────────────────────────────────────
 type Theme = {
-  page:        string
-  pageVal:     string
-  surface:     string
-  surfaceVal:  string
-  borderVal:   string
-  accentVal:   string
-  headingVal:  string
-  bodyVal:     string
-  mutedVal:    string
-  ruleLine:    string
-  thumbRing:   string
-  thumbTint:   string
-  tabActive:   string
+  page: string
+  pageVal: string
+  surface: string
+  surfaceVal: string
+  borderVal: string
+  accentVal: string
+  headingVal: string
+  bodyVal: string
+  mutedVal: string
+  ruleLine: string
+  thumbRing: string
+  thumbTint: string
+  tabActive: string
   tabInactive: string
-  chipBg:      string
-  chipBorder:  string
+  chipBg: string
+  chipBorder: string
 }
 
 const light: Theme = {
-  page:        'bg-[#f5f2eb]',
-  pageVal:     '#f5f2eb',
-  surface:     'bg-white',
-  surfaceVal:  '#ffffff',
-  borderVal:   '#ddd5c4',
-  accentVal:   '#1e5e32',
-  headingVal:  '#0f1f0f',
-  bodyVal:     '#3a4e3a',
-  mutedVal:    '#7a8c6a',
-  ruleLine:    '#cec8bc',
-  thumbRing:   '#1e5e32',
-  thumbTint:   'rgba(30,94,50,0.2)',
-  tabActive:   'text-[#1e5e32] border-b-[#1e5e32]',
+  page: 'bg-[#f5f2eb]',
+  pageVal: '#f5f2eb',
+  surface: 'bg-white',
+  surfaceVal: '#ffffff',
+  borderVal: '#ddd5c4',
+  accentVal: '#1e5e32',
+  headingVal: '#0f1f0f',
+  bodyVal: '#3a4e3a',
+  mutedVal: '#7a8c6a',
+  ruleLine: '#cec8bc',
+  thumbRing: '#1e5e32',
+  thumbTint: 'rgba(30,94,50,0.2)',
+  tabActive: 'text-[#1e5e32] border-b-[#1e5e32]',
   tabInactive: 'text-[#999] border-b-transparent hover:text-[#1e5e32]',
-  chipBg:      'rgba(30,94,50,0.08)',
-  chipBorder:  'rgba(30,94,50,0.2)',
+  chipBg: 'rgba(30,94,50,0.08)',
+  chipBorder: 'rgba(30,94,50,0.2)',
 }
 
 const dark: Theme = {
-  page:        'bg-[#080e08]',
-  pageVal:     '#080e08',
-  surface:     'bg-[#0f180f]',
-  surfaceVal:  '#0f180f',
-  borderVal:   '#243424',
-  accentVal:   '#7ec850',
-  headingVal:  '#e0f0c8',
-  bodyVal:     '#9abf7e',
-  mutedVal:    '#4e6e3e',
-  ruleLine:    '#1a2a1a',
-  thumbRing:   '#7ec850',
-  thumbTint:   'rgba(126,200,80,0.2)',
-  tabActive:   'text-[#7ec850] border-b-[#7ec850]',
+  page: 'bg-[#080e08]',
+  pageVal: '#080e08',
+  surface: 'bg-[#0f180f]',
+  surfaceVal: '#0f180f',
+  borderVal: '#243424',
+  accentVal: '#7ec850',
+  headingVal: '#e0f0c8',
+  bodyVal: '#9abf7e',
+  mutedVal: '#4e6e3e',
+  ruleLine: '#1a2a1a',
+  thumbRing: '#7ec850',
+  thumbTint: 'rgba(126,200,80,0.2)',
+  tabActive: 'text-[#7ec850] border-b-[#7ec850]',
   tabInactive: 'text-[#3a5a3a] border-b-transparent hover:text-[#7ec850]',
-  chipBg:      'rgba(126,200,80,0.08)',
-  chipBorder:  'rgba(126,200,80,0.22)',
+  chipBg: 'rgba(126,200,80,0.08)',
+  chipBorder: 'rgba(126,200,80,0.22)',
 }
 
 // ── Suite data ────────────────────────────────────────────────────
@@ -86,38 +87,41 @@ type Suite = {
   image: StaticImageData
   tagline: string
   description: string
-  size: string; beds: string; bath: string; guests: string
+  size: string
+  beds: string
+  bath: string
+  guests: string
   slug: string
-  accentWord: string  // highlighted word in description
+  accentWord: string
 }
 
 const suiteData: Record<TabType, Suite[]> = {
   family: Array.from({ length: 4 }, (_, i) => ({
-    title:       'Family Suite',
-    subtitle:    `Suite ${String(i + 1).padStart(2, '0')}`,
-    image:       family,
-    tagline:     'Space · Warmth · Togetherness',
-    accentWord:  'comfort',
+    title: 'Family Suite',
+    subtitle: `Suite ${String(i + 1).padStart(2, '0')}`,
+    image: family,
+    tagline: 'Space · Warmth · Togetherness',
+    accentWord: 'comfort',
     description: 'Designed for families who refuse to compromise. The Family Suite wraps generous space in warm textures and modern comfort — a place where children can play and parents can breathe.',
     size: '45 sqm', beds: '2 Beds', bath: '1 Bath', guests: '4 Guests',
     slug: 'family',
   })),
   junior: Array.from({ length: 4 }, (_, i) => ({
-    title:       'Junior Suite',
-    subtitle:    `Suite ${String(i + 1).padStart(2, '0')}`,
-    image:       junior,
-    tagline:     'Modern · Intimate · Refined',
-    accentWord:  'elegance',
+    title: 'Junior Suite',
+    subtitle: `Suite ${String(i + 1).padStart(2, '0')}`,
+    image: junior,
+    tagline: 'Modern · Intimate · Refined',
+    accentWord: 'elegance',
     description: 'A sanctuary for two. The Junior Suite distils everything essential — clean lines, curated textures, and a calm so complete it feels like the outside world dissolved.',
     size: '35 sqm', beds: '1 Bed', bath: '1 Bath', guests: '2 Guests',
     slug: 'junior',
   })),
   deluxe: Array.from({ length: 4 }, (_, i) => ({
-    title:       'Deluxe Double Room',
-    subtitle:    `Suite ${String(i + 1).padStart(2, '0')}`,
-    image:       deluxe,
-    tagline:     'Premium · Spacious · Serene',
-    accentWord:  'premium',
+    title: 'Deluxe Double Room',
+    subtitle: `Suite ${String(i + 1).padStart(2, '0')}`,
+    image: deluxe,
+    tagline: 'Premium · Spacious · Serene',
+    accentWord: 'premium',
     description: 'The pinnacle of the Agroterra stay. The Deluxe Double Room pairs sweeping proportions with refined décor — every surface chosen, every detail considered.',
     size: '50 sqm', beds: '2 Beds', bath: '1 Bath', guests: '4 Guests',
     slug: 'deluxe',
@@ -125,8 +129,8 @@ const suiteData: Record<TabType, Suite[]> = {
 }
 
 const TABS: { key: TabType; label: string; image: StaticImageData }[] = [
-  { key: 'family', label: 'Family Suite',      image: family },
-  { key: 'junior', label: 'Junior Suite',       image: junior },
+  { key: 'family', label: 'Family Suite', image: family },
+  { key: 'junior', label: 'Junior Suite', image: junior },
   { key: 'deluxe', label: 'Deluxe Double Room', image: deluxe },
 ]
 
@@ -148,10 +152,10 @@ function ImageBreadcrumbs({
             className="relative shrink-0 focus:outline-none">
             {/* Desktop thumbnail */}
             <span className="hidden sm:block relative overflow-hidden rounded-lg" style={{
-              width:      active ? 72 : 48,
-              height:     active ? 48 : 32,
+              width: active ? 72 : 48,
+              height: active ? 48 : 32,
               transition: 'width .4s cubic-bezier(.22,1,.36,1),height .4s cubic-bezier(.22,1,.36,1)',
-              boxShadow:  active
+              boxShadow: active
                 ? `0 0 0 2.5px ${t.thumbRing},0 6px 20px rgba(0,0,0,0.5)`
                 : '0 2px 8px rgba(0,0,0,0.4)',
               opacity: active ? 1 : 0.45,
@@ -164,11 +168,11 @@ function ImageBreadcrumbs({
             </span>
             {/* Mobile pill */}
             <span className="block sm:hidden rounded-full" style={{
-              width:           active ? 28 : 8,
-              height:          8,
+              width: active ? 28 : 8,
+              height: 8,
               backgroundColor: active ? t.accentVal : t.ruleLine,
-              opacity:         active ? 1 : 0.45,
-              transition:      'width .35s cubic-bezier(.22,1,.36,1)',
+              opacity: active ? 1 : 0.45,
+              transition: 'width .35s cubic-bezier(.22,1,.36,1)',
             }} />
           </button>
         )
@@ -208,7 +212,7 @@ function HeroCarousel({ t }: { t: Theme }) {
         </div>
       </div>
 
-      {/* Deep gradient — dark at top for nav, dark at bottom for text */}
+      {/* Gradient */}
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: 'linear-gradient(to bottom,rgba(0,0,0,0.68) 0%,rgba(0,0,0,0.08) 42%,rgba(0,0,0,0.82) 100%)' }} />
 
@@ -217,7 +221,7 @@ function HeroCarousel({ t }: { t: Theme }) {
         <Navbar />
       </div>
 
-      {/* Hero text — bottom-left aligned for editorial feel */}
+      {/* Hero text */}
       <div className="absolute bottom-16 sm:bottom-20 left-0 right-0 z-10 px-6 sm:px-12 md:px-20 lg:px-28">
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.15 }}
@@ -244,7 +248,7 @@ function HeroCarousel({ t }: { t: Theme }) {
 
       {/* Arrows */}
       {[
-        { label: 'Prev', fn: prev, Icon: ChevronLeft,  pos: 'left-4 md:left-8' },
+        { label: 'Prev', fn: prev, Icon: ChevronLeft, pos: 'left-4 md:left-8' },
         { label: 'Next', fn: next, Icon: ChevronRight, pos: 'right-4 md:right-8' },
       ].map(({ label, fn, Icon, pos }) => (
         <button key={label} onClick={fn} aria-label={label}
@@ -260,9 +264,7 @@ function HeroCarousel({ t }: { t: Theme }) {
       <div className="absolute bottom-5 sm:bottom-7 inset-x-0 z-20 flex justify-center px-4">
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.1 }}
-          className="flex items-center px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl"
-          // style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(14px)', border: '1px solid rgba(255,255,255,0.12)' }}
-          >
+          className="flex items-center px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl">
           <ImageBreadcrumbs slides={slides} selected={selectedIndex} onSelect={onDotButtonClick} t={t} />
         </motion.div>
       </div>
@@ -300,7 +302,7 @@ function Chip({ icon, label, t }: { icon: React.ReactNode; label: string; t: The
   )
 }
 
-// ── Suite panel — full-bleed cinematic card ───────────────────────
+// ── Suite panel ───────────────────────────────────────────────────
 function SuitePanel({ suite, index, t }: { suite: Suite; index: number; t: Theme }) {
   const isEven = index % 2 === 0
 
@@ -312,10 +314,9 @@ function SuitePanel({ suite, index, t }: { suite: Suite; index: number; t: Theme
       transition={{ duration: 0.85, ease: EASE }}
       className="relative"
     >
-      {/* ── Full-bleed image + text overlap layout ── */}
       <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} min-h-130 sm:min-h-150 lg:min-h-170`}>
 
-        {/* IMAGE — 60% width on desktop, full width mobile */}
+        {/* IMAGE */}
         <div className="relative w-full lg:w-[60%] h-[52vw] sm:h-[44vw] lg:h-auto overflow-hidden">
           <Image
             src={suite.image}
@@ -324,30 +325,22 @@ function SuitePanel({ suite, index, t }: { suite: Suite; index: number; t: Theme
             className="object-cover transition-transform duration-[1.4s] ease-out hover:scale-[1.04]"
             sizes="(max-width:1024px) 100vw, 60vw"
           />
-          {/* Diagonal mask — more pronounced on desktop */}
-          <div
-            className="absolute inset-0"
+          <div className="absolute inset-0"
             style={{
               background: isEven
                 ? 'linear-gradient(to right, transparent 60%, rgba(0,0,0,0.0) 100%)'
                 : 'linear-gradient(to left,  transparent 60%, rgba(0,0,0,0.0) 100%)',
             }}
           />
-          {/* Large number watermark over image */}
           <div
             className={`absolute bottom-4 sm:bottom-6 ${isEven ? 'right-4 sm:right-6' : 'left-4 sm:left-6'} 
               eb-garamond-semibold leading-none select-none pointer-events-none`}
-            style={{
-              fontSize:   'clamp(80px,14vw,160px)',
-              color:      'rgba(255,255,255,0.10)',
-              lineHeight: 1,
-            }}
-          >
+            style={{ fontSize: 'clamp(80px,14vw,160px)', color: 'rgba(255,255,255,0.10)', lineHeight: 1 }}>
             {String(index + 1).padStart(2, '0')}
           </div>
         </div>
 
-        {/* TEXT PANEL — overlaps image on desktop via negative margin */}
+        {/* TEXT PANEL */}
         <div className={`
           relative z-10 w-full lg:w-[48%]
           flex flex-col justify-center
@@ -355,7 +348,6 @@ function SuitePanel({ suite, index, t }: { suite: Suite; index: number; t: Theme
           py-10 sm:py-14 lg:py-0
           ${isEven ? 'lg:-ml-[8%]' : 'lg:-mr-[8%]'}
         `}>
-          {/* Card with glass backdrop */}
           <div
             className="relative rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-12 flex flex-col gap-6"
             style={{
@@ -364,11 +356,9 @@ function SuitePanel({ suite, index, t }: { suite: Suite; index: number; t: Theme
               border: `1px solid ${t.borderVal}`,
             }}
           >
-            {/* Top accent bar */}
             <div className="absolute top-0 left-10 right-10 h-0.5 rounded-full"
               style={{ background: `linear-gradient(to right, transparent, ${t.accentVal}, transparent)` }} />
 
-            {/* Subtitle */}
             <div className="flex items-center gap-3">
               <div className="w-6 h-px" style={{ backgroundColor: t.accentVal }} />
               <span className="text-[10px] font-bold uppercase tracking-[0.24em]"
@@ -377,7 +367,6 @@ function SuitePanel({ suite, index, t }: { suite: Suite; index: number; t: Theme
               </span>
             </div>
 
-            {/* Title */}
             <div>
               <h2 className="eb-garamond-semibold leading-[1.05]"
                 style={{ fontSize: 'clamp(28px,4vw,46px)', color: t.headingVal }}>
@@ -389,24 +378,20 @@ function SuitePanel({ suite, index, t }: { suite: Suite; index: number; t: Theme
               </p>
             </div>
 
-            {/* Rule */}
             <div className="w-full h-px" style={{ backgroundColor: t.borderVal }} />
 
-            {/* Description */}
             <p className="cormorant-garamond-light-italic leading-[1.9] text-[16px] sm:text-[17px] md:text-[18px]"
               style={{ color: t.bodyVal }}>
               {suite.description}
             </p>
 
-            {/* Specs */}
             <div className="flex flex-wrap gap-2">
-              <Chip icon={<TbCrosshair size={13} />}            label={suite.size}   t={t} />
-              <Chip icon={<IoBedOutline size={13} />}           label={suite.beds}   t={t} />
-              <Chip icon={<MdOutlineBathtub size={13} />}       label={suite.bath}   t={t} />
+              <Chip icon={<TbCrosshair size={13} />} label={suite.size} t={t} />
+              <Chip icon={<IoBedOutline size={13} />} label={suite.beds} t={t} />
+              <Chip icon={<MdOutlineBathtub size={13} />} label={suite.bath} t={t} />
               <Chip icon={<MdOutlinePeopleOutline size={13} />} label={suite.guests} t={t} />
             </div>
 
-            {/* CTA */}
             <div>
               <Link href={`/room/${suite.slug}`}
                 className="group inline-flex items-center gap-2.5 rounded-full px-7 py-3.5
@@ -441,6 +426,126 @@ function Divider({ t }: { t: Theme }) {
   )
 }
 
+// ── Dining Teaser ─────────────────────────────────────────────────
+function DiningTeaser({ t }: { t: Theme }) {
+  return (
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24">
+      <Divider t={t} />
+
+      {/* Section heading */}
+      <div className="pt-10 pb-8">
+        <p className="text-[10px] font-bold uppercase tracking-[0.28em] mb-2"
+          style={{ color: t.accentVal }}>
+          Agroterra Resort · Dining
+        </p>
+        <h2 className="eb-garamond-semibold leading-none"
+          style={{ fontSize: 'clamp(30px,4.5vw,52px)', color: t.headingVal }}>
+          Indoor Dining Experience
+        </h2>
+        <div className="mt-4 w-10 h-px" style={{ backgroundColor: t.accentVal }} />
+      </div>
+
+      {/* Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.85, ease: EASE }}
+        className="flex flex-col lg:flex-row overflow-hidden rounded-2xl sm:rounded-3xl"
+        style={{ border: `1px solid ${t.borderVal}`, boxShadow: `0 24px 80px rgba(0,0,0,0.12)` }}>
+
+        {/* ── Image ── */}
+        <div className="relative w-full lg:w-[55%] overflow-hidden" style={{ minHeight: '540px' }}>
+          <Image
+            src={bg}
+            alt="Agroterra indoor dining"
+            fill
+            className="object-cover transition-transform duration-[1.4s] ease-out hover:scale-[1.03]"
+            sizes="(max-width:1024px) 100vw, 55vw"
+          />
+          {/* subtle right-edge fade into text panel on desktop */}
+          <div className="absolute inset-0"
+            style={{ background: 'linear-gradient(to right, transparent 60%, rgba(0,0,0,0.06) 100%)' }} />
+          {/* top accent line */}
+          <div className="absolute top-0 left-10 right-10 h-0.5 rounded-full"
+            style={{ background: `linear-gradient(to right, transparent, ${t.accentVal}88, transparent)` }} />
+          {/* watermark number */}
+          <div className="absolute bottom-4 right-6 eb-garamond-semibold select-none pointer-events-none"
+            style={{ fontSize: 'clamp(80px,12vw,140px)', color: 'rgba(255,255,255,0.07)', lineHeight: 1 }}>
+            01
+          </div>
+        </div>
+
+        {/* ── Text panel ── */}
+        <div
+          className="relative flex flex-col justify-center gap-6 w-full lg:w-[45%] px-8 sm:px-12 py-12 lg:py-14"
+          style={{ backgroundColor: t.surfaceVal }}>
+
+          {/* top accent bar */}
+          <div className="absolute top-0 left-10 right-10 h-0.5 rounded-full"
+            style={{ background: `linear-gradient(to right, transparent, ${t.accentVal}50, transparent)` }} />
+
+          {/* eyebrow */}
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-px" style={{ backgroundColor: t.accentVal }} />
+            <span className="text-[10px] font-bold uppercase tracking-[0.24em]"
+              style={{ color: t.accentVal }}>
+              Experience
+            </span>
+          </div>
+
+          {/* heading */}
+          <div>
+            <h3 className="eb-garamond-semibold leading-[1.08]"
+              style={{ fontSize: 'clamp(22px,3vw,38px)', color: t.headingVal }}>
+              A Culinary Journey, Indoors
+            </h3>
+            <p className="cormorant-garamond-light-italic mt-2 text-[15px] sm:text-[16px] tracking-wide"
+              style={{ color: t.accentVal }}>
+              Warmth · Flavour · Tradition
+            </p>
+          </div>
+
+          {/* rule */}
+          <div className="w-full h-px" style={{ backgroundColor: t.borderVal }} />
+
+          {/* description */}
+          <p className="cormorant-garamond-light-italic leading-[1.9] text-[16px] sm:text-[17px] md:text-[18px]"
+            style={{ color: t.bodyVal }}>
+            Step inside our dining room and let the aromas welcome you home. Agroterra's indoor dining
+            celebrates the richness of Nigerian heritage — slow-cooked stews, traditional dishes,
+            and vibrant jollof — served with the warmth and grace of a family table.
+          </p>
+
+          {/* chips */}
+          <div className="flex flex-wrap gap-2">
+            <Chip icon={<IoBedOutline size={13} />} label="Breakfast · Lunch · Dinner" t={t} />
+            <Chip icon={<MdOutlinePeopleOutline size={13} />} label="Traditional Cuisine" t={t} />
+            <Chip icon={<TbCrosshair size={13} />} label="Private Reservations" t={t} />
+          </div>
+
+          {/* CTA */}
+          <div>
+            <Link href="/dining"
+              className="group inline-flex items-center gap-2.5 rounded-full px-7 py-3.5
+                text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.14em]
+                transition-all duration-300"
+              style={{
+                backgroundColor: t.accentVal,
+                color: t.pageVal,
+                boxShadow: `0 8px 28px ${t.accentVal}40`,
+              }}>
+              Explore Our Dining
+              <ArrowUpRight size={14}
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  )
+}
+
 // ── Page ──────────────────────────────────────────────────────────
 export default function RoomsPage() {
   const [isDark, setIsDark] = useState(false)
@@ -466,9 +571,9 @@ export default function RoomsPage() {
         className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
         style={{
           backgroundColor: isDark ? '#0f180f' : '#ede8df',
-          color:           t.accentVal,
-          border:          `1px solid ${t.borderVal}`,
-          boxShadow:       `0 4px 24px ${t.accentVal}28`,
+          color: t.accentVal,
+          border: `1px solid ${t.borderVal}`,
+          boxShadow: `0 4px 24px ${t.accentVal}28`,
         }}>
         {isDark ? <Sun size={18} /> : <Moon size={18} />}
       </button>
@@ -494,13 +599,11 @@ export default function RoomsPage() {
               {TABS.find(tb => tb.key === activeTab)?.label}
             </h2>
           </div>
-          {/* Count */}
           <p className="cormorant-garamond-light-italic text-[15px]" style={{ color: t.mutedVal }}>
             {suiteData[activeTab].length} rooms available
           </p>
         </motion.div>
 
-        {/* Heading underline */}
         <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
           transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
           className="mt-5 h-px origin-left"
@@ -524,6 +627,9 @@ export default function RoomsPage() {
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* Dining teaser */}
+      <DiningTeaser t={t} />
 
       {/* Footer */}
       <footer className="py-8 px-6 text-center" style={{ borderTop: `1px solid ${t.borderVal}` }}>
