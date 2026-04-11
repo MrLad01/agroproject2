@@ -18,14 +18,12 @@ import Navbar from "@/components/Navbar";
 export default function Page() {
   const [dark, setDark] = useState(false);
 
-  // Sync dark class on <html>
   useEffect(() => {
     const root = document.documentElement;
     if (dark) root.classList.add('dark');
     else root.classList.remove('dark');
   }, [dark]);
 
-  // Respect OS preference on first load
   useEffect(() => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) setDark(true);
   }, []);
@@ -38,10 +36,7 @@ export default function Page() {
       { y: 0, opacity: 1, duration: 1.8, ease: "power4.out", stagger: 0.3 }
     );
 
-    gsap.fromTo("nav",
-      { y: -50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.5, ease: "power4.out" }
-    );
+    // NOTE: intentionally not animating "nav" — see previous fix
 
     const sections = gsap.utils.toArray<HTMLElement>(".animate-section");
     sections.forEach((section) => {
@@ -91,15 +86,13 @@ export default function Page() {
     };
   }, []);
 
-  // ─── Theme tokens ───────────────────────────────────────────────
-  const bg = dark ? 'bg-[#0f1a0f]' : 'bg-white';
-  const bgAlt = dark ? 'bg-[#151f15]' : 'bg-[#f3f7f0]';
-  const textHead = dark ? 'text-[#c8e6a0]' : 'text-[#1a3d1a]';
-  const textBody = dark ? 'text-[#9bbf85]' : 'text-[#3a5c3a]';
-  const accent = dark ? 'text-[#7ec850]' : 'text-[#3a7d1a]';
-  const divider = dark ? 'border-[#2d4d2d]' : 'border-[#c5ddb5]';
+  const bg       = dark ? 'bg-[#0f1a0f]'     : 'bg-white';
+  const bgAlt    = dark ? 'bg-[#151f15]'     : 'bg-[#f3f7f0]';
+  const textHead = dark ? 'text-[#c8e6a0]'   : 'text-[#1a3d1a]';
+  const textBody = dark ? 'text-[#9bbf85]'   : 'text-[#3a5c3a]';
+  const accent   = dark ? 'text-[#7ec850]'   : 'text-[#3a7d1a]';
+  const divider  = dark ? 'border-[#2d4d2d]' : 'border-[#c5ddb5]';
 
-  // ─── Reusable section layout ─────────────────────────────────────
   type SectionProps = {
     title: string;
     body: React.ReactNode;
@@ -123,7 +116,6 @@ export default function Page() {
         items-center
         border-t ${divider}
       `}>
-        {/* Text */}
         <div className="flex flex-col gap-4 w-full lg:flex-1">
           {badge && (
             <span className={`badge inline-block self-start text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full border ${divider} ${accent}`}>
@@ -139,7 +131,6 @@ export default function Page() {
           </p>
         </div>
 
-        {/* Image */}
         <div className="w-full lg:flex-1 overflow-hidden rounded-xl shadow-lg">
           <Image
             src={image}
@@ -154,7 +145,6 @@ export default function Page() {
   return (
     <div className={`${dark ? 'dark' : ''} min-h-screen transition-colors duration-300`}>
 
-      {/* ── Dark / Light Toggle ─────────────────────────────────── */}
       <button
         onClick={() => setDark(d => !d)}
         aria-label="Toggle dark mode"
@@ -179,34 +169,30 @@ export default function Page() {
           className="object-cover"
           priority
         />
-        {/* Gradient overlay — heavier at bottom for text legibility */}
-        <div className={`absolute inset-0 ${dark
+
+        {/* Gradient overlay — purely visual, must not intercept clicks */}
+        <div className={`absolute inset-0 pointer-events-none ${dark
           ? 'bg-linear-to-b from-black/70 via-black/55 to-black/80'
           : 'bg-linear-to-b from-black/50 via-black/40 to-black/70'
-          } flex flex-col`}>
-          {/* Navbar sits inside the overlay so it's above the image but shares the dark gradient */}
-          <div className="absolute inset-x-0 top-0 z-20 px-4 sm:px-8 lg:px-12 py-4 sm:py-5">
-            <Navbar />
-          </div>
+        }`} />
 
-          {/* Hero text */}
-          <div className="flex-1 flex flex-col items-center justify-center px-6 text-white -mt-16 sm:-mt-20 md:-mt-24">
-            {/* Thin decorative line above title */}
-            <div className="hero-text w-16 h-px bg-[#8bc34a] mb-5 opacity-80" />
+        {/* Navbar — sits above the gradient, full pointer events */}
+        <div className="absolute inset-x-0 top-0 z-20 w-full px-4 sm:px-8 md:px-12 pt-4 sm:pt-6">
+          <Navbar />
+        </div>
 
-            <h1 className="hero-text text-center eb-garamond-semibold text-[42px] sm:text-[56px] md:text-[68px] tracking-widest uppercase leading-none">
-              AGROTERRA
-            </h1>
-
-            <p className="hero-text eb-garamond-italic text-[18px] sm:text-[22px] md:text-[26px] text-center mt-4 text-white/85 max-w-xl">
-              Where nature, comfort, and experience meet.
-            </p>
-
-            {/* Scroll hint */}
-            <div className="hero-text mt-10 flex flex-col items-center gap-1 opacity-60">
-              <span className="text-xs tracking-widest uppercase text-white/70">Scroll</span>
-              <div className="w-px h-8 bg-white/50 animate-pulse" />
-            </div>
+        {/* Hero text — pointer-events-none so it never blocks nav clicks */}
+        <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center px-6 text-white -mt-16 sm:-mt-20 md:-mt-24">
+          <div className="hero-text w-16 h-px bg-[#8bc34a] mb-5 opacity-80" />
+          <h1 className="hero-text text-center eb-garamond-semibold text-[42px] sm:text-[56px] md:text-[68px] tracking-widest uppercase leading-none">
+            AGROTERRA
+          </h1>
+          <p className="hero-text eb-garamond-italic text-[18px] sm:text-[22px] md:text-[26px] text-center mt-4 text-white/85 max-w-xl">
+            Where nature, comfort, and experience meet.
+          </p>
+          <div className="hero-text mt-10 flex flex-col items-center gap-1 opacity-60">
+            <span className="text-xs tracking-widest uppercase text-white/70">Scroll</span>
+            <div className="w-px h-8 bg-white/50 animate-pulse" />
           </div>
         </div>
       </div>
@@ -221,7 +207,6 @@ export default function Page() {
         bgClass={bg}
       />
 
-      {/* ====================== NATURAL BEAUTY ====================== */}
       <Section
         title="Surrounded by Natural Beauty"
         badge="Nature"
@@ -232,7 +217,6 @@ export default function Page() {
         bgClass={bgAlt}
       />
 
-      {/* ====================== GOLF ====================== */}
       <Section
         title="Golf at Agroterra"
         badge="Recreation"
@@ -248,7 +232,6 @@ export default function Page() {
         bgClass={bg}
       />
 
-      {/* ====================== KITCHEN ====================== */}
       <Section
         title="Kitchen at Agroterra"
         badge="Dining"
@@ -259,7 +242,6 @@ export default function Page() {
         bgClass={bgAlt}
       />
 
-      {/* ====================== SHEEDXFM ====================== */}
       <Section
         title="SheedXfm at Agroterra"
         badge="Media"
@@ -269,7 +251,6 @@ export default function Page() {
         bgClass={bg}
       />
 
-      {/* ====================== SPORT ACADEMY ====================== */}
       <Section
         title="Sport Academy at Agroterra"
         badge="Academy"
@@ -280,7 +261,6 @@ export default function Page() {
         bgClass={bgAlt}
       />
 
-      {/* ====================== SECURITY ====================== */}
       <Section
         title="Security at Agroterra"
         badge="Safety"
@@ -306,10 +286,8 @@ export default function Page() {
           fill
           className="animate-image object-cover"
         />
-        <div className="absolute inset-0 bg-black/60" />
-
+        <div className="absolute inset-0 bg-black/60 pointer-events-none" />
         <div className="relative z-10 flex flex-col gap-4 text-white items-center text-center px-6 sm:px-10 md:px-20 py-20">
-          {/* Decorative leaf / line motif */}
           <div className="w-12 h-px bg-[#8bc34a] mb-2" />
           <h2 className="cormorant-garamond-medium-italic text-[28px] sm:text-[34px] md:text-[40px] leading-snug max-w-2xl">
             Where Nature Meets Relaxation
