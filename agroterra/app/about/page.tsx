@@ -92,12 +92,12 @@ export default function Page() {
   }, []);
 
   // ─── Theme tokens ───────────────────────────────────────────────
-  const bg         = dark ? 'bg-[#0f1a0f]'       : 'bg-white';
-  const bgAlt      = dark ? 'bg-[#151f15]'       : 'bg-[#f3f7f0]';
-  const textHead   = dark ? 'text-[#c8e6a0]'     : 'text-[#1a3d1a]';
-  const textBody   = dark ? 'text-[#9bbf85]'     : 'text-[#3a5c3a]';
-  const accent     = dark ? 'text-[#7ec850]'     : 'text-[#3a7d1a]';
-  const divider    = dark ? 'border-[#2d4d2d]'   : 'border-[#c5ddb5]';
+  const bg = dark ? 'bg-[#0f1a0f]' : 'bg-white';
+  const bgAlt = dark ? 'bg-[#151f15]' : 'bg-[#f3f7f0]';
+  const textHead = dark ? 'text-[#c8e6a0]' : 'text-[#1a3d1a]';
+  const textBody = dark ? 'text-[#9bbf85]' : 'text-[#3a5c3a]';
+  const accent = dark ? 'text-[#7ec850]' : 'text-[#3a7d1a]';
+  const divider = dark ? 'border-[#2d4d2d]' : 'border-[#c5ddb5]';
 
   // ─── Reusable section layout ─────────────────────────────────────
   type SectionProps = {
@@ -183,9 +183,9 @@ export default function Page() {
         <div className={`absolute inset-0 ${dark
           ? 'bg-linear-to-b from-black/70 via-black/55 to-black/80'
           : 'bg-linear-to-b from-black/50 via-black/40 to-black/70'
-        } flex flex-col`}>
+          } flex flex-col`}>
           {/* Navbar sits inside the overlay so it's above the image but shares the dark gradient */}
-          <div className="w-full px-4 sm:px-8 md:px-12 pt-4 sm:pt-6 z-10">
+          <div className="absolute inset-x-0 top-0 z-20 px-4 sm:px-8 lg:px-12 py-4 sm:py-5">
             <Navbar />
           </div>
 
