@@ -1,6 +1,5 @@
 'use client'
 
-
 import Image from "next/image";
 import background1 from '@/public/relaxation3.png'
 import background3 from '@/public/kitchen.png'
@@ -10,9 +9,8 @@ import background7 from '@/public/golf3.png'
 import background8 from '@/public/top-view.png'
 import securityImage from '@/public/security.png'
 import aboutImage from '@/public/house2.png'
-import aboutImage2 from '@/public/house3.png'
 import gsap from 'gsap';
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useState } from 'react';
 import Navbar from "@/components/Navbar";
@@ -38,8 +36,6 @@ export default function Page() {
       { y: 50, opacity: 0 },
       { y: 0, opacity: 1, duration: 1.8, ease: "power4.out", stagger: 0.3 }
     );
-
-    // NOTE: intentionally not animating "nav" — see previous fix
 
     const sections = gsap.utils.toArray<HTMLElement>(".animate-section");
     sections.forEach((section) => {
@@ -156,8 +152,7 @@ export default function Page() {
       <motion.button
         onClick={() => setDark(d => !d)}
         aria-label="Toggle dark mode"
-        className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full
-    flex items-center justify-center"
+        className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full flex items-center justify-center"
         style={{
           backgroundColor: dark ? '#0f180f' : '#ede8df',
           color: t.accentVal,
@@ -176,36 +171,43 @@ export default function Page() {
           rotate: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
         }}
         whileHover={{ scale: 1.18, rotate: 20 }}
-        whileTap={{ scale: 0.88, rotate: -15 }}>
+        whileTap={{ scale: 0.88, rotate: -15 }}
+      >
         <motion.div
           animate={{ rotate: dark ? 0 : 360 }}
-          transition={{ duration: 0.5, ease: 'easeInOut' }}>
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
+        >
           {dark ? <Sun size={18} /> : <Moon size={18} />}
         </motion.div>
       </motion.button>
 
       {/* ====================== HERO ====================== */}
-      <div className="relative w-full h-svh">
-        <Image
-          src={aboutImage2}
-          alt="Agroterra aerial view"
-          fill
-          className="object-cover"
-          priority
+      <div className="relative w-full h-svh overflow-hidden">
+
+        {/* Video background */}
+        <video
+          autoPlay
+          loop
+          playsInline
+          controls
+          className="absolute inset-0 w-full h-full object-cover"
+          src="https://res.cloudinary.com/dcgvs3u4e/video/upload/VID-20260411-WA0023_m5b58f.mp4"
+          // starts muted so autoplay works, user can unmute via controls
+          muted
         />
 
-        {/* Gradient overlay — purely visual, must not intercept clicks */}
+        {/* Gradient overlay */}
         <div className={`absolute inset-0 pointer-events-none ${dark
           ? 'bg-linear-to-b from-black/70 via-black/55 to-black/80'
           : 'bg-linear-to-b from-black/50 via-black/40 to-black/70'
           }`} />
 
-        {/* Navbar — sits above the gradient, full pointer events */}
+        {/* Navbar */}
         <div className="absolute inset-x-0 top-0 z-20 w-full px-4 sm:px-8 md:px-12 pt-4 sm:pt-6">
           <Navbar />
         </div>
 
-        {/* Hero text — pointer-events-none so it never blocks nav clicks */}
+        {/* Hero text */}
         <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center px-6 text-white -mt-16 sm:-mt-20 md:-mt-24">
           <div className="hero-text w-16 h-px bg-[#8bc34a] mb-5 opacity-80" />
           <h1 className="hero-text text-center eb-garamond-semibold text-[42px] sm:text-[56px] md:text-[68px] tracking-widest uppercase leading-none">
