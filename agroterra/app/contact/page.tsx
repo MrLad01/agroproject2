@@ -332,18 +332,36 @@ export default function ContactPage() {
     <div className={`${t.page} min-h-screen transition-colors duration-300`}>
 
       {/* ── Dark / Light Toggle ───────────────────────────── */}
-      <button
+            <motion.button
         onClick={() => setDark(d => !d)}
         aria-label="Toggle dark mode"
-        className="fixed bottom-6 cursor-pointer right-6 z-50 w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-all duration-300"
+        className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full
+    flex items-center justify-center"
         style={{
-          backgroundColor: t.toggleBg,
+          backgroundColor: dark ? '#0f180f' : '#ede8df',
           color: t.toggleText,
           border: `1px solid ${t.inputBorder}`,
         }}
-      >
-        {dark ? <Sun size={18} /> : <Moon size={18} />}
-      </button>
+        animate={{
+          boxShadow: [
+            `0 0 0px 0px ${t.accent}00`,
+            `0 0 16px 4px ${t.accent}55`,
+            `0 0 0px 0px ${t.accent}00`,
+          ],
+          rotate: [0, -8, 8, -4, 4, 0],
+        }}
+        transition={{
+          boxShadow: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
+          rotate: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+        }}
+        whileHover={{ scale: 1.18, rotate: 20 }}
+        whileTap={{ scale: 0.88, rotate: -15 }}>
+        <motion.div
+          animate={{ rotate: dark ? 0 : 360 }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}>
+          {dark ? <Sun size={18} /> : <Moon size={18} />}
+        </motion.div>
+      </motion.button>
 
       <AnimatePresence>
         {showModal && (

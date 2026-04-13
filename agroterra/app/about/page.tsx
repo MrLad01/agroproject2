@@ -1,5 +1,6 @@
 'use client'
 
+
 import Image from "next/image";
 import background1 from '@/public/relaxation3.png'
 import background3 from '@/public/kitchen.png'
@@ -11,9 +12,11 @@ import securityImage from '@/public/security.png'
 import aboutImage from '@/public/house2.png'
 import aboutImage2 from '@/public/house3.png'
 import gsap from 'gsap';
+import { motion, AnimatePresence } from "framer-motion"
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useState } from 'react';
 import Navbar from "@/components/Navbar";
+import { Moon, Sun } from "lucide-react";
 
 export default function Page() {
   const [dark, setDark] = useState(false);
@@ -86,12 +89,17 @@ export default function Page() {
     };
   }, []);
 
-  const bg       = dark ? 'bg-[#0f1a0f]'     : 'bg-white';
-  const bgAlt    = dark ? 'bg-[#151f15]'     : 'bg-[#f3f7f0]';
-  const textHead = dark ? 'text-[#c8e6a0]'   : 'text-[#1a3d1a]';
-  const textBody = dark ? 'text-[#9bbf85]'   : 'text-[#3a5c3a]';
-  const accent   = dark ? 'text-[#7ec850]'   : 'text-[#3a7d1a]';
-  const divider  = dark ? 'border-[#2d4d2d]' : 'border-[#c5ddb5]';
+  const bg = dark ? 'bg-[#0f1a0f]' : 'bg-white';
+  const bgAlt = dark ? 'bg-[#151f15]' : 'bg-[#f3f7f0]';
+  const textHead = dark ? 'text-[#c8e6a0]' : 'text-[#1a3d1a]';
+  const textBody = dark ? 'text-[#9bbf85]' : 'text-[#3a5c3a]';
+  const accent = dark ? 'text-[#7ec850]' : 'text-[#3a7d1a]';
+  const divider = dark ? 'border-[#2d4d2d]' : 'border-[#c5ddb5]';
+
+  const t = {
+    accentVal: dark ? '#7ec850' : '#3a7d1a',
+    borderVal: dark ? '#2d4d2d' : '#c5ddb5',
+  };
 
   type SectionProps = {
     title: string;
@@ -145,20 +153,36 @@ export default function Page() {
   return (
     <div className={`${dark ? 'dark' : ''} min-h-screen transition-colors duration-300`}>
 
-      <button
+      <motion.button
         onClick={() => setDark(d => !d)}
         aria-label="Toggle dark mode"
-        className={`
-          fixed bottom-6 right-6 z-50 cursor-pointer
-          w-12 h-12 rounded-full shadow-xl
-          flex items-center justify-center text-xl
-          transition-all duration-300
-          border ${divider}
-          ${dark ? 'bg-[#1e3a1e] text-[#c8e6a0]' : 'bg-white text-[#1a3d1a]'}
-        `}
-      >
-        {dark ? '☀️' : '🌙'}
-      </button>
+        className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full
+    flex items-center justify-center"
+        style={{
+          backgroundColor: dark ? '#0f180f' : '#ede8df',
+          color: t.accentVal,
+          border: `1px solid ${t.borderVal}`,
+        }}
+        animate={{
+          boxShadow: [
+            `0 0 0px 0px ${t.accentVal}00`,
+            `0 0 16px 4px ${t.accentVal}55`,
+            `0 0 0px 0px ${t.accentVal}00`,
+          ],
+          rotate: [0, -8, 8, -4, 4, 0],
+        }}
+        transition={{
+          boxShadow: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
+          rotate: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+        }}
+        whileHover={{ scale: 1.18, rotate: 20 }}
+        whileTap={{ scale: 0.88, rotate: -15 }}>
+        <motion.div
+          animate={{ rotate: dark ? 0 : 360 }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}>
+          {dark ? <Sun size={18} /> : <Moon size={18} />}
+        </motion.div>
+      </motion.button>
 
       {/* ====================== HERO ====================== */}
       <div className="relative w-full h-svh">
@@ -174,7 +198,7 @@ export default function Page() {
         <div className={`absolute inset-0 pointer-events-none ${dark
           ? 'bg-linear-to-b from-black/70 via-black/55 to-black/80'
           : 'bg-linear-to-b from-black/50 via-black/40 to-black/70'
-        }`} />
+          }`} />
 
         {/* Navbar — sits above the gradient, full pointer events */}
         <div className="absolute inset-x-0 top-0 z-20 w-full px-4 sm:px-8 md:px-12 pt-4 sm:pt-6">

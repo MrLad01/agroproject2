@@ -22,44 +22,44 @@ const EASE = [0.22, 1, 0.36, 1] as const
 
 // ── Theme ─────────────────────────────────────────────────────────
 type Theme = {
-  pageVal:    string
+  pageVal: string
   surfaceVal: string
-  borderVal:  string
-  accentVal:  string
+  borderVal: string
+  accentVal: string
   headingVal: string
-  bodyVal:    string
-  mutedVal:   string
-  ruleLine:   string
-  tintVal:    string
-  chipBg:     string
+  bodyVal: string
+  mutedVal: string
+  ruleLine: string
+  tintVal: string
+  chipBg: string
   chipBorder: string
 }
 
 const light: Theme = {
-  pageVal:    '#f5f2eb',
+  pageVal: '#f5f2eb',
   surfaceVal: '#ffffff',
-  borderVal:  '#ddd5c4',
-  accentVal:  '#1e5e32',
+  borderVal: '#ddd5c4',
+  accentVal: '#1e5e32',
   headingVal: '#0f1f0f',
-  bodyVal:    '#3a4e3a',
-  mutedVal:   '#7a8c6a',
-  ruleLine:   '#cec8bc',
-  tintVal:    '#e8f0e4',
-  chipBg:     'rgba(30,94,50,0.08)',
+  bodyVal: '#3a4e3a',
+  mutedVal: '#7a8c6a',
+  ruleLine: '#cec8bc',
+  tintVal: '#e8f0e4',
+  chipBg: 'rgba(30,94,50,0.08)',
   chipBorder: 'rgba(30,94,50,0.2)',
 }
 
 const dark: Theme = {
-  pageVal:    '#080e08',
+  pageVal: '#080e08',
   surfaceVal: '#0f180f',
-  borderVal:  '#243424',
-  accentVal:  '#7ec850',
+  borderVal: '#243424',
+  accentVal: '#7ec850',
   headingVal: '#e0f0c8',
-  bodyVal:    '#9abf7e',
-  mutedVal:   '#4e6e3e',
-  ruleLine:   '#1a2a1a',
-  tintVal:    '#0d1f0d',
-  chipBg:     'rgba(126,200,80,0.08)',
+  bodyVal: '#9abf7e',
+  mutedVal: '#4e6e3e',
+  ruleLine: '#1a2a1a',
+  tintVal: '#0d1f0d',
+  chipBg: 'rgba(126,200,80,0.08)',
   chipBorder: 'rgba(126,200,80,0.22)',
 }
 
@@ -71,20 +71,20 @@ const MEALS: { section: string; items: MealItem[] }[] = [
     section: 'Breakfast',
     items: [
       { name: 'Agroterra Full Breakfast', desc: 'Eggs, toast, grilled tomato, local produce', cat: 'Breakfast' },
-      { name: 'Akara & Ogi',              desc: 'Bean fritters with warm pap — a morning classic', cat: 'Breakfast' },
+      { name: 'Akara & Ogi', desc: 'Bean fritters with warm pap — a morning classic', cat: 'Breakfast' },
     ],
   },
   {
     section: 'Lunch',
     items: [
       { name: 'Jollof Rice & Grilled Chicken', desc: 'Party-style jollof with smoky grilled chicken', cat: 'Lunch' },
-      { name: 'Egusi Soup & Eba',              desc: 'Rich melon seed soup, slow-cooked to perfection', cat: 'Lunch' },
+      { name: 'Egusi Soup & Eba', desc: 'Rich melon seed soup, slow-cooked to perfection', cat: 'Lunch' },
     ],
   },
   {
     section: 'Dinner',
     items: [
-      { name: 'Pepper Soup',                desc: 'Spiced goat meat broth — warming and aromatic', cat: 'Dinner' },
+      { name: 'Pepper Soup', desc: 'Spiced goat meat broth — warming and aromatic', cat: 'Dinner' },
       { name: 'Ofada Rice & Ayamase Stew', desc: 'Local brown rice with green pepper stew', cat: 'Dinner' },
     ],
   },
@@ -92,25 +92,25 @@ const MEALS: { section: string; items: MealItem[] }[] = [
     section: 'Dessert & Drinks',
     items: [
       { name: 'Puff Puff & Chin Chin', desc: 'Hand-pressed dough, lightly sweetened', cat: 'Dessert' },
-      { name: 'Soft Drinks & Palm wine',    desc: 'Chilled drinks', cat: 'Drinks' },
+      { name: 'Soft Drinks & Palm wine', desc: 'Chilled drinks', cat: 'Drinks' },
     ],
   },
 ]
 
 // ── Dining data ───────────────────────────────────────────────────
 const categories = [
-  { label: 'DINNER',    title: 'Really Quick Traditional Dishes',  img: dinner    },
+  { label: 'DINNER', title: 'Really Quick Traditional Dishes', img: dinner },
   { label: 'BREAKFAST', title: 'Announcing The Spring Bucket List', img: breakfast },
-  { label: 'DESSERT',   title: 'Favorite Snacks',                   img: dessert   },
-  { label: 'DRINKS',    title: 'Refreshing Drinks',                 img: drinks    },
+  { label: 'DESSERT', title: 'Favorite Snacks', img: dessert },
+  { label: 'DRINKS', title: 'Refreshing Drinks', img: drinks },
 ]
 
 const topCategories = [
-  { label: 'BREAKFAST', img: ham     },
-  { label: 'DESSERT',   img: dessert },
-  { label: 'LUNCH',     img: jollof  },
-  { label: 'APPETIZER', img: puff    },
-  { label: 'DINNER',    img: dinner  },
+  { label: 'BREAKFAST', img: ham },
+  { label: 'DESSERT', img: dessert },
+  { label: 'LUNCH', img: jollof },
+  { label: 'APPETIZER', img: puff },
+  { label: 'DINNER', img: dinner },
 ]
 
 const weeklyFeatured = {
@@ -119,23 +119,23 @@ const weeklyFeatured = {
   img: dinner,
 }
 const weeklySide = [
-  { label: 'LUNCH',     title: 'Exploring The Potential Of Cooking International Cuisines', img: jollof     },
-  { label: 'DESSERT',   title: 'Favorite Browned Butter Chocolate Cookies Daily Breakfast', img: dessert    },
-  { label: 'APPETIZER', title: 'The Potentially Dangerous Non Sibility Of Cookie Notices',  img: rappetizer },
+  { label: 'LUNCH', title: 'Exploring The Potential Of Cooking International Cuisines', img: jollof },
+  { label: 'DESSERT', title: 'Favorite Browned Butter Chocolate Cookies Daily Breakfast', img: dessert },
+  { label: 'APPETIZER', title: 'The Potentially Dangerous Non Sibility Of Cookie Notices', img: rappetizer },
 ]
 
 const healthyRecipes = [
-  { label: 'LUNCH',     title: 'Have The Best Cuisine In Our Resort',                      img: jollof     },
-  { label: 'BREAKFAST', title: 'The Best Handoff Is No Handoff',                           img: breakfast  },
-  { label: 'DESSERT',   title: 'One Of The Best Desserts In The Country',                  img: dessert    },
-  { label: 'PIZZA',     title: 'How To Make Puff Puff in Thirty Minutes.',                 img: puff       },
-  { label: 'DINNER',    title: 'Why You Should Consider Trying Our Traditional Recipe',    img: dinner     },
-  { label: 'APPETIZER', title: 'How To Create Dynamic Donut Plating Works',                img: rappetizer },
+  { label: 'LUNCH', title: 'Have The Best Cuisine In Our Resort', img: jollof },
+  { label: 'BREAKFAST', title: 'The Best Handoff Is No Handoff', img: breakfast },
+  { label: 'DESSERT', title: 'One Of The Best Desserts In The Country', img: dessert },
+  { label: 'PIZZA', title: 'How To Make Puff Puff in Thirty Minutes.', img: puff },
+  { label: 'DINNER', title: 'Why You Should Consider Trying Our Traditional Recipe', img: dinner },
+  { label: 'APPETIZER', title: 'How To Create Dynamic Donut Plating Works', img: rappetizer },
 ]
 
 const recipes = [
   { label: 'BREAKFAST', title: 'The Potentially Dangerous Non-Accessibility Of Cookie', img: rbreakfast },
-  { label: 'LUNCH',     title: 'One-Pan Baked Sausage And Lentils',                     img: rlunch     },
+  { label: 'LUNCH', title: 'One-Pan Baked Sausage And Lentils', img: rlunch },
 ]
 const featuredRecipe = {
   label: 'APPETIZER',
@@ -146,11 +146,11 @@ const featuredRecipe = {
 
 // ── Animation variants ────────────────────────────────────────────
 const containerVariants = {
-  hidden:  {},
+  hidden: {},
   visible: { transition: { staggerChildren: 0.12 } },
 }
 const cardVariants = {
-  hidden:  { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 }
 
@@ -215,7 +215,7 @@ function MealCard({
       onClick={onToggle}
       className="w-full text-left flex items-center gap-4 rounded-2xl px-4 py-3.5 transition-all duration-200"
       style={{
-        border:          `1.5px solid ${selected ? t.accentVal : t.borderVal}`,
+        border: `1.5px solid ${selected ? t.accentVal : t.borderVal}`,
         backgroundColor: selected ? t.chipBg : t.surfaceVal,
       }}>
       {/* Checkbox circle */}
@@ -223,7 +223,7 @@ function MealCard({
         className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center transition-all duration-200"
         style={{
           backgroundColor: selected ? t.accentVal : 'transparent',
-          border:          `1.5px solid ${selected ? t.accentVal : t.borderVal}`,
+          border: `1.5px solid ${selected ? t.accentVal : t.borderVal}`,
         }}>
         {selected && <Check size={11} color={t.pageVal} strokeWidth={2.5} />}
       </div>
@@ -260,19 +260,19 @@ function SelectionPill({ label, t }: { label: string; t: Theme }) {
 
 // ── Meal Reservation ──────────────────────────────────────────────
 type FormData = {
-  name:   string
-  email:  string
-  phone:  string
-  date:   string
+  name: string
+  email: string
+  phone: string
+  date: string
   guests: string
-  notes:  string
+  notes: string
 }
 
 function MealReservation({ t }: { t: Theme }) {
-  const [step, setStep]             = useState<1 | 2 | 3>(1)
-  const [selected, setSelected]     = useState<Set<string>>(new Set())
-  const [form, setForm]             = useState<FormData>({ name: '', email: '', phone: '', date: '', guests: '', notes: '' })
-  const [nameError, setNameError]   = useState(false)
+  const [step, setStep] = useState<1 | 2 | 3>(1)
+  const [selected, setSelected] = useState<Set<string>>(new Set())
+  const [form, setForm] = useState<FormData>({ name: '', email: '', phone: '', date: '', guests: '', notes: '' })
+  const [nameError, setNameError] = useState(false)
   const [emailError, setEmailError] = useState(false)
 
   const toggle = (name: string) => {
@@ -284,7 +284,7 @@ function MealReservation({ t }: { t: Theme }) {
   }
 
   const handleSubmit = () => {
-    const hasName  = form.name.trim().length > 0
+    const hasName = form.name.trim().length > 0
     const hasEmail = form.email.trim().length > 0
     setNameError(!hasName)
     setEmailError(!hasEmail)
@@ -293,71 +293,71 @@ function MealReservation({ t }: { t: Theme }) {
   }
 
   const inputStyle = (error?: boolean): React.CSSProperties => ({
-    width:           '100%',
-    padding:         '10px 18px',
-    borderRadius:    '9999px',
-    border:          `1px solid ${error ? '#e24b4a' : t.borderVal}`,
+    width: '100%',
+    padding: '10px 18px',
+    borderRadius: '9999px',
+    border: `1px solid ${error ? '#e24b4a' : t.borderVal}`,
     backgroundColor: t.surfaceVal,
-    color:           t.bodyVal,
-    fontSize:        13,
-    outline:         'none',
-    boxSizing:       'border-box' as const,
-    fontFamily:      'inherit',
-    transition:      'border-color .2s',
+    color: t.bodyVal,
+    fontSize: 13,
+    outline: 'none',
+    boxSizing: 'border-box' as const,
+    fontFamily: 'inherit',
+    transition: 'border-color .2s',
   })
 
   const textareaStyle: React.CSSProperties = {
     ...inputStyle(),
     borderRadius: 16,
-    resize:       'none',
-    padding:      '12px 18px',
+    resize: 'none',
+    padding: '12px 18px',
   }
 
   const btnPrimary: React.CSSProperties = {
-    display:         'inline-flex',
-    alignItems:      'center',
-    gap:             8,
-    padding:         '12px 28px',
-    borderRadius:    9999,
-    border:          'none',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 8,
+    padding: '12px 28px',
+    borderRadius: 9999,
+    border: 'none',
     backgroundColor: t.accentVal,
-    color:           t.pageVal,
-    fontSize:        12,
-    fontWeight:      700,
-    letterSpacing:   '0.13em',
-    textTransform:   'uppercase' as const,
-    cursor:          selected.size === 0 && step === 1 ? 'not-allowed' : 'pointer',
-    opacity:         selected.size === 0 && step === 1 ? 0.4 : 1,
-    fontFamily:      'inherit',
-    boxShadow:       `0 8px 24px ${t.accentVal}38`,
-    transition:      'opacity .2s',
+    color: t.pageVal,
+    fontSize: 12,
+    fontWeight: 700,
+    letterSpacing: '0.13em',
+    textTransform: 'uppercase' as const,
+    cursor: selected.size === 0 && step === 1 ? 'not-allowed' : 'pointer',
+    opacity: selected.size === 0 && step === 1 ? 0.4 : 1,
+    fontFamily: 'inherit',
+    boxShadow: `0 8px 24px ${t.accentVal}38`,
+    transition: 'opacity .2s',
   }
 
   const btnOutline: React.CSSProperties = {
-    display:         'inline-flex',
-    alignItems:      'center',
-    gap:             8,
-    padding:         '12px 24px',
-    borderRadius:    9999,
-    border:          `1.5px solid ${t.accentVal}`,
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 8,
+    padding: '12px 24px',
+    borderRadius: 9999,
+    border: `1.5px solid ${t.accentVal}`,
     backgroundColor: 'transparent',
-    color:           t.accentVal,
-    fontSize:        12,
-    fontWeight:      700,
-    letterSpacing:   '0.13em',
-    textTransform:   'uppercase' as const,
-    cursor:          'pointer',
-    fontFamily:      'inherit',
+    color: t.accentVal,
+    fontSize: 12,
+    fontWeight: 700,
+    letterSpacing: '0.13em',
+    textTransform: 'uppercase' as const,
+    cursor: 'pointer',
+    fontFamily: 'inherit',
   }
 
   const labelStyle: React.CSSProperties = {
-    fontSize:      11,
-    fontWeight:    700,
+    fontSize: 11,
+    fontWeight: 700,
     letterSpacing: '0.14em',
     textTransform: 'uppercase' as const,
-    color:         t.mutedVal,
-    marginBottom:  10,
-    display:       'block',
+    color: t.mutedVal,
+    marginBottom: 10,
+    display: 'block',
   }
 
   return (
@@ -582,16 +582,36 @@ const Page = () => {
       style={{ backgroundColor: t.pageVal }}>
 
       {/* Theme toggle */}
-      <button onClick={() => setIsDark(d => !d)} aria-label="Toggle dark mode"
-        className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
+      <motion.button
+        onClick={() => setIsDark(d => !d)}
+        aria-label="Toggle dark mode"
+        className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full
+    flex items-center justify-center"
         style={{
           backgroundColor: isDark ? '#0f180f' : '#ede8df',
-          color:           t.accentVal,
-          border:          `1px solid ${t.borderVal}`,
-          boxShadow:       `0 4px 24px ${t.accentVal}28`,
-        }}>
-        {isDark ? <Sun size={18} /> : <Moon size={18} />}
-      </button>
+          color: t.accentVal,
+          border: `1px solid ${t.borderVal}`,
+        }}
+        animate={{
+          boxShadow: [
+            `0 0 0px 0px ${t.accentVal}00`,
+            `0 0 16px 4px ${t.accentVal}55`,
+            `0 0 0px 0px ${t.accentVal}00`,
+          ],
+          rotate: [0, -8, 8, -4, 4, 0],
+        }}
+        transition={{
+          boxShadow: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
+          rotate: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+        }}
+        whileHover={{ scale: 1.18, rotate: 20 }}
+        whileTap={{ scale: 0.88, rotate: -15 }}>
+        <motion.div
+          animate={{ rotate: isDark ? 0 : 360 }}
+          transition={{ duration: 0.5, ease: EASE }}>
+          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+        </motion.div>
+      </motion.button>
 
       <main className="flex flex-col min-h-screen w-full items-center">
 
@@ -741,7 +761,7 @@ const Page = () => {
                   className="flex flex-col items-center gap-3 cursor-pointer group">
                   <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden transition-all duration-300"
                     style={{
-                      border:    `3px solid ${t.accentVal}`,
+                      border: `3px solid ${t.accentVal}`,
                       boxShadow: `0 0 0 4px ${t.chipBg}, 0 8px 24px rgba(0,0,0,0.15)`,
                     }}>
                     <Image src={cat.img} alt={cat.label} fill

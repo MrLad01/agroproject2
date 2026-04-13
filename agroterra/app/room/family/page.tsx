@@ -18,54 +18,54 @@ const EASE = [0.22, 1, 0.36, 1] as const
 
 // ── Theme ─────────────────────────────────────────────────────────
 type Theme = {
-  page:        string
-  pageVal:     string
-  surface:     string
-  surfaceVal:  string
-  borderVal:   string
-  accentVal:   string
-  headingVal:  string
-  bodyVal:     string
-  mutedVal:    string
-  ruleLine:    string
-  tabActive:   string
+  page: string
+  pageVal: string
+  surface: string
+  surfaceVal: string
+  borderVal: string
+  accentVal: string
+  headingVal: string
+  bodyVal: string
+  mutedVal: string
+  ruleLine: string
+  tabActive: string
   tabInactive: string
-  chipBg:      string
-  chipBorder:  string
+  chipBg: string
+  chipBorder: string
 }
 
 const light: Theme = {
-  page:        'bg-[#f5f2eb]',
-  pageVal:     '#f5f2eb',
-  surface:     'bg-white',
-  surfaceVal:  '#ffffff',
-  borderVal:   '#ddd5c4',
-  accentVal:   '#1e5e32',
-  headingVal:  '#0f1f0f',
-  bodyVal:     '#3a4e3a',
-  mutedVal:    '#7a8c6a',
-  ruleLine:    '#cec8bc',
-  tabActive:   'text-[#1e5e32] border-b-[#1e5e32]',
+  page: 'bg-[#f5f2eb]',
+  pageVal: '#f5f2eb',
+  surface: 'bg-white',
+  surfaceVal: '#ffffff',
+  borderVal: '#ddd5c4',
+  accentVal: '#1e5e32',
+  headingVal: '#0f1f0f',
+  bodyVal: '#3a4e3a',
+  mutedVal: '#7a8c6a',
+  ruleLine: '#cec8bc',
+  tabActive: 'text-[#1e5e32] border-b-[#1e5e32]',
   tabInactive: 'text-[#999] border-b-transparent hover:text-[#1e5e32]',
-  chipBg:      'rgba(30,94,50,0.08)',
-  chipBorder:  'rgba(30,94,50,0.2)',
+  chipBg: 'rgba(30,94,50,0.08)',
+  chipBorder: 'rgba(30,94,50,0.2)',
 }
 
 const dark: Theme = {
-  page:        'bg-[#080e08]',
-  pageVal:     '#080e08',
-  surface:     'bg-[#0f180f]',
-  surfaceVal:  '#0f180f',
-  borderVal:   '#243424',
-  accentVal:   '#7ec850',
-  headingVal:  '#e0f0c8',
-  bodyVal:     '#9abf7e',
-  mutedVal:    '#4e6e3e',
-  ruleLine:    '#1a2a1a',
-  tabActive:   'text-[#7ec850] border-b-[#7ec850]',
+  page: 'bg-[#080e08]',
+  pageVal: '#080e08',
+  surface: 'bg-[#0f180f]',
+  surfaceVal: '#0f180f',
+  borderVal: '#243424',
+  accentVal: '#7ec850',
+  headingVal: '#e0f0c8',
+  bodyVal: '#9abf7e',
+  mutedVal: '#4e6e3e',
+  ruleLine: '#1a2a1a',
+  tabActive: 'text-[#7ec850] border-b-[#7ec850]',
   tabInactive: 'text-[#3a5a3a] border-b-transparent hover:text-[#7ec850]',
-  chipBg:      'rgba(126,200,80,0.08)',
-  chipBorder:  'rgba(126,200,80,0.22)',
+  chipBg: 'rgba(126,200,80,0.08)',
+  chipBorder: 'rgba(126,200,80,0.22)',
 }
 
 // ── Content data ──────────────────────────────────────────────────
@@ -78,9 +78,9 @@ const tabContent: Record<string, {
   videoSrc: string
 }> = {
   bedroom: {
-    eyebrow:  'Suite 01',
-    title:    'Family Suite',
-    tagline:  'Space · Warmth · Togetherness',
+    eyebrow: 'Suite 01',
+    title: 'Family Suite',
+    tagline: 'Space · Warmth · Togetherness',
     size: '45 sqm', beds: '2 Beds', bath: '1 Bath', guests: '4 Guests',
     paragraphs: [
       `The family bedroom at Agroterra Resort is thoughtfully designed to provide a warm, spacious, and relaxing environment where families can unwind, reconnect, and enjoy quality time together. From the moment guests enter, they are welcomed by a calming atmosphere inspired by nature, comfort, and modern elegance. The room is carefully arranged to balance functionality with a sense of retreat, ensuring that every family member feels at home throughout their stay.`,
@@ -93,9 +93,9 @@ const tabContent: Record<string, {
     videoSrc: 'https://www.youtube.com/embed/CdNSFf2hjEE?si=WUJXoytTL9YNF4W-',
   },
   bathroom: {
-    eyebrow:  'Suite 01',
-    title:    'Family Ensuite',
-    tagline:  'Clean · Spacious · Refreshing',
+    eyebrow: 'Suite 01',
+    title: 'Family Ensuite',
+    tagline: 'Clean · Spacious · Refreshing',
     size: '12 sqm', beds: '—', bath: '1 Bath', guests: '4 Guests',
     paragraphs: [
       `The family bathroom at Agroterra Resort is designed to complement the comfort of the bedroom while offering a clean, spacious, and refreshing environment suitable for guests of all ages. With a focus on hygiene, functionality, and modern elegance, the bathroom provides everything families need to start and end their day with ease.`,
@@ -139,7 +139,7 @@ function TabBar({ active, onChange, t }: { active: string; onChange: (k: string)
       style={{ backgroundColor: t.pageVal, backdropFilter: 'blur(16px)', borderBottom: `1px solid ${t.borderVal}` }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-10 flex">
         {[
-          { key: 'bedroom',  label: 'Bedroom'  },
+          { key: 'bedroom', label: 'Bedroom' },
           { key: 'bathroom', label: 'Bathroom' },
         ].map(({ key, label }) => (
           <button key={key} onClick={() => onChange(key)}
@@ -187,16 +187,36 @@ export default function Page() {
     <div className={`${t.page} min-h-screen eb-garamond transition-colors duration-300 overflow-x-hidden`}>
 
       {/* ── Theme toggle ── */}
-      <button onClick={() => setIsDark(d => !d)} aria-label="Toggle dark mode"
-        className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
+      <motion.button
+        onClick={() => setIsDark(d => !d)}
+        aria-label="Toggle dark mode"
+        className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full
+                flex items-center justify-center"
         style={{
           backgroundColor: isDark ? '#0f180f' : '#ede8df',
-          color:           t.accentVal,
-          border:          `1px solid ${t.borderVal}`,
-          boxShadow:       `0 4px 24px ${t.accentVal}28`,
-        }}>
-        {isDark ? <Sun size={18} /> : <Moon size={18} />}
-      </button>
+          color: t.accentVal,
+          border: `1px solid ${t.borderVal}`,
+        }}
+        animate={{
+          boxShadow: [
+            `0 0 0px 0px ${t.accentVal}00`,
+            `0 0 16px 4px ${t.accentVal}55`,
+            `0 0 0px 0px ${t.accentVal}00`,
+          ],
+          rotate: [0, -8, 8, -4, 4, 0],
+        }}
+        transition={{
+          boxShadow: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
+          rotate: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+        }}
+        whileHover={{ scale: 1.18, rotate: 20 }}
+        whileTap={{ scale: 0.88, rotate: -15 }}>
+        <motion.div
+          animate={{ rotate: isDark ? 0 : 360 }}
+          transition={{ duration: 0.5, ease: EASE }}>
+          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+        </motion.div>
+      </motion.button>
 
       {/* ── Nav ── */}
       <nav
@@ -285,9 +305,9 @@ export default function Page() {
 
           {/* Spec chips */}
           <div className="flex flex-wrap gap-2">
-            <Chip icon={<TbCrosshair size={13} />}            label={content.size}   t={t} />
-            <Chip icon={<IoBedOutline size={13} />}           label={content.beds}   t={t} />
-            <Chip icon={<MdOutlineBathtub size={13} />}       label={content.bath}   t={t} />
+            <Chip icon={<TbCrosshair size={13} />} label={content.size} t={t} />
+            <Chip icon={<IoBedOutline size={13} />} label={content.beds} t={t} />
+            <Chip icon={<MdOutlineBathtub size={13} />} label={content.bath} t={t} />
             <Chip icon={<MdOutlinePeopleOutline size={13} />} label={content.guests} t={t} />
           </div>
 

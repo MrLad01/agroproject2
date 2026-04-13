@@ -13,6 +13,7 @@ import Blog from '@/components/Blog'
 import SectionOne from '@/components/Section1'
 import SectionTwo from '@/components/Section2'
 import Review from '@/components/Review'
+import { motion, AnimatePresence } from "framer-motion"
 import { gsap } from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
 import Navbar from '@/components/Navbar'
@@ -160,20 +161,36 @@ export default function Home() {
       className="pb-10"
     >
       {/* ── Single global dark/light toggle — fixed, bottom-right ── */}
-      <button
+      <motion.button
         onClick={() => setIsDark(d => !d)}
         aria-label="Toggle dark mode"
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
+        className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full
+          flex items-center justify-center"
         style={{
-          backgroundColor: tg.bg,
-          color:           tg.accent,
-          border:          `1px solid ${tg.border}`,
-          boxShadow:       `0 4px 24px ${tg.accent}28`,
-          transition:      'background-color 0.3s, color 0.3s, border-color 0.3s',
+          backgroundColor: isDark ? '#0f180f' : '#ede8df',
+          color: tg.accent,
+          border: `1px solid ${tg.border}`,
         }}
-      >
-        {isDark ? <Sun size={18} /> : <Moon size={18} />}
-      </button>
+        animate={{
+          boxShadow: [
+            `0 0 0px 0px ${tg.accent}00`,
+            `0 0 16px 4px ${tg.accent}55`,
+            `0 0 0px 0px ${tg.accent}00`,
+          ],
+          rotate: [0, -8, 8, -4, 4, 0],
+        }}
+        transition={{
+          boxShadow: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
+          rotate: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+        }}
+        whileHover={{ scale: 1.18, rotate: 20 }}
+        whileTap={{ scale: 0.88, rotate: -15 }}>
+        <motion.div
+          animate={{ rotate: isDark ? 0 : 360 }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}>
+          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+        </motion.div>
+      </motion.button>
 
       <div className="font-sans">
         <main className="w-full">

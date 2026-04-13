@@ -26,71 +26,71 @@ const EASE = [0.16, 1, 0.3, 1] as const
 // Factory for per-element staggered transitions
 const staggerTrans = (i: number): Transition => ({
   duration: 0.7,
-  delay:    i * 0.1,
-  ease:     EASE,
+  delay: i * 0.1,
+  ease: EASE,
 })
 
 // fadeUp — uses Framer's `custom` prop for per-element delay
 const fadeUp: Variants = {
-  hidden:  { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 32 },
   // The `visible` key is a TargetResolver when it's a function.
   // Casting the whole object to Variants keeps TS happy.
   visible: (i: number) => ({ opacity: 1, y: 0, transition: staggerTrans(i) }),
 }
 
 const tabContent: Variants = {
-  hidden:  { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 16 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: EASE } },
-  exit:    { opacity: 0, y: -8, transition: { duration: 0.25 } },
+  exit: { opacity: 0, y: -8, transition: { duration: 0.25 } },
 }
 
 // ── Theme ─────────────────────────────────────────────────────────
 type Theme = {
-  page:        string
-  surface:     string
-  border:      string
-  borderVal:   string
-  accentVal:   string
-  bodyVal:     string
-  mutedVal:    string
-  tabActive:   string
+  page: string
+  surface: string
+  border: string
+  borderVal: string
+  accentVal: string
+  bodyVal: string
+  mutedVal: string
+  tabActive: string
   tabInactive: string
-  ruleLine:    string
-  quoteBar:    string
-  thumbRing:   string
-  thumbTint:   string
+  ruleLine: string
+  quoteBar: string
+  thumbRing: string
+  thumbTint: string
 }
 
 const light: Theme = {
-  page:        'bg-[#f8f5ef]',
-  surface:     'bg-white',
-  border:      'border-[#d8cfc0]',
-  borderVal:   '#d8cfc0',
-  accentVal:   '#28683E',
-  bodyVal:     '#2c3e2c',
-  mutedVal:    '#7a8c6a',
-  tabActive:   'text-[#28683E] border-b-[#28683E]',
+  page: 'bg-[#f8f5ef]',
+  surface: 'bg-white',
+  border: 'border-[#d8cfc0]',
+  borderVal: '#d8cfc0',
+  accentVal: '#28683E',
+  bodyVal: '#2c3e2c',
+  mutedVal: '#7a8c6a',
+  tabActive: 'text-[#28683E] border-b-[#28683E]',
   tabInactive: 'text-[#8a9c7a] border-b-transparent',
-  ruleLine:    '#c5d4b0',
-  quoteBar:    '#28683E',
-  thumbRing:   '#28683E',
-  thumbTint:   'rgba(40,104,62,0.18)',
+  ruleLine: '#c5d4b0',
+  quoteBar: '#28683E',
+  thumbRing: '#28683E',
+  thumbTint: 'rgba(40,104,62,0.18)',
 }
 
 const dark: Theme = {
-  page:        'bg-[#0a120a]',
-  surface:     'bg-[#111a11]',
-  border:      'border-[#2a3d2a]',
-  borderVal:   '#2a3d2a',
-  accentVal:   '#7ec850',
-  bodyVal:     '#a8c890',
-  mutedVal:    '#5a7a4a',
-  tabActive:   'text-[#7ec850] border-b-[#7ec850]',
+  page: 'bg-[#0a120a]',
+  surface: 'bg-[#111a11]',
+  border: 'border-[#2a3d2a]',
+  borderVal: '#2a3d2a',
+  accentVal: '#7ec850',
+  bodyVal: '#a8c890',
+  mutedVal: '#5a7a4a',
+  tabActive: 'text-[#7ec850] border-b-[#7ec850]',
   tabInactive: 'text-[#3a5a3a] border-b-transparent',
-  ruleLine:    '#2a3d2a',
-  quoteBar:    '#7ec850',
-  thumbRing:   '#7ec850',
-  thumbTint:   'rgba(126,200,80,0.18)',
+  ruleLine: '#2a3d2a',
+  quoteBar: '#7ec850',
+  thumbRing: '#7ec850',
+  thumbTint: 'rgba(126,200,80,0.18)',
 }
 
 // ── Image breadcrumbs ─────────────────────────────────────────────
@@ -120,10 +120,10 @@ function ImageBreadcrumbs({
             <span
               className="hidden sm:block relative overflow-hidden rounded-lg"
               style={{
-                width:      active ? 70 : 48,
-                height:     active ? 46 : 32,
+                width: active ? 70 : 48,
+                height: active ? 46 : 32,
                 transition: 'width 0.38s cubic-bezier(0.16,1,0.3,1), height 0.38s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s',
-                boxShadow:  active
+                boxShadow: active
                   ? `0 0 0 2.5px ${t.thumbRing}, 0 6px 20px rgba(0,0,0,0.45)`
                   : '0 2px 8px rgba(0,0,0,0.35)',
                 opacity: active ? 1 : 0.5,
@@ -142,11 +142,11 @@ function ImageBreadcrumbs({
             <span
               className="block sm:hidden rounded-full"
               style={{
-                width:           active ? 26 : 8,
-                height:          8,
+                width: active ? 26 : 8,
+                height: 8,
                 backgroundColor: active ? t.accentVal : t.ruleLine,
-                opacity:         active ? 1 : 0.5,
-                transition:      'width 0.35s cubic-bezier(0.16,1,0.3,1)',
+                opacity: active ? 1 : 0.5,
+                transition: 'width 0.35s cubic-bezier(0.16,1,0.3,1)',
               }}
             />
           </button>
@@ -244,11 +244,11 @@ function HeroCarousel({ t }: { t: Theme }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.1 }}
           className="flex items-center px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl"
-          // style={{
-          //   background:     'rgba(0,0,0,0.36)',
-          //   backdropFilter: 'blur(12px)',
-          //   border:         '1px solid rgba(255,255,255,0.13)',
-          // }}
+        // style={{
+        //   background:     'rgba(0,0,0,0.36)',
+        //   backdropFilter: 'blur(12px)',
+        //   border:         '1px solid rgba(255,255,255,0.13)',
+        // }}
         >
           <ImageBreadcrumbs
             slides={slides}
@@ -264,9 +264,9 @@ function HeroCarousel({ t }: { t: Theme }) {
 
 // ── Tabs & content ────────────────────────────────────────────────
 const TABS = [
-  { key: 'about',         label: 'About' },
+  { key: 'about', label: 'About' },
   { key: 'driving-range', label: 'Driving Range' },
-  { key: 'club-house',    label: 'Club House' },
+  { key: 'club-house', label: 'Club House' },
 ] as const
 type TabKey = typeof TABS[number]['key']
 
@@ -421,19 +421,36 @@ export default function GolfPage() {
     <div className={`${t.page} min-h-screen transition-colors duration-300`}>
 
       {/* Theme toggle */}
-      <button
+      <motion.button
         onClick={() => setIsDark(d => !d)}
         aria-label="Toggle dark mode"
-        className="fixed bottom-6 cursor-pointer right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
+        className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full
+          flex items-center justify-center"
         style={{
-          backgroundColor: isDark ? '#111a11' : '#f0ebe1',
-          color:           t.accentVal,
-          border:          `1px solid ${t.borderVal}`,
-          boxShadow:       `0 4px 20px ${t.accentVal}22`,
+          backgroundColor: isDark ? '#0f180f' : '#ede8df',
+          color: t.accentVal,
+          border: `1px solid ${t.borderVal}`,
         }}
-      >
-        {isDark ? <Sun size={18} /> : <Moon size={18} />}
-      </button>
+        animate={{
+          boxShadow: [
+            `0 0 0px 0px ${t.accentVal}00`,
+            `0 0 16px 4px ${t.accentVal}55`,
+            `0 0 0px 0px ${t.accentVal}00`,
+          ],
+          rotate: [0, -8, 8, -4, 4, 0],
+        }}
+        transition={{
+          boxShadow: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
+          rotate: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+        }}
+        whileHover={{ scale: 1.18, rotate: 20 }}
+        whileTap={{ scale: 0.88, rotate: -15 }}>
+        <motion.div
+          animate={{ rotate: isDark ? 0 : 360 }}
+          transition={{ duration: 0.5, ease: EASE }}>
+          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+        </motion.div>
+      </motion.button>
 
       <HeroCarousel t={t} />
 
