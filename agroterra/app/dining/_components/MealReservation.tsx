@@ -310,7 +310,7 @@ export function MealReservation({ t }: { t: Theme }) {
       form.notes  ? `\n*Special Requests:*\n${form.notes}`  : null,
     ].filter(Boolean).join('\n')
 
-    window.open(`https://wa.me/2349032833106?text=${encodeURIComponent(lines)}`, '_blank')
+    window.open(`https://wa.me/2348162166757?text=${encodeURIComponent(lines)}`, '_blank')
     setStep(3)
   }
 
