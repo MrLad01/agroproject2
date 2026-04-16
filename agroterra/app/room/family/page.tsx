@@ -223,13 +223,30 @@ export default function Page() {
         className="flex items-center justify-between px-4 sm:px-8 md:px-16 lg:px-28 py-3 sm:py-4 transition-colors duration-300"
         style={{ backgroundColor: t.surfaceVal, borderBottom: `1px solid ${t.borderVal}` }}
       >
-        <Link href="/" className="flex items-center gap-2">
-          <Image src={logo} alt="Agroterra Logo" height={32} className="h-7 sm:h-8 w-auto" />
-          <h3 className="uppercase eb-garamond-extrabold text-[14px] sm:text-[16px] lg:text-[17px]"
-            style={{ color: t.headingVal }}>
-            Agroterra
-          </h3>
-        </Link>
+        <div className="flex items-center gap-3">
+          {/* ── Back button ── */}
+          <button
+            onClick={() => window.history.back()}
+            aria-label="Go back"
+            className="flex items-center gap-1.5 font-bold text-[11px] uppercase tracking-[0.13em] cursor-pointer rounded-full px-4 py-2 transition-all duration-200"
+            style={{
+              backgroundColor: t.chipBg,
+              color: t.bodyVal,
+              border: `1px solid ${t.chipBorder}`,
+            }}
+          >
+            <ArrowUpRight size={13} className="rotate-225" />
+            Back
+          </button>
+
+          <Link href="/" className="flex items-center gap-2">
+            <Image src={logo} alt="Agroterra Logo" height={32} className="h-7 sm:h-8 w-auto" />
+            <h3 className="uppercase eb-garamond-extrabold text-[14px] sm:text-[16px] lg:text-[17px]"
+              style={{ color: t.headingVal }}>
+              Agroterra
+            </h3>
+          </Link>
+        </div>
 
         <Link href="/contact">
           <button
