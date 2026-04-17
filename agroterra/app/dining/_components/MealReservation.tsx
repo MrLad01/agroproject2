@@ -11,6 +11,12 @@ import { SelectionPill } from './ui'
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
 const DAYS   = ['Su','Mo','Tu','We','Th','Fr','Sa']
 
+const TIME_SLOTS = [
+  { label: 'Breakfast', slots: ['7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM'] },
+  { label: 'Lunch',     slots: ['12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM'] },
+  { label: 'Dinner',    slots: ['6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM'] },
+]
+
 function formatDisplay(iso: string) {
   if (!iso) return ''
   const [y, m, d] = iso.split('-').map(Number)
@@ -279,13 +285,23 @@ function MealCard({
 }
 
 // ── Form types ────────────────────────────────────────────────────
-type FormData = { name: string; email: string; phone: string; date: string; guests: string; notes: string }
+type FormData = {
+  name: string
+  email: string
+  phone: string
+  date: string
+  time: string
+  guests: string
+  notes: string
+}
 
 // ── MealReservation ───────────────────────────────────────────────
 export function MealReservation({ t }: { t: Theme }) {
   const [step, setStep]             = useState<1 | 2 | 3>(1)
   const [selected, setSelected]     = useState<Set<string>>(new Set())
-  const [form, setForm]             = useState<FormData>({ name: '', email: '', phone: '', date: '', guests: '', notes: '' })
+  const [form, setForm]             = useState<FormData>({
+    name: '', email: '', phone: '', date: '', time: '', guests: '', notes: '',
+  })
   const [nameError, setNameError]   = useState(false)
   const [emailError, setEmailError] = useState(false)
 
@@ -303,11 +319,12 @@ export function MealReservation({ t }: { t: Theme }) {
     const lines = [
       `🍽️ *New Dining Reservation — Agroterra*`, ``,
       `*Name:* ${form.name}`,
-      form.phone  ? `*Phone:* ${form.phone}`                : null,
-      form.date   ? `*Date:* ${formatDisplay(form.date)}`   : null,
-      form.guests ? `*Guests:* ${form.guests}`              : null,
+      form.phone   ? `*Phone:* ${form.phone}`                : null,
+      form.date    ? `*Date:* ${formatDisplay(form.date)}`   : null,
+      form.time    ? `*Time:* ${form.time}`                  : null,
+      form.guests  ? `*Guests:* ${form.guests}`              : null,
       ``, `*Selected Meals:*`, meals,
-      form.notes  ? `\n*Special Requests:*\n${form.notes}`  : null,
+      form.notes   ? `\n*Special Requests:*\n${form.notes}`  : null,
     ].filter(Boolean).join('\n')
 
     window.open(`https://wa.me/2348162166757?text=${encodeURIComponent(lines)}`, '_blank')
@@ -342,6 +359,22 @@ export function MealReservation({ t }: { t: Theme }) {
   const labelStyle: React.CSSProperties = {
     fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const,
     color: t.mutedVal, marginBottom: 10, display: 'block',
+  }
+
+  const timeSlotBtn = (slot: string): React.CSSProperties => {
+    const active = form.time === slot
+    return {
+      padding: '6px 14px',
+      borderRadius: 9999,
+      border: `1.5px solid ${active ? t.accentVal : t.borderVal}`,
+      backgroundColor: active ? t.chipBg : t.surfaceVal,
+      color: active ? t.accentVal : t.mutedVal,
+      fontSize: 12,
+      fontWeight: active ? 700 : 400,
+      cursor: 'pointer',
+      fontFamily: 'inherit',
+      transition: 'all 0.15s',
+    }
   }
 
   return (
@@ -406,22 +439,25 @@ export function MealReservation({ t }: { t: Theme }) {
               </div>
 
               <div className="flex flex-col gap-3 mb-6">
+                {/* Name */}
                 <div>
                   <input style={inputStyle(nameError)} placeholder="Full name *" value={form.name}
                     onChange={e => { setForm(f => ({ ...f, name: e.target.value })); setNameError(false) }} />
                   {nameError && <p className="text-[11px] mt-1 ml-4" style={{ color: '#e24b4a' }}>Name is required</p>}
                 </div>
 
+                {/* Email */}
                 <div>
                   <input style={inputStyle(emailError)} type="email" placeholder="Email address *" value={form.email}
                     onChange={e => { setForm(f => ({ ...f, email: e.target.value })); setEmailError(false) }} />
                   {emailError && <p className="text-[11px] mt-1 ml-4" style={{ color: '#e24b4a' }}>Email is required</p>}
                 </div>
 
+                {/* Phone */}
                 <input style={inputStyle()} type="tel" placeholder="Phone number (optional)" value={form.phone}
                   onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} />
 
-                {/* Custom calendar */}
+                {/* Date */}
                 <DatePicker
                   value={form.date}
                   onChange={iso => setForm(f => ({ ...f, date: iso }))}
@@ -429,12 +465,67 @@ export function MealReservation({ t }: { t: Theme }) {
                   inputStyle={inputStyle()}
                 />
 
+                {/* ── Delivery / Dining Time ── */}
+                <div
+                  style={{
+                    padding: '14px 18px',
+                    borderRadius: 16,
+                    border: `1px solid ${t.borderVal}`,
+                    backgroundColor: t.surfaceVal,
+                  }}
+                >
+                  <span style={{ ...labelStyle, marginBottom: 14 }}>Preferred Dining Time (optional)</span>
+                  <div className="flex flex-col gap-4">
+                    {TIME_SLOTS.map(group => (
+                      <div key={group.label}>
+                        <p style={{
+                          fontSize: 10, fontWeight: 700, letterSpacing: '0.12em',
+                          textTransform: 'uppercase', color: t.mutedVal, marginBottom: 8,
+                        }}>
+                          {group.label}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {group.slots.map(slot => (
+                            <button
+                              key={slot}
+                              type="button"
+                              onClick={() => setForm(f => ({ ...f, time: f.time === slot ? '' : slot }))}
+                              style={timeSlotBtn(slot)}
+                            >
+                              {slot}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Clear time */}
+                  {form.time && (
+                    <button
+                      type="button"
+                      onClick={() => setForm(f => ({ ...f, time: '' }))}
+                      style={{
+                        marginTop: 12, padding: '5px 14px',
+                        borderRadius: 9999, border: `1px solid ${t.borderVal}`,
+                        backgroundColor: 'transparent', color: t.mutedVal,
+                        fontSize: 11, fontWeight: 600, cursor: 'pointer',
+                        letterSpacing: '0.08em', fontFamily: 'inherit',
+                      }}
+                    >
+                      Clear time
+                    </button>
+                  )}
+                </div>
+
+                {/* Guests */}
                 <select style={{ ...inputStyle(), appearance: 'none' as const }} value={form.guests}
                   onChange={e => setForm(f => ({ ...f, guests: e.target.value }))}>
                   <option value="">Number of guests</option>
                   {['1 guest', '2 guests', '3 guests', '4 guests', '5+ guests'].map(g => <option key={g}>{g}</option>)}
                 </select>
 
+                {/* Notes */}
                 <textarea style={textareaStyle} rows={3}
                   placeholder="Dietary requirements or special requests? (optional)"
                   value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} />
@@ -464,9 +555,21 @@ export function MealReservation({ t }: { t: Theme }) {
               <p className="cormorant-garamond-light-italic text-[16px] sm:text-[17px] mb-6 max-w-sm mx-auto" style={{ color: t.bodyVal }}>
                 Thank you, <span style={{ color: t.accentVal, fontStyle: 'normal' }}>{form.name}</span>. We've received your selection and will contact you shortly to confirm.
               </p>
-              <div className="flex flex-wrap justify-center gap-2 mb-8">
+
+              {/* Summary pills */}
+              <div className="flex flex-wrap justify-center gap-2 mb-4">
                 {[...selected].map(name => <SelectionPill key={name} label={name} t={t} />)}
               </div>
+
+              {/* Date & time summary */}
+              {(form.date || form.time) && (
+                <p className="cormorant-garamond-light-italic text-[14px] mb-6" style={{ color: t.mutedVal }}>
+                  {form.date && <span>{formatDisplay(form.date)}</span>}
+                  {form.date && form.time && <span> · </span>}
+                  {form.time && <span>{form.time}</span>}
+                </p>
+              )}
+
               <p className="text-[12px]" style={{ color: t.mutedVal }}>
                 Questions? Email us at{' '}
                 <a href="mailto:dining@agroterra.com" className="font-bold" style={{ color: t.accentVal }}>dining@agroterra.com</a>

@@ -12,18 +12,38 @@ import aboutImage from '@/public/house2.png'
 import gsap from 'gsap';
 import { motion } from "framer-motion"
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Navbar from "@/components/Navbar";
 import { Moon, Sun } from "lucide-react";
 
 export default function Page() {
   const [dark, setDark] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const root = document.documentElement;
     if (dark) root.classList.add('dark');
     else root.classList.remove('dark');
   }, [dark]);
+
+  useEffect(() => {
+  const video = videoRef.current;
+  if (!video) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    },
+    { threshold: 0.2 } // pauses when less than 20% of hero is visible
+  );
+
+  observer.observe(video);
+  return () => observer.disconnect();
+}, []);
 
   useEffect(() => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) setDark(true);
@@ -186,6 +206,7 @@ export default function Page() {
 
         {/* Video background */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           playsInline
