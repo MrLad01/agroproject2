@@ -4,6 +4,10 @@ import Image, { StaticImageData } from 'next/image'
 import bg from '@/public/image_14.png'
 import bg1 from '@/public/golf2.png'
 import bg2 from '@/public/golf3.png'
+import house1 from '@/public/golf club 1.jpeg'
+import house2 from '@/public/golf club 2.jpeg'
+import house3 from '@/public/golf club 3.jpeg'
+import house4 from '@/public/golf club 4.jpeg'
 import block1 from "@/public/Golf image block 1.png"
 import block2 from "@/public/Golf image block 2.png"
 import block3 from "@/public/Golf image block 3.png"
@@ -16,11 +20,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import Navbar from '@/components/Navbar'
 import { Sun, Moon } from 'lucide-react'
 
-// ─────────────────────────────────────────────────────────────────
-// FIX: Framer Motion's `ease` type requires a named string OR a
-// 4-tuple [number,number,number,number], NOT a plain number[].
-// Declare it `as const` so TS infers the narrow tuple type.
-// ─────────────────────────────────────────────────────────────────
+
 const EASE = [0.16, 1, 0.3, 1] as const
 
 // Factory for per-element staggered transitions
@@ -93,10 +93,7 @@ const dark: Theme = {
   thumbTint: 'rgba(126,200,80,0.18)',
 }
 
-// ── Image breadcrumbs ─────────────────────────────────────────────
-// Desktop: animated thumbnail with accent ring + shimmer tint.
-// Mobile:  slim expanding pill — both in one component, toggled
-//          via responsive `hidden sm:block` / `block sm:hidden`.
+
 function ImageBreadcrumbs({
   slides, selected, onSelect, t,
 }: {
@@ -244,11 +241,6 @@ function HeroCarousel({ t }: { t: Theme }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.1 }}
           className="flex items-center px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl"
-        // style={{
-        //   background:     'rgba(0,0,0,0.36)',
-        //   backdropFilter: 'blur(12px)',
-        //   border:         '1px solid rgba(255,255,255,0.13)',
-        // }}
         >
           <ImageBreadcrumbs
             slides={slides}
@@ -305,7 +297,7 @@ const TAB_DATA: Record<TabKey, { intro: string; paragraphs: string[] }> = {
 
 // ── Image grid ────────────────────────────────────────────────────
 function ImageGrid({ t }: { t: Theme }) {
-  const pairs = [[block1, block2], [block3, block4]]
+  const pairs = [[house1, house4], [house2, house3]]
   return (
     <div className="space-y-3 sm:space-y-5 mt-14 sm:mt-20">
       {pairs.map((pair, pi) => (
