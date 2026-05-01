@@ -30,11 +30,8 @@ const staggerTrans = (i: number): Transition => ({
   ease: EASE,
 })
 
-// fadeUp — uses Framer's `custom` prop for per-element delay
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
-  // The `visible` key is a TargetResolver when it's a function.
-  // Casting the whole object to Variants keeps TS happy.
   visible: (i: number) => ({ opacity: 1, y: 0, transition: staggerTrans(i) }),
 }
 
@@ -262,7 +259,7 @@ const TABS = [
 ] as const
 type TabKey = typeof TABS[number]['key']
 
-const TAB_DATA: Record<TabKey, { intro: string; paragraphs: string[] }> = {
+const TAB_DATA: Record<TabKey, { intro: string; paragraphs: string[]; images: StaticImageData[] }> = {
   about: {
     intro: 'A place where every round feels like an escape into nature.',
     paragraphs: [
@@ -272,6 +269,8 @@ const TAB_DATA: Record<TabKey, { intro: string; paragraphs: string[] }> = {
       "Designed to follow the natural contours of the land, the course flows smoothly with gentle slopes and subtle changes in elevation. Beginners can feel at ease on the open fairways, while experienced golfers enjoy the variety and strategy offered by the terrain and green placements.",
       "The greens are carefully maintained, providing a smooth and satisfying surface for play. More than just a sports facility, the golf course is a space to slow down and recharge — a landscape designed to inspire comfort, focus, and enjoyment.",
     ],
+    images: [block1, block2, block3, block4],
+
   },
   'driving-range': {
     intro: 'The perfect space to practice, warm up, and build confidence.',
@@ -282,6 +281,7 @@ const TAB_DATA: Record<TabKey, { intro: string; paragraphs: string[] }> = {
       "The surface of the range is carefully maintained to ensure a comfortable and consistent practice experience. From short controlled shots to powerful drives, the range supports every aspect of long game practice.",
       "The driving range is ideal for beginners and experienced golfers alike. Surrounded by trees, open air, and natural beauty, it turns practice into a refreshing and enjoyable part of your visit.",
     ],
+    images: [block1, block2, block3, block4],
   },
   'club-house': {
     intro: 'The heart of the golf experience — where comfort and connection meet.',
@@ -292,12 +292,20 @@ const TAB_DATA: Record<TabKey, { intro: string; paragraphs: string[] }> = {
       "Comfort is at the center of the clubhouse experience. Seating areas are arranged to help guests feel at ease. The atmosphere is calm and unhurried, reflecting the overall pace of life at Agroterra Resort.",
       "At Agroterra Resort, the clubhouse represents hospitality and comfort set within nature — bringing together the beauty of the outdoors with the ease of an indoor retreat, creating a space where every visit feels complete.",
     ],
+    images: [house1, house2, house4, house3],
   },
 }
 
 // ── Image grid ────────────────────────────────────────────────────
-function ImageGrid({ t }: { t: Theme }) {
-  const pairs = [[house1, house4], [house2, house3]]
+function ImageGrid({ tabkey, t }: { tabkey: TabKey; t: Theme }) {
+//   const pairs = [[block1, block4], [block2, block3]]
+  const data = TAB_DATA[tabkey]
+  const pairs = data?.images.reduce<StaticImageData[][]>((acc, img, i) => {
+    if (i % 2 === 0) acc.push([img])
+    else acc[acc.length - 1].push(img)
+    return acc
+  }, [])
+
   return (
     <div className="space-y-3 sm:space-y-5 mt-14 sm:mt-20">
       {pairs.map((pair, pi) => (
@@ -387,7 +395,7 @@ function TabBody({ tabKey, t }: { tabKey: TabKey; t: Theme }) {
         <div className="flex-1 h-px" style={{ backgroundColor: t.ruleLine }} />
       </div>
 
-      <ImageGrid t={t} />
+      <ImageGrid tabkey={tabKey} t={t} />
     </motion.div>
   )
 }
