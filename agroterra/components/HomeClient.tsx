@@ -1,32 +1,16 @@
 'use client'
-// components/HomeClient.tsx
-// Receives pre-fetched RSS articles as props and renders the full page.
-// Bug fixes + elevated design + Facebook Live integration.
-//
-// CHANGELOG (theme + SheedXpress update):
-//   • Added dark/light theme toggle (logo-inspired green palette, OS-aware)
-//   • Blog/news sections (Politics, Entertainment, Sports, Featured Story,
-//     Sidebar) commented out and replaced with a SheedXpress redirect section
-//   • All original imports and logic preserved / commented — not deleted
 
 import Navbar from '@/components/Navbar'
 import { motion, AnimatePresence, easeInOut } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Play, Phone, Radio, Wifi, WifiOff, ExternalLink, ChevronRight, Sun, Moon, Newspaper, ArrowUpRight } from 'lucide-react'
+import { Play, Phone, Radio, Wifi, WifiOff, ExternalLink, ChevronRight, Sun, Moon, Newspaper, ArrowUpRight, ChevronLeft } from 'lucide-react'
 import bg from '@/public/sheedx.svg'
 import type { Article } from '@/lib/rss'
 
-// ── News card imports kept but not used in the current render (blog commented out)
-// import {
-//   SectionHeader,
-//   HeroCard,
-//   SmallCard,
-//   GridCard,
-//   SidebarFeaturedCard,
-// } from '@/components/NewsCard'
-
-import { useState, useEffect } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
+import { useCallback, useEffect, useState, useRef } from 'react'
 
 interface Props {
   politics:      Article[]
@@ -44,21 +28,21 @@ type LiveStatus = 'loading' | 'live' | 'offline' | 'error'
 
 // ── Theme tokens ──────────────────────────────────────────────────────────
 type Theme = {
-  page:          string   // bg class
-  surface:       string   // card / panel bg
-  border:        string   // border color value
-  borderClass:   string   // border color class
-  accent:        string   // green accent value
-  accentClass:   string   // green accent text class
-  heading:       string   // main heading color value
+  page:          string
+  surface:       string
+  border:        string
+  borderClass:   string
+  accent:        string
+  accentClass:   string
+  heading:       string
   headingClass:  string
-  body:          string   // body text color value
+  body:          string
   bodyClass:     string
-  muted:         string   // muted text color value
+  muted:         string
   mutedClass:    string
   toggleBg:      string
   toggleBorder:  string
-  navDot:        string   // sidebar dot / rule accent
+  navDot:        string
   footerBorder:  string
 }
 
@@ -98,6 +82,170 @@ const darkTheme: Theme = {
   toggleBorder: '#2d4d2d',
   navDot:       '#7ec850',
   footerBorder: '#1a2a1a',
+}
+
+// ── Hero media items ──────────────────────────────────────────────────────
+// Replace src values with your actual image paths / video URLs.
+// type: 'image' | 'video'
+// For video, provide an mp4 src (and optionally a poster image).
+type MediaItem =
+  | { type: 'image'; src: string; alt: string }
+  | { type: 'video'; src: string; poster?: string; alt: string }
+
+const HERO_MEDIA: MediaItem[] = [
+  // ── EXAMPLE ENTRIES — swap these for your real assets ──────────────────
+  // Images can be local imports or URL strings.
+  // For local imports, import them at the top and pass the imported value.
+  { type: 'image', src: bg as unknown as string,  alt: 'SheedX FM – studio'     },
+  // { type: 'image', src: '/hero/slide2.jpg',       alt: 'SheedX FM – on air'     },
+  { type: 'video', src: 'https://res.cloudinary.com/do7woqgon/video/upload/v1777632758/news_4_zudthl.mp4', poster: '/hero/promo-poster.jpg', alt: 'SheedX FM promo reel 1' },
+  { type: 'video', src: 'https://res.cloudinary.com/do7woqgon/video/upload/v1777632725/news_2_gqpvas.mp4', poster: '/hero/promo-poster.jpg', alt: 'SheedX FM promo reel 2' },
+  { type: 'video', src: 'https://res.cloudinary.com/do7woqgon/video/upload/v1777632725/news_3_qbp2ku.mp4', poster: '/hero/promo-poster.jpg', alt: 'SheedX FM promo reel 3' },
+]
+
+// ── Hero Carousel ─────────────────────────────────────────────────────────
+function HeroCarousel({ dark }: { dark: boolean }) {
+  const autoplayRef = useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })
+  )
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, duration: 40 },
+    [autoplayRef.current]
+  )
+
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [scrollSnaps, setScrollSnaps]     = useState<number[]>([])
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
+  const scrollTo   = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi])
+
+  useEffect(() => {
+    if (!emblaApi) return
+    setScrollSnaps(emblaApi.scrollSnapList())
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap())
+    emblaApi.on('select', onSelect)
+    onSelect()
+    return () => { emblaApi.off('select', onSelect) }
+  }, [emblaApi])
+
+  const overlayGradient = dark
+    ? 'linear-gradient(to bottom, rgba(10,18,10,0.72) 0%, rgba(10,18,10,0.50) 45%, rgba(10,18,10,0.88) 100%)'
+    : 'linear-gradient(to bottom, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.38) 45%, rgba(0,0,0,0.80) 100%)'
+
+  return (
+    <div className="relative h-full w-full overflow-hidden" ref={emblaRef}>
+
+      {/* ── Slides ── */}
+      <div className="flex h-full" style={{ touchAction: 'pan-y' }}>
+        {HERO_MEDIA.map((item, i) => (
+          <div key={i} className="relative min-w-full h-full shrink-0">
+            {item.type === 'video' ? (
+              <>
+                {/* Blurred backdrop — fills the frame for portrait (9:16) videos
+                <video
+                  src={item.src}
+                  poster={item.poster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-hidden
+                  className="absolute inset-0 w-full h-full object-cover scale-110"
+                  style={{ filter: 'blur(28px) brightness(0.45) saturate(1.4)' }}
+                /> */}
+                {/* Foreground video — contained so nothing is cropped */}
+                <video
+                  src={item.src}
+                  poster={item.poster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-label={item.alt}
+                  className="absolute inset-0 w-full h-full"
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
+                />
+              </>
+            ) : (
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                className="object-cover"
+                priority={i === 0}
+                unoptimized={typeof item.src === 'string' && item.src.startsWith('http')}
+              />
+            )}
+
+            {/* Per-slide overlay */}
+            <div className="absolute inset-0" style={{ background: overlayGradient }} />
+
+            {/* Noise texture */}
+            <div
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage:
+                  "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* ── Prev / Next arrows (hidden when only 1 slide) ── */}
+      {HERO_MEDIA.length > 1 && (
+        <>
+          <button
+            onClick={scrollPrev}
+            aria-label="Previous slide"
+            className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20
+                       w-9 h-9 rounded-full flex items-center justify-center
+                       bg-black/30 hover:bg-black/55 border border-white/20
+                       backdrop-blur-sm text-white transition-all duration-200
+                       hover:scale-110 active:scale-95"
+          >
+            <ChevronLeft size={18} />
+          </button>
+
+          <button
+            onClick={scrollNext}
+            aria-label="Next slide"
+            className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20
+                       w-9 h-9 rounded-full flex items-center justify-center
+                       bg-black/30 hover:bg-black/55 border border-white/20
+                       backdrop-blur-sm text-white transition-all duration-200
+                       hover:scale-110 active:scale-95"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </>
+      )}
+
+      {/* ── Dot navigation (hidden when only 1 slide) ── */}
+      {HERO_MEDIA.length > 1 && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+          {scrollSnaps.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className="transition-all duration-300"
+              style={{
+                width:           i === selectedIndex ? 22 : 7,
+                height:          7,
+                borderRadius:    9999,
+                backgroundColor: i === selectedIndex
+                  ? 'rgba(255,255,255,0.95)'
+                  : 'rgba(255,255,255,0.35)',
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  )
 }
 
 // ── Facebook Live Hook ────────────────────────────────────────────────────
@@ -187,8 +335,6 @@ function LiveBadge({ status, liveUrl }: { status: LiveStatus; liveUrl: string })
 }
 
 // ── SheedXpress Redirect Section ──────────────────────────────────────────
-// Replaces the Politics / Entertainment / Sports / Featured / Sidebar blocks.
-// The original JSX for those sections is preserved below in a comment block.
 function SheedXpressSection({ t }: { t: Theme }) {
   return (
     <motion.section
@@ -203,12 +349,10 @@ function SheedXpressSection({ t }: { t: Theme }) {
         relative
       `}
     >
-      {/* Decorative top stripe */}
       <div className="h-1 w-full" style={{ background: `linear-gradient(to right, ${t.accent}, #25D366, ${t.accent})` }} />
 
       <div className="px-6 sm:px-12 md:px-16 py-16 sm:py-20 md:py-24 flex flex-col items-center text-center gap-8 relative z-10">
 
-        {/* Floating newspaper icon ring */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
@@ -226,14 +370,12 @@ function SheedXpressSection({ t }: { t: Theme }) {
           >
             <Newspaper size={32} style={{ color: t.accent }} />
           </div>
-          {/* Pulse ring */}
           <div
             className="absolute inset-0 rounded-full animate-ping opacity-20"
             style={{ backgroundColor: t.accent }}
           />
         </motion.div>
 
-        {/* Label */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -245,7 +387,6 @@ function SheedXpressSection({ t }: { t: Theme }) {
           News &amp; Updates
         </motion.p>
 
-        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -257,7 +398,6 @@ function SheedXpressSection({ t }: { t: Theme }) {
           Read the Latest on SheedXpress
         </motion.h2>
 
-        {/* Body */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -271,7 +411,6 @@ function SheedXpressSection({ t }: { t: Theme }) {
           that matter to you.
         </motion.p>
 
-        {/* Category pills */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -293,7 +432,6 @@ function SheedXpressSection({ t }: { t: Theme }) {
           ))}
         </motion.div>
 
-        {/* CTA button */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -319,7 +457,6 @@ function SheedXpressSection({ t }: { t: Theme }) {
           </a>
         </motion.div>
 
-        {/* Fine-print URL */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -332,15 +469,14 @@ function SheedXpressSection({ t }: { t: Theme }) {
         </motion.p>
       </div>
 
-      {/* Decorative bottom stripe (mirrored) */}
       <div className="h-1 w-full" style={{ background: `linear-gradient(to right, ${t.accent}, #25D366, ${t.accent})` }} />
     </motion.section>
   )
 }
 
+
 // ── Main component ────────────────────────────────────────────────────────
 export default function HomeClient({ politics, entertainment, sports, featured }: Props) {
-  // ── Theme state ──────────────────────────────────────────────────────
   const [dark, setDark] = useState(false)
   const t = dark ? darkTheme : lightTheme
 
@@ -348,74 +484,57 @@ export default function HomeClient({ politics, entertainment, sports, featured }
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) setDark(true)
   }, [])
 
-  // ── Tab state kept (used by sidebar — currently commented out below) ──
   const [activeTab, setActiveTab] = useState<Tab>('Politics')
   const { status: liveStatus, liveUrl } = useFacebookLive('sheedxfm')
-
-  // Sidebar articles — kept for when blog is re-enabled
-  // const sidebarArticles: Article[] =
-  //   activeTab === 'Politics'      ? politics.slice(0, 3) :
-  //   activeTab === 'Entertainment' ? entertainment.slice(0, 3) :
-  //                                   sports.slice(0, 3)
 
   return (
     <div className={`${t.page} min-h-screen eb-garamond transition-colors duration-300`}>
 
       {/* ── Dark / Light Toggle ────────────────────────────────────── */}
       <motion.button
-              onClick={() => setDark(d => !d)}
-              aria-label="Toggle dark mode"
-              className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full
-                flex items-center justify-center"
-              style={{
-                backgroundColor: dark ? '#0f180f' : '#ede8df',
-                color: t.accent,
-                border: `1px solid ${t.border}`,
-              }}
-              animate={{
-                boxShadow: [
-                  `0 0 0px 0px ${t.accent}00`,
-                  `0 0 16px 4px ${t.accent}55`,
-                  `0 0 0px 0px ${t.accent}00`,
-                ],
-                rotate: [0, -8, 8, -4, 4, 0],
-              }}
-              transition={{
-                boxShadow: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
-                rotate: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
-              }}
-              whileHover={{ scale: 1.18, rotate: 20 }}
-              whileTap={{ scale: 0.88, rotate: -15 }}>
-              <motion.div
-                animate={{ rotate: dark ? 0 : 360 }}
-                transition={{ duration: 0.5, ease: easeInOut }}>
-                {dark ? <Sun size={18} /> : <Moon size={18} />}
-              </motion.div>
-            </motion.button>
+        onClick={() => setDark(d => !d)}
+        aria-label="Toggle dark mode"
+        className="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 rounded-full
+          flex items-center justify-center"
+        style={{
+          backgroundColor: dark ? '#0f180f' : '#ede8df',
+          color: t.accent,
+          border: `1px solid ${t.border}`,
+        }}
+        animate={{
+          boxShadow: [
+            `0 0 0px 0px ${t.accent}00`,
+            `0 0 16px 4px ${t.accent}55`,
+            `0 0 0px 0px ${t.accent}00`,
+          ],
+          rotate: [0, -8, 8, -4, 4, 0],
+        }}
+        transition={{
+          boxShadow: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
+          rotate: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+        }}
+        whileHover={{ scale: 1.18, rotate: 20 }}
+        whileTap={{ scale: 0.88, rotate: -15 }}
+      >
+        <motion.div
+          animate={{ rotate: dark ? 0 : 360 }}
+          transition={{ duration: 0.5, ease: easeInOut }}
+        >
+          {dark ? <Sun size={18} /> : <Moon size={18} />}
+        </motion.div>
+      </motion.button>
 
       <main className="flex flex-col min-h-screen w-full items-center">
 
         {/* ── HERO ── */}
         <div className="w-full mb-8 sm:mb-10 lg:mb-12 relative">
           <div className="relative h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[95vh]">
-            <Image src={bg} alt="SheedX FM" fill className="object-cover" priority />
 
-            <div
-              className="absolute inset-0"
-              style={{
-                background: dark
-                  ? 'linear-gradient(to bottom, rgba(10,18,10,0.72) 0%, rgba(10,18,10,0.50) 45%, rgba(10,18,10,0.88) 100%)'
-                  : 'linear-gradient(to bottom, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.38) 45%, rgba(0,0,0,0.80) 100%)',
-              }}
-            />
+            {/* ── EMBLA CAROUSEL (replaces static Image) ── */}
+            <HeroCarousel dark={dark} />
 
-            {/* Noise texture overlay */}
-            <div
-              className="absolute inset-0 opacity-[0.04]"
-              style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }}
-            />
-
-            <div className="absolute inset-0 flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5 lg:py-6">
+            {/* ── Hero content (rendered above the carousel) ── */}
+            <div className="absolute inset-0 flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5 lg:py-6 z-10">
               <Navbar />
 
               <div className="h-full flex flex-col text-white items-center justify-center">
@@ -470,6 +589,7 @@ export default function HomeClient({ politics, entertainment, sports, featured }
                 </motion.div>
               </div>
 
+              {/* Scroll hint */}
               <motion.div
                 className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-40"
                 initial={{ opacity: 0 }}
@@ -486,10 +606,9 @@ export default function HomeClient({ politics, entertainment, sports, featured }
         {/* ── PAGE BODY ── */}
         <div className="w-full max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 space-y-16">
 
-          {/* ── SHEEDXPRESS SECTION (replaces blog) ── */}
           <SheedXpressSection t={t} />
 
-          {/* ── FACEBOOK LIVE CARD (standalone, below SheedXpress) ── */}
+          {/* ── FACEBOOK LIVE CARD ── */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -503,7 +622,6 @@ export default function HomeClient({ politics, entertainment, sports, featured }
             </div>
             <div className={`${t.surface} px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-6`}>
               <div className="flex items-center gap-4">
-                {/* Status indicator */}
                 <div>
                   {liveStatus === 'live' ? (
                     <div className="flex items-center gap-1.5">
@@ -555,186 +673,6 @@ export default function HomeClient({ politics, entertainment, sports, featured }
               </a>
             </div>
           </motion.div>
-
-          {/*
-          ════════════════════════════════════════════════════════════════════
-          ORIGINAL BLOG / NEWS SECTIONS — COMMENTED OUT (NOT DELETED)
-          Re-enable by uncommenting and importing NewsCard components above.
-          ════════════════════════════════════════════════════════════════════
-
-          ── FEATURED STORY ──
-          {featured && (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mb-12"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-1 h-5 bg-red-600 rounded-full" />
-                <span className="text-[11px] font-black uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
-                  Featured Story
-                </span>
-              </div>
-
-              <Link
-                href={featured.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative w-full aspect-16/7 rounded-xl overflow-hidden bg-zinc-800 cursor-pointer group block shadow-2xl"
-              >
-                {featured.image && (
-                  <Image
-                    src={featured.image}
-                    alt={featured.title}
-                    fill
-                    className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
-                    unoptimized
-                  />
-                )}
-                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8 z-10">
-                  <span className="bg-red-600 text-white text-[9px] font-black uppercase tracking-[0.15em] px-2.5 py-1 rounded-sm">
-                    Featured
-                  </span>
-                  <h3 className="text-white text-lg sm:text-2xl md:text-3xl font-extrabold mt-3 leading-snug line-clamp-2 max-w-2xl">
-                    {featured.title}
-                  </h3>
-                  <div className="flex items-center gap-2 mt-2">
-                    <p className="text-white/50 text-xs font-medium">{featured.source}</p>
-                    <ChevronRight size={12} className="text-white/30 group-hover:text-white/60 group-hover:translate-x-1 transition-all" />
-                  </div>
-                </div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center">
-                    <Play size={20} className="text-white ml-1" fill="white" />
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          )}
-
-          ── TWO-COLUMN LAYOUT (news + sidebar) ──
-          <div className="flex flex-col lg:flex-row gap-10">
-
-            ── LEFT: News Sections ──
-            <div className="flex-1 min-w-0 space-y-12">
-
-              {politics.length > 0 && (
-                <motion.section
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <SectionHeader title="Politics" />
-                  <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                    <HeroCard article={politics[0]} />
-                    <div className="flex flex-col gap-3 flex-1">
-                      {politics.slice(1, 3).map((a) => (
-                        <SmallCard key={a.id} article={a} />
-                      ))}
-                    </div>
-                  </div>
-                </motion.section>
-              )}
-
-              {entertainment.length > 0 && (
-                <motion.section
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                  <SectionHeader title="Entertainment" />
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-                    {entertainment.slice(0, 3).map((a) => (
-                      <GridCard key={a.id} article={a} />
-                    ))}
-                  </div>
-                </motion.section>
-              )}
-
-              {sports.length > 0 && (
-                <motion.section
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  <SectionHeader title="Sports" />
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-                    {sports.slice(0, 3).map((a) => (
-                      <GridCard key={a.id} article={a} />
-                    ))}
-                  </div>
-                </motion.section>
-              )}
-
-            </div>
-
-            ── RIGHT: Sidebar ──
-            <motion.aside
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="w-full lg:w-60 shrink-0 space-y-6"
-            >
-              <div>
-                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 mb-3">
-                  Top Stories
-                </p>
-                <div className="flex gap-1.5 flex-wrap">
-                  {TABS.map((tab) => (
-                    <button
-                      key={tab}
-                      onClick={() => setActiveTab(tab)}
-                      className={`text-[10px] font-bold px-3 py-1.5 rounded-sm transition-all duration-200 ${
-                        activeTab === tab
-                          ? 'bg-red-600 text-white shadow-md shadow-red-900/30'
-                          : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-                      }`}
-                    >
-                      {tab}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex flex-col gap-4"
-                >
-                  {sidebarArticles.map((a) => (
-                    <SidebarFeaturedCard key={a.id} article={a} />
-                  ))}
-                </motion.div>
-              </AnimatePresence>
-
-              ── Facebook Live Card (sidebar version) ──
-              <div className="rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800">
-                <div className="bg-zinc-900 px-4 py-3 flex items-center gap-2">
-                  <Radio size={12} className="text-red-500" />
-                  <span className="text-white text-[10px] font-black uppercase tracking-widest">SheedX FM Live</span>
-                </div>
-                <div className="bg-zinc-50 dark:bg-zinc-900/50 px-4 py-4 text-center">
-                  ...sidebar live card content...
-                </div>
-              </div>
-
-            </motion.aside>
-          </div>
-          ════════════════════════════════════════════════════════════════════
-          END ORIGINAL BLOG SECTIONS
-          ════════════════════════════════════════════════════════════════════
-          */}
 
         </div>
 
