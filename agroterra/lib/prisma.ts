@@ -5,7 +5,7 @@ import { PrismaClient } from '@/app/generated/prisma-client'
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient }
 
 const adapter = new PrismaPg({ 
-  connectionString: process.env.DATABASE_URL! 
+  connectionString: process.env.POSTGRES_URL! 
 })
 
 export const prisma =

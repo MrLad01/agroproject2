@@ -12,6 +12,7 @@ import { TypeAnimation } from 'react-type-animation';
 export default function RegisterPage() {
   const router = useRouter();
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [focused, setFocused] = useState<string | null>(null);
@@ -24,24 +25,45 @@ export default function RegisterPage() {
     event.preventDefault();
     setLoading(true);
     setError("");
+    setSuccess("");
 
     const formData = new FormData(event.currentTarget);
-    const email = formData.get('email');
-    const password = formData.get('password');
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    const confirm = formData.get('confirm') as string;
 
-    const res = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
+    // Client-side validation
+    if (password !== confirm) {
+      setError("Passwords do not match.");
+      setLoading(false);
+      return;
+    }
+
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters.");
+      setLoading(false);
+      return;
+    }
+
+    // Call the register API route
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password }),
     });
 
-    setLoading(false);
+    const data = await res.json();
 
-    if (res?.error) {
-      setError("Invalid credentials. Please try again.");
-    } else {
-      router.push("/dashboard");
+    if (!res.ok) {
+      setError(data.error || "Something went wrong. Please try again.");
+      setLoading(false);
+      return;
     }
+
+    // Registration successful — show message, don't auto-login (email must be verified first)
+    setSuccess("Account created! Please check your email to verify your account before signing in.");
+    setLoading(false);
   }
 
   return (
@@ -412,6 +434,35 @@ export default function RegisterPage() {
           letter-spacing: 0.02em;
         }
 
+        /* ─── SUCCESS ─── */
+        .success-block {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          padding: 12px 14px;
+          border-radius: 4px;
+          background: rgba(74, 114, 47, 0.1);
+          border: 1px solid rgba(168, 200, 122, 0.25);
+          margin-bottom: 1.25rem;
+        }
+
+        .success-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: #a8c87a;
+          flex-shrink: 0;
+          margin-top: 4px;
+        }
+
+        .success-text {
+          font-size: 12px;
+          font-weight: 300;
+          color: #a8c87a;
+          letter-spacing: 0.02em;
+          line-height: 1.6;
+        }
+
         /* ─── SUBMIT BUTTON ─── */
         .submit-btn {
           width: 100%;
@@ -496,7 +547,7 @@ export default function RegisterPage() {
           letter-spacing: 0.1em;
         }
 
-        /* Sign-up link */
+        /* Sign-in link */
         .signup-row {
           text-align: center;
           font-size: 12px;
@@ -537,16 +588,11 @@ export default function RegisterPage() {
           {/* Main content */}
           <div className="left-content">
             <div className="left-rule" />
-            {/* <h1 className="left-headline">
-              A place that<br />
-              <em>celebrates</em><br />
-              life.
-            </h1> */}
             <TypeAnimation
               className="left-headline"
               style={{ whiteSpace: 'pre-line', height: '250px', display: 'block' }}
               sequence={[
-                `Welcome to\nAgroterra\nResort`, 
+                `Welcome to\nAgroterra\nResort`,
                 3000,
                 'A place that\ncelebrates\nlife.',
                 3000,
@@ -574,11 +620,31 @@ export default function RegisterPage() {
               <span className="logo-name">Agroterra</span>
             </div>
 
-            <p className="form-eyebrow">Secure access</p>
+            <p className="form-eyebrow">Create account</p>
             <h2 className="form-title">Register</h2>
-            <p className="form-subtitle">Create an account now</p>
+            <p className="form-subtitle">Join Agroterra today</p>
 
             <form onSubmit={handleSubmit}>
+
+              {/* Name */}
+              <div className="field-group">
+                <div className="field-label">
+                  <span className={focused === 'name' ? 'active' : ''}>Full Name</span>
+                </div>
+                <div className="field-input-wrap">
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="John Doe"
+                    className="field-input"
+                    onFocus={() => setFocused('name')}
+                    onBlur={() => setFocused(null)}
+                  />
+                  <div className="field-line" />
+                </div>
+              </div>
+
               {/* Email */}
               <div className="field-group">
                 <div className="field-label">
@@ -617,6 +683,25 @@ export default function RegisterPage() {
                 </div>
               </div>
 
+              {/* Confirm Password */}
+              <div className="field-group">
+                <div className="field-label">
+                  <span className={focused === 'confirm' ? 'active' : ''}>Confirm Password</span>
+                </div>
+                <div className="field-input-wrap">
+                  <input
+                    type="password"
+                    name="confirm"
+                    required
+                    placeholder="••••••••"
+                    className="field-input"
+                    onFocus={() => setFocused('confirm')}
+                    onBlur={() => setFocused(null)}
+                  />
+                  <div className="field-line" />
+                </div>
+              </div>
+
               {/* Error */}
               {error && (
                 <div className="error-block">
@@ -625,18 +710,36 @@ export default function RegisterPage() {
                 </div>
               )}
 
+              {/* Success */}
+              {success && (
+                <div className="success-block">
+                  <div className="success-dot" />
+                  <span className="success-text">{success}</span>
+                </div>
+              )}
+
               {/* Submit */}
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !!success}
                 className="submit-btn"
               >
                 <div className="btn-inner">
                   {loading && <div className="spinner" />}
-                  {loading ? "Signing in" : "Continue"}
+                  {loading ? "Creating account..." : "Create Account"}
                 </div>
               </button>
             </form>
+
+            {/* <div className="form-divider">
+              <div className="divider-line" />
+              <span className="divider-text">or</span>
+              <div className="divider-line" />
+            </div>
+
+            <div className="signup-row">
+              Already have an account? <Link href="/login">Sign in</Link>
+            </div> */}
 
           </div>
         </div>
