@@ -567,10 +567,7 @@ export default function LoginPage() {
             {/* Mobile logo */}
             <div className="mobile-logo">
               <div className="logo-mark">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M9 2C9 2 3 6 3 11C3 14.3 5.7 17 9 17C12.3 17 15 14.3 15 11C15 6 9 2 9 2Z" fill="rgba(168,200,122,0.7)" />
-                  <path d="M9 17V9" stroke="rgba(13,26,13,0.6)" strokeWidth="1" />
-                </svg>
+                <Image src={logo} alt='Agroterra Logo' />
               </div>
               <span className="logo-name">Agroterra</span>
             </div>
