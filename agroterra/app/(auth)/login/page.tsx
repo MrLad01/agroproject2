@@ -636,11 +636,11 @@ export default function LoginPage() {
               </button>
             </form>
 
-            <div className="form-divider">
+            {/* <div className="form-divider">
               <div className="divider-line" />
               <span className="divider-text">OR</span>
               <div className="divider-line" />
-            </div>
+            </div> */}
 
           </div>
         </div>
