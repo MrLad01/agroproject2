@@ -1,4 +1,4 @@
-import { Theme } from '../../../lib/theme'
+import { Theme } from '@/lib/theme'
 
 // ── Badge ─────────────────────────────────────────────────────────
 export function Badge({ label, t }: { label: string; t: Theme }) {
