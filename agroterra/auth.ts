@@ -39,5 +39,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id
+        token.isAdmin = user.isAdmin  // 👈
+      }
+      return token
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id as string
+        session.user.isAdmin = token.isAdmin as boolean  // 👈
+      }
+      return session
+    },
+  },
   secret: process.env.BETTER_AUTH_SECRET,
 })  

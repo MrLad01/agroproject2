@@ -25,6 +25,7 @@ model User {
   password      String?
   accounts      Account[]
   sessions      Session[]
+  isAdmin       Boolean   @default(false) 
 }
 
 model Account {
