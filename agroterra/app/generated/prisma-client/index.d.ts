@@ -38,6 +38,31 @@ export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTok
  * 
  */
 export type MediaAsset = $Result.DefaultSelection<Prisma.$MediaAssetPayload>
+/**
+ * Model HeroSlide
+ * 
+ */
+export type HeroSlide = $Result.DefaultSelection<Prisma.$HeroSlidePayload>
+/**
+ * Model HeroText
+ * 
+ */
+export type HeroText = $Result.DefaultSelection<Prisma.$HeroTextPayload>
+/**
+ * Model SectionOne
+ * 
+ */
+export type SectionOne = $Result.DefaultSelection<Prisma.$SectionOnePayload>
+/**
+ * Model SectionOneImage
+ * 
+ */
+export type SectionOneImage = $Result.DefaultSelection<Prisma.$SectionOneImagePayload>
+/**
+ * Model SectionTwo
+ * 
+ */
+export type SectionTwo = $Result.DefaultSelection<Prisma.$SectionTwoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -209,6 +234,56 @@ export class PrismaClient<
     * ```
     */
   get mediaAsset(): Prisma.MediaAssetDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.heroSlide`: Exposes CRUD operations for the **HeroSlide** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HeroSlides
+    * const heroSlides = await prisma.heroSlide.findMany()
+    * ```
+    */
+  get heroSlide(): Prisma.HeroSlideDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.heroText`: Exposes CRUD operations for the **HeroText** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HeroTexts
+    * const heroTexts = await prisma.heroText.findMany()
+    * ```
+    */
+  get heroText(): Prisma.HeroTextDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.sectionOne`: Exposes CRUD operations for the **SectionOne** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SectionOnes
+    * const sectionOnes = await prisma.sectionOne.findMany()
+    * ```
+    */
+  get sectionOne(): Prisma.SectionOneDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.sectionOneImage`: Exposes CRUD operations for the **SectionOneImage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SectionOneImages
+    * const sectionOneImages = await prisma.sectionOneImage.findMany()
+    * ```
+    */
+  get sectionOneImage(): Prisma.SectionOneImageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.sectionTwo`: Exposes CRUD operations for the **SectionTwo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SectionTwos
+    * const sectionTwos = await prisma.sectionTwo.findMany()
+    * ```
+    */
+  get sectionTwo(): Prisma.SectionTwoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -647,7 +722,12 @@ export namespace Prisma {
     Account: 'Account',
     Session: 'Session',
     VerificationToken: 'VerificationToken',
-    MediaAsset: 'MediaAsset'
+    MediaAsset: 'MediaAsset',
+    HeroSlide: 'HeroSlide',
+    HeroText: 'HeroText',
+    SectionOne: 'SectionOne',
+    SectionOneImage: 'SectionOneImage',
+    SectionTwo: 'SectionTwo'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -663,7 +743,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "verificationToken" | "mediaAsset"
+      modelProps: "user" | "account" | "session" | "verificationToken" | "mediaAsset" | "heroSlide" | "heroText" | "sectionOne" | "sectionOneImage" | "sectionTwo"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1037,6 +1117,376 @@ export namespace Prisma {
           }
         }
       }
+      HeroSlide: {
+        payload: Prisma.$HeroSlidePayload<ExtArgs>
+        fields: Prisma.HeroSlideFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HeroSlideFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroSlidePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HeroSlideFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroSlidePayload>
+          }
+          findFirst: {
+            args: Prisma.HeroSlideFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroSlidePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HeroSlideFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroSlidePayload>
+          }
+          findMany: {
+            args: Prisma.HeroSlideFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroSlidePayload>[]
+          }
+          create: {
+            args: Prisma.HeroSlideCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroSlidePayload>
+          }
+          createMany: {
+            args: Prisma.HeroSlideCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HeroSlideCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroSlidePayload>[]
+          }
+          delete: {
+            args: Prisma.HeroSlideDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroSlidePayload>
+          }
+          update: {
+            args: Prisma.HeroSlideUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroSlidePayload>
+          }
+          deleteMany: {
+            args: Prisma.HeroSlideDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HeroSlideUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HeroSlideUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroSlidePayload>[]
+          }
+          upsert: {
+            args: Prisma.HeroSlideUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroSlidePayload>
+          }
+          aggregate: {
+            args: Prisma.HeroSlideAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHeroSlide>
+          }
+          groupBy: {
+            args: Prisma.HeroSlideGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HeroSlideGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HeroSlideCountArgs<ExtArgs>
+            result: $Utils.Optional<HeroSlideCountAggregateOutputType> | number
+          }
+        }
+      }
+      HeroText: {
+        payload: Prisma.$HeroTextPayload<ExtArgs>
+        fields: Prisma.HeroTextFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HeroTextFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroTextPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HeroTextFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroTextPayload>
+          }
+          findFirst: {
+            args: Prisma.HeroTextFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroTextPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HeroTextFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroTextPayload>
+          }
+          findMany: {
+            args: Prisma.HeroTextFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroTextPayload>[]
+          }
+          create: {
+            args: Prisma.HeroTextCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroTextPayload>
+          }
+          createMany: {
+            args: Prisma.HeroTextCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HeroTextCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroTextPayload>[]
+          }
+          delete: {
+            args: Prisma.HeroTextDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroTextPayload>
+          }
+          update: {
+            args: Prisma.HeroTextUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroTextPayload>
+          }
+          deleteMany: {
+            args: Prisma.HeroTextDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HeroTextUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HeroTextUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroTextPayload>[]
+          }
+          upsert: {
+            args: Prisma.HeroTextUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroTextPayload>
+          }
+          aggregate: {
+            args: Prisma.HeroTextAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHeroText>
+          }
+          groupBy: {
+            args: Prisma.HeroTextGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HeroTextGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HeroTextCountArgs<ExtArgs>
+            result: $Utils.Optional<HeroTextCountAggregateOutputType> | number
+          }
+        }
+      }
+      SectionOne: {
+        payload: Prisma.$SectionOnePayload<ExtArgs>
+        fields: Prisma.SectionOneFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SectionOneFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOnePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SectionOneFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOnePayload>
+          }
+          findFirst: {
+            args: Prisma.SectionOneFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOnePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SectionOneFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOnePayload>
+          }
+          findMany: {
+            args: Prisma.SectionOneFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOnePayload>[]
+          }
+          create: {
+            args: Prisma.SectionOneCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOnePayload>
+          }
+          createMany: {
+            args: Prisma.SectionOneCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SectionOneCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOnePayload>[]
+          }
+          delete: {
+            args: Prisma.SectionOneDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOnePayload>
+          }
+          update: {
+            args: Prisma.SectionOneUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOnePayload>
+          }
+          deleteMany: {
+            args: Prisma.SectionOneDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SectionOneUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SectionOneUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOnePayload>[]
+          }
+          upsert: {
+            args: Prisma.SectionOneUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOnePayload>
+          }
+          aggregate: {
+            args: Prisma.SectionOneAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSectionOne>
+          }
+          groupBy: {
+            args: Prisma.SectionOneGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SectionOneGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SectionOneCountArgs<ExtArgs>
+            result: $Utils.Optional<SectionOneCountAggregateOutputType> | number
+          }
+        }
+      }
+      SectionOneImage: {
+        payload: Prisma.$SectionOneImagePayload<ExtArgs>
+        fields: Prisma.SectionOneImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SectionOneImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOneImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SectionOneImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOneImagePayload>
+          }
+          findFirst: {
+            args: Prisma.SectionOneImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOneImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SectionOneImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOneImagePayload>
+          }
+          findMany: {
+            args: Prisma.SectionOneImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOneImagePayload>[]
+          }
+          create: {
+            args: Prisma.SectionOneImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOneImagePayload>
+          }
+          createMany: {
+            args: Prisma.SectionOneImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SectionOneImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOneImagePayload>[]
+          }
+          delete: {
+            args: Prisma.SectionOneImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOneImagePayload>
+          }
+          update: {
+            args: Prisma.SectionOneImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOneImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.SectionOneImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SectionOneImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SectionOneImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOneImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.SectionOneImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionOneImagePayload>
+          }
+          aggregate: {
+            args: Prisma.SectionOneImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSectionOneImage>
+          }
+          groupBy: {
+            args: Prisma.SectionOneImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SectionOneImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SectionOneImageCountArgs<ExtArgs>
+            result: $Utils.Optional<SectionOneImageCountAggregateOutputType> | number
+          }
+        }
+      }
+      SectionTwo: {
+        payload: Prisma.$SectionTwoPayload<ExtArgs>
+        fields: Prisma.SectionTwoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SectionTwoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionTwoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SectionTwoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionTwoPayload>
+          }
+          findFirst: {
+            args: Prisma.SectionTwoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionTwoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SectionTwoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionTwoPayload>
+          }
+          findMany: {
+            args: Prisma.SectionTwoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionTwoPayload>[]
+          }
+          create: {
+            args: Prisma.SectionTwoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionTwoPayload>
+          }
+          createMany: {
+            args: Prisma.SectionTwoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SectionTwoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionTwoPayload>[]
+          }
+          delete: {
+            args: Prisma.SectionTwoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionTwoPayload>
+          }
+          update: {
+            args: Prisma.SectionTwoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionTwoPayload>
+          }
+          deleteMany: {
+            args: Prisma.SectionTwoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SectionTwoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SectionTwoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionTwoPayload>[]
+          }
+          upsert: {
+            args: Prisma.SectionTwoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionTwoPayload>
+          }
+          aggregate: {
+            args: Prisma.SectionTwoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSectionTwo>
+          }
+          groupBy: {
+            args: Prisma.SectionTwoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SectionTwoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SectionTwoCountArgs<ExtArgs>
+            result: $Utils.Optional<SectionTwoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1150,6 +1600,11 @@ export namespace Prisma {
     session?: SessionOmit
     verificationToken?: VerificationTokenOmit
     mediaAsset?: MediaAssetOmit
+    heroSlide?: HeroSlideOmit
+    heroText?: HeroTextOmit
+    sectionOne?: SectionOneOmit
+    sectionOneImage?: SectionOneImageOmit
+    sectionTwo?: SectionTwoOmit
   }
 
   /* Types for Logging */
@@ -1262,6 +1717,77 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SessionWhereInput
+  }
+
+
+  /**
+   * Count Type MediaAssetCountOutputType
+   */
+
+  export type MediaAssetCountOutputType = {
+    heroSlides: number
+    sectionOneImages: number
+  }
+
+  export type MediaAssetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    heroSlides?: boolean | MediaAssetCountOutputTypeCountHeroSlidesArgs
+    sectionOneImages?: boolean | MediaAssetCountOutputTypeCountSectionOneImagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MediaAssetCountOutputType without action
+   */
+  export type MediaAssetCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaAssetCountOutputType
+     */
+    select?: MediaAssetCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MediaAssetCountOutputType without action
+   */
+  export type MediaAssetCountOutputTypeCountHeroSlidesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HeroSlideWhereInput
+  }
+
+  /**
+   * MediaAssetCountOutputType without action
+   */
+  export type MediaAssetCountOutputTypeCountSectionOneImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SectionOneImageWhereInput
+  }
+
+
+  /**
+   * Count Type SectionOneCountOutputType
+   */
+
+  export type SectionOneCountOutputType = {
+    images: number
+  }
+
+  export type SectionOneCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | SectionOneCountOutputTypeCountImagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SectionOneCountOutputType without action
+   */
+  export type SectionOneCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneCountOutputType
+     */
+    select?: SectionOneCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SectionOneCountOutputType without action
+   */
+  export type SectionOneCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SectionOneImageWhereInput
   }
 
 
@@ -5782,6 +6308,9 @@ export namespace Prisma {
     publicId?: boolean
     resourceType?: boolean
     createdAt?: boolean
+    heroSlides?: boolean | MediaAsset$heroSlidesArgs<ExtArgs>
+    sectionOneImages?: boolean | MediaAsset$sectionOneImagesArgs<ExtArgs>
+    _count?: boolean | MediaAssetCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["mediaAsset"]>
 
   export type MediaAssetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5812,10 +6341,20 @@ export namespace Prisma {
   }
 
   export type MediaAssetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "imageUrl" | "publicId" | "resourceType" | "createdAt", ExtArgs["result"]["mediaAsset"]>
+  export type MediaAssetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    heroSlides?: boolean | MediaAsset$heroSlidesArgs<ExtArgs>
+    sectionOneImages?: boolean | MediaAsset$sectionOneImagesArgs<ExtArgs>
+    _count?: boolean | MediaAssetCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MediaAssetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type MediaAssetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $MediaAssetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "MediaAsset"
-    objects: {}
+    objects: {
+      heroSlides: Prisma.$HeroSlidePayload<ExtArgs>[]
+      sectionOneImages: Prisma.$SectionOneImagePayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
@@ -6217,6 +6756,8 @@ export namespace Prisma {
    */
   export interface Prisma__MediaAssetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    heroSlides<T extends MediaAsset$heroSlidesArgs<ExtArgs> = {}>(args?: Subset<T, MediaAsset$heroSlidesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sectionOneImages<T extends MediaAsset$sectionOneImagesArgs<ExtArgs> = {}>(args?: Subset<T, MediaAsset$sectionOneImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6269,6 +6810,10 @@ export namespace Prisma {
      */
     omit?: MediaAssetOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    /**
      * Filter, which MediaAsset to fetch.
      */
     where: MediaAssetWhereUniqueInput
@@ -6287,6 +6832,10 @@ export namespace Prisma {
      */
     omit?: MediaAssetOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    /**
      * Filter, which MediaAsset to fetch.
      */
     where: MediaAssetWhereUniqueInput
@@ -6304,6 +6853,10 @@ export namespace Prisma {
      * Omit specific fields from the MediaAsset
      */
     omit?: MediaAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
     /**
      * Filter, which MediaAsset to fetch.
      */
@@ -6353,6 +6906,10 @@ export namespace Prisma {
      */
     omit?: MediaAssetOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    /**
      * Filter, which MediaAsset to fetch.
      */
     where?: MediaAssetWhereInput
@@ -6400,6 +6957,10 @@ export namespace Prisma {
      * Omit specific fields from the MediaAsset
      */
     omit?: MediaAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
     /**
      * Filter, which MediaAssets to fetch.
      */
@@ -6449,6 +7010,10 @@ export namespace Prisma {
      */
     omit?: MediaAssetOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    /**
      * The data needed to create a MediaAsset.
      */
     data: XOR<MediaAssetCreateInput, MediaAssetUncheckedCreateInput>
@@ -6496,6 +7061,10 @@ export namespace Prisma {
      * Omit specific fields from the MediaAsset
      */
     omit?: MediaAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
     /**
      * The data needed to update a MediaAsset.
      */
@@ -6563,6 +7132,10 @@ export namespace Prisma {
      */
     omit?: MediaAssetOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    /**
      * The filter to search for the MediaAsset to update in case it exists.
      */
     where: MediaAssetWhereUniqueInput
@@ -6589,6 +7162,10 @@ export namespace Prisma {
      */
     omit?: MediaAssetOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    /**
      * Filter which MediaAsset to delete.
      */
     where: MediaAssetWhereUniqueInput
@@ -6609,6 +7186,54 @@ export namespace Prisma {
   }
 
   /**
+   * MediaAsset.heroSlides
+   */
+  export type MediaAsset$heroSlidesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideInclude<ExtArgs> | null
+    where?: HeroSlideWhereInput
+    orderBy?: HeroSlideOrderByWithRelationInput | HeroSlideOrderByWithRelationInput[]
+    cursor?: HeroSlideWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HeroSlideScalarFieldEnum | HeroSlideScalarFieldEnum[]
+  }
+
+  /**
+   * MediaAsset.sectionOneImages
+   */
+  export type MediaAsset$sectionOneImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+    where?: SectionOneImageWhereInput
+    orderBy?: SectionOneImageOrderByWithRelationInput | SectionOneImageOrderByWithRelationInput[]
+    cursor?: SectionOneImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SectionOneImageScalarFieldEnum | SectionOneImageScalarFieldEnum[]
+  }
+
+  /**
    * MediaAsset without action
    */
   export type MediaAssetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6620,6 +7245,5248 @@ export namespace Prisma {
      * Omit specific fields from the MediaAsset
      */
     omit?: MediaAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model HeroSlide
+   */
+
+  export type AggregateHeroSlide = {
+    _count: HeroSlideCountAggregateOutputType | null
+    _avg: HeroSlideAvgAggregateOutputType | null
+    _sum: HeroSlideSumAggregateOutputType | null
+    _min: HeroSlideMinAggregateOutputType | null
+    _max: HeroSlideMaxAggregateOutputType | null
+  }
+
+  export type HeroSlideAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type HeroSlideSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type HeroSlideMinAggregateOutputType = {
+    id: string | null
+    order: number | null
+    active: boolean | null
+    createdAt: Date | null
+    assetId: string | null
+  }
+
+  export type HeroSlideMaxAggregateOutputType = {
+    id: string | null
+    order: number | null
+    active: boolean | null
+    createdAt: Date | null
+    assetId: string | null
+  }
+
+  export type HeroSlideCountAggregateOutputType = {
+    id: number
+    order: number
+    active: number
+    createdAt: number
+    assetId: number
+    _all: number
+  }
+
+
+  export type HeroSlideAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type HeroSlideSumAggregateInputType = {
+    order?: true
+  }
+
+  export type HeroSlideMinAggregateInputType = {
+    id?: true
+    order?: true
+    active?: true
+    createdAt?: true
+    assetId?: true
+  }
+
+  export type HeroSlideMaxAggregateInputType = {
+    id?: true
+    order?: true
+    active?: true
+    createdAt?: true
+    assetId?: true
+  }
+
+  export type HeroSlideCountAggregateInputType = {
+    id?: true
+    order?: true
+    active?: true
+    createdAt?: true
+    assetId?: true
+    _all?: true
+  }
+
+  export type HeroSlideAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HeroSlide to aggregate.
+     */
+    where?: HeroSlideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroSlides to fetch.
+     */
+    orderBy?: HeroSlideOrderByWithRelationInput | HeroSlideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HeroSlideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroSlides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroSlides.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HeroSlides
+    **/
+    _count?: true | HeroSlideCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HeroSlideAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HeroSlideSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HeroSlideMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HeroSlideMaxAggregateInputType
+  }
+
+  export type GetHeroSlideAggregateType<T extends HeroSlideAggregateArgs> = {
+        [P in keyof T & keyof AggregateHeroSlide]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHeroSlide[P]>
+      : GetScalarType<T[P], AggregateHeroSlide[P]>
+  }
+
+
+
+
+  export type HeroSlideGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HeroSlideWhereInput
+    orderBy?: HeroSlideOrderByWithAggregationInput | HeroSlideOrderByWithAggregationInput[]
+    by: HeroSlideScalarFieldEnum[] | HeroSlideScalarFieldEnum
+    having?: HeroSlideScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HeroSlideCountAggregateInputType | true
+    _avg?: HeroSlideAvgAggregateInputType
+    _sum?: HeroSlideSumAggregateInputType
+    _min?: HeroSlideMinAggregateInputType
+    _max?: HeroSlideMaxAggregateInputType
+  }
+
+  export type HeroSlideGroupByOutputType = {
+    id: string
+    order: number
+    active: boolean
+    createdAt: Date
+    assetId: string
+    _count: HeroSlideCountAggregateOutputType | null
+    _avg: HeroSlideAvgAggregateOutputType | null
+    _sum: HeroSlideSumAggregateOutputType | null
+    _min: HeroSlideMinAggregateOutputType | null
+    _max: HeroSlideMaxAggregateOutputType | null
+  }
+
+  type GetHeroSlideGroupByPayload<T extends HeroSlideGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HeroSlideGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HeroSlideGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HeroSlideGroupByOutputType[P]>
+            : GetScalarType<T[P], HeroSlideGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HeroSlideSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    order?: boolean
+    active?: boolean
+    createdAt?: boolean
+    assetId?: boolean
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["heroSlide"]>
+
+  export type HeroSlideSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    order?: boolean
+    active?: boolean
+    createdAt?: boolean
+    assetId?: boolean
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["heroSlide"]>
+
+  export type HeroSlideSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    order?: boolean
+    active?: boolean
+    createdAt?: boolean
+    assetId?: boolean
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["heroSlide"]>
+
+  export type HeroSlideSelectScalar = {
+    id?: boolean
+    order?: boolean
+    active?: boolean
+    createdAt?: boolean
+    assetId?: boolean
+  }
+
+  export type HeroSlideOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "order" | "active" | "createdAt" | "assetId", ExtArgs["result"]["heroSlide"]>
+  export type HeroSlideInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }
+  export type HeroSlideIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }
+  export type HeroSlideIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }
+
+  export type $HeroSlidePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "HeroSlide"
+    objects: {
+      asset: Prisma.$MediaAssetPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      order: number
+      active: boolean
+      createdAt: Date
+      assetId: string
+    }, ExtArgs["result"]["heroSlide"]>
+    composites: {}
+  }
+
+  type HeroSlideGetPayload<S extends boolean | null | undefined | HeroSlideDefaultArgs> = $Result.GetResult<Prisma.$HeroSlidePayload, S>
+
+  type HeroSlideCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HeroSlideFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HeroSlideCountAggregateInputType | true
+    }
+
+  export interface HeroSlideDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HeroSlide'], meta: { name: 'HeroSlide' } }
+    /**
+     * Find zero or one HeroSlide that matches the filter.
+     * @param {HeroSlideFindUniqueArgs} args - Arguments to find a HeroSlide
+     * @example
+     * // Get one HeroSlide
+     * const heroSlide = await prisma.heroSlide.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HeroSlideFindUniqueArgs>(args: SelectSubset<T, HeroSlideFindUniqueArgs<ExtArgs>>): Prisma__HeroSlideClient<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one HeroSlide that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HeroSlideFindUniqueOrThrowArgs} args - Arguments to find a HeroSlide
+     * @example
+     * // Get one HeroSlide
+     * const heroSlide = await prisma.heroSlide.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HeroSlideFindUniqueOrThrowArgs>(args: SelectSubset<T, HeroSlideFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HeroSlideClient<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HeroSlide that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroSlideFindFirstArgs} args - Arguments to find a HeroSlide
+     * @example
+     * // Get one HeroSlide
+     * const heroSlide = await prisma.heroSlide.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HeroSlideFindFirstArgs>(args?: SelectSubset<T, HeroSlideFindFirstArgs<ExtArgs>>): Prisma__HeroSlideClient<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HeroSlide that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroSlideFindFirstOrThrowArgs} args - Arguments to find a HeroSlide
+     * @example
+     * // Get one HeroSlide
+     * const heroSlide = await prisma.heroSlide.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HeroSlideFindFirstOrThrowArgs>(args?: SelectSubset<T, HeroSlideFindFirstOrThrowArgs<ExtArgs>>): Prisma__HeroSlideClient<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more HeroSlides that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroSlideFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HeroSlides
+     * const heroSlides = await prisma.heroSlide.findMany()
+     * 
+     * // Get first 10 HeroSlides
+     * const heroSlides = await prisma.heroSlide.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const heroSlideWithIdOnly = await prisma.heroSlide.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HeroSlideFindManyArgs>(args?: SelectSubset<T, HeroSlideFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a HeroSlide.
+     * @param {HeroSlideCreateArgs} args - Arguments to create a HeroSlide.
+     * @example
+     * // Create one HeroSlide
+     * const HeroSlide = await prisma.heroSlide.create({
+     *   data: {
+     *     // ... data to create a HeroSlide
+     *   }
+     * })
+     * 
+     */
+    create<T extends HeroSlideCreateArgs>(args: SelectSubset<T, HeroSlideCreateArgs<ExtArgs>>): Prisma__HeroSlideClient<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many HeroSlides.
+     * @param {HeroSlideCreateManyArgs} args - Arguments to create many HeroSlides.
+     * @example
+     * // Create many HeroSlides
+     * const heroSlide = await prisma.heroSlide.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HeroSlideCreateManyArgs>(args?: SelectSubset<T, HeroSlideCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many HeroSlides and returns the data saved in the database.
+     * @param {HeroSlideCreateManyAndReturnArgs} args - Arguments to create many HeroSlides.
+     * @example
+     * // Create many HeroSlides
+     * const heroSlide = await prisma.heroSlide.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many HeroSlides and only return the `id`
+     * const heroSlideWithIdOnly = await prisma.heroSlide.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HeroSlideCreateManyAndReturnArgs>(args?: SelectSubset<T, HeroSlideCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a HeroSlide.
+     * @param {HeroSlideDeleteArgs} args - Arguments to delete one HeroSlide.
+     * @example
+     * // Delete one HeroSlide
+     * const HeroSlide = await prisma.heroSlide.delete({
+     *   where: {
+     *     // ... filter to delete one HeroSlide
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HeroSlideDeleteArgs>(args: SelectSubset<T, HeroSlideDeleteArgs<ExtArgs>>): Prisma__HeroSlideClient<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one HeroSlide.
+     * @param {HeroSlideUpdateArgs} args - Arguments to update one HeroSlide.
+     * @example
+     * // Update one HeroSlide
+     * const heroSlide = await prisma.heroSlide.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HeroSlideUpdateArgs>(args: SelectSubset<T, HeroSlideUpdateArgs<ExtArgs>>): Prisma__HeroSlideClient<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more HeroSlides.
+     * @param {HeroSlideDeleteManyArgs} args - Arguments to filter HeroSlides to delete.
+     * @example
+     * // Delete a few HeroSlides
+     * const { count } = await prisma.heroSlide.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HeroSlideDeleteManyArgs>(args?: SelectSubset<T, HeroSlideDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HeroSlides.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroSlideUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HeroSlides
+     * const heroSlide = await prisma.heroSlide.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HeroSlideUpdateManyArgs>(args: SelectSubset<T, HeroSlideUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HeroSlides and returns the data updated in the database.
+     * @param {HeroSlideUpdateManyAndReturnArgs} args - Arguments to update many HeroSlides.
+     * @example
+     * // Update many HeroSlides
+     * const heroSlide = await prisma.heroSlide.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more HeroSlides and only return the `id`
+     * const heroSlideWithIdOnly = await prisma.heroSlide.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HeroSlideUpdateManyAndReturnArgs>(args: SelectSubset<T, HeroSlideUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one HeroSlide.
+     * @param {HeroSlideUpsertArgs} args - Arguments to update or create a HeroSlide.
+     * @example
+     * // Update or create a HeroSlide
+     * const heroSlide = await prisma.heroSlide.upsert({
+     *   create: {
+     *     // ... data to create a HeroSlide
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HeroSlide we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HeroSlideUpsertArgs>(args: SelectSubset<T, HeroSlideUpsertArgs<ExtArgs>>): Prisma__HeroSlideClient<$Result.GetResult<Prisma.$HeroSlidePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of HeroSlides.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroSlideCountArgs} args - Arguments to filter HeroSlides to count.
+     * @example
+     * // Count the number of HeroSlides
+     * const count = await prisma.heroSlide.count({
+     *   where: {
+     *     // ... the filter for the HeroSlides we want to count
+     *   }
+     * })
+    **/
+    count<T extends HeroSlideCountArgs>(
+      args?: Subset<T, HeroSlideCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HeroSlideCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HeroSlide.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroSlideAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HeroSlideAggregateArgs>(args: Subset<T, HeroSlideAggregateArgs>): Prisma.PrismaPromise<GetHeroSlideAggregateType<T>>
+
+    /**
+     * Group by HeroSlide.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroSlideGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HeroSlideGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HeroSlideGroupByArgs['orderBy'] }
+        : { orderBy?: HeroSlideGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HeroSlideGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHeroSlideGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the HeroSlide model
+   */
+  readonly fields: HeroSlideFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HeroSlide.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HeroSlideClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    asset<T extends MediaAssetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MediaAssetDefaultArgs<ExtArgs>>): Prisma__MediaAssetClient<$Result.GetResult<Prisma.$MediaAssetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the HeroSlide model
+   */
+  interface HeroSlideFieldRefs {
+    readonly id: FieldRef<"HeroSlide", 'String'>
+    readonly order: FieldRef<"HeroSlide", 'Int'>
+    readonly active: FieldRef<"HeroSlide", 'Boolean'>
+    readonly createdAt: FieldRef<"HeroSlide", 'DateTime'>
+    readonly assetId: FieldRef<"HeroSlide", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * HeroSlide findUnique
+   */
+  export type HeroSlideFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideInclude<ExtArgs> | null
+    /**
+     * Filter, which HeroSlide to fetch.
+     */
+    where: HeroSlideWhereUniqueInput
+  }
+
+  /**
+   * HeroSlide findUniqueOrThrow
+   */
+  export type HeroSlideFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideInclude<ExtArgs> | null
+    /**
+     * Filter, which HeroSlide to fetch.
+     */
+    where: HeroSlideWhereUniqueInput
+  }
+
+  /**
+   * HeroSlide findFirst
+   */
+  export type HeroSlideFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideInclude<ExtArgs> | null
+    /**
+     * Filter, which HeroSlide to fetch.
+     */
+    where?: HeroSlideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroSlides to fetch.
+     */
+    orderBy?: HeroSlideOrderByWithRelationInput | HeroSlideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HeroSlides.
+     */
+    cursor?: HeroSlideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroSlides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroSlides.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HeroSlides.
+     */
+    distinct?: HeroSlideScalarFieldEnum | HeroSlideScalarFieldEnum[]
+  }
+
+  /**
+   * HeroSlide findFirstOrThrow
+   */
+  export type HeroSlideFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideInclude<ExtArgs> | null
+    /**
+     * Filter, which HeroSlide to fetch.
+     */
+    where?: HeroSlideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroSlides to fetch.
+     */
+    orderBy?: HeroSlideOrderByWithRelationInput | HeroSlideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HeroSlides.
+     */
+    cursor?: HeroSlideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroSlides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroSlides.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HeroSlides.
+     */
+    distinct?: HeroSlideScalarFieldEnum | HeroSlideScalarFieldEnum[]
+  }
+
+  /**
+   * HeroSlide findMany
+   */
+  export type HeroSlideFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideInclude<ExtArgs> | null
+    /**
+     * Filter, which HeroSlides to fetch.
+     */
+    where?: HeroSlideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroSlides to fetch.
+     */
+    orderBy?: HeroSlideOrderByWithRelationInput | HeroSlideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HeroSlides.
+     */
+    cursor?: HeroSlideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroSlides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroSlides.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HeroSlides.
+     */
+    distinct?: HeroSlideScalarFieldEnum | HeroSlideScalarFieldEnum[]
+  }
+
+  /**
+   * HeroSlide create
+   */
+  export type HeroSlideCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideInclude<ExtArgs> | null
+    /**
+     * The data needed to create a HeroSlide.
+     */
+    data: XOR<HeroSlideCreateInput, HeroSlideUncheckedCreateInput>
+  }
+
+  /**
+   * HeroSlide createMany
+   */
+  export type HeroSlideCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HeroSlides.
+     */
+    data: HeroSlideCreateManyInput | HeroSlideCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HeroSlide createManyAndReturn
+   */
+  export type HeroSlideCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * The data used to create many HeroSlides.
+     */
+    data: HeroSlideCreateManyInput | HeroSlideCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HeroSlide update
+   */
+  export type HeroSlideUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideInclude<ExtArgs> | null
+    /**
+     * The data needed to update a HeroSlide.
+     */
+    data: XOR<HeroSlideUpdateInput, HeroSlideUncheckedUpdateInput>
+    /**
+     * Choose, which HeroSlide to update.
+     */
+    where: HeroSlideWhereUniqueInput
+  }
+
+  /**
+   * HeroSlide updateMany
+   */
+  export type HeroSlideUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HeroSlides.
+     */
+    data: XOR<HeroSlideUpdateManyMutationInput, HeroSlideUncheckedUpdateManyInput>
+    /**
+     * Filter which HeroSlides to update
+     */
+    where?: HeroSlideWhereInput
+    /**
+     * Limit how many HeroSlides to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HeroSlide updateManyAndReturn
+   */
+  export type HeroSlideUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * The data used to update HeroSlides.
+     */
+    data: XOR<HeroSlideUpdateManyMutationInput, HeroSlideUncheckedUpdateManyInput>
+    /**
+     * Filter which HeroSlides to update
+     */
+    where?: HeroSlideWhereInput
+    /**
+     * Limit how many HeroSlides to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HeroSlide upsert
+   */
+  export type HeroSlideUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideInclude<ExtArgs> | null
+    /**
+     * The filter to search for the HeroSlide to update in case it exists.
+     */
+    where: HeroSlideWhereUniqueInput
+    /**
+     * In case the HeroSlide found by the `where` argument doesn't exist, create a new HeroSlide with this data.
+     */
+    create: XOR<HeroSlideCreateInput, HeroSlideUncheckedCreateInput>
+    /**
+     * In case the HeroSlide was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HeroSlideUpdateInput, HeroSlideUncheckedUpdateInput>
+  }
+
+  /**
+   * HeroSlide delete
+   */
+  export type HeroSlideDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideInclude<ExtArgs> | null
+    /**
+     * Filter which HeroSlide to delete.
+     */
+    where: HeroSlideWhereUniqueInput
+  }
+
+  /**
+   * HeroSlide deleteMany
+   */
+  export type HeroSlideDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HeroSlides to delete
+     */
+    where?: HeroSlideWhereInput
+    /**
+     * Limit how many HeroSlides to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * HeroSlide without action
+   */
+  export type HeroSlideDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroSlide
+     */
+    select?: HeroSlideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroSlide
+     */
+    omit?: HeroSlideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroSlideInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model HeroText
+   */
+
+  export type AggregateHeroText = {
+    _count: HeroTextCountAggregateOutputType | null
+    _min: HeroTextMinAggregateOutputType | null
+    _max: HeroTextMaxAggregateOutputType | null
+  }
+
+  export type HeroTextMinAggregateOutputType = {
+    id: string | null
+    heading: string | null
+    subtext: string | null
+  }
+
+  export type HeroTextMaxAggregateOutputType = {
+    id: string | null
+    heading: string | null
+    subtext: string | null
+  }
+
+  export type HeroTextCountAggregateOutputType = {
+    id: number
+    heading: number
+    subtext: number
+    _all: number
+  }
+
+
+  export type HeroTextMinAggregateInputType = {
+    id?: true
+    heading?: true
+    subtext?: true
+  }
+
+  export type HeroTextMaxAggregateInputType = {
+    id?: true
+    heading?: true
+    subtext?: true
+  }
+
+  export type HeroTextCountAggregateInputType = {
+    id?: true
+    heading?: true
+    subtext?: true
+    _all?: true
+  }
+
+  export type HeroTextAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HeroText to aggregate.
+     */
+    where?: HeroTextWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroTexts to fetch.
+     */
+    orderBy?: HeroTextOrderByWithRelationInput | HeroTextOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HeroTextWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroTexts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroTexts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HeroTexts
+    **/
+    _count?: true | HeroTextCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HeroTextMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HeroTextMaxAggregateInputType
+  }
+
+  export type GetHeroTextAggregateType<T extends HeroTextAggregateArgs> = {
+        [P in keyof T & keyof AggregateHeroText]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHeroText[P]>
+      : GetScalarType<T[P], AggregateHeroText[P]>
+  }
+
+
+
+
+  export type HeroTextGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HeroTextWhereInput
+    orderBy?: HeroTextOrderByWithAggregationInput | HeroTextOrderByWithAggregationInput[]
+    by: HeroTextScalarFieldEnum[] | HeroTextScalarFieldEnum
+    having?: HeroTextScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HeroTextCountAggregateInputType | true
+    _min?: HeroTextMinAggregateInputType
+    _max?: HeroTextMaxAggregateInputType
+  }
+
+  export type HeroTextGroupByOutputType = {
+    id: string
+    heading: string
+    subtext: string
+    _count: HeroTextCountAggregateOutputType | null
+    _min: HeroTextMinAggregateOutputType | null
+    _max: HeroTextMaxAggregateOutputType | null
+  }
+
+  type GetHeroTextGroupByPayload<T extends HeroTextGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HeroTextGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HeroTextGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HeroTextGroupByOutputType[P]>
+            : GetScalarType<T[P], HeroTextGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HeroTextSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    heading?: boolean
+    subtext?: boolean
+  }, ExtArgs["result"]["heroText"]>
+
+  export type HeroTextSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    heading?: boolean
+    subtext?: boolean
+  }, ExtArgs["result"]["heroText"]>
+
+  export type HeroTextSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    heading?: boolean
+    subtext?: boolean
+  }, ExtArgs["result"]["heroText"]>
+
+  export type HeroTextSelectScalar = {
+    id?: boolean
+    heading?: boolean
+    subtext?: boolean
+  }
+
+  export type HeroTextOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "heading" | "subtext", ExtArgs["result"]["heroText"]>
+
+  export type $HeroTextPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "HeroText"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      heading: string
+      subtext: string
+    }, ExtArgs["result"]["heroText"]>
+    composites: {}
+  }
+
+  type HeroTextGetPayload<S extends boolean | null | undefined | HeroTextDefaultArgs> = $Result.GetResult<Prisma.$HeroTextPayload, S>
+
+  type HeroTextCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HeroTextFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HeroTextCountAggregateInputType | true
+    }
+
+  export interface HeroTextDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HeroText'], meta: { name: 'HeroText' } }
+    /**
+     * Find zero or one HeroText that matches the filter.
+     * @param {HeroTextFindUniqueArgs} args - Arguments to find a HeroText
+     * @example
+     * // Get one HeroText
+     * const heroText = await prisma.heroText.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HeroTextFindUniqueArgs>(args: SelectSubset<T, HeroTextFindUniqueArgs<ExtArgs>>): Prisma__HeroTextClient<$Result.GetResult<Prisma.$HeroTextPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one HeroText that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HeroTextFindUniqueOrThrowArgs} args - Arguments to find a HeroText
+     * @example
+     * // Get one HeroText
+     * const heroText = await prisma.heroText.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HeroTextFindUniqueOrThrowArgs>(args: SelectSubset<T, HeroTextFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HeroTextClient<$Result.GetResult<Prisma.$HeroTextPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HeroText that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroTextFindFirstArgs} args - Arguments to find a HeroText
+     * @example
+     * // Get one HeroText
+     * const heroText = await prisma.heroText.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HeroTextFindFirstArgs>(args?: SelectSubset<T, HeroTextFindFirstArgs<ExtArgs>>): Prisma__HeroTextClient<$Result.GetResult<Prisma.$HeroTextPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HeroText that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroTextFindFirstOrThrowArgs} args - Arguments to find a HeroText
+     * @example
+     * // Get one HeroText
+     * const heroText = await prisma.heroText.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HeroTextFindFirstOrThrowArgs>(args?: SelectSubset<T, HeroTextFindFirstOrThrowArgs<ExtArgs>>): Prisma__HeroTextClient<$Result.GetResult<Prisma.$HeroTextPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more HeroTexts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroTextFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HeroTexts
+     * const heroTexts = await prisma.heroText.findMany()
+     * 
+     * // Get first 10 HeroTexts
+     * const heroTexts = await prisma.heroText.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const heroTextWithIdOnly = await prisma.heroText.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HeroTextFindManyArgs>(args?: SelectSubset<T, HeroTextFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeroTextPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a HeroText.
+     * @param {HeroTextCreateArgs} args - Arguments to create a HeroText.
+     * @example
+     * // Create one HeroText
+     * const HeroText = await prisma.heroText.create({
+     *   data: {
+     *     // ... data to create a HeroText
+     *   }
+     * })
+     * 
+     */
+    create<T extends HeroTextCreateArgs>(args: SelectSubset<T, HeroTextCreateArgs<ExtArgs>>): Prisma__HeroTextClient<$Result.GetResult<Prisma.$HeroTextPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many HeroTexts.
+     * @param {HeroTextCreateManyArgs} args - Arguments to create many HeroTexts.
+     * @example
+     * // Create many HeroTexts
+     * const heroText = await prisma.heroText.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HeroTextCreateManyArgs>(args?: SelectSubset<T, HeroTextCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many HeroTexts and returns the data saved in the database.
+     * @param {HeroTextCreateManyAndReturnArgs} args - Arguments to create many HeroTexts.
+     * @example
+     * // Create many HeroTexts
+     * const heroText = await prisma.heroText.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many HeroTexts and only return the `id`
+     * const heroTextWithIdOnly = await prisma.heroText.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HeroTextCreateManyAndReturnArgs>(args?: SelectSubset<T, HeroTextCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeroTextPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a HeroText.
+     * @param {HeroTextDeleteArgs} args - Arguments to delete one HeroText.
+     * @example
+     * // Delete one HeroText
+     * const HeroText = await prisma.heroText.delete({
+     *   where: {
+     *     // ... filter to delete one HeroText
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HeroTextDeleteArgs>(args: SelectSubset<T, HeroTextDeleteArgs<ExtArgs>>): Prisma__HeroTextClient<$Result.GetResult<Prisma.$HeroTextPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one HeroText.
+     * @param {HeroTextUpdateArgs} args - Arguments to update one HeroText.
+     * @example
+     * // Update one HeroText
+     * const heroText = await prisma.heroText.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HeroTextUpdateArgs>(args: SelectSubset<T, HeroTextUpdateArgs<ExtArgs>>): Prisma__HeroTextClient<$Result.GetResult<Prisma.$HeroTextPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more HeroTexts.
+     * @param {HeroTextDeleteManyArgs} args - Arguments to filter HeroTexts to delete.
+     * @example
+     * // Delete a few HeroTexts
+     * const { count } = await prisma.heroText.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HeroTextDeleteManyArgs>(args?: SelectSubset<T, HeroTextDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HeroTexts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroTextUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HeroTexts
+     * const heroText = await prisma.heroText.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HeroTextUpdateManyArgs>(args: SelectSubset<T, HeroTextUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HeroTexts and returns the data updated in the database.
+     * @param {HeroTextUpdateManyAndReturnArgs} args - Arguments to update many HeroTexts.
+     * @example
+     * // Update many HeroTexts
+     * const heroText = await prisma.heroText.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more HeroTexts and only return the `id`
+     * const heroTextWithIdOnly = await prisma.heroText.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HeroTextUpdateManyAndReturnArgs>(args: SelectSubset<T, HeroTextUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeroTextPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one HeroText.
+     * @param {HeroTextUpsertArgs} args - Arguments to update or create a HeroText.
+     * @example
+     * // Update or create a HeroText
+     * const heroText = await prisma.heroText.upsert({
+     *   create: {
+     *     // ... data to create a HeroText
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HeroText we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HeroTextUpsertArgs>(args: SelectSubset<T, HeroTextUpsertArgs<ExtArgs>>): Prisma__HeroTextClient<$Result.GetResult<Prisma.$HeroTextPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of HeroTexts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroTextCountArgs} args - Arguments to filter HeroTexts to count.
+     * @example
+     * // Count the number of HeroTexts
+     * const count = await prisma.heroText.count({
+     *   where: {
+     *     // ... the filter for the HeroTexts we want to count
+     *   }
+     * })
+    **/
+    count<T extends HeroTextCountArgs>(
+      args?: Subset<T, HeroTextCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HeroTextCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HeroText.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroTextAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HeroTextAggregateArgs>(args: Subset<T, HeroTextAggregateArgs>): Prisma.PrismaPromise<GetHeroTextAggregateType<T>>
+
+    /**
+     * Group by HeroText.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroTextGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HeroTextGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HeroTextGroupByArgs['orderBy'] }
+        : { orderBy?: HeroTextGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HeroTextGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHeroTextGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the HeroText model
+   */
+  readonly fields: HeroTextFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HeroText.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HeroTextClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the HeroText model
+   */
+  interface HeroTextFieldRefs {
+    readonly id: FieldRef<"HeroText", 'String'>
+    readonly heading: FieldRef<"HeroText", 'String'>
+    readonly subtext: FieldRef<"HeroText", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * HeroText findUnique
+   */
+  export type HeroTextFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+    /**
+     * Filter, which HeroText to fetch.
+     */
+    where: HeroTextWhereUniqueInput
+  }
+
+  /**
+   * HeroText findUniqueOrThrow
+   */
+  export type HeroTextFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+    /**
+     * Filter, which HeroText to fetch.
+     */
+    where: HeroTextWhereUniqueInput
+  }
+
+  /**
+   * HeroText findFirst
+   */
+  export type HeroTextFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+    /**
+     * Filter, which HeroText to fetch.
+     */
+    where?: HeroTextWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroTexts to fetch.
+     */
+    orderBy?: HeroTextOrderByWithRelationInput | HeroTextOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HeroTexts.
+     */
+    cursor?: HeroTextWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroTexts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroTexts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HeroTexts.
+     */
+    distinct?: HeroTextScalarFieldEnum | HeroTextScalarFieldEnum[]
+  }
+
+  /**
+   * HeroText findFirstOrThrow
+   */
+  export type HeroTextFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+    /**
+     * Filter, which HeroText to fetch.
+     */
+    where?: HeroTextWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroTexts to fetch.
+     */
+    orderBy?: HeroTextOrderByWithRelationInput | HeroTextOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HeroTexts.
+     */
+    cursor?: HeroTextWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroTexts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroTexts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HeroTexts.
+     */
+    distinct?: HeroTextScalarFieldEnum | HeroTextScalarFieldEnum[]
+  }
+
+  /**
+   * HeroText findMany
+   */
+  export type HeroTextFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+    /**
+     * Filter, which HeroTexts to fetch.
+     */
+    where?: HeroTextWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroTexts to fetch.
+     */
+    orderBy?: HeroTextOrderByWithRelationInput | HeroTextOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HeroTexts.
+     */
+    cursor?: HeroTextWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroTexts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroTexts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HeroTexts.
+     */
+    distinct?: HeroTextScalarFieldEnum | HeroTextScalarFieldEnum[]
+  }
+
+  /**
+   * HeroText create
+   */
+  export type HeroTextCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+    /**
+     * The data needed to create a HeroText.
+     */
+    data?: XOR<HeroTextCreateInput, HeroTextUncheckedCreateInput>
+  }
+
+  /**
+   * HeroText createMany
+   */
+  export type HeroTextCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HeroTexts.
+     */
+    data: HeroTextCreateManyInput | HeroTextCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HeroText createManyAndReturn
+   */
+  export type HeroTextCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+    /**
+     * The data used to create many HeroTexts.
+     */
+    data: HeroTextCreateManyInput | HeroTextCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HeroText update
+   */
+  export type HeroTextUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+    /**
+     * The data needed to update a HeroText.
+     */
+    data: XOR<HeroTextUpdateInput, HeroTextUncheckedUpdateInput>
+    /**
+     * Choose, which HeroText to update.
+     */
+    where: HeroTextWhereUniqueInput
+  }
+
+  /**
+   * HeroText updateMany
+   */
+  export type HeroTextUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HeroTexts.
+     */
+    data: XOR<HeroTextUpdateManyMutationInput, HeroTextUncheckedUpdateManyInput>
+    /**
+     * Filter which HeroTexts to update
+     */
+    where?: HeroTextWhereInput
+    /**
+     * Limit how many HeroTexts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HeroText updateManyAndReturn
+   */
+  export type HeroTextUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+    /**
+     * The data used to update HeroTexts.
+     */
+    data: XOR<HeroTextUpdateManyMutationInput, HeroTextUncheckedUpdateManyInput>
+    /**
+     * Filter which HeroTexts to update
+     */
+    where?: HeroTextWhereInput
+    /**
+     * Limit how many HeroTexts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HeroText upsert
+   */
+  export type HeroTextUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+    /**
+     * The filter to search for the HeroText to update in case it exists.
+     */
+    where: HeroTextWhereUniqueInput
+    /**
+     * In case the HeroText found by the `where` argument doesn't exist, create a new HeroText with this data.
+     */
+    create: XOR<HeroTextCreateInput, HeroTextUncheckedCreateInput>
+    /**
+     * In case the HeroText was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HeroTextUpdateInput, HeroTextUncheckedUpdateInput>
+  }
+
+  /**
+   * HeroText delete
+   */
+  export type HeroTextDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+    /**
+     * Filter which HeroText to delete.
+     */
+    where: HeroTextWhereUniqueInput
+  }
+
+  /**
+   * HeroText deleteMany
+   */
+  export type HeroTextDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HeroTexts to delete
+     */
+    where?: HeroTextWhereInput
+    /**
+     * Limit how many HeroTexts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * HeroText without action
+   */
+  export type HeroTextDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroText
+     */
+    select?: HeroTextSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroText
+     */
+    omit?: HeroTextOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SectionOne
+   */
+
+  export type AggregateSectionOne = {
+    _count: SectionOneCountAggregateOutputType | null
+    _min: SectionOneMinAggregateOutputType | null
+    _max: SectionOneMaxAggregateOutputType | null
+  }
+
+  export type SectionOneMinAggregateOutputType = {
+    id: string | null
+    label: string | null
+    heading: string | null
+    quote: string | null
+  }
+
+  export type SectionOneMaxAggregateOutputType = {
+    id: string | null
+    label: string | null
+    heading: string | null
+    quote: string | null
+  }
+
+  export type SectionOneCountAggregateOutputType = {
+    id: number
+    label: number
+    heading: number
+    quote: number
+    _all: number
+  }
+
+
+  export type SectionOneMinAggregateInputType = {
+    id?: true
+    label?: true
+    heading?: true
+    quote?: true
+  }
+
+  export type SectionOneMaxAggregateInputType = {
+    id?: true
+    label?: true
+    heading?: true
+    quote?: true
+  }
+
+  export type SectionOneCountAggregateInputType = {
+    id?: true
+    label?: true
+    heading?: true
+    quote?: true
+    _all?: true
+  }
+
+  export type SectionOneAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SectionOne to aggregate.
+     */
+    where?: SectionOneWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionOnes to fetch.
+     */
+    orderBy?: SectionOneOrderByWithRelationInput | SectionOneOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SectionOneWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionOnes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionOnes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SectionOnes
+    **/
+    _count?: true | SectionOneCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SectionOneMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SectionOneMaxAggregateInputType
+  }
+
+  export type GetSectionOneAggregateType<T extends SectionOneAggregateArgs> = {
+        [P in keyof T & keyof AggregateSectionOne]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSectionOne[P]>
+      : GetScalarType<T[P], AggregateSectionOne[P]>
+  }
+
+
+
+
+  export type SectionOneGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SectionOneWhereInput
+    orderBy?: SectionOneOrderByWithAggregationInput | SectionOneOrderByWithAggregationInput[]
+    by: SectionOneScalarFieldEnum[] | SectionOneScalarFieldEnum
+    having?: SectionOneScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SectionOneCountAggregateInputType | true
+    _min?: SectionOneMinAggregateInputType
+    _max?: SectionOneMaxAggregateInputType
+  }
+
+  export type SectionOneGroupByOutputType = {
+    id: string
+    label: string
+    heading: string
+    quote: string
+    _count: SectionOneCountAggregateOutputType | null
+    _min: SectionOneMinAggregateOutputType | null
+    _max: SectionOneMaxAggregateOutputType | null
+  }
+
+  type GetSectionOneGroupByPayload<T extends SectionOneGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SectionOneGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SectionOneGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SectionOneGroupByOutputType[P]>
+            : GetScalarType<T[P], SectionOneGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SectionOneSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    heading?: boolean
+    quote?: boolean
+    images?: boolean | SectionOne$imagesArgs<ExtArgs>
+    _count?: boolean | SectionOneCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sectionOne"]>
+
+  export type SectionOneSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    heading?: boolean
+    quote?: boolean
+  }, ExtArgs["result"]["sectionOne"]>
+
+  export type SectionOneSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    heading?: boolean
+    quote?: boolean
+  }, ExtArgs["result"]["sectionOne"]>
+
+  export type SectionOneSelectScalar = {
+    id?: boolean
+    label?: boolean
+    heading?: boolean
+    quote?: boolean
+  }
+
+  export type SectionOneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "heading" | "quote", ExtArgs["result"]["sectionOne"]>
+  export type SectionOneInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | SectionOne$imagesArgs<ExtArgs>
+    _count?: boolean | SectionOneCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type SectionOneIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type SectionOneIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $SectionOnePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SectionOne"
+    objects: {
+      images: Prisma.$SectionOneImagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      label: string
+      heading: string
+      quote: string
+    }, ExtArgs["result"]["sectionOne"]>
+    composites: {}
+  }
+
+  type SectionOneGetPayload<S extends boolean | null | undefined | SectionOneDefaultArgs> = $Result.GetResult<Prisma.$SectionOnePayload, S>
+
+  type SectionOneCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SectionOneFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SectionOneCountAggregateInputType | true
+    }
+
+  export interface SectionOneDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SectionOne'], meta: { name: 'SectionOne' } }
+    /**
+     * Find zero or one SectionOne that matches the filter.
+     * @param {SectionOneFindUniqueArgs} args - Arguments to find a SectionOne
+     * @example
+     * // Get one SectionOne
+     * const sectionOne = await prisma.sectionOne.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SectionOneFindUniqueArgs>(args: SelectSubset<T, SectionOneFindUniqueArgs<ExtArgs>>): Prisma__SectionOneClient<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SectionOne that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SectionOneFindUniqueOrThrowArgs} args - Arguments to find a SectionOne
+     * @example
+     * // Get one SectionOne
+     * const sectionOne = await prisma.sectionOne.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SectionOneFindUniqueOrThrowArgs>(args: SelectSubset<T, SectionOneFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SectionOneClient<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SectionOne that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneFindFirstArgs} args - Arguments to find a SectionOne
+     * @example
+     * // Get one SectionOne
+     * const sectionOne = await prisma.sectionOne.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SectionOneFindFirstArgs>(args?: SelectSubset<T, SectionOneFindFirstArgs<ExtArgs>>): Prisma__SectionOneClient<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SectionOne that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneFindFirstOrThrowArgs} args - Arguments to find a SectionOne
+     * @example
+     * // Get one SectionOne
+     * const sectionOne = await prisma.sectionOne.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SectionOneFindFirstOrThrowArgs>(args?: SelectSubset<T, SectionOneFindFirstOrThrowArgs<ExtArgs>>): Prisma__SectionOneClient<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SectionOnes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SectionOnes
+     * const sectionOnes = await prisma.sectionOne.findMany()
+     * 
+     * // Get first 10 SectionOnes
+     * const sectionOnes = await prisma.sectionOne.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const sectionOneWithIdOnly = await prisma.sectionOne.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SectionOneFindManyArgs>(args?: SelectSubset<T, SectionOneFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SectionOne.
+     * @param {SectionOneCreateArgs} args - Arguments to create a SectionOne.
+     * @example
+     * // Create one SectionOne
+     * const SectionOne = await prisma.sectionOne.create({
+     *   data: {
+     *     // ... data to create a SectionOne
+     *   }
+     * })
+     * 
+     */
+    create<T extends SectionOneCreateArgs>(args: SelectSubset<T, SectionOneCreateArgs<ExtArgs>>): Prisma__SectionOneClient<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SectionOnes.
+     * @param {SectionOneCreateManyArgs} args - Arguments to create many SectionOnes.
+     * @example
+     * // Create many SectionOnes
+     * const sectionOne = await prisma.sectionOne.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SectionOneCreateManyArgs>(args?: SelectSubset<T, SectionOneCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SectionOnes and returns the data saved in the database.
+     * @param {SectionOneCreateManyAndReturnArgs} args - Arguments to create many SectionOnes.
+     * @example
+     * // Create many SectionOnes
+     * const sectionOne = await prisma.sectionOne.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SectionOnes and only return the `id`
+     * const sectionOneWithIdOnly = await prisma.sectionOne.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SectionOneCreateManyAndReturnArgs>(args?: SelectSubset<T, SectionOneCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SectionOne.
+     * @param {SectionOneDeleteArgs} args - Arguments to delete one SectionOne.
+     * @example
+     * // Delete one SectionOne
+     * const SectionOne = await prisma.sectionOne.delete({
+     *   where: {
+     *     // ... filter to delete one SectionOne
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SectionOneDeleteArgs>(args: SelectSubset<T, SectionOneDeleteArgs<ExtArgs>>): Prisma__SectionOneClient<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SectionOne.
+     * @param {SectionOneUpdateArgs} args - Arguments to update one SectionOne.
+     * @example
+     * // Update one SectionOne
+     * const sectionOne = await prisma.sectionOne.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SectionOneUpdateArgs>(args: SelectSubset<T, SectionOneUpdateArgs<ExtArgs>>): Prisma__SectionOneClient<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SectionOnes.
+     * @param {SectionOneDeleteManyArgs} args - Arguments to filter SectionOnes to delete.
+     * @example
+     * // Delete a few SectionOnes
+     * const { count } = await prisma.sectionOne.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SectionOneDeleteManyArgs>(args?: SelectSubset<T, SectionOneDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SectionOnes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SectionOnes
+     * const sectionOne = await prisma.sectionOne.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SectionOneUpdateManyArgs>(args: SelectSubset<T, SectionOneUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SectionOnes and returns the data updated in the database.
+     * @param {SectionOneUpdateManyAndReturnArgs} args - Arguments to update many SectionOnes.
+     * @example
+     * // Update many SectionOnes
+     * const sectionOne = await prisma.sectionOne.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SectionOnes and only return the `id`
+     * const sectionOneWithIdOnly = await prisma.sectionOne.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SectionOneUpdateManyAndReturnArgs>(args: SelectSubset<T, SectionOneUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SectionOne.
+     * @param {SectionOneUpsertArgs} args - Arguments to update or create a SectionOne.
+     * @example
+     * // Update or create a SectionOne
+     * const sectionOne = await prisma.sectionOne.upsert({
+     *   create: {
+     *     // ... data to create a SectionOne
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SectionOne we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SectionOneUpsertArgs>(args: SelectSubset<T, SectionOneUpsertArgs<ExtArgs>>): Prisma__SectionOneClient<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SectionOnes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneCountArgs} args - Arguments to filter SectionOnes to count.
+     * @example
+     * // Count the number of SectionOnes
+     * const count = await prisma.sectionOne.count({
+     *   where: {
+     *     // ... the filter for the SectionOnes we want to count
+     *   }
+     * })
+    **/
+    count<T extends SectionOneCountArgs>(
+      args?: Subset<T, SectionOneCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SectionOneCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SectionOne.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SectionOneAggregateArgs>(args: Subset<T, SectionOneAggregateArgs>): Prisma.PrismaPromise<GetSectionOneAggregateType<T>>
+
+    /**
+     * Group by SectionOne.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SectionOneGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SectionOneGroupByArgs['orderBy'] }
+        : { orderBy?: SectionOneGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SectionOneGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSectionOneGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SectionOne model
+   */
+  readonly fields: SectionOneFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SectionOne.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SectionOneClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    images<T extends SectionOne$imagesArgs<ExtArgs> = {}>(args?: Subset<T, SectionOne$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SectionOne model
+   */
+  interface SectionOneFieldRefs {
+    readonly id: FieldRef<"SectionOne", 'String'>
+    readonly label: FieldRef<"SectionOne", 'String'>
+    readonly heading: FieldRef<"SectionOne", 'String'>
+    readonly quote: FieldRef<"SectionOne", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SectionOne findUnique
+   */
+  export type SectionOneFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneInclude<ExtArgs> | null
+    /**
+     * Filter, which SectionOne to fetch.
+     */
+    where: SectionOneWhereUniqueInput
+  }
+
+  /**
+   * SectionOne findUniqueOrThrow
+   */
+  export type SectionOneFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneInclude<ExtArgs> | null
+    /**
+     * Filter, which SectionOne to fetch.
+     */
+    where: SectionOneWhereUniqueInput
+  }
+
+  /**
+   * SectionOne findFirst
+   */
+  export type SectionOneFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneInclude<ExtArgs> | null
+    /**
+     * Filter, which SectionOne to fetch.
+     */
+    where?: SectionOneWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionOnes to fetch.
+     */
+    orderBy?: SectionOneOrderByWithRelationInput | SectionOneOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SectionOnes.
+     */
+    cursor?: SectionOneWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionOnes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionOnes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SectionOnes.
+     */
+    distinct?: SectionOneScalarFieldEnum | SectionOneScalarFieldEnum[]
+  }
+
+  /**
+   * SectionOne findFirstOrThrow
+   */
+  export type SectionOneFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneInclude<ExtArgs> | null
+    /**
+     * Filter, which SectionOne to fetch.
+     */
+    where?: SectionOneWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionOnes to fetch.
+     */
+    orderBy?: SectionOneOrderByWithRelationInput | SectionOneOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SectionOnes.
+     */
+    cursor?: SectionOneWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionOnes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionOnes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SectionOnes.
+     */
+    distinct?: SectionOneScalarFieldEnum | SectionOneScalarFieldEnum[]
+  }
+
+  /**
+   * SectionOne findMany
+   */
+  export type SectionOneFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneInclude<ExtArgs> | null
+    /**
+     * Filter, which SectionOnes to fetch.
+     */
+    where?: SectionOneWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionOnes to fetch.
+     */
+    orderBy?: SectionOneOrderByWithRelationInput | SectionOneOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SectionOnes.
+     */
+    cursor?: SectionOneWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionOnes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionOnes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SectionOnes.
+     */
+    distinct?: SectionOneScalarFieldEnum | SectionOneScalarFieldEnum[]
+  }
+
+  /**
+   * SectionOne create
+   */
+  export type SectionOneCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SectionOne.
+     */
+    data?: XOR<SectionOneCreateInput, SectionOneUncheckedCreateInput>
+  }
+
+  /**
+   * SectionOne createMany
+   */
+  export type SectionOneCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SectionOnes.
+     */
+    data: SectionOneCreateManyInput | SectionOneCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SectionOne createManyAndReturn
+   */
+  export type SectionOneCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * The data used to create many SectionOnes.
+     */
+    data: SectionOneCreateManyInput | SectionOneCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SectionOne update
+   */
+  export type SectionOneUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SectionOne.
+     */
+    data: XOR<SectionOneUpdateInput, SectionOneUncheckedUpdateInput>
+    /**
+     * Choose, which SectionOne to update.
+     */
+    where: SectionOneWhereUniqueInput
+  }
+
+  /**
+   * SectionOne updateMany
+   */
+  export type SectionOneUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SectionOnes.
+     */
+    data: XOR<SectionOneUpdateManyMutationInput, SectionOneUncheckedUpdateManyInput>
+    /**
+     * Filter which SectionOnes to update
+     */
+    where?: SectionOneWhereInput
+    /**
+     * Limit how many SectionOnes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SectionOne updateManyAndReturn
+   */
+  export type SectionOneUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * The data used to update SectionOnes.
+     */
+    data: XOR<SectionOneUpdateManyMutationInput, SectionOneUncheckedUpdateManyInput>
+    /**
+     * Filter which SectionOnes to update
+     */
+    where?: SectionOneWhereInput
+    /**
+     * Limit how many SectionOnes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SectionOne upsert
+   */
+  export type SectionOneUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SectionOne to update in case it exists.
+     */
+    where: SectionOneWhereUniqueInput
+    /**
+     * In case the SectionOne found by the `where` argument doesn't exist, create a new SectionOne with this data.
+     */
+    create: XOR<SectionOneCreateInput, SectionOneUncheckedCreateInput>
+    /**
+     * In case the SectionOne was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SectionOneUpdateInput, SectionOneUncheckedUpdateInput>
+  }
+
+  /**
+   * SectionOne delete
+   */
+  export type SectionOneDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneInclude<ExtArgs> | null
+    /**
+     * Filter which SectionOne to delete.
+     */
+    where: SectionOneWhereUniqueInput
+  }
+
+  /**
+   * SectionOne deleteMany
+   */
+  export type SectionOneDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SectionOnes to delete
+     */
+    where?: SectionOneWhereInput
+    /**
+     * Limit how many SectionOnes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SectionOne.images
+   */
+  export type SectionOne$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+    where?: SectionOneImageWhereInput
+    orderBy?: SectionOneImageOrderByWithRelationInput | SectionOneImageOrderByWithRelationInput[]
+    cursor?: SectionOneImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SectionOneImageScalarFieldEnum | SectionOneImageScalarFieldEnum[]
+  }
+
+  /**
+   * SectionOne without action
+   */
+  export type SectionOneDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOne
+     */
+    select?: SectionOneSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOne
+     */
+    omit?: SectionOneOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SectionOneImage
+   */
+
+  export type AggregateSectionOneImage = {
+    _count: SectionOneImageCountAggregateOutputType | null
+    _avg: SectionOneImageAvgAggregateOutputType | null
+    _sum: SectionOneImageSumAggregateOutputType | null
+    _min: SectionOneImageMinAggregateOutputType | null
+    _max: SectionOneImageMaxAggregateOutputType | null
+  }
+
+  export type SectionOneImageAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type SectionOneImageSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type SectionOneImageMinAggregateOutputType = {
+    id: string | null
+    order: number | null
+    sectionId: string | null
+    assetId: string | null
+  }
+
+  export type SectionOneImageMaxAggregateOutputType = {
+    id: string | null
+    order: number | null
+    sectionId: string | null
+    assetId: string | null
+  }
+
+  export type SectionOneImageCountAggregateOutputType = {
+    id: number
+    order: number
+    sectionId: number
+    assetId: number
+    _all: number
+  }
+
+
+  export type SectionOneImageAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type SectionOneImageSumAggregateInputType = {
+    order?: true
+  }
+
+  export type SectionOneImageMinAggregateInputType = {
+    id?: true
+    order?: true
+    sectionId?: true
+    assetId?: true
+  }
+
+  export type SectionOneImageMaxAggregateInputType = {
+    id?: true
+    order?: true
+    sectionId?: true
+    assetId?: true
+  }
+
+  export type SectionOneImageCountAggregateInputType = {
+    id?: true
+    order?: true
+    sectionId?: true
+    assetId?: true
+    _all?: true
+  }
+
+  export type SectionOneImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SectionOneImage to aggregate.
+     */
+    where?: SectionOneImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionOneImages to fetch.
+     */
+    orderBy?: SectionOneImageOrderByWithRelationInput | SectionOneImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SectionOneImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionOneImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionOneImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SectionOneImages
+    **/
+    _count?: true | SectionOneImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SectionOneImageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SectionOneImageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SectionOneImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SectionOneImageMaxAggregateInputType
+  }
+
+  export type GetSectionOneImageAggregateType<T extends SectionOneImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateSectionOneImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSectionOneImage[P]>
+      : GetScalarType<T[P], AggregateSectionOneImage[P]>
+  }
+
+
+
+
+  export type SectionOneImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SectionOneImageWhereInput
+    orderBy?: SectionOneImageOrderByWithAggregationInput | SectionOneImageOrderByWithAggregationInput[]
+    by: SectionOneImageScalarFieldEnum[] | SectionOneImageScalarFieldEnum
+    having?: SectionOneImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SectionOneImageCountAggregateInputType | true
+    _avg?: SectionOneImageAvgAggregateInputType
+    _sum?: SectionOneImageSumAggregateInputType
+    _min?: SectionOneImageMinAggregateInputType
+    _max?: SectionOneImageMaxAggregateInputType
+  }
+
+  export type SectionOneImageGroupByOutputType = {
+    id: string
+    order: number
+    sectionId: string
+    assetId: string
+    _count: SectionOneImageCountAggregateOutputType | null
+    _avg: SectionOneImageAvgAggregateOutputType | null
+    _sum: SectionOneImageSumAggregateOutputType | null
+    _min: SectionOneImageMinAggregateOutputType | null
+    _max: SectionOneImageMaxAggregateOutputType | null
+  }
+
+  type GetSectionOneImageGroupByPayload<T extends SectionOneImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SectionOneImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SectionOneImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SectionOneImageGroupByOutputType[P]>
+            : GetScalarType<T[P], SectionOneImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SectionOneImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    order?: boolean
+    sectionId?: boolean
+    assetId?: boolean
+    section?: boolean | SectionOneDefaultArgs<ExtArgs>
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sectionOneImage"]>
+
+  export type SectionOneImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    order?: boolean
+    sectionId?: boolean
+    assetId?: boolean
+    section?: boolean | SectionOneDefaultArgs<ExtArgs>
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sectionOneImage"]>
+
+  export type SectionOneImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    order?: boolean
+    sectionId?: boolean
+    assetId?: boolean
+    section?: boolean | SectionOneDefaultArgs<ExtArgs>
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sectionOneImage"]>
+
+  export type SectionOneImageSelectScalar = {
+    id?: boolean
+    order?: boolean
+    sectionId?: boolean
+    assetId?: boolean
+  }
+
+  export type SectionOneImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "order" | "sectionId" | "assetId", ExtArgs["result"]["sectionOneImage"]>
+  export type SectionOneImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    section?: boolean | SectionOneDefaultArgs<ExtArgs>
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }
+  export type SectionOneImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    section?: boolean | SectionOneDefaultArgs<ExtArgs>
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }
+  export type SectionOneImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    section?: boolean | SectionOneDefaultArgs<ExtArgs>
+    asset?: boolean | MediaAssetDefaultArgs<ExtArgs>
+  }
+
+  export type $SectionOneImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SectionOneImage"
+    objects: {
+      section: Prisma.$SectionOnePayload<ExtArgs>
+      asset: Prisma.$MediaAssetPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      order: number
+      sectionId: string
+      assetId: string
+    }, ExtArgs["result"]["sectionOneImage"]>
+    composites: {}
+  }
+
+  type SectionOneImageGetPayload<S extends boolean | null | undefined | SectionOneImageDefaultArgs> = $Result.GetResult<Prisma.$SectionOneImagePayload, S>
+
+  type SectionOneImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SectionOneImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SectionOneImageCountAggregateInputType | true
+    }
+
+  export interface SectionOneImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SectionOneImage'], meta: { name: 'SectionOneImage' } }
+    /**
+     * Find zero or one SectionOneImage that matches the filter.
+     * @param {SectionOneImageFindUniqueArgs} args - Arguments to find a SectionOneImage
+     * @example
+     * // Get one SectionOneImage
+     * const sectionOneImage = await prisma.sectionOneImage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SectionOneImageFindUniqueArgs>(args: SelectSubset<T, SectionOneImageFindUniqueArgs<ExtArgs>>): Prisma__SectionOneImageClient<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SectionOneImage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SectionOneImageFindUniqueOrThrowArgs} args - Arguments to find a SectionOneImage
+     * @example
+     * // Get one SectionOneImage
+     * const sectionOneImage = await prisma.sectionOneImage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SectionOneImageFindUniqueOrThrowArgs>(args: SelectSubset<T, SectionOneImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SectionOneImageClient<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SectionOneImage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneImageFindFirstArgs} args - Arguments to find a SectionOneImage
+     * @example
+     * // Get one SectionOneImage
+     * const sectionOneImage = await prisma.sectionOneImage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SectionOneImageFindFirstArgs>(args?: SelectSubset<T, SectionOneImageFindFirstArgs<ExtArgs>>): Prisma__SectionOneImageClient<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SectionOneImage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneImageFindFirstOrThrowArgs} args - Arguments to find a SectionOneImage
+     * @example
+     * // Get one SectionOneImage
+     * const sectionOneImage = await prisma.sectionOneImage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SectionOneImageFindFirstOrThrowArgs>(args?: SelectSubset<T, SectionOneImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__SectionOneImageClient<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SectionOneImages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SectionOneImages
+     * const sectionOneImages = await prisma.sectionOneImage.findMany()
+     * 
+     * // Get first 10 SectionOneImages
+     * const sectionOneImages = await prisma.sectionOneImage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const sectionOneImageWithIdOnly = await prisma.sectionOneImage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SectionOneImageFindManyArgs>(args?: SelectSubset<T, SectionOneImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SectionOneImage.
+     * @param {SectionOneImageCreateArgs} args - Arguments to create a SectionOneImage.
+     * @example
+     * // Create one SectionOneImage
+     * const SectionOneImage = await prisma.sectionOneImage.create({
+     *   data: {
+     *     // ... data to create a SectionOneImage
+     *   }
+     * })
+     * 
+     */
+    create<T extends SectionOneImageCreateArgs>(args: SelectSubset<T, SectionOneImageCreateArgs<ExtArgs>>): Prisma__SectionOneImageClient<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SectionOneImages.
+     * @param {SectionOneImageCreateManyArgs} args - Arguments to create many SectionOneImages.
+     * @example
+     * // Create many SectionOneImages
+     * const sectionOneImage = await prisma.sectionOneImage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SectionOneImageCreateManyArgs>(args?: SelectSubset<T, SectionOneImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SectionOneImages and returns the data saved in the database.
+     * @param {SectionOneImageCreateManyAndReturnArgs} args - Arguments to create many SectionOneImages.
+     * @example
+     * // Create many SectionOneImages
+     * const sectionOneImage = await prisma.sectionOneImage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SectionOneImages and only return the `id`
+     * const sectionOneImageWithIdOnly = await prisma.sectionOneImage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SectionOneImageCreateManyAndReturnArgs>(args?: SelectSubset<T, SectionOneImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SectionOneImage.
+     * @param {SectionOneImageDeleteArgs} args - Arguments to delete one SectionOneImage.
+     * @example
+     * // Delete one SectionOneImage
+     * const SectionOneImage = await prisma.sectionOneImage.delete({
+     *   where: {
+     *     // ... filter to delete one SectionOneImage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SectionOneImageDeleteArgs>(args: SelectSubset<T, SectionOneImageDeleteArgs<ExtArgs>>): Prisma__SectionOneImageClient<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SectionOneImage.
+     * @param {SectionOneImageUpdateArgs} args - Arguments to update one SectionOneImage.
+     * @example
+     * // Update one SectionOneImage
+     * const sectionOneImage = await prisma.sectionOneImage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SectionOneImageUpdateArgs>(args: SelectSubset<T, SectionOneImageUpdateArgs<ExtArgs>>): Prisma__SectionOneImageClient<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SectionOneImages.
+     * @param {SectionOneImageDeleteManyArgs} args - Arguments to filter SectionOneImages to delete.
+     * @example
+     * // Delete a few SectionOneImages
+     * const { count } = await prisma.sectionOneImage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SectionOneImageDeleteManyArgs>(args?: SelectSubset<T, SectionOneImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SectionOneImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SectionOneImages
+     * const sectionOneImage = await prisma.sectionOneImage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SectionOneImageUpdateManyArgs>(args: SelectSubset<T, SectionOneImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SectionOneImages and returns the data updated in the database.
+     * @param {SectionOneImageUpdateManyAndReturnArgs} args - Arguments to update many SectionOneImages.
+     * @example
+     * // Update many SectionOneImages
+     * const sectionOneImage = await prisma.sectionOneImage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SectionOneImages and only return the `id`
+     * const sectionOneImageWithIdOnly = await prisma.sectionOneImage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SectionOneImageUpdateManyAndReturnArgs>(args: SelectSubset<T, SectionOneImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SectionOneImage.
+     * @param {SectionOneImageUpsertArgs} args - Arguments to update or create a SectionOneImage.
+     * @example
+     * // Update or create a SectionOneImage
+     * const sectionOneImage = await prisma.sectionOneImage.upsert({
+     *   create: {
+     *     // ... data to create a SectionOneImage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SectionOneImage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SectionOneImageUpsertArgs>(args: SelectSubset<T, SectionOneImageUpsertArgs<ExtArgs>>): Prisma__SectionOneImageClient<$Result.GetResult<Prisma.$SectionOneImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SectionOneImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneImageCountArgs} args - Arguments to filter SectionOneImages to count.
+     * @example
+     * // Count the number of SectionOneImages
+     * const count = await prisma.sectionOneImage.count({
+     *   where: {
+     *     // ... the filter for the SectionOneImages we want to count
+     *   }
+     * })
+    **/
+    count<T extends SectionOneImageCountArgs>(
+      args?: Subset<T, SectionOneImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SectionOneImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SectionOneImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SectionOneImageAggregateArgs>(args: Subset<T, SectionOneImageAggregateArgs>): Prisma.PrismaPromise<GetSectionOneImageAggregateType<T>>
+
+    /**
+     * Group by SectionOneImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionOneImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SectionOneImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SectionOneImageGroupByArgs['orderBy'] }
+        : { orderBy?: SectionOneImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SectionOneImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSectionOneImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SectionOneImage model
+   */
+  readonly fields: SectionOneImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SectionOneImage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SectionOneImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    section<T extends SectionOneDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SectionOneDefaultArgs<ExtArgs>>): Prisma__SectionOneClient<$Result.GetResult<Prisma.$SectionOnePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    asset<T extends MediaAssetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MediaAssetDefaultArgs<ExtArgs>>): Prisma__MediaAssetClient<$Result.GetResult<Prisma.$MediaAssetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SectionOneImage model
+   */
+  interface SectionOneImageFieldRefs {
+    readonly id: FieldRef<"SectionOneImage", 'String'>
+    readonly order: FieldRef<"SectionOneImage", 'Int'>
+    readonly sectionId: FieldRef<"SectionOneImage", 'String'>
+    readonly assetId: FieldRef<"SectionOneImage", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SectionOneImage findUnique
+   */
+  export type SectionOneImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+    /**
+     * Filter, which SectionOneImage to fetch.
+     */
+    where: SectionOneImageWhereUniqueInput
+  }
+
+  /**
+   * SectionOneImage findUniqueOrThrow
+   */
+  export type SectionOneImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+    /**
+     * Filter, which SectionOneImage to fetch.
+     */
+    where: SectionOneImageWhereUniqueInput
+  }
+
+  /**
+   * SectionOneImage findFirst
+   */
+  export type SectionOneImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+    /**
+     * Filter, which SectionOneImage to fetch.
+     */
+    where?: SectionOneImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionOneImages to fetch.
+     */
+    orderBy?: SectionOneImageOrderByWithRelationInput | SectionOneImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SectionOneImages.
+     */
+    cursor?: SectionOneImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionOneImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionOneImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SectionOneImages.
+     */
+    distinct?: SectionOneImageScalarFieldEnum | SectionOneImageScalarFieldEnum[]
+  }
+
+  /**
+   * SectionOneImage findFirstOrThrow
+   */
+  export type SectionOneImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+    /**
+     * Filter, which SectionOneImage to fetch.
+     */
+    where?: SectionOneImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionOneImages to fetch.
+     */
+    orderBy?: SectionOneImageOrderByWithRelationInput | SectionOneImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SectionOneImages.
+     */
+    cursor?: SectionOneImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionOneImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionOneImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SectionOneImages.
+     */
+    distinct?: SectionOneImageScalarFieldEnum | SectionOneImageScalarFieldEnum[]
+  }
+
+  /**
+   * SectionOneImage findMany
+   */
+  export type SectionOneImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+    /**
+     * Filter, which SectionOneImages to fetch.
+     */
+    where?: SectionOneImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionOneImages to fetch.
+     */
+    orderBy?: SectionOneImageOrderByWithRelationInput | SectionOneImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SectionOneImages.
+     */
+    cursor?: SectionOneImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionOneImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionOneImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SectionOneImages.
+     */
+    distinct?: SectionOneImageScalarFieldEnum | SectionOneImageScalarFieldEnum[]
+  }
+
+  /**
+   * SectionOneImage create
+   */
+  export type SectionOneImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SectionOneImage.
+     */
+    data: XOR<SectionOneImageCreateInput, SectionOneImageUncheckedCreateInput>
+  }
+
+  /**
+   * SectionOneImage createMany
+   */
+  export type SectionOneImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SectionOneImages.
+     */
+    data: SectionOneImageCreateManyInput | SectionOneImageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SectionOneImage createManyAndReturn
+   */
+  export type SectionOneImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many SectionOneImages.
+     */
+    data: SectionOneImageCreateManyInput | SectionOneImageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SectionOneImage update
+   */
+  export type SectionOneImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SectionOneImage.
+     */
+    data: XOR<SectionOneImageUpdateInput, SectionOneImageUncheckedUpdateInput>
+    /**
+     * Choose, which SectionOneImage to update.
+     */
+    where: SectionOneImageWhereUniqueInput
+  }
+
+  /**
+   * SectionOneImage updateMany
+   */
+  export type SectionOneImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SectionOneImages.
+     */
+    data: XOR<SectionOneImageUpdateManyMutationInput, SectionOneImageUncheckedUpdateManyInput>
+    /**
+     * Filter which SectionOneImages to update
+     */
+    where?: SectionOneImageWhereInput
+    /**
+     * Limit how many SectionOneImages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SectionOneImage updateManyAndReturn
+   */
+  export type SectionOneImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * The data used to update SectionOneImages.
+     */
+    data: XOR<SectionOneImageUpdateManyMutationInput, SectionOneImageUncheckedUpdateManyInput>
+    /**
+     * Filter which SectionOneImages to update
+     */
+    where?: SectionOneImageWhereInput
+    /**
+     * Limit how many SectionOneImages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SectionOneImage upsert
+   */
+  export type SectionOneImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SectionOneImage to update in case it exists.
+     */
+    where: SectionOneImageWhereUniqueInput
+    /**
+     * In case the SectionOneImage found by the `where` argument doesn't exist, create a new SectionOneImage with this data.
+     */
+    create: XOR<SectionOneImageCreateInput, SectionOneImageUncheckedCreateInput>
+    /**
+     * In case the SectionOneImage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SectionOneImageUpdateInput, SectionOneImageUncheckedUpdateInput>
+  }
+
+  /**
+   * SectionOneImage delete
+   */
+  export type SectionOneImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+    /**
+     * Filter which SectionOneImage to delete.
+     */
+    where: SectionOneImageWhereUniqueInput
+  }
+
+  /**
+   * SectionOneImage deleteMany
+   */
+  export type SectionOneImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SectionOneImages to delete
+     */
+    where?: SectionOneImageWhereInput
+    /**
+     * Limit how many SectionOneImages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SectionOneImage without action
+   */
+  export type SectionOneImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionOneImage
+     */
+    select?: SectionOneImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionOneImage
+     */
+    omit?: SectionOneImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionOneImageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SectionTwo
+   */
+
+  export type AggregateSectionTwo = {
+    _count: SectionTwoCountAggregateOutputType | null
+    _min: SectionTwoMinAggregateOutputType | null
+    _max: SectionTwoMaxAggregateOutputType | null
+  }
+
+  export type SectionTwoMinAggregateOutputType = {
+    id: string | null
+    label: string | null
+    heading: string | null
+    subheading: string | null
+    expLabel: string | null
+    expHeading: string | null
+  }
+
+  export type SectionTwoMaxAggregateOutputType = {
+    id: string | null
+    label: string | null
+    heading: string | null
+    subheading: string | null
+    expLabel: string | null
+    expHeading: string | null
+  }
+
+  export type SectionTwoCountAggregateOutputType = {
+    id: number
+    label: number
+    heading: number
+    subheading: number
+    expLabel: number
+    expHeading: number
+    _all: number
+  }
+
+
+  export type SectionTwoMinAggregateInputType = {
+    id?: true
+    label?: true
+    heading?: true
+    subheading?: true
+    expLabel?: true
+    expHeading?: true
+  }
+
+  export type SectionTwoMaxAggregateInputType = {
+    id?: true
+    label?: true
+    heading?: true
+    subheading?: true
+    expLabel?: true
+    expHeading?: true
+  }
+
+  export type SectionTwoCountAggregateInputType = {
+    id?: true
+    label?: true
+    heading?: true
+    subheading?: true
+    expLabel?: true
+    expHeading?: true
+    _all?: true
+  }
+
+  export type SectionTwoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SectionTwo to aggregate.
+     */
+    where?: SectionTwoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionTwos to fetch.
+     */
+    orderBy?: SectionTwoOrderByWithRelationInput | SectionTwoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SectionTwoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionTwos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionTwos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SectionTwos
+    **/
+    _count?: true | SectionTwoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SectionTwoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SectionTwoMaxAggregateInputType
+  }
+
+  export type GetSectionTwoAggregateType<T extends SectionTwoAggregateArgs> = {
+        [P in keyof T & keyof AggregateSectionTwo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSectionTwo[P]>
+      : GetScalarType<T[P], AggregateSectionTwo[P]>
+  }
+
+
+
+
+  export type SectionTwoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SectionTwoWhereInput
+    orderBy?: SectionTwoOrderByWithAggregationInput | SectionTwoOrderByWithAggregationInput[]
+    by: SectionTwoScalarFieldEnum[] | SectionTwoScalarFieldEnum
+    having?: SectionTwoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SectionTwoCountAggregateInputType | true
+    _min?: SectionTwoMinAggregateInputType
+    _max?: SectionTwoMaxAggregateInputType
+  }
+
+  export type SectionTwoGroupByOutputType = {
+    id: string
+    label: string
+    heading: string
+    subheading: string
+    expLabel: string
+    expHeading: string
+    _count: SectionTwoCountAggregateOutputType | null
+    _min: SectionTwoMinAggregateOutputType | null
+    _max: SectionTwoMaxAggregateOutputType | null
+  }
+
+  type GetSectionTwoGroupByPayload<T extends SectionTwoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SectionTwoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SectionTwoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SectionTwoGroupByOutputType[P]>
+            : GetScalarType<T[P], SectionTwoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SectionTwoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    heading?: boolean
+    subheading?: boolean
+    expLabel?: boolean
+    expHeading?: boolean
+  }, ExtArgs["result"]["sectionTwo"]>
+
+  export type SectionTwoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    heading?: boolean
+    subheading?: boolean
+    expLabel?: boolean
+    expHeading?: boolean
+  }, ExtArgs["result"]["sectionTwo"]>
+
+  export type SectionTwoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    heading?: boolean
+    subheading?: boolean
+    expLabel?: boolean
+    expHeading?: boolean
+  }, ExtArgs["result"]["sectionTwo"]>
+
+  export type SectionTwoSelectScalar = {
+    id?: boolean
+    label?: boolean
+    heading?: boolean
+    subheading?: boolean
+    expLabel?: boolean
+    expHeading?: boolean
+  }
+
+  export type SectionTwoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "heading" | "subheading" | "expLabel" | "expHeading", ExtArgs["result"]["sectionTwo"]>
+
+  export type $SectionTwoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SectionTwo"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      label: string
+      heading: string
+      subheading: string
+      expLabel: string
+      expHeading: string
+    }, ExtArgs["result"]["sectionTwo"]>
+    composites: {}
+  }
+
+  type SectionTwoGetPayload<S extends boolean | null | undefined | SectionTwoDefaultArgs> = $Result.GetResult<Prisma.$SectionTwoPayload, S>
+
+  type SectionTwoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SectionTwoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SectionTwoCountAggregateInputType | true
+    }
+
+  export interface SectionTwoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SectionTwo'], meta: { name: 'SectionTwo' } }
+    /**
+     * Find zero or one SectionTwo that matches the filter.
+     * @param {SectionTwoFindUniqueArgs} args - Arguments to find a SectionTwo
+     * @example
+     * // Get one SectionTwo
+     * const sectionTwo = await prisma.sectionTwo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SectionTwoFindUniqueArgs>(args: SelectSubset<T, SectionTwoFindUniqueArgs<ExtArgs>>): Prisma__SectionTwoClient<$Result.GetResult<Prisma.$SectionTwoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SectionTwo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SectionTwoFindUniqueOrThrowArgs} args - Arguments to find a SectionTwo
+     * @example
+     * // Get one SectionTwo
+     * const sectionTwo = await prisma.sectionTwo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SectionTwoFindUniqueOrThrowArgs>(args: SelectSubset<T, SectionTwoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SectionTwoClient<$Result.GetResult<Prisma.$SectionTwoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SectionTwo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionTwoFindFirstArgs} args - Arguments to find a SectionTwo
+     * @example
+     * // Get one SectionTwo
+     * const sectionTwo = await prisma.sectionTwo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SectionTwoFindFirstArgs>(args?: SelectSubset<T, SectionTwoFindFirstArgs<ExtArgs>>): Prisma__SectionTwoClient<$Result.GetResult<Prisma.$SectionTwoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SectionTwo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionTwoFindFirstOrThrowArgs} args - Arguments to find a SectionTwo
+     * @example
+     * // Get one SectionTwo
+     * const sectionTwo = await prisma.sectionTwo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SectionTwoFindFirstOrThrowArgs>(args?: SelectSubset<T, SectionTwoFindFirstOrThrowArgs<ExtArgs>>): Prisma__SectionTwoClient<$Result.GetResult<Prisma.$SectionTwoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SectionTwos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionTwoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SectionTwos
+     * const sectionTwos = await prisma.sectionTwo.findMany()
+     * 
+     * // Get first 10 SectionTwos
+     * const sectionTwos = await prisma.sectionTwo.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const sectionTwoWithIdOnly = await prisma.sectionTwo.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SectionTwoFindManyArgs>(args?: SelectSubset<T, SectionTwoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionTwoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SectionTwo.
+     * @param {SectionTwoCreateArgs} args - Arguments to create a SectionTwo.
+     * @example
+     * // Create one SectionTwo
+     * const SectionTwo = await prisma.sectionTwo.create({
+     *   data: {
+     *     // ... data to create a SectionTwo
+     *   }
+     * })
+     * 
+     */
+    create<T extends SectionTwoCreateArgs>(args: SelectSubset<T, SectionTwoCreateArgs<ExtArgs>>): Prisma__SectionTwoClient<$Result.GetResult<Prisma.$SectionTwoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SectionTwos.
+     * @param {SectionTwoCreateManyArgs} args - Arguments to create many SectionTwos.
+     * @example
+     * // Create many SectionTwos
+     * const sectionTwo = await prisma.sectionTwo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SectionTwoCreateManyArgs>(args?: SelectSubset<T, SectionTwoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SectionTwos and returns the data saved in the database.
+     * @param {SectionTwoCreateManyAndReturnArgs} args - Arguments to create many SectionTwos.
+     * @example
+     * // Create many SectionTwos
+     * const sectionTwo = await prisma.sectionTwo.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SectionTwos and only return the `id`
+     * const sectionTwoWithIdOnly = await prisma.sectionTwo.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SectionTwoCreateManyAndReturnArgs>(args?: SelectSubset<T, SectionTwoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionTwoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SectionTwo.
+     * @param {SectionTwoDeleteArgs} args - Arguments to delete one SectionTwo.
+     * @example
+     * // Delete one SectionTwo
+     * const SectionTwo = await prisma.sectionTwo.delete({
+     *   where: {
+     *     // ... filter to delete one SectionTwo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SectionTwoDeleteArgs>(args: SelectSubset<T, SectionTwoDeleteArgs<ExtArgs>>): Prisma__SectionTwoClient<$Result.GetResult<Prisma.$SectionTwoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SectionTwo.
+     * @param {SectionTwoUpdateArgs} args - Arguments to update one SectionTwo.
+     * @example
+     * // Update one SectionTwo
+     * const sectionTwo = await prisma.sectionTwo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SectionTwoUpdateArgs>(args: SelectSubset<T, SectionTwoUpdateArgs<ExtArgs>>): Prisma__SectionTwoClient<$Result.GetResult<Prisma.$SectionTwoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SectionTwos.
+     * @param {SectionTwoDeleteManyArgs} args - Arguments to filter SectionTwos to delete.
+     * @example
+     * // Delete a few SectionTwos
+     * const { count } = await prisma.sectionTwo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SectionTwoDeleteManyArgs>(args?: SelectSubset<T, SectionTwoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SectionTwos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionTwoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SectionTwos
+     * const sectionTwo = await prisma.sectionTwo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SectionTwoUpdateManyArgs>(args: SelectSubset<T, SectionTwoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SectionTwos and returns the data updated in the database.
+     * @param {SectionTwoUpdateManyAndReturnArgs} args - Arguments to update many SectionTwos.
+     * @example
+     * // Update many SectionTwos
+     * const sectionTwo = await prisma.sectionTwo.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SectionTwos and only return the `id`
+     * const sectionTwoWithIdOnly = await prisma.sectionTwo.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SectionTwoUpdateManyAndReturnArgs>(args: SelectSubset<T, SectionTwoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionTwoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SectionTwo.
+     * @param {SectionTwoUpsertArgs} args - Arguments to update or create a SectionTwo.
+     * @example
+     * // Update or create a SectionTwo
+     * const sectionTwo = await prisma.sectionTwo.upsert({
+     *   create: {
+     *     // ... data to create a SectionTwo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SectionTwo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SectionTwoUpsertArgs>(args: SelectSubset<T, SectionTwoUpsertArgs<ExtArgs>>): Prisma__SectionTwoClient<$Result.GetResult<Prisma.$SectionTwoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SectionTwos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionTwoCountArgs} args - Arguments to filter SectionTwos to count.
+     * @example
+     * // Count the number of SectionTwos
+     * const count = await prisma.sectionTwo.count({
+     *   where: {
+     *     // ... the filter for the SectionTwos we want to count
+     *   }
+     * })
+    **/
+    count<T extends SectionTwoCountArgs>(
+      args?: Subset<T, SectionTwoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SectionTwoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SectionTwo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionTwoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SectionTwoAggregateArgs>(args: Subset<T, SectionTwoAggregateArgs>): Prisma.PrismaPromise<GetSectionTwoAggregateType<T>>
+
+    /**
+     * Group by SectionTwo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionTwoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SectionTwoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SectionTwoGroupByArgs['orderBy'] }
+        : { orderBy?: SectionTwoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SectionTwoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSectionTwoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SectionTwo model
+   */
+  readonly fields: SectionTwoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SectionTwo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SectionTwoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SectionTwo model
+   */
+  interface SectionTwoFieldRefs {
+    readonly id: FieldRef<"SectionTwo", 'String'>
+    readonly label: FieldRef<"SectionTwo", 'String'>
+    readonly heading: FieldRef<"SectionTwo", 'String'>
+    readonly subheading: FieldRef<"SectionTwo", 'String'>
+    readonly expLabel: FieldRef<"SectionTwo", 'String'>
+    readonly expHeading: FieldRef<"SectionTwo", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SectionTwo findUnique
+   */
+  export type SectionTwoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
+    /**
+     * Filter, which SectionTwo to fetch.
+     */
+    where: SectionTwoWhereUniqueInput
+  }
+
+  /**
+   * SectionTwo findUniqueOrThrow
+   */
+  export type SectionTwoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
+    /**
+     * Filter, which SectionTwo to fetch.
+     */
+    where: SectionTwoWhereUniqueInput
+  }
+
+  /**
+   * SectionTwo findFirst
+   */
+  export type SectionTwoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
+    /**
+     * Filter, which SectionTwo to fetch.
+     */
+    where?: SectionTwoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionTwos to fetch.
+     */
+    orderBy?: SectionTwoOrderByWithRelationInput | SectionTwoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SectionTwos.
+     */
+    cursor?: SectionTwoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionTwos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionTwos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SectionTwos.
+     */
+    distinct?: SectionTwoScalarFieldEnum | SectionTwoScalarFieldEnum[]
+  }
+
+  /**
+   * SectionTwo findFirstOrThrow
+   */
+  export type SectionTwoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
+    /**
+     * Filter, which SectionTwo to fetch.
+     */
+    where?: SectionTwoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionTwos to fetch.
+     */
+    orderBy?: SectionTwoOrderByWithRelationInput | SectionTwoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SectionTwos.
+     */
+    cursor?: SectionTwoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionTwos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionTwos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SectionTwos.
+     */
+    distinct?: SectionTwoScalarFieldEnum | SectionTwoScalarFieldEnum[]
+  }
+
+  /**
+   * SectionTwo findMany
+   */
+  export type SectionTwoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
+    /**
+     * Filter, which SectionTwos to fetch.
+     */
+    where?: SectionTwoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SectionTwos to fetch.
+     */
+    orderBy?: SectionTwoOrderByWithRelationInput | SectionTwoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SectionTwos.
+     */
+    cursor?: SectionTwoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SectionTwos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SectionTwos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SectionTwos.
+     */
+    distinct?: SectionTwoScalarFieldEnum | SectionTwoScalarFieldEnum[]
+  }
+
+  /**
+   * SectionTwo create
+   */
+  export type SectionTwoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
+    /**
+     * The data needed to create a SectionTwo.
+     */
+    data?: XOR<SectionTwoCreateInput, SectionTwoUncheckedCreateInput>
+  }
+
+  /**
+   * SectionTwo createMany
+   */
+  export type SectionTwoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SectionTwos.
+     */
+    data: SectionTwoCreateManyInput | SectionTwoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SectionTwo createManyAndReturn
+   */
+  export type SectionTwoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
+    /**
+     * The data used to create many SectionTwos.
+     */
+    data: SectionTwoCreateManyInput | SectionTwoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SectionTwo update
+   */
+  export type SectionTwoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
+    /**
+     * The data needed to update a SectionTwo.
+     */
+    data: XOR<SectionTwoUpdateInput, SectionTwoUncheckedUpdateInput>
+    /**
+     * Choose, which SectionTwo to update.
+     */
+    where: SectionTwoWhereUniqueInput
+  }
+
+  /**
+   * SectionTwo updateMany
+   */
+  export type SectionTwoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SectionTwos.
+     */
+    data: XOR<SectionTwoUpdateManyMutationInput, SectionTwoUncheckedUpdateManyInput>
+    /**
+     * Filter which SectionTwos to update
+     */
+    where?: SectionTwoWhereInput
+    /**
+     * Limit how many SectionTwos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SectionTwo updateManyAndReturn
+   */
+  export type SectionTwoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
+    /**
+     * The data used to update SectionTwos.
+     */
+    data: XOR<SectionTwoUpdateManyMutationInput, SectionTwoUncheckedUpdateManyInput>
+    /**
+     * Filter which SectionTwos to update
+     */
+    where?: SectionTwoWhereInput
+    /**
+     * Limit how many SectionTwos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SectionTwo upsert
+   */
+  export type SectionTwoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
+    /**
+     * The filter to search for the SectionTwo to update in case it exists.
+     */
+    where: SectionTwoWhereUniqueInput
+    /**
+     * In case the SectionTwo found by the `where` argument doesn't exist, create a new SectionTwo with this data.
+     */
+    create: XOR<SectionTwoCreateInput, SectionTwoUncheckedCreateInput>
+    /**
+     * In case the SectionTwo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SectionTwoUpdateInput, SectionTwoUncheckedUpdateInput>
+  }
+
+  /**
+   * SectionTwo delete
+   */
+  export type SectionTwoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
+    /**
+     * Filter which SectionTwo to delete.
+     */
+    where: SectionTwoWhereUniqueInput
+  }
+
+  /**
+   * SectionTwo deleteMany
+   */
+  export type SectionTwoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SectionTwos to delete
+     */
+    where?: SectionTwoWhereInput
+    /**
+     * Limit how many SectionTwos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SectionTwo without action
+   */
+  export type SectionTwoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionTwo
+     */
+    select?: SectionTwoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SectionTwo
+     */
+    omit?: SectionTwoOmit<ExtArgs> | null
   }
 
 
@@ -6697,6 +12564,58 @@ export namespace Prisma {
   };
 
   export type MediaAssetScalarFieldEnum = (typeof MediaAssetScalarFieldEnum)[keyof typeof MediaAssetScalarFieldEnum]
+
+
+  export const HeroSlideScalarFieldEnum: {
+    id: 'id',
+    order: 'order',
+    active: 'active',
+    createdAt: 'createdAt',
+    assetId: 'assetId'
+  };
+
+  export type HeroSlideScalarFieldEnum = (typeof HeroSlideScalarFieldEnum)[keyof typeof HeroSlideScalarFieldEnum]
+
+
+  export const HeroTextScalarFieldEnum: {
+    id: 'id',
+    heading: 'heading',
+    subtext: 'subtext'
+  };
+
+  export type HeroTextScalarFieldEnum = (typeof HeroTextScalarFieldEnum)[keyof typeof HeroTextScalarFieldEnum]
+
+
+  export const SectionOneScalarFieldEnum: {
+    id: 'id',
+    label: 'label',
+    heading: 'heading',
+    quote: 'quote'
+  };
+
+  export type SectionOneScalarFieldEnum = (typeof SectionOneScalarFieldEnum)[keyof typeof SectionOneScalarFieldEnum]
+
+
+  export const SectionOneImageScalarFieldEnum: {
+    id: 'id',
+    order: 'order',
+    sectionId: 'sectionId',
+    assetId: 'assetId'
+  };
+
+  export type SectionOneImageScalarFieldEnum = (typeof SectionOneImageScalarFieldEnum)[keyof typeof SectionOneImageScalarFieldEnum]
+
+
+  export const SectionTwoScalarFieldEnum: {
+    id: 'id',
+    label: 'label',
+    heading: 'heading',
+    subheading: 'subheading',
+    expLabel: 'expLabel',
+    expHeading: 'expHeading'
+  };
+
+  export type SectionTwoScalarFieldEnum = (typeof SectionTwoScalarFieldEnum)[keyof typeof SectionTwoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7058,6 +12977,8 @@ export namespace Prisma {
     publicId?: StringFilter<"MediaAsset"> | string
     resourceType?: StringFilter<"MediaAsset"> | string
     createdAt?: DateTimeFilter<"MediaAsset"> | Date | string
+    heroSlides?: HeroSlideListRelationFilter
+    sectionOneImages?: SectionOneImageListRelationFilter
   }
 
   export type MediaAssetOrderByWithRelationInput = {
@@ -7067,6 +12988,8 @@ export namespace Prisma {
     publicId?: SortOrder
     resourceType?: SortOrder
     createdAt?: SortOrder
+    heroSlides?: HeroSlideOrderByRelationAggregateInput
+    sectionOneImages?: SectionOneImageOrderByRelationAggregateInput
   }
 
   export type MediaAssetWhereUniqueInput = Prisma.AtLeast<{
@@ -7079,6 +13002,8 @@ export namespace Prisma {
     publicId?: StringFilter<"MediaAsset"> | string
     resourceType?: StringFilter<"MediaAsset"> | string
     createdAt?: DateTimeFilter<"MediaAsset"> | Date | string
+    heroSlides?: HeroSlideListRelationFilter
+    sectionOneImages?: SectionOneImageListRelationFilter
   }, "id">
 
   export type MediaAssetOrderByWithAggregationInput = {
@@ -7103,6 +13028,267 @@ export namespace Prisma {
     publicId?: StringWithAggregatesFilter<"MediaAsset"> | string
     resourceType?: StringWithAggregatesFilter<"MediaAsset"> | string
     createdAt?: DateTimeWithAggregatesFilter<"MediaAsset"> | Date | string
+  }
+
+  export type HeroSlideWhereInput = {
+    AND?: HeroSlideWhereInput | HeroSlideWhereInput[]
+    OR?: HeroSlideWhereInput[]
+    NOT?: HeroSlideWhereInput | HeroSlideWhereInput[]
+    id?: StringFilter<"HeroSlide"> | string
+    order?: IntFilter<"HeroSlide"> | number
+    active?: BoolFilter<"HeroSlide"> | boolean
+    createdAt?: DateTimeFilter<"HeroSlide"> | Date | string
+    assetId?: StringFilter<"HeroSlide"> | string
+    asset?: XOR<MediaAssetScalarRelationFilter, MediaAssetWhereInput>
+  }
+
+  export type HeroSlideOrderByWithRelationInput = {
+    id?: SortOrder
+    order?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    assetId?: SortOrder
+    asset?: MediaAssetOrderByWithRelationInput
+  }
+
+  export type HeroSlideWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: HeroSlideWhereInput | HeroSlideWhereInput[]
+    OR?: HeroSlideWhereInput[]
+    NOT?: HeroSlideWhereInput | HeroSlideWhereInput[]
+    order?: IntFilter<"HeroSlide"> | number
+    active?: BoolFilter<"HeroSlide"> | boolean
+    createdAt?: DateTimeFilter<"HeroSlide"> | Date | string
+    assetId?: StringFilter<"HeroSlide"> | string
+    asset?: XOR<MediaAssetScalarRelationFilter, MediaAssetWhereInput>
+  }, "id">
+
+  export type HeroSlideOrderByWithAggregationInput = {
+    id?: SortOrder
+    order?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    assetId?: SortOrder
+    _count?: HeroSlideCountOrderByAggregateInput
+    _avg?: HeroSlideAvgOrderByAggregateInput
+    _max?: HeroSlideMaxOrderByAggregateInput
+    _min?: HeroSlideMinOrderByAggregateInput
+    _sum?: HeroSlideSumOrderByAggregateInput
+  }
+
+  export type HeroSlideScalarWhereWithAggregatesInput = {
+    AND?: HeroSlideScalarWhereWithAggregatesInput | HeroSlideScalarWhereWithAggregatesInput[]
+    OR?: HeroSlideScalarWhereWithAggregatesInput[]
+    NOT?: HeroSlideScalarWhereWithAggregatesInput | HeroSlideScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"HeroSlide"> | string
+    order?: IntWithAggregatesFilter<"HeroSlide"> | number
+    active?: BoolWithAggregatesFilter<"HeroSlide"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"HeroSlide"> | Date | string
+    assetId?: StringWithAggregatesFilter<"HeroSlide"> | string
+  }
+
+  export type HeroTextWhereInput = {
+    AND?: HeroTextWhereInput | HeroTextWhereInput[]
+    OR?: HeroTextWhereInput[]
+    NOT?: HeroTextWhereInput | HeroTextWhereInput[]
+    id?: StringFilter<"HeroText"> | string
+    heading?: StringFilter<"HeroText"> | string
+    subtext?: StringFilter<"HeroText"> | string
+  }
+
+  export type HeroTextOrderByWithRelationInput = {
+    id?: SortOrder
+    heading?: SortOrder
+    subtext?: SortOrder
+  }
+
+  export type HeroTextWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: HeroTextWhereInput | HeroTextWhereInput[]
+    OR?: HeroTextWhereInput[]
+    NOT?: HeroTextWhereInput | HeroTextWhereInput[]
+    heading?: StringFilter<"HeroText"> | string
+    subtext?: StringFilter<"HeroText"> | string
+  }, "id">
+
+  export type HeroTextOrderByWithAggregationInput = {
+    id?: SortOrder
+    heading?: SortOrder
+    subtext?: SortOrder
+    _count?: HeroTextCountOrderByAggregateInput
+    _max?: HeroTextMaxOrderByAggregateInput
+    _min?: HeroTextMinOrderByAggregateInput
+  }
+
+  export type HeroTextScalarWhereWithAggregatesInput = {
+    AND?: HeroTextScalarWhereWithAggregatesInput | HeroTextScalarWhereWithAggregatesInput[]
+    OR?: HeroTextScalarWhereWithAggregatesInput[]
+    NOT?: HeroTextScalarWhereWithAggregatesInput | HeroTextScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"HeroText"> | string
+    heading?: StringWithAggregatesFilter<"HeroText"> | string
+    subtext?: StringWithAggregatesFilter<"HeroText"> | string
+  }
+
+  export type SectionOneWhereInput = {
+    AND?: SectionOneWhereInput | SectionOneWhereInput[]
+    OR?: SectionOneWhereInput[]
+    NOT?: SectionOneWhereInput | SectionOneWhereInput[]
+    id?: StringFilter<"SectionOne"> | string
+    label?: StringFilter<"SectionOne"> | string
+    heading?: StringFilter<"SectionOne"> | string
+    quote?: StringFilter<"SectionOne"> | string
+    images?: SectionOneImageListRelationFilter
+  }
+
+  export type SectionOneOrderByWithRelationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    heading?: SortOrder
+    quote?: SortOrder
+    images?: SectionOneImageOrderByRelationAggregateInput
+  }
+
+  export type SectionOneWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SectionOneWhereInput | SectionOneWhereInput[]
+    OR?: SectionOneWhereInput[]
+    NOT?: SectionOneWhereInput | SectionOneWhereInput[]
+    label?: StringFilter<"SectionOne"> | string
+    heading?: StringFilter<"SectionOne"> | string
+    quote?: StringFilter<"SectionOne"> | string
+    images?: SectionOneImageListRelationFilter
+  }, "id">
+
+  export type SectionOneOrderByWithAggregationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    heading?: SortOrder
+    quote?: SortOrder
+    _count?: SectionOneCountOrderByAggregateInput
+    _max?: SectionOneMaxOrderByAggregateInput
+    _min?: SectionOneMinOrderByAggregateInput
+  }
+
+  export type SectionOneScalarWhereWithAggregatesInput = {
+    AND?: SectionOneScalarWhereWithAggregatesInput | SectionOneScalarWhereWithAggregatesInput[]
+    OR?: SectionOneScalarWhereWithAggregatesInput[]
+    NOT?: SectionOneScalarWhereWithAggregatesInput | SectionOneScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SectionOne"> | string
+    label?: StringWithAggregatesFilter<"SectionOne"> | string
+    heading?: StringWithAggregatesFilter<"SectionOne"> | string
+    quote?: StringWithAggregatesFilter<"SectionOne"> | string
+  }
+
+  export type SectionOneImageWhereInput = {
+    AND?: SectionOneImageWhereInput | SectionOneImageWhereInput[]
+    OR?: SectionOneImageWhereInput[]
+    NOT?: SectionOneImageWhereInput | SectionOneImageWhereInput[]
+    id?: StringFilter<"SectionOneImage"> | string
+    order?: IntFilter<"SectionOneImage"> | number
+    sectionId?: StringFilter<"SectionOneImage"> | string
+    assetId?: StringFilter<"SectionOneImage"> | string
+    section?: XOR<SectionOneScalarRelationFilter, SectionOneWhereInput>
+    asset?: XOR<MediaAssetScalarRelationFilter, MediaAssetWhereInput>
+  }
+
+  export type SectionOneImageOrderByWithRelationInput = {
+    id?: SortOrder
+    order?: SortOrder
+    sectionId?: SortOrder
+    assetId?: SortOrder
+    section?: SectionOneOrderByWithRelationInput
+    asset?: MediaAssetOrderByWithRelationInput
+  }
+
+  export type SectionOneImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SectionOneImageWhereInput | SectionOneImageWhereInput[]
+    OR?: SectionOneImageWhereInput[]
+    NOT?: SectionOneImageWhereInput | SectionOneImageWhereInput[]
+    order?: IntFilter<"SectionOneImage"> | number
+    sectionId?: StringFilter<"SectionOneImage"> | string
+    assetId?: StringFilter<"SectionOneImage"> | string
+    section?: XOR<SectionOneScalarRelationFilter, SectionOneWhereInput>
+    asset?: XOR<MediaAssetScalarRelationFilter, MediaAssetWhereInput>
+  }, "id">
+
+  export type SectionOneImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    order?: SortOrder
+    sectionId?: SortOrder
+    assetId?: SortOrder
+    _count?: SectionOneImageCountOrderByAggregateInput
+    _avg?: SectionOneImageAvgOrderByAggregateInput
+    _max?: SectionOneImageMaxOrderByAggregateInput
+    _min?: SectionOneImageMinOrderByAggregateInput
+    _sum?: SectionOneImageSumOrderByAggregateInput
+  }
+
+  export type SectionOneImageScalarWhereWithAggregatesInput = {
+    AND?: SectionOneImageScalarWhereWithAggregatesInput | SectionOneImageScalarWhereWithAggregatesInput[]
+    OR?: SectionOneImageScalarWhereWithAggregatesInput[]
+    NOT?: SectionOneImageScalarWhereWithAggregatesInput | SectionOneImageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SectionOneImage"> | string
+    order?: IntWithAggregatesFilter<"SectionOneImage"> | number
+    sectionId?: StringWithAggregatesFilter<"SectionOneImage"> | string
+    assetId?: StringWithAggregatesFilter<"SectionOneImage"> | string
+  }
+
+  export type SectionTwoWhereInput = {
+    AND?: SectionTwoWhereInput | SectionTwoWhereInput[]
+    OR?: SectionTwoWhereInput[]
+    NOT?: SectionTwoWhereInput | SectionTwoWhereInput[]
+    id?: StringFilter<"SectionTwo"> | string
+    label?: StringFilter<"SectionTwo"> | string
+    heading?: StringFilter<"SectionTwo"> | string
+    subheading?: StringFilter<"SectionTwo"> | string
+    expLabel?: StringFilter<"SectionTwo"> | string
+    expHeading?: StringFilter<"SectionTwo"> | string
+  }
+
+  export type SectionTwoOrderByWithRelationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    heading?: SortOrder
+    subheading?: SortOrder
+    expLabel?: SortOrder
+    expHeading?: SortOrder
+  }
+
+  export type SectionTwoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SectionTwoWhereInput | SectionTwoWhereInput[]
+    OR?: SectionTwoWhereInput[]
+    NOT?: SectionTwoWhereInput | SectionTwoWhereInput[]
+    label?: StringFilter<"SectionTwo"> | string
+    heading?: StringFilter<"SectionTwo"> | string
+    subheading?: StringFilter<"SectionTwo"> | string
+    expLabel?: StringFilter<"SectionTwo"> | string
+    expHeading?: StringFilter<"SectionTwo"> | string
+  }, "id">
+
+  export type SectionTwoOrderByWithAggregationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    heading?: SortOrder
+    subheading?: SortOrder
+    expLabel?: SortOrder
+    expHeading?: SortOrder
+    _count?: SectionTwoCountOrderByAggregateInput
+    _max?: SectionTwoMaxOrderByAggregateInput
+    _min?: SectionTwoMinOrderByAggregateInput
+  }
+
+  export type SectionTwoScalarWhereWithAggregatesInput = {
+    AND?: SectionTwoScalarWhereWithAggregatesInput | SectionTwoScalarWhereWithAggregatesInput[]
+    OR?: SectionTwoScalarWhereWithAggregatesInput[]
+    NOT?: SectionTwoScalarWhereWithAggregatesInput | SectionTwoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SectionTwo"> | string
+    label?: StringWithAggregatesFilter<"SectionTwo"> | string
+    heading?: StringWithAggregatesFilter<"SectionTwo"> | string
+    subheading?: StringWithAggregatesFilter<"SectionTwo"> | string
+    expLabel?: StringWithAggregatesFilter<"SectionTwo"> | string
+    expHeading?: StringWithAggregatesFilter<"SectionTwo"> | string
   }
 
   export type UserCreateInput = {
@@ -7384,6 +13570,8 @@ export namespace Prisma {
     publicId: string
     resourceType?: string
     createdAt?: Date | string
+    heroSlides?: HeroSlideCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetUncheckedCreateInput = {
@@ -7393,6 +13581,8 @@ export namespace Prisma {
     publicId: string
     resourceType?: string
     createdAt?: Date | string
+    heroSlides?: HeroSlideUncheckedCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageUncheckedCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetUpdateInput = {
@@ -7402,6 +13592,8 @@ export namespace Prisma {
     publicId?: StringFieldUpdateOperationsInput | string
     resourceType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetUncheckedUpdateInput = {
@@ -7411,6 +13603,8 @@ export namespace Prisma {
     publicId?: StringFieldUpdateOperationsInput | string
     resourceType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUncheckedUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetCreateManyInput = {
@@ -7438,6 +13632,266 @@ export namespace Prisma {
     publicId?: StringFieldUpdateOperationsInput | string
     resourceType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeroSlideCreateInput = {
+    id?: string
+    order: number
+    active?: boolean
+    createdAt?: Date | string
+    asset: MediaAssetCreateNestedOneWithoutHeroSlidesInput
+  }
+
+  export type HeroSlideUncheckedCreateInput = {
+    id?: string
+    order: number
+    active?: boolean
+    createdAt?: Date | string
+    assetId: string
+  }
+
+  export type HeroSlideUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    asset?: MediaAssetUpdateOneRequiredWithoutHeroSlidesNestedInput
+  }
+
+  export type HeroSlideUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assetId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HeroSlideCreateManyInput = {
+    id?: string
+    order: number
+    active?: boolean
+    createdAt?: Date | string
+    assetId: string
+  }
+
+  export type HeroSlideUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeroSlideUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assetId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HeroTextCreateInput = {
+    id?: string
+    heading?: string
+    subtext?: string
+  }
+
+  export type HeroTextUncheckedCreateInput = {
+    id?: string
+    heading?: string
+    subtext?: string
+  }
+
+  export type HeroTextUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    subtext?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HeroTextUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    subtext?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HeroTextCreateManyInput = {
+    id?: string
+    heading?: string
+    subtext?: string
+  }
+
+  export type HeroTextUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    subtext?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HeroTextUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    subtext?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionOneCreateInput = {
+    id?: string
+    label?: string
+    heading?: string
+    quote?: string
+    images?: SectionOneImageCreateNestedManyWithoutSectionInput
+  }
+
+  export type SectionOneUncheckedCreateInput = {
+    id?: string
+    label?: string
+    heading?: string
+    quote?: string
+    images?: SectionOneImageUncheckedCreateNestedManyWithoutSectionInput
+  }
+
+  export type SectionOneUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    quote?: StringFieldUpdateOperationsInput | string
+    images?: SectionOneImageUpdateManyWithoutSectionNestedInput
+  }
+
+  export type SectionOneUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    quote?: StringFieldUpdateOperationsInput | string
+    images?: SectionOneImageUncheckedUpdateManyWithoutSectionNestedInput
+  }
+
+  export type SectionOneCreateManyInput = {
+    id?: string
+    label?: string
+    heading?: string
+    quote?: string
+  }
+
+  export type SectionOneUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    quote?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionOneUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    quote?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionOneImageCreateInput = {
+    id?: string
+    order: number
+    section: SectionOneCreateNestedOneWithoutImagesInput
+    asset: MediaAssetCreateNestedOneWithoutSectionOneImagesInput
+  }
+
+  export type SectionOneImageUncheckedCreateInput = {
+    id?: string
+    order: number
+    sectionId: string
+    assetId: string
+  }
+
+  export type SectionOneImageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    section?: SectionOneUpdateOneRequiredWithoutImagesNestedInput
+    asset?: MediaAssetUpdateOneRequiredWithoutSectionOneImagesNestedInput
+  }
+
+  export type SectionOneImageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    sectionId?: StringFieldUpdateOperationsInput | string
+    assetId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionOneImageCreateManyInput = {
+    id?: string
+    order: number
+    sectionId: string
+    assetId: string
+  }
+
+  export type SectionOneImageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type SectionOneImageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    sectionId?: StringFieldUpdateOperationsInput | string
+    assetId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionTwoCreateInput = {
+    id?: string
+    label?: string
+    heading?: string
+    subheading?: string
+    expLabel?: string
+    expHeading?: string
+  }
+
+  export type SectionTwoUncheckedCreateInput = {
+    id?: string
+    label?: string
+    heading?: string
+    subheading?: string
+    expLabel?: string
+    expHeading?: string
+  }
+
+  export type SectionTwoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    subheading?: StringFieldUpdateOperationsInput | string
+    expLabel?: StringFieldUpdateOperationsInput | string
+    expHeading?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionTwoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    subheading?: StringFieldUpdateOperationsInput | string
+    expLabel?: StringFieldUpdateOperationsInput | string
+    expHeading?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionTwoCreateManyInput = {
+    id?: string
+    label?: string
+    heading?: string
+    subheading?: string
+    expLabel?: string
+    expHeading?: string
+  }
+
+  export type SectionTwoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    subheading?: StringFieldUpdateOperationsInput | string
+    expLabel?: StringFieldUpdateOperationsInput | string
+    expHeading?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionTwoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    subheading?: StringFieldUpdateOperationsInput | string
+    expLabel?: StringFieldUpdateOperationsInput | string
+    expHeading?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -7758,6 +14212,26 @@ export namespace Prisma {
     expires?: SortOrder
   }
 
+  export type HeroSlideListRelationFilter = {
+    every?: HeroSlideWhereInput
+    some?: HeroSlideWhereInput
+    none?: HeroSlideWhereInput
+  }
+
+  export type SectionOneImageListRelationFilter = {
+    every?: SectionOneImageWhereInput
+    some?: SectionOneImageWhereInput
+    none?: SectionOneImageWhereInput
+  }
+
+  export type HeroSlideOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SectionOneImageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type MediaAssetCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -7783,6 +14257,170 @@ export namespace Prisma {
     publicId?: SortOrder
     resourceType?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type MediaAssetScalarRelationFilter = {
+    is?: MediaAssetWhereInput
+    isNot?: MediaAssetWhereInput
+  }
+
+  export type HeroSlideCountOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type HeroSlideAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type HeroSlideMaxOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type HeroSlideMinOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type HeroSlideSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type HeroTextCountOrderByAggregateInput = {
+    id?: SortOrder
+    heading?: SortOrder
+    subtext?: SortOrder
+  }
+
+  export type HeroTextMaxOrderByAggregateInput = {
+    id?: SortOrder
+    heading?: SortOrder
+    subtext?: SortOrder
+  }
+
+  export type HeroTextMinOrderByAggregateInput = {
+    id?: SortOrder
+    heading?: SortOrder
+    subtext?: SortOrder
+  }
+
+  export type SectionOneCountOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    heading?: SortOrder
+    quote?: SortOrder
+  }
+
+  export type SectionOneMaxOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    heading?: SortOrder
+    quote?: SortOrder
+  }
+
+  export type SectionOneMinOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    heading?: SortOrder
+    quote?: SortOrder
+  }
+
+  export type SectionOneScalarRelationFilter = {
+    is?: SectionOneWhereInput
+    isNot?: SectionOneWhereInput
+  }
+
+  export type SectionOneImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+    sectionId?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type SectionOneImageAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type SectionOneImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+    sectionId?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type SectionOneImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+    sectionId?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type SectionOneImageSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type SectionTwoCountOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    heading?: SortOrder
+    subheading?: SortOrder
+    expLabel?: SortOrder
+    expHeading?: SortOrder
+  }
+
+  export type SectionTwoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    heading?: SortOrder
+    subheading?: SortOrder
+    expLabel?: SortOrder
+    expHeading?: SortOrder
+  }
+
+  export type SectionTwoMinOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    heading?: SortOrder
+    subheading?: SortOrder
+    expLabel?: SortOrder
+    expHeading?: SortOrder
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -7923,6 +14561,182 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutSessionsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionsInput, UserUpdateWithoutSessionsInput>, UserUncheckedUpdateWithoutSessionsInput>
+  }
+
+  export type HeroSlideCreateNestedManyWithoutAssetInput = {
+    create?: XOR<HeroSlideCreateWithoutAssetInput, HeroSlideUncheckedCreateWithoutAssetInput> | HeroSlideCreateWithoutAssetInput[] | HeroSlideUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: HeroSlideCreateOrConnectWithoutAssetInput | HeroSlideCreateOrConnectWithoutAssetInput[]
+    createMany?: HeroSlideCreateManyAssetInputEnvelope
+    connect?: HeroSlideWhereUniqueInput | HeroSlideWhereUniqueInput[]
+  }
+
+  export type SectionOneImageCreateNestedManyWithoutAssetInput = {
+    create?: XOR<SectionOneImageCreateWithoutAssetInput, SectionOneImageUncheckedCreateWithoutAssetInput> | SectionOneImageCreateWithoutAssetInput[] | SectionOneImageUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: SectionOneImageCreateOrConnectWithoutAssetInput | SectionOneImageCreateOrConnectWithoutAssetInput[]
+    createMany?: SectionOneImageCreateManyAssetInputEnvelope
+    connect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+  }
+
+  export type HeroSlideUncheckedCreateNestedManyWithoutAssetInput = {
+    create?: XOR<HeroSlideCreateWithoutAssetInput, HeroSlideUncheckedCreateWithoutAssetInput> | HeroSlideCreateWithoutAssetInput[] | HeroSlideUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: HeroSlideCreateOrConnectWithoutAssetInput | HeroSlideCreateOrConnectWithoutAssetInput[]
+    createMany?: HeroSlideCreateManyAssetInputEnvelope
+    connect?: HeroSlideWhereUniqueInput | HeroSlideWhereUniqueInput[]
+  }
+
+  export type SectionOneImageUncheckedCreateNestedManyWithoutAssetInput = {
+    create?: XOR<SectionOneImageCreateWithoutAssetInput, SectionOneImageUncheckedCreateWithoutAssetInput> | SectionOneImageCreateWithoutAssetInput[] | SectionOneImageUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: SectionOneImageCreateOrConnectWithoutAssetInput | SectionOneImageCreateOrConnectWithoutAssetInput[]
+    createMany?: SectionOneImageCreateManyAssetInputEnvelope
+    connect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+  }
+
+  export type HeroSlideUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<HeroSlideCreateWithoutAssetInput, HeroSlideUncheckedCreateWithoutAssetInput> | HeroSlideCreateWithoutAssetInput[] | HeroSlideUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: HeroSlideCreateOrConnectWithoutAssetInput | HeroSlideCreateOrConnectWithoutAssetInput[]
+    upsert?: HeroSlideUpsertWithWhereUniqueWithoutAssetInput | HeroSlideUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: HeroSlideCreateManyAssetInputEnvelope
+    set?: HeroSlideWhereUniqueInput | HeroSlideWhereUniqueInput[]
+    disconnect?: HeroSlideWhereUniqueInput | HeroSlideWhereUniqueInput[]
+    delete?: HeroSlideWhereUniqueInput | HeroSlideWhereUniqueInput[]
+    connect?: HeroSlideWhereUniqueInput | HeroSlideWhereUniqueInput[]
+    update?: HeroSlideUpdateWithWhereUniqueWithoutAssetInput | HeroSlideUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: HeroSlideUpdateManyWithWhereWithoutAssetInput | HeroSlideUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: HeroSlideScalarWhereInput | HeroSlideScalarWhereInput[]
+  }
+
+  export type SectionOneImageUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<SectionOneImageCreateWithoutAssetInput, SectionOneImageUncheckedCreateWithoutAssetInput> | SectionOneImageCreateWithoutAssetInput[] | SectionOneImageUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: SectionOneImageCreateOrConnectWithoutAssetInput | SectionOneImageCreateOrConnectWithoutAssetInput[]
+    upsert?: SectionOneImageUpsertWithWhereUniqueWithoutAssetInput | SectionOneImageUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: SectionOneImageCreateManyAssetInputEnvelope
+    set?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    disconnect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    delete?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    connect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    update?: SectionOneImageUpdateWithWhereUniqueWithoutAssetInput | SectionOneImageUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: SectionOneImageUpdateManyWithWhereWithoutAssetInput | SectionOneImageUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: SectionOneImageScalarWhereInput | SectionOneImageScalarWhereInput[]
+  }
+
+  export type HeroSlideUncheckedUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<HeroSlideCreateWithoutAssetInput, HeroSlideUncheckedCreateWithoutAssetInput> | HeroSlideCreateWithoutAssetInput[] | HeroSlideUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: HeroSlideCreateOrConnectWithoutAssetInput | HeroSlideCreateOrConnectWithoutAssetInput[]
+    upsert?: HeroSlideUpsertWithWhereUniqueWithoutAssetInput | HeroSlideUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: HeroSlideCreateManyAssetInputEnvelope
+    set?: HeroSlideWhereUniqueInput | HeroSlideWhereUniqueInput[]
+    disconnect?: HeroSlideWhereUniqueInput | HeroSlideWhereUniqueInput[]
+    delete?: HeroSlideWhereUniqueInput | HeroSlideWhereUniqueInput[]
+    connect?: HeroSlideWhereUniqueInput | HeroSlideWhereUniqueInput[]
+    update?: HeroSlideUpdateWithWhereUniqueWithoutAssetInput | HeroSlideUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: HeroSlideUpdateManyWithWhereWithoutAssetInput | HeroSlideUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: HeroSlideScalarWhereInput | HeroSlideScalarWhereInput[]
+  }
+
+  export type SectionOneImageUncheckedUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<SectionOneImageCreateWithoutAssetInput, SectionOneImageUncheckedCreateWithoutAssetInput> | SectionOneImageCreateWithoutAssetInput[] | SectionOneImageUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: SectionOneImageCreateOrConnectWithoutAssetInput | SectionOneImageCreateOrConnectWithoutAssetInput[]
+    upsert?: SectionOneImageUpsertWithWhereUniqueWithoutAssetInput | SectionOneImageUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: SectionOneImageCreateManyAssetInputEnvelope
+    set?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    disconnect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    delete?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    connect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    update?: SectionOneImageUpdateWithWhereUniqueWithoutAssetInput | SectionOneImageUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: SectionOneImageUpdateManyWithWhereWithoutAssetInput | SectionOneImageUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: SectionOneImageScalarWhereInput | SectionOneImageScalarWhereInput[]
+  }
+
+  export type MediaAssetCreateNestedOneWithoutHeroSlidesInput = {
+    create?: XOR<MediaAssetCreateWithoutHeroSlidesInput, MediaAssetUncheckedCreateWithoutHeroSlidesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutHeroSlidesInput
+    connect?: MediaAssetWhereUniqueInput
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type MediaAssetUpdateOneRequiredWithoutHeroSlidesNestedInput = {
+    create?: XOR<MediaAssetCreateWithoutHeroSlidesInput, MediaAssetUncheckedCreateWithoutHeroSlidesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutHeroSlidesInput
+    upsert?: MediaAssetUpsertWithoutHeroSlidesInput
+    connect?: MediaAssetWhereUniqueInput
+    update?: XOR<XOR<MediaAssetUpdateToOneWithWhereWithoutHeroSlidesInput, MediaAssetUpdateWithoutHeroSlidesInput>, MediaAssetUncheckedUpdateWithoutHeroSlidesInput>
+  }
+
+  export type SectionOneImageCreateNestedManyWithoutSectionInput = {
+    create?: XOR<SectionOneImageCreateWithoutSectionInput, SectionOneImageUncheckedCreateWithoutSectionInput> | SectionOneImageCreateWithoutSectionInput[] | SectionOneImageUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: SectionOneImageCreateOrConnectWithoutSectionInput | SectionOneImageCreateOrConnectWithoutSectionInput[]
+    createMany?: SectionOneImageCreateManySectionInputEnvelope
+    connect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+  }
+
+  export type SectionOneImageUncheckedCreateNestedManyWithoutSectionInput = {
+    create?: XOR<SectionOneImageCreateWithoutSectionInput, SectionOneImageUncheckedCreateWithoutSectionInput> | SectionOneImageCreateWithoutSectionInput[] | SectionOneImageUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: SectionOneImageCreateOrConnectWithoutSectionInput | SectionOneImageCreateOrConnectWithoutSectionInput[]
+    createMany?: SectionOneImageCreateManySectionInputEnvelope
+    connect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+  }
+
+  export type SectionOneImageUpdateManyWithoutSectionNestedInput = {
+    create?: XOR<SectionOneImageCreateWithoutSectionInput, SectionOneImageUncheckedCreateWithoutSectionInput> | SectionOneImageCreateWithoutSectionInput[] | SectionOneImageUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: SectionOneImageCreateOrConnectWithoutSectionInput | SectionOneImageCreateOrConnectWithoutSectionInput[]
+    upsert?: SectionOneImageUpsertWithWhereUniqueWithoutSectionInput | SectionOneImageUpsertWithWhereUniqueWithoutSectionInput[]
+    createMany?: SectionOneImageCreateManySectionInputEnvelope
+    set?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    disconnect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    delete?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    connect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    update?: SectionOneImageUpdateWithWhereUniqueWithoutSectionInput | SectionOneImageUpdateWithWhereUniqueWithoutSectionInput[]
+    updateMany?: SectionOneImageUpdateManyWithWhereWithoutSectionInput | SectionOneImageUpdateManyWithWhereWithoutSectionInput[]
+    deleteMany?: SectionOneImageScalarWhereInput | SectionOneImageScalarWhereInput[]
+  }
+
+  export type SectionOneImageUncheckedUpdateManyWithoutSectionNestedInput = {
+    create?: XOR<SectionOneImageCreateWithoutSectionInput, SectionOneImageUncheckedCreateWithoutSectionInput> | SectionOneImageCreateWithoutSectionInput[] | SectionOneImageUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: SectionOneImageCreateOrConnectWithoutSectionInput | SectionOneImageCreateOrConnectWithoutSectionInput[]
+    upsert?: SectionOneImageUpsertWithWhereUniqueWithoutSectionInput | SectionOneImageUpsertWithWhereUniqueWithoutSectionInput[]
+    createMany?: SectionOneImageCreateManySectionInputEnvelope
+    set?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    disconnect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    delete?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    connect?: SectionOneImageWhereUniqueInput | SectionOneImageWhereUniqueInput[]
+    update?: SectionOneImageUpdateWithWhereUniqueWithoutSectionInput | SectionOneImageUpdateWithWhereUniqueWithoutSectionInput[]
+    updateMany?: SectionOneImageUpdateManyWithWhereWithoutSectionInput | SectionOneImageUpdateManyWithWhereWithoutSectionInput[]
+    deleteMany?: SectionOneImageScalarWhereInput | SectionOneImageScalarWhereInput[]
+  }
+
+  export type SectionOneCreateNestedOneWithoutImagesInput = {
+    create?: XOR<SectionOneCreateWithoutImagesInput, SectionOneUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: SectionOneCreateOrConnectWithoutImagesInput
+    connect?: SectionOneWhereUniqueInput
+  }
+
+  export type MediaAssetCreateNestedOneWithoutSectionOneImagesInput = {
+    create?: XOR<MediaAssetCreateWithoutSectionOneImagesInput, MediaAssetUncheckedCreateWithoutSectionOneImagesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutSectionOneImagesInput
+    connect?: MediaAssetWhereUniqueInput
+  }
+
+  export type SectionOneUpdateOneRequiredWithoutImagesNestedInput = {
+    create?: XOR<SectionOneCreateWithoutImagesInput, SectionOneUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: SectionOneCreateOrConnectWithoutImagesInput
+    upsert?: SectionOneUpsertWithoutImagesInput
+    connect?: SectionOneWhereUniqueInput
+    update?: XOR<XOR<SectionOneUpdateToOneWithWhereWithoutImagesInput, SectionOneUpdateWithoutImagesInput>, SectionOneUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type MediaAssetUpdateOneRequiredWithoutSectionOneImagesNestedInput = {
+    create?: XOR<MediaAssetCreateWithoutSectionOneImagesInput, MediaAssetUncheckedCreateWithoutSectionOneImagesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutSectionOneImagesInput
+    upsert?: MediaAssetUpsertWithoutSectionOneImagesInput
+    connect?: MediaAssetWhereUniqueInput
+    update?: XOR<XOR<MediaAssetUpdateToOneWithWhereWithoutSectionOneImagesInput, MediaAssetUpdateWithoutSectionOneImagesInput>, MediaAssetUncheckedUpdateWithoutSectionOneImagesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -8097,6 +14911,33 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -8339,6 +15180,299 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type HeroSlideCreateWithoutAssetInput = {
+    id?: string
+    order: number
+    active?: boolean
+    createdAt?: Date | string
+  }
+
+  export type HeroSlideUncheckedCreateWithoutAssetInput = {
+    id?: string
+    order: number
+    active?: boolean
+    createdAt?: Date | string
+  }
+
+  export type HeroSlideCreateOrConnectWithoutAssetInput = {
+    where: HeroSlideWhereUniqueInput
+    create: XOR<HeroSlideCreateWithoutAssetInput, HeroSlideUncheckedCreateWithoutAssetInput>
+  }
+
+  export type HeroSlideCreateManyAssetInputEnvelope = {
+    data: HeroSlideCreateManyAssetInput | HeroSlideCreateManyAssetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SectionOneImageCreateWithoutAssetInput = {
+    id?: string
+    order: number
+    section: SectionOneCreateNestedOneWithoutImagesInput
+  }
+
+  export type SectionOneImageUncheckedCreateWithoutAssetInput = {
+    id?: string
+    order: number
+    sectionId: string
+  }
+
+  export type SectionOneImageCreateOrConnectWithoutAssetInput = {
+    where: SectionOneImageWhereUniqueInput
+    create: XOR<SectionOneImageCreateWithoutAssetInput, SectionOneImageUncheckedCreateWithoutAssetInput>
+  }
+
+  export type SectionOneImageCreateManyAssetInputEnvelope = {
+    data: SectionOneImageCreateManyAssetInput | SectionOneImageCreateManyAssetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type HeroSlideUpsertWithWhereUniqueWithoutAssetInput = {
+    where: HeroSlideWhereUniqueInput
+    update: XOR<HeroSlideUpdateWithoutAssetInput, HeroSlideUncheckedUpdateWithoutAssetInput>
+    create: XOR<HeroSlideCreateWithoutAssetInput, HeroSlideUncheckedCreateWithoutAssetInput>
+  }
+
+  export type HeroSlideUpdateWithWhereUniqueWithoutAssetInput = {
+    where: HeroSlideWhereUniqueInput
+    data: XOR<HeroSlideUpdateWithoutAssetInput, HeroSlideUncheckedUpdateWithoutAssetInput>
+  }
+
+  export type HeroSlideUpdateManyWithWhereWithoutAssetInput = {
+    where: HeroSlideScalarWhereInput
+    data: XOR<HeroSlideUpdateManyMutationInput, HeroSlideUncheckedUpdateManyWithoutAssetInput>
+  }
+
+  export type HeroSlideScalarWhereInput = {
+    AND?: HeroSlideScalarWhereInput | HeroSlideScalarWhereInput[]
+    OR?: HeroSlideScalarWhereInput[]
+    NOT?: HeroSlideScalarWhereInput | HeroSlideScalarWhereInput[]
+    id?: StringFilter<"HeroSlide"> | string
+    order?: IntFilter<"HeroSlide"> | number
+    active?: BoolFilter<"HeroSlide"> | boolean
+    createdAt?: DateTimeFilter<"HeroSlide"> | Date | string
+    assetId?: StringFilter<"HeroSlide"> | string
+  }
+
+  export type SectionOneImageUpsertWithWhereUniqueWithoutAssetInput = {
+    where: SectionOneImageWhereUniqueInput
+    update: XOR<SectionOneImageUpdateWithoutAssetInput, SectionOneImageUncheckedUpdateWithoutAssetInput>
+    create: XOR<SectionOneImageCreateWithoutAssetInput, SectionOneImageUncheckedCreateWithoutAssetInput>
+  }
+
+  export type SectionOneImageUpdateWithWhereUniqueWithoutAssetInput = {
+    where: SectionOneImageWhereUniqueInput
+    data: XOR<SectionOneImageUpdateWithoutAssetInput, SectionOneImageUncheckedUpdateWithoutAssetInput>
+  }
+
+  export type SectionOneImageUpdateManyWithWhereWithoutAssetInput = {
+    where: SectionOneImageScalarWhereInput
+    data: XOR<SectionOneImageUpdateManyMutationInput, SectionOneImageUncheckedUpdateManyWithoutAssetInput>
+  }
+
+  export type SectionOneImageScalarWhereInput = {
+    AND?: SectionOneImageScalarWhereInput | SectionOneImageScalarWhereInput[]
+    OR?: SectionOneImageScalarWhereInput[]
+    NOT?: SectionOneImageScalarWhereInput | SectionOneImageScalarWhereInput[]
+    id?: StringFilter<"SectionOneImage"> | string
+    order?: IntFilter<"SectionOneImage"> | number
+    sectionId?: StringFilter<"SectionOneImage"> | string
+    assetId?: StringFilter<"SectionOneImage"> | string
+  }
+
+  export type MediaAssetCreateWithoutHeroSlidesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    sectionOneImages?: SectionOneImageCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetUncheckedCreateWithoutHeroSlidesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    sectionOneImages?: SectionOneImageUncheckedCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetCreateOrConnectWithoutHeroSlidesInput = {
+    where: MediaAssetWhereUniqueInput
+    create: XOR<MediaAssetCreateWithoutHeroSlidesInput, MediaAssetUncheckedCreateWithoutHeroSlidesInput>
+  }
+
+  export type MediaAssetUpsertWithoutHeroSlidesInput = {
+    update: XOR<MediaAssetUpdateWithoutHeroSlidesInput, MediaAssetUncheckedUpdateWithoutHeroSlidesInput>
+    create: XOR<MediaAssetCreateWithoutHeroSlidesInput, MediaAssetUncheckedCreateWithoutHeroSlidesInput>
+    where?: MediaAssetWhereInput
+  }
+
+  export type MediaAssetUpdateToOneWithWhereWithoutHeroSlidesInput = {
+    where?: MediaAssetWhereInput
+    data: XOR<MediaAssetUpdateWithoutHeroSlidesInput, MediaAssetUncheckedUpdateWithoutHeroSlidesInput>
+  }
+
+  export type MediaAssetUpdateWithoutHeroSlidesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sectionOneImages?: SectionOneImageUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetUncheckedUpdateWithoutHeroSlidesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sectionOneImages?: SectionOneImageUncheckedUpdateManyWithoutAssetNestedInput
+  }
+
+  export type SectionOneImageCreateWithoutSectionInput = {
+    id?: string
+    order: number
+    asset: MediaAssetCreateNestedOneWithoutSectionOneImagesInput
+  }
+
+  export type SectionOneImageUncheckedCreateWithoutSectionInput = {
+    id?: string
+    order: number
+    assetId: string
+  }
+
+  export type SectionOneImageCreateOrConnectWithoutSectionInput = {
+    where: SectionOneImageWhereUniqueInput
+    create: XOR<SectionOneImageCreateWithoutSectionInput, SectionOneImageUncheckedCreateWithoutSectionInput>
+  }
+
+  export type SectionOneImageCreateManySectionInputEnvelope = {
+    data: SectionOneImageCreateManySectionInput | SectionOneImageCreateManySectionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SectionOneImageUpsertWithWhereUniqueWithoutSectionInput = {
+    where: SectionOneImageWhereUniqueInput
+    update: XOR<SectionOneImageUpdateWithoutSectionInput, SectionOneImageUncheckedUpdateWithoutSectionInput>
+    create: XOR<SectionOneImageCreateWithoutSectionInput, SectionOneImageUncheckedCreateWithoutSectionInput>
+  }
+
+  export type SectionOneImageUpdateWithWhereUniqueWithoutSectionInput = {
+    where: SectionOneImageWhereUniqueInput
+    data: XOR<SectionOneImageUpdateWithoutSectionInput, SectionOneImageUncheckedUpdateWithoutSectionInput>
+  }
+
+  export type SectionOneImageUpdateManyWithWhereWithoutSectionInput = {
+    where: SectionOneImageScalarWhereInput
+    data: XOR<SectionOneImageUpdateManyMutationInput, SectionOneImageUncheckedUpdateManyWithoutSectionInput>
+  }
+
+  export type SectionOneCreateWithoutImagesInput = {
+    id?: string
+    label?: string
+    heading?: string
+    quote?: string
+  }
+
+  export type SectionOneUncheckedCreateWithoutImagesInput = {
+    id?: string
+    label?: string
+    heading?: string
+    quote?: string
+  }
+
+  export type SectionOneCreateOrConnectWithoutImagesInput = {
+    where: SectionOneWhereUniqueInput
+    create: XOR<SectionOneCreateWithoutImagesInput, SectionOneUncheckedCreateWithoutImagesInput>
+  }
+
+  export type MediaAssetCreateWithoutSectionOneImagesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetUncheckedCreateWithoutSectionOneImagesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideUncheckedCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetCreateOrConnectWithoutSectionOneImagesInput = {
+    where: MediaAssetWhereUniqueInput
+    create: XOR<MediaAssetCreateWithoutSectionOneImagesInput, MediaAssetUncheckedCreateWithoutSectionOneImagesInput>
+  }
+
+  export type SectionOneUpsertWithoutImagesInput = {
+    update: XOR<SectionOneUpdateWithoutImagesInput, SectionOneUncheckedUpdateWithoutImagesInput>
+    create: XOR<SectionOneCreateWithoutImagesInput, SectionOneUncheckedCreateWithoutImagesInput>
+    where?: SectionOneWhereInput
+  }
+
+  export type SectionOneUpdateToOneWithWhereWithoutImagesInput = {
+    where?: SectionOneWhereInput
+    data: XOR<SectionOneUpdateWithoutImagesInput, SectionOneUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type SectionOneUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    quote?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionOneUncheckedUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    heading?: StringFieldUpdateOperationsInput | string
+    quote?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MediaAssetUpsertWithoutSectionOneImagesInput = {
+    update: XOR<MediaAssetUpdateWithoutSectionOneImagesInput, MediaAssetUncheckedUpdateWithoutSectionOneImagesInput>
+    create: XOR<MediaAssetCreateWithoutSectionOneImagesInput, MediaAssetUncheckedCreateWithoutSectionOneImagesInput>
+    where?: MediaAssetWhereInput
+  }
+
+  export type MediaAssetUpdateToOneWithWhereWithoutSectionOneImagesInput = {
+    where?: MediaAssetWhereInput
+    data: XOR<MediaAssetUpdateWithoutSectionOneImagesInput, MediaAssetUncheckedUpdateWithoutSectionOneImagesInput>
+  }
+
+  export type MediaAssetUpdateWithoutSectionOneImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetUncheckedUpdateWithoutSectionOneImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUncheckedUpdateManyWithoutAssetNestedInput
+  }
+
   export type AccountCreateManyUserInput = {
     id?: string
     type: string
@@ -8417,6 +15551,82 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     sessionToken?: StringFieldUpdateOperationsInput | string
     expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeroSlideCreateManyAssetInput = {
+    id?: string
+    order: number
+    active?: boolean
+    createdAt?: Date | string
+  }
+
+  export type SectionOneImageCreateManyAssetInput = {
+    id?: string
+    order: number
+    sectionId: string
+  }
+
+  export type HeroSlideUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeroSlideUncheckedUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeroSlideUncheckedUpdateManyWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SectionOneImageUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    section?: SectionOneUpdateOneRequiredWithoutImagesNestedInput
+  }
+
+  export type SectionOneImageUncheckedUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    sectionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionOneImageUncheckedUpdateManyWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    sectionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionOneImageCreateManySectionInput = {
+    id?: string
+    order: number
+    assetId: string
+  }
+
+  export type SectionOneImageUpdateWithoutSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    asset?: MediaAssetUpdateOneRequiredWithoutSectionOneImagesNestedInput
+  }
+
+  export type SectionOneImageUncheckedUpdateWithoutSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    assetId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectionOneImageUncheckedUpdateManyWithoutSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    assetId?: StringFieldUpdateOperationsInput | string
   }
 
 

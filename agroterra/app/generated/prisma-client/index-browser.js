@@ -167,6 +167,43 @@ exports.Prisma.MediaAssetScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.HeroSlideScalarFieldEnum = {
+  id: 'id',
+  order: 'order',
+  active: 'active',
+  createdAt: 'createdAt',
+  assetId: 'assetId'
+};
+
+exports.Prisma.HeroTextScalarFieldEnum = {
+  id: 'id',
+  heading: 'heading',
+  subtext: 'subtext'
+};
+
+exports.Prisma.SectionOneScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  heading: 'heading',
+  quote: 'quote'
+};
+
+exports.Prisma.SectionOneImageScalarFieldEnum = {
+  id: 'id',
+  order: 'order',
+  sectionId: 'sectionId',
+  assetId: 'assetId'
+};
+
+exports.Prisma.SectionTwoScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  heading: 'heading',
+  subheading: 'subheading',
+  expLabel: 'expLabel',
+  expHeading: 'expHeading'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -188,7 +225,12 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   Session: 'Session',
   VerificationToken: 'VerificationToken',
-  MediaAsset: 'MediaAsset'
+  MediaAsset: 'MediaAsset',
+  HeroSlide: 'HeroSlide',
+  HeroText: 'HeroText',
+  SectionOne: 'SectionOne',
+  SectionOneImage: 'SectionOneImage',
+  SectionTwo: 'SectionTwo'
 };
 
 /**

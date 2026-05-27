@@ -9,7 +9,7 @@ import { CiGrid31 } from "react-icons/ci";
 import { RiDoorOpenLine, RiHomeGearLine } from "react-icons/ri";
 import { LiaGlassCheersSolid } from "react-icons/lia";
 import { TbLogs } from 'react-icons/tb'
-import { MdOutlineBedroomParent } from 'react-icons/md'
+import { MdOutlineBedroomParent, MdOutlinePermMedia } from 'react-icons/md'
 import { GiGolfFlag } from "react-icons/gi";
 import { FaInfo } from 'react-icons/fa'
 import { signOut} from "next-auth/react"
@@ -23,6 +23,7 @@ const navItems = [
   { href: '/edit-rooms', label: 'Reservations', icon: <MdOutlineBedroomParent size={22} /> },
   { href: '/edit-golf', label: 'Golf', icon: <GiGolfFlag size={22} /> },
   { href: '/edit-about', label: 'About', icon: <FaInfo size={22} /> },
+  { href: '/edit-media', label: 'Media', icon: <MdOutlinePermMedia size={22} /> },
 
 ]
 const heroOverlay = {

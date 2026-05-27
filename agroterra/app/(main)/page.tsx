@@ -18,7 +18,7 @@ import { gsap } from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
 import Navbar from '@/components/Navbar'
 import { useState, useEffect, useCallback } from 'react'
-import { Sun, Moon } from 'lucide-react'
+import { Sun, Moon, Sliders } from 'lucide-react'
 import { StaticImageData } from 'next/image'
 
 gsap.registerPlugin(TextPlugin)
@@ -33,6 +33,53 @@ const toggleStyle = {
   light: { bg: '#ede8df', border: '#ddd5c4', accent: '#1e5e32' },
   dark:  { bg: '#0f180f', border: '#243424', accent: '#7ec850' },
 }
+
+type MediaAsset = {
+  id: string;
+  title: string;
+  imageUrl: string;
+  publicId: string;
+  resourceType: string;
+};
+
+type HeroSlide = {
+  id: string;
+  order: number;
+  active: boolean;
+  assetId: string;
+  asset: MediaAsset;
+};
+
+type HeroText = {
+  id: string;
+  heading: string;
+  subtext: string;
+};
+
+type S1Image = {
+  id: string;
+  order: number;
+  assetId: string;
+  asset: MediaAsset;
+};
+
+type SectionOneData = {
+  id: string;
+  label: string;
+  heading: string;
+  quote: string;
+  images: S1Image[];
+};
+
+type SectionTwoData = {
+  id: string;
+  label: string;
+  heading: string;
+  subheading: string;
+  expLabel: string;
+  expHeading: string;
+};
+
 
 // ── Carousel breadcrumbs (image thumbnails + mobile pill) ─────────
 function ImageBreadcrumbs({
@@ -86,71 +133,114 @@ function ImageBreadcrumbs({
   )
 }
 
-// ── Carousel ──────────────────────────────────────────────────────
-function EmblaCarousel({ isDark }: { isDark: boolean }) {
-  const slides: StaticImageData[] = [
-    background1, background2, background3, background4, background5,
-  ]
-
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true },
-    [Autoplay({ delay: 4800, stopOnInteraction: false })]
-  )
-  const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi)
-
-  return (
-    <div className="relative w-full h-full">
-      {/* Viewport */}
-      <div className="overflow-hidden w-full h-full" ref={emblaRef}>
-        <div className="flex h-full">
-          {slides.map((src, i) => (
-            <div key={i} className="relative flex-[0_0_100%] h-full">
-              <Image
-                src={src}
-                alt={`Agroterra slide ${i + 1}`}
-                fill
-                className="object-cover"
-                loading={i === 0 ? 'eager' : 'lazy'}
-                priority={i === 0}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Breadcrumb tray — bottom of carousel */}
-      <div className="absolute bottom-5 sm:bottom-7 inset-x-0 z-20 flex justify-center px-4">
-        <div
-          className="flex items-center px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl"
-          // style={{
-          //   background:     'rgba(0,0,0,0.38)',
-          //   backdropFilter: 'blur(14px)',
-          //   border:         '1px solid rgba(255,255,255,0.13)',
-          // }}
-        >
-          <ImageBreadcrumbs
-            slides={slides}
-            selected={selectedIndex}
-            onSelect={onDotButtonClick}
-            isDark={isDark}
-          />
-        </div>
-      </div>
-    </div>
-  )
-}
 
 // ── Home page ─────────────────────────────────────────────────────
 export default function Home() {
   const [isDark, setIsDark] = useState(false)
+  const [error, setError]       = useState("");
+  const [loading, setLoading]   = useState(true);
+  const [heroText, setHeroText] = useState<HeroText>({ id: "", heading: "", subtext: "" });
+  const [slides, setSlides]     = useState<HeroSlide[]>([]);
+  const [s1, setS1]             = useState<SectionOneData>({ id: "", label: "", heading: "", quote: "", images: [] });
+  const [s2, setS2]             = useState<SectionTwoData>({ id: "", label: "", heading: "", subheading: "", expLabel: "", expHeading: "" });
+  
 
+  function showError(msg: string) {
+    setError(msg);
+    setTimeout(() => setError(""), 3500);
+  }
+
+    // ── Fetch all data on mount ───────────────────────────────────
+    const fetchAll = useCallback(async () => {
+      setLoading(true);
+      try {
+        const [htRes, slidesRes, s1Res, s2Res] = await Promise.all([
+          fetch("/api/home/hero-text"),
+          fetch("/api/home/hero-slides"),
+          fetch("/api/home/section-one"),
+          fetch("/api/home/section-two"),
+        ]);
+        const [ht, sl, s1d, s2d] = await Promise.all([
+          htRes.json(), slidesRes.json(), s1Res.json(), s2Res.json(),
+        ]);
+        if (ht)  setHeroText(ht);
+        if (sl)  setSlides(sl);
+        if (s1d) setS1(s1d);
+        if (s2d) setS2(s2d);
+      } catch {
+        showError("Failed to load page data");
+      } finally {
+        setLoading(false);
+      }
+    }, []);
+  
+    useEffect(() => { fetchAll(); }, [fetchAll]);
+    
+  
+  
   // Respect OS preference on first load
   useEffect(() => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) setIsDark(true)
-  }, [])
-
+    }, [])
+  
   const tg = isDark ? toggleStyle.dark : toggleStyle.light
   const overlay = isDark ? heroOverlay.dark : heroOverlay.light
+    
+  function EmblaCarousel({ isDark }: { isDark: boolean }) {
+    const slide: StaticImageData[] = slides.map(s => ({
+      src: s.asset.imageUrl,
+      height: 500, 
+      width: 500,
+      blurDataURL: '', // Optional blur placeholder
+    }));
+  
+    const [emblaRef, emblaApi] = useEmblaCarousel(
+      { loop: true },
+      [Autoplay({ delay: 4800, stopOnInteraction: false })]
+    )
+    const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi)
+  
+    return (
+      <div className="relative w-full h-full">
+        {/* Viewport */}
+        <div className="overflow-hidden w-full h-full" ref={emblaRef}>
+          <div className="flex h-full">
+            {slide.map((src, i) => (
+              <div key={i} className="relative flex-[0_0_100%] h-full">
+                <Image
+                  src={src}
+                  alt={`Agroterra slide ${i + 1}`}
+                  fill
+                  className="object-cover"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  priority={i === 0}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+  
+        {/* Breadcrumb tray — bottom of carousel */}
+        <div className="absolute bottom-5 sm:bottom-7 inset-x-0 z-20 flex justify-center px-4">
+          <div
+            className="flex items-center px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl"
+            // style={{
+            //   background:     'rgba(0,0,0,0.38)',
+            //   backdropFilter: 'blur(14px)',
+            //   border:         '1px solid rgba(255,255,255,0.13)',
+            // }}
+          >
+            <ImageBreadcrumbs
+              slides={slide}
+              selected={selectedIndex}
+              onSelect={onDotButtonClick}
+              isDark={isDark}
+            />
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div
@@ -217,12 +307,12 @@ export default function Home() {
                   <h2 className="eb-garamond-semibold welcome-text
                     text-[32px] sm:text-[46px] md:text-[56px] lg:text-[62px]
                     max-w-[95vw] sm:max-w-[80vw] md:max-w-none">
-                    WELCOME TO AGROTERRA
+                    {heroText.heading || "WELCOME TO AGROTERRA"}
                   </h2>
                   <p className="eb-garamond-italic
                     text-[17px] sm:text-[24px] md:text-[28px] lg:text-[32px]
                     max-w-[90vw] sm:max-w-150 md:max-w-140 mt-2">
-                    &ldquo;A place that celebrates life.&rdquo;
+                    &ldquo;{heroText.subtext || "A place that celebrates life."}&rdquo;
                   </p>
                 </div>
               </div>

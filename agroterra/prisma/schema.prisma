@@ -69,4 +69,49 @@ model MediaAsset {
   publicId    String   // Useful for future deletions or transformations
   resourceType String   @default("image")
   createdAt   DateTime @default(now())
+  heroSlides      HeroSlide[]
+  sectionOneImages SectionOneImage[] 
+}
+
+// HOME PAGE
+
+model HeroSlide {
+  id        String   @id @default(uuid())
+  order     Int      // controls carousel order
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  assetId   String
+  asset     MediaAsset @relation(fields: [assetId], references: [id])
+}
+
+model HeroText {
+  id       String @id @default(uuid())
+  heading  String @default("WELCOME TO AGROTERRA")
+  subtext  String @default("A place that celebrates life.")
+}
+
+model SectionOne {
+  id         String           @id @default(uuid())
+  label      String           @default("Agroterra Resort")
+  heading    String           @default("WELCOME TO AGROTERRA")
+  quote      String           @default("A place that celebrates life.")
+  images     SectionOneImage[]
+}
+
+model SectionOneImage {
+  id          String     @id @default(uuid())
+  order       Int
+  sectionId   String
+  section     SectionOne @relation(fields: [sectionId], references: [id])
+  assetId     String
+  asset       MediaAsset @relation(fields: [assetId], references: [id])
+}
+
+model SectionTwo {
+  id          String  @id @default(uuid())
+  label       String  @default("Explore")
+  heading     String  @default("A Place That Fits You")
+  subheading  String  @default("Choose from spacious suites designed...")
+  expLabel    String  @default("Experiences")        // experiences sub-section
+  expHeading  String  @default("Harmony With Nature")
 }
