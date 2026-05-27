@@ -59,3 +59,12 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model MediaAsset {
+  id           String   @id @default(uuid())
+  title        String
+  imageUrl     String // Stores the secure URL from Cloudinary
+  publicId     String // Useful for future deletions or transformations
+  resourceType String   @default("image")
+  createdAt    DateTime @default(now())
+}

@@ -6,6 +6,7 @@ import "../globals.css"
 import { Analytics } from "@vercel/analytics/next"
 import { auth } from "@/auth"
 import AdminSidebar from '@/components/AdminSidebar'
+import { SessionProvider } from 'next-auth/react'
 
 export const metadata: Metadata = {
   title: "Agroterra Resort",
@@ -24,10 +25,12 @@ export default async function AdminLayout({
   return (
     <html lang="en">
       <body className={`${GeistSans.variable} ${GeistMono.variable} antialiased min-h-screen bg-stone-100 dark:bg-stone-900`}>
-        <Analytics />
-        <AdminSidebar />
+        <Analytics /> 
         <main className="pl-56 min-h-screen transition-all duration-300">
-          {children}
+          <SessionProvider session={session}>
+            <AdminSidebar />
+            {children}
+          </SessionProvider>
         </main>
       </body>
     </html>
