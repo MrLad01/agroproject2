@@ -26,8 +26,6 @@ export async function GET(
 }
 
 // PUT /api/admin/rooms/types/[id]/tabs
-// Body: [{ id?, key, eyebrow, title, tagline, size, beds, bath,
-//          guests, videoSrc, order, imageId, paragraphs: [{ id?, text, order }] }]
 export async function PUT(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -42,7 +40,20 @@ export async function PUT(
   if (!Array.isArray(body))
     return NextResponse.json({ error: "Expected an array" }, { status: 400 })
 
-  // Process each tab with an upsert so we don't lose existing IDs
+  // IDs of tabs that already exist in the DB (exclude new- prefixed ones)
+  const existingTabIds = body
+    .map((t: any) => t.id)
+    .filter((id: string) => id && !id.startsWith("new-"))
+
+  // Delete any tabs for this room type that are no longer in the payload
+  await prisma.roomTab.deleteMany({
+    where: {
+      roomTypeId,
+      id: { notIn: existingTabIds },
+    },
+  })
+
+  // Upsert each tab in the payload
   for (const tab of body) {
     const { paragraphs = [], id: tabId, ...tabData } = tab
     const isNew = !tabId || tabId.startsWith("new-")
@@ -70,6 +81,7 @@ export async function PUT(
       savedTab = await prisma.roomTab.update({
         where: { id: tabId },
         data: {
+          key:      tabData.key,
           eyebrow:  tabData.eyebrow,
           title:    tabData.title,
           tagline:  tabData.tagline,
@@ -84,24 +96,21 @@ export async function PUT(
       })
     }
 
-    // Handle paragraphs for this tab
-    const existingParas   = paragraphs.filter((p: any) => !p.id?.startsWith("new-") && p.id)
+    const existingParas   = paragraphs.filter((p: any) => p.id && !p.id.startsWith("new-"))
     const newParas        = paragraphs.filter((p: any) => !p.id || p.id.startsWith("new-"))
     const existingParaIds = existingParas.map((p: any) => p.id)
 
     await prisma.$transaction([
-      // Delete removed paragraphs
+      // Remove paragraphs no longer in the payload for this tab
       prisma.roomTabParagraph.deleteMany({
         where: { tabId: savedTab.id, id: { notIn: existingParaIds } },
       }),
-      // Update existing
       ...existingParas.map((p: any) =>
         prisma.roomTabParagraph.update({
           where: { id: p.id },
           data:  { text: p.text, order: p.order },
         })
       ),
-      // Create new
       ...newParas.map((p: any) =>
         prisma.roomTabParagraph.create({
           data: { tabId: savedTab.id, text: p.text, order: p.order },
@@ -110,7 +119,6 @@ export async function PUT(
     ])
   }
 
-  // Return the full updated tabs
   const updated = await prisma.roomTab.findMany({
     where:   { roomTypeId },
     orderBy: { order: "asc" },

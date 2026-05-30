@@ -284,7 +284,7 @@ export default function RoomDetailPage() {
                       border-b-2 transition-all duration-200 cursor-pointer
                       ${activeTabKey === tab.key ? t.tabActive : t.tabInactive}`}>
                     {/* Use a clean display label: strip slug prefix if present */}
-                    {tab.title}
+                    {tab.key}
                   </button>
                 ))}
               </div>

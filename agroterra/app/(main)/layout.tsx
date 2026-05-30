@@ -7,6 +7,7 @@ import Link from "next/link";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoIosPhonePortrait, IoMdMailOpen } from "react-icons/io";
 import { Analytics } from "@vercel/analytics/next";
+import { SiteDataProvider } from "../context/SiteDataContext";
 
 export const metadata: Metadata = {
   title: "Agroterra Resort",
@@ -99,9 +100,10 @@ export default function RootLayout({
             </div>
           </div>
         </div>
-
-        {children}
-        <Footer />
+        <SiteDataProvider>
+          {children}
+          <Footer />
+        </SiteDataProvider>     
       </body>
     </html>
   );
