@@ -4,9 +4,9 @@ import { NextResponse } from "next/server"
 
 // GET /api/admin/homepage/hero-text
 export async function GET() {
-  const session = await auth()
-  if (!session?.user.isAdmin)
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+  // const session = await auth()
+  // if (!session?.user.isAdmin)
+  //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
 
   // Always upsert a default row so it's never null
   const heroText = await prisma.roomHeroText.upsert({

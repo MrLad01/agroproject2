@@ -4,9 +4,9 @@ import { NextResponse } from "next/server"
 
 // GET /api/admin/rooms/types
 export async function GET() {
-  const session = await auth()
-  if (!session?.user.isAdmin)
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+  // const session = await auth()
+  // if (!session?.user.isAdmin)
+  //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
 
   const roomTypes = await prisma.roomType.findMany({
     orderBy: { order: "asc" },
