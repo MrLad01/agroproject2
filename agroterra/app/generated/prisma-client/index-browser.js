@@ -204,6 +204,81 @@ exports.Prisma.SectionTwoScalarFieldEnum = {
   expHeading: 'expHeading'
 };
 
+exports.Prisma.RoomHeroTextScalarFieldEnum = {
+  id: 'id',
+  heading: 'heading',
+  subtext: 'subtext'
+};
+
+exports.Prisma.RoomSlideScalarFieldEnum = {
+  id: 'id',
+  order: 'order',
+  active: 'active',
+  createdAt: 'createdAt',
+  assetId: 'assetId'
+};
+
+exports.Prisma.RoomTypeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  label: 'label',
+  description: 'description',
+  tagline: 'tagline',
+  basePrice: 'basePrice',
+  sizeSqm: 'sizeSqm',
+  maxGuests: 'maxGuests',
+  beds: 'beds',
+  bathrooms: 'bathrooms',
+  order: 'order',
+  heroImageId: 'heroImageId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RoomScalarFieldEnum = {
+  id: 'id',
+  roomNumber: 'roomNumber',
+  roomTypeId: 'roomTypeId',
+  floor: 'floor',
+  view: 'view',
+  isActive: 'isActive',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RoomImageScalarFieldEnum = {
+  id: 'id',
+  roomTypeId: 'roomTypeId',
+  assetId: 'assetId',
+  order: 'order',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.RoomTabScalarFieldEnum = {
+  id: 'id',
+  roomTypeId: 'roomTypeId',
+  key: 'key',
+  eyebrow: 'eyebrow',
+  title: 'title',
+  tagline: 'tagline',
+  size: 'size',
+  beds: 'beds',
+  bath: 'bath',
+  guests: 'guests',
+  videoSrc: 'videoSrc',
+  order: 'order',
+  imageId: 'imageId'
+};
+
+exports.Prisma.RoomTabParagraphScalarFieldEnum = {
+  id: 'id',
+  tabId: 'tabId',
+  text: 'text',
+  order: 'order'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -230,7 +305,14 @@ exports.Prisma.ModelName = {
   HeroText: 'HeroText',
   SectionOne: 'SectionOne',
   SectionOneImage: 'SectionOneImage',
-  SectionTwo: 'SectionTwo'
+  SectionTwo: 'SectionTwo',
+  RoomHeroText: 'RoomHeroText',
+  RoomSlide: 'RoomSlide',
+  RoomType: 'RoomType',
+  Room: 'Room',
+  RoomImage: 'RoomImage',
+  RoomTab: 'RoomTab',
+  RoomTabParagraph: 'RoomTabParagraph'
 };
 
 /**

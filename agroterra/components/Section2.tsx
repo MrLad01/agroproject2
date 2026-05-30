@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import junior from '@/public/juniorBed.png'
 import family from '@/public/familyBed.jpg'
 import deluxe from '@/public/deluxeBed.jpg'
@@ -49,6 +49,53 @@ const themes = {
     pageVal:     '#080e08',
   },
 }
+
+type MediaAsset = {
+  id: string;
+  title: string;
+  imageUrl: string;
+  publicId: string;
+  resourceType: string;
+};
+
+type HeroSlide = {
+  id: string;
+  order: number;
+  active: boolean;
+  assetId: string;
+  asset: MediaAsset;
+};
+
+type HeroText = {
+  id: string;
+  heading: string;
+  subtext: string;
+};
+
+type S1Image = {
+  id: string;
+  order: number;
+  assetId: string;
+  asset: MediaAsset;
+};
+
+type SectionOneData = {
+  id: string;
+  label: string;
+  heading: string;
+  quote: string;
+  images: S1Image[];
+};
+
+type SectionTwoData = {
+  id: string;
+  label: string;
+  heading: string;
+  subheading: string;
+  expLabel: string;
+  expHeading: string;
+};
+
 
 type Tk = typeof themes.light
 
@@ -138,6 +185,43 @@ type Props = { dark?: boolean }
 const SectionTwo = ({ dark = false }: Props) => {
   const tk = dark ? themes.dark : themes.light
   const [activeTab, setActiveTab] = useState<string>('family')
+  const [error, setError]       = useState("");
+  const [loading, setLoading]   = useState(true);
+  const [heroText, setHeroText] = useState<HeroText>({ id: "", heading: "", subtext: "" });
+  const [slides, setSlides]     = useState<HeroSlide[]>([]);
+  const [s1, setS1]             = useState<SectionOneData>({ id: "", label: "", heading: "", quote: "", images: [] });
+  const [s2, setS2]             = useState<SectionTwoData>({ id: "", label: "", heading: "", subheading: "", expLabel: "", expHeading: "" });
+
+  function showError(msg: string) {
+    setError(msg);
+    setTimeout(() => setError(""), 3500);
+  }
+  
+  // ── Fetch all data on mount ───────────────────────────────────
+  const fetchAll = useCallback(async () => {
+    setLoading(true);
+    try {
+      const [htRes, slidesRes, s1Res, s2Res] = await Promise.all([
+        fetch("/api/home/hero-text"),
+        fetch("/api/home/hero-slides"),
+        fetch("/api/home/section-one"),
+        fetch("/api/home/section-two"),
+      ]);
+      const [ht, sl, s1d, s2d] = await Promise.all([
+        htRes.json(), slidesRes.json(), s1Res.json(), s2Res.json(),
+      ]);
+      if (ht)  setHeroText(ht);
+      if (sl)  setSlides(sl);
+      if (s1d) setS1(s1d);
+      if (s2d) setS2(s2d);
+    } catch {
+      showError("Failed to load page data");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { fetchAll(); }, [fetchAll]);
 
   useEffect(() => {
     const saved = localStorage.getItem('tab')
@@ -210,17 +294,17 @@ const SectionTwo = ({ dark = false }: Props) => {
       <div className="text-center mb-10 sm:mb-14">
         <p className="text-[10px] font-bold uppercase tracking-[0.28em] mb-3"
           style={{ color: tk.accent, transition: 'color 0.3s' }}>
-          Explore
+          {s2.label || "Explore"}
         </p>
         <h2 className="eb-garamond-semibold leading-tight"
           style={{ fontSize: 'clamp(28px,5vw,50px)', color: tk.heading, transition: 'color 0.3s' }}>
-          A Place That Fits You
+          {s2.heading || "A Place That Fits You"}
         </h2>
         <div className="w-10 h-px mx-auto mt-4 mb-4 rounded-full"
           style={{ backgroundColor: tk.accent, opacity: 0.65, transition: 'background-color 0.3s' }} />
         <p className="cormorant-garamond-light-italic text-[16px] sm:text-[18px] max-w-xl mx-auto leading-relaxed"
           style={{ color: tk.body, transition: 'color 0.3s' }}>
-          Choose from spacious suites designed to give you and your loved ones the comfort, privacy, and serenity you deserve.
+          {s2.subheading || "Choose from spacious suites designed to give you and your loved ones the comfort, privacy, and serenity you deserve."}
         </p>
       </div>
 
@@ -260,11 +344,11 @@ const SectionTwo = ({ dark = false }: Props) => {
         <div className="text-center mb-10 sm:mb-14">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] mb-3"
             style={{ color: tk.accent, transition: 'color 0.3s' }}>
-            Experiences
+            {s2.expLabel || "Experiences"}
           </p>
           <h2 className="eb-garamond-semibold leading-tight"
             style={{ fontSize: 'clamp(28px,5vw,50px)', color: tk.heading, transition: 'color 0.3s' }}>
-            Harmony With Nature
+            {s2.expHeading || "Harmony With Nature"}
           </h2>
           <div className="w-10 h-px mx-auto mt-4 rounded-full"
             style={{ backgroundColor: tk.accent, opacity: 0.65, transition: 'background-color 0.3s' }} />

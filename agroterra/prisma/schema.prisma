@@ -62,6 +62,7 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+// ── MEDIA ─────────────────────────────────────────────────────────
 model MediaAsset {
   id          String   @id @default(uuid())
   title       String
@@ -69,12 +70,18 @@ model MediaAsset {
   publicId    String   // Useful for future deletions or transformations
   resourceType String   @default("image")
   createdAt   DateTime @default(now())
-  heroSlides      HeroSlide[]
-  sectionOneImages SectionOneImage[] 
+  
+  // Back-relations
+  heroSlides       HeroSlide[]
+  sectionOneImages SectionOneImage[]
+  roomSlides       RoomSlide[]
+  roomTypeHeroes   RoomType[]
+  roomImages       RoomImage[]
+  roomTabImages    RoomTab[]     
+
 }
 
-// HOME PAGE
-
+// ── HOME PAGE ─────────────────────────────────────────────────────
 model HeroSlide {
   id        String   @id @default(uuid())
   order     Int      // controls carousel order
@@ -114,4 +121,108 @@ model SectionTwo {
   subheading  String  @default("Choose from spacious suites designed...")
   expLabel    String  @default("Experiences")        // experiences sub-section
   expHeading  String  @default("Harmony With Nature")
+}
+
+
+// ── ROOMS PAGE ────────────────────────────────────────────────────
+model RoomHeroText {
+  id       String @id @default(uuid())
+  heading  String @default("OUR ROOMS")
+  subtext  String @default("Where nature, comfort, and experience meet.")
+}
+
+model RoomSlide {
+  id        String   @id @default(uuid())
+  order     Int      // controls carousel order
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  assetId   String
+  asset     MediaAsset @relation(fields: [assetId], references: [id])
+}
+
+model RoomType {
+  id            String   @id @default(uuid())
+  name          String   @unique          // e.g. "Family Suite"
+  slug          String   @unique          // e.g. "family-suite"
+  label         String?                   // Short display label
+  description   String?
+  tagline       String?                   // e.g. "Space · Warmth · Togetherness"
+
+  basePrice     Decimal                   // Starting price per night
+  sizeSqm       Int?
+  maxGuests     Int      @default(2)
+  beds          String                    // e.g. "2 Queen Beds" or "1 King Bed"
+  bathrooms     Int      @default(1)
+  order         Int      @default(0)      // For sorting on frontend
+
+  heroImageId   String?                   // Main hero image
+  heroImage     MediaAsset?  @relation(fields: [heroImageId], references: [id])
+
+  images        RoomImage[]               // Gallery images
+  rooms         Room[]                    // Actual physical rooms of this type
+  tabs          RoomTab[]
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Room {
+  id            String    @id @default(uuid())
+  roomNumber    String    @unique      // e.g. "FS-101", "JR-205"
+  roomTypeId    String
+  roomType      RoomType  @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+
+  floor         String?
+  view          String?                  // e.g. "Garden View", "Pool View"
+  isActive      Boolean   @default(true)
+  notes         String?
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model RoomImage {
+  id            String    @id @default(uuid())
+  roomTypeId    String
+  roomType      RoomType  @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+
+  assetId       String
+  asset         MediaAsset @relation(fields: [assetId], references: [id])
+
+  order         Int       @default(0)
+
+  createdAt     DateTime  @default(now())
+
+  @@unique([roomTypeId, assetId])
+}
+
+// Detail page tabs e.g. "bedroom", "bathroom" per RoomType
+model RoomTab {
+  id         String             @id @default(uuid())
+  roomTypeId String
+  roomType   RoomType           @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+  key        String             // "bedroom" | "bathroom"
+  eyebrow    String
+  title      String
+  tagline    String
+  size       String?
+  beds       String?
+  bath       String?
+  guests     String?
+  videoSrc   String?
+  order      Int                @default(0)
+  imageId    String?
+  image      MediaAsset?        @relation(fields: [imageId], references: [id])
+  paragraphs RoomTabParagraph[]
+
+  @@unique([roomTypeId, key])
+}
+
+// Paragraphs for each RoomTab
+model RoomTabParagraph {
+  id    String  @id @default(uuid())
+  tabId String
+  tab   RoomTab @relation(fields: [tabId], references: [id], onDelete: Cascade)
+  text  String
+  order Int
 }
