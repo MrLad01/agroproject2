@@ -8,6 +8,7 @@ import { MdOutlineBathtub, MdOutlinePeopleOutline } from 'react-icons/md'
 import ExperienceCard from './ExperienceCard'
 import { ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
+import { useRoomHeroData, useRoomTypes, useSiteData, useSectionTwo } from '@/app/context/SiteDataContext'
 
 // ── Theme tokens ──────────────────────────────────────────────────
 const themes = {
@@ -47,8 +48,6 @@ type RoomType = {
   images: RoomImage[]
 }
 
-type HeroText   = { id: string; heading: string; subtext: string }
-type HeroSlide  = { id: string; order: number; active: boolean; assetId: string; asset: MediaAsset }
 type S1Image    = { id: string; order: number; assetId: string; asset: MediaAsset }
 type SectionOneData = { id: string; label: string; heading: string; quote: string; images: S1Image[] }
 type SectionTwoData = { id: string; label: string; heading: string; subheading: string; expLabel: string; expHeading: string }
@@ -147,39 +146,26 @@ type Props = { dark?: boolean }
 
 const SectionTwo = ({ dark = false }: Props) => {
   const tk = dark ? themes.dark : themes.light
-
-  const [loading, setLoading]     = useState(true)
-  const [s2, setS2]               = useState<SectionTwoData>({ id: '', label: '', heading: '', subheading: '', expLabel: '', expHeading: '' })
-  const [roomTypes, setRoomTypes] = useState<RoomType[]>([])
+  const { loading } = useSiteData()
+  const [s2, setS2] = useState<SectionTwoData>({ id: '', label: '', heading: '', subheading: '', expLabel: '', expHeading: '' })
+  // const [roomTypes, setRoomTypes] = useState<RoomType[]>([])
   const [activeSlug, setActiveSlug] = useState<string>('')
 
-  const fetchAll = useCallback(async () => {
-    setLoading(true)
-    try {
-      const [s2Res, roomRes] = await Promise.all([
-        fetch('/api/home/section-two'),
-        fetch('/api/rooms/room-types'),
-      ])
-      const [s2d, roomData] = await Promise.all([s2Res.json(), roomRes.json()])
+  const sectionTwo  = useSectionTwo()
 
-      if (s2d) setS2(s2d)
+  const { roomHeroText, roomSlides } = useRoomHeroData()
+  const  roomTypes = useRoomTypes()
 
-      if (Array.isArray(roomData) && roomData.length > 0) {
-        const sorted = [...roomData].sort((a, b) => a.order - b.order)
-        setRoomTypes(sorted)
-
+  useEffect(()=> {
+    if (Array.isArray(roomTypes) && roomTypes.length > 0) {
+        const sorted = [...roomTypes].sort((a, b) => a.order - b.order)
+  
         const saved = localStorage.getItem('home-room-tab')
         const validSlug = sorted.find(rt => rt.slug === saved)?.slug ?? sorted[0].slug
         setActiveSlug(validSlug)
-      }
-    } catch {
-      // silently fall back to defaults
-    } finally {
-      setLoading(false)
     }
-  }, [])
 
-  useEffect(() => { fetchAll() }, [fetchAll])
+  }, [roomTypes])
 
   const handleTabSwitch = (slug: string, e: React.MouseEvent) => {
     e.preventDefault()
@@ -201,17 +187,17 @@ const SectionTwo = ({ dark = false }: Props) => {
       {/* Section header */}
       <div className="text-center mb-10 sm:mb-14">
         <p className="text-[10px] font-bold uppercase tracking-[0.28em] mb-3" style={{ color: tk.accent }}>
-          {s2.label || 'Explore'}
+          { sectionTwo?.label || 'Explore' }
         </p>
         <h2 className="eb-garamond-semibold leading-tight"
           style={{ fontSize: 'clamp(28px,5vw,50px)', color: tk.heading }}>
-          {s2.heading || 'A Place That Fits You'}
+          { sectionTwo?.heading || 'A Place That Fits You' }
         </h2>
         <div className="w-10 h-px mx-auto mt-4 mb-4 rounded-full"
           style={{ backgroundColor: tk.accent, opacity: 0.65 }} />
         <p className="cormorant-garamond-light-italic text-[16px] sm:text-[18px] max-w-xl mx-auto leading-relaxed"
           style={{ color: tk.body }}>
-          {s2.subheading || 'Choose from spacious suites designed to give you and your loved ones the comfort, privacy, and serenity you deserve.'}
+          { sectionTwo?.subheading || 'Choose from spacious suites designed to give you and your loved ones the comfort, privacy, and serenity you deserve.'}
         </p>
       </div>
 
@@ -274,11 +260,11 @@ const SectionTwo = ({ dark = false }: Props) => {
         style={{ borderTop: `1px solid ${tk.ruleLine}` }}>
         <div className="text-center mb-10 sm:mb-14">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] mb-3" style={{ color: tk.accent }}>
-            {s2.expLabel || 'Experiences'}
+            {sectionTwo?.expLabel || 'Experiences'}
           </p>
           <h2 className="eb-garamond-semibold leading-tight"
             style={{ fontSize: 'clamp(28px,5vw,50px)', color: tk.heading }}>
-            {s2.expHeading || 'Harmony With Nature'}
+            {sectionTwo?.expHeading || 'Harmony With Nature'}
           </h2>
           <div className="w-10 h-px mx-auto mt-4 rounded-full"
             style={{ backgroundColor: tk.accent, opacity: 0.65 }} />
