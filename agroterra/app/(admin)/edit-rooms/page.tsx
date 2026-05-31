@@ -569,7 +569,7 @@ export default function RoomsEditor() {
 
   async function deleteRT(id: string) {
     if (!confirm("Delete this room type and all its data?")) return;
-    const res = await apiCall(`/api/rooms/types/${id}`, null, "DELETE");
+    const res = await apiCall(`/api/rooms/room-types/${id}`, null, "DELETE");
     if (res) {
       setRoomTypes(rts => rts.filter(rt => rt.id !== id));
       setSelectedRTId(null);

@@ -77,7 +77,14 @@ model MediaAsset {
   roomSlides       RoomSlide[]
   roomTypeHeroes   RoomType[]
   roomImages       RoomImage[]
-  roomTabImages    RoomTab[]     
+  roomTabImages    RoomTab[]
+  
+  recipes          Recipe[]
+  diningCategories DiningCategory[]
+  topCategories    TopCategory[]
+  weeklyFeatured   WeeklyFeatured[]
+  weeklySides      WeeklySide[]
+  wellnessArticles WellnessArticle[]     
 
 }
 
@@ -225,4 +232,100 @@ model RoomTabParagraph {
   tab   RoomTab @relation(fields: [tabId], references: [id], onDelete: Cascade)
   text  String
   order Int
+}
+
+// ── DINING PAGE ───────────────────────────────────────────────────
+
+// The menu sections (Breakfast, Lunch, Dinner, Dessert & Drinks)
+model MenuSection {
+  id    String     @id @default(uuid())
+  title String     // "Breakfast", "Lunch" etc.
+  order Int        @default(0)
+  items MenuItem[]
+}
+
+// Individual items within a menu section
+model MenuItem {
+  id        String      @id @default(uuid())
+  name      String
+  desc      String
+  cat       String      // "Breakfast" | "Lunch" | "Dinner" | "Dessert" | "Drinks"
+  order     Int         @default(0)
+  sectionId String
+  section   MenuSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+}
+
+// ── RECIPES ───────────────────────────────────────────────────────
+
+model Recipe {
+  id           String     @id @default(uuid())
+  label        String     // "MAIN COURSE", "BREAKFAST" etc.
+  title        String
+  desc         String
+  time         String     // "90 min"
+  cat          String     // "Main course" | "Soups & stews" | "Breakfast" etc.
+  gradientFrom String     // "#1a3a1a"
+  gradientTo   String     // "#2d5a1a"
+  order        Int        @default(0)
+  isFeatured   Boolean    @default(false)  // marks the hero featured recipe
+  assetId      String?
+  asset        MediaAsset? @relation(fields: [assetId], references: [id])
+  createdAt    DateTime   @default(now())
+}
+
+// ── DINING CATEGORIES ─────────────────────────────────────────────
+
+// The 4 large category cards (Dinner, Breakfast, Dessert, Drinks)
+model DiningCategory {
+  id      String      @id @default(uuid())
+  label   String      // "DINNER", "BREAKFAST" etc.
+  title   String      // "Really Quick Traditional Dishes"
+  order   Int         @default(0)
+  assetId String?
+  asset   MediaAsset? @relation(fields: [assetId], references: [id])
+}
+
+// The 5 top category chips (BREAKFAST, DESSERT, LUNCH, APPETIZER, DINNER)
+model TopCategory {
+  id      String      @id @default(uuid())
+  label   String      // "BREAKFAST"
+  order   Int         @default(0)
+  assetId String?
+  asset   MediaAsset? @relation(fields: [assetId], references: [id])
+}
+
+// ── WEEKLY FEATURED ───────────────────────────────────────────────
+
+// The single weekly hero card
+model WeeklyFeatured {
+  id      String      @id @default(uuid())
+  label   String      @default("BREAKFAST")
+  title   String      @default("Have The Best Delicacies At Your Door Step")
+  assetId String?
+  asset   MediaAsset? @relation(fields: [assetId], references: [id])
+}
+
+// The 3 weekly side cards
+model WeeklySide {
+  id      String      @id @default(uuid())
+  label   String
+  title   String
+  order   Int         @default(0)
+  assetId String?
+  asset   MediaAsset? @relation(fields: [assetId], references: [id])
+}
+
+// ── WELLNESS ARTICLES ─────────────────────────────────────────────
+
+model WellnessArticle {
+  id        String      @id @default(uuid())
+  cat       String      // "Nutrition" | "Wellness" | "Detox" | "Immunity" | "Energy" | "Lifestyle"
+  title     String
+  excerpt   String
+  readTime  String      // "5 min read"
+  isHero    Boolean     @default(false)  // the large featured article
+  order     Int         @default(0)
+  assetId   String?
+  asset     MediaAsset? @relation(fields: [assetId], references: [id])
+  createdAt DateTime    @default(now())
 }

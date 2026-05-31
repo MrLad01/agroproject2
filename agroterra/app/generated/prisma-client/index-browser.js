@@ -279,6 +279,78 @@ exports.Prisma.RoomTabParagraphScalarFieldEnum = {
   order: 'order'
 };
 
+exports.Prisma.MenuSectionScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  order: 'order'
+};
+
+exports.Prisma.MenuItemScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  desc: 'desc',
+  cat: 'cat',
+  order: 'order',
+  sectionId: 'sectionId'
+};
+
+exports.Prisma.RecipeScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  title: 'title',
+  desc: 'desc',
+  time: 'time',
+  cat: 'cat',
+  gradientFrom: 'gradientFrom',
+  gradientTo: 'gradientTo',
+  order: 'order',
+  isFeatured: 'isFeatured',
+  assetId: 'assetId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.DiningCategoryScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  title: 'title',
+  order: 'order',
+  assetId: 'assetId'
+};
+
+exports.Prisma.TopCategoryScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  order: 'order',
+  assetId: 'assetId'
+};
+
+exports.Prisma.WeeklyFeaturedScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  title: 'title',
+  assetId: 'assetId'
+};
+
+exports.Prisma.WeeklySideScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  title: 'title',
+  order: 'order',
+  assetId: 'assetId'
+};
+
+exports.Prisma.WellnessArticleScalarFieldEnum = {
+  id: 'id',
+  cat: 'cat',
+  title: 'title',
+  excerpt: 'excerpt',
+  readTime: 'readTime',
+  isHero: 'isHero',
+  order: 'order',
+  assetId: 'assetId',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -312,7 +384,15 @@ exports.Prisma.ModelName = {
   Room: 'Room',
   RoomImage: 'RoomImage',
   RoomTab: 'RoomTab',
-  RoomTabParagraph: 'RoomTabParagraph'
+  RoomTabParagraph: 'RoomTabParagraph',
+  MenuSection: 'MenuSection',
+  MenuItem: 'MenuItem',
+  Recipe: 'Recipe',
+  DiningCategory: 'DiningCategory',
+  TopCategory: 'TopCategory',
+  WeeklyFeatured: 'WeeklyFeatured',
+  WeeklySide: 'WeeklySide',
+  WellnessArticle: 'WellnessArticle'
 };
 
 /**

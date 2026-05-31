@@ -98,6 +98,46 @@ export type RoomTab = $Result.DefaultSelection<Prisma.$RoomTabPayload>
  * 
  */
 export type RoomTabParagraph = $Result.DefaultSelection<Prisma.$RoomTabParagraphPayload>
+/**
+ * Model MenuSection
+ * 
+ */
+export type MenuSection = $Result.DefaultSelection<Prisma.$MenuSectionPayload>
+/**
+ * Model MenuItem
+ * 
+ */
+export type MenuItem = $Result.DefaultSelection<Prisma.$MenuItemPayload>
+/**
+ * Model Recipe
+ * 
+ */
+export type Recipe = $Result.DefaultSelection<Prisma.$RecipePayload>
+/**
+ * Model DiningCategory
+ * 
+ */
+export type DiningCategory = $Result.DefaultSelection<Prisma.$DiningCategoryPayload>
+/**
+ * Model TopCategory
+ * 
+ */
+export type TopCategory = $Result.DefaultSelection<Prisma.$TopCategoryPayload>
+/**
+ * Model WeeklyFeatured
+ * 
+ */
+export type WeeklyFeatured = $Result.DefaultSelection<Prisma.$WeeklyFeaturedPayload>
+/**
+ * Model WeeklySide
+ * 
+ */
+export type WeeklySide = $Result.DefaultSelection<Prisma.$WeeklySidePayload>
+/**
+ * Model WellnessArticle
+ * 
+ */
+export type WellnessArticle = $Result.DefaultSelection<Prisma.$WellnessArticlePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -389,6 +429,86 @@ export class PrismaClient<
     * ```
     */
   get roomTabParagraph(): Prisma.RoomTabParagraphDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.menuSection`: Exposes CRUD operations for the **MenuSection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MenuSections
+    * const menuSections = await prisma.menuSection.findMany()
+    * ```
+    */
+  get menuSection(): Prisma.MenuSectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.menuItem`: Exposes CRUD operations for the **MenuItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MenuItems
+    * const menuItems = await prisma.menuItem.findMany()
+    * ```
+    */
+  get menuItem(): Prisma.MenuItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.recipe`: Exposes CRUD operations for the **Recipe** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Recipes
+    * const recipes = await prisma.recipe.findMany()
+    * ```
+    */
+  get recipe(): Prisma.RecipeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.diningCategory`: Exposes CRUD operations for the **DiningCategory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DiningCategories
+    * const diningCategories = await prisma.diningCategory.findMany()
+    * ```
+    */
+  get diningCategory(): Prisma.DiningCategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.topCategory`: Exposes CRUD operations for the **TopCategory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TopCategories
+    * const topCategories = await prisma.topCategory.findMany()
+    * ```
+    */
+  get topCategory(): Prisma.TopCategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.weeklyFeatured`: Exposes CRUD operations for the **WeeklyFeatured** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WeeklyFeatureds
+    * const weeklyFeatureds = await prisma.weeklyFeatured.findMany()
+    * ```
+    */
+  get weeklyFeatured(): Prisma.WeeklyFeaturedDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.weeklySide`: Exposes CRUD operations for the **WeeklySide** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WeeklySides
+    * const weeklySides = await prisma.weeklySide.findMany()
+    * ```
+    */
+  get weeklySide(): Prisma.WeeklySideDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.wellnessArticle`: Exposes CRUD operations for the **WellnessArticle** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WellnessArticles
+    * const wellnessArticles = await prisma.wellnessArticle.findMany()
+    * ```
+    */
+  get wellnessArticle(): Prisma.WellnessArticleDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -839,7 +959,15 @@ export namespace Prisma {
     Room: 'Room',
     RoomImage: 'RoomImage',
     RoomTab: 'RoomTab',
-    RoomTabParagraph: 'RoomTabParagraph'
+    RoomTabParagraph: 'RoomTabParagraph',
+    MenuSection: 'MenuSection',
+    MenuItem: 'MenuItem',
+    Recipe: 'Recipe',
+    DiningCategory: 'DiningCategory',
+    TopCategory: 'TopCategory',
+    WeeklyFeatured: 'WeeklyFeatured',
+    WeeklySide: 'WeeklySide',
+    WellnessArticle: 'WellnessArticle'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -855,7 +983,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "verificationToken" | "mediaAsset" | "heroSlide" | "heroText" | "sectionOne" | "sectionOneImage" | "sectionTwo" | "roomHeroText" | "roomSlide" | "roomType" | "room" | "roomImage" | "roomTab" | "roomTabParagraph"
+      modelProps: "user" | "account" | "session" | "verificationToken" | "mediaAsset" | "heroSlide" | "heroText" | "sectionOne" | "sectionOneImage" | "sectionTwo" | "roomHeroText" | "roomSlide" | "roomType" | "room" | "roomImage" | "roomTab" | "roomTabParagraph" | "menuSection" | "menuItem" | "recipe" | "diningCategory" | "topCategory" | "weeklyFeatured" | "weeklySide" | "wellnessArticle"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2117,6 +2245,598 @@ export namespace Prisma {
           }
         }
       }
+      MenuSection: {
+        payload: Prisma.$MenuSectionPayload<ExtArgs>
+        fields: Prisma.MenuSectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MenuSectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuSectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MenuSectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuSectionPayload>
+          }
+          findFirst: {
+            args: Prisma.MenuSectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuSectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MenuSectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuSectionPayload>
+          }
+          findMany: {
+            args: Prisma.MenuSectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuSectionPayload>[]
+          }
+          create: {
+            args: Prisma.MenuSectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuSectionPayload>
+          }
+          createMany: {
+            args: Prisma.MenuSectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MenuSectionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuSectionPayload>[]
+          }
+          delete: {
+            args: Prisma.MenuSectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuSectionPayload>
+          }
+          update: {
+            args: Prisma.MenuSectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuSectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.MenuSectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MenuSectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MenuSectionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuSectionPayload>[]
+          }
+          upsert: {
+            args: Prisma.MenuSectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuSectionPayload>
+          }
+          aggregate: {
+            args: Prisma.MenuSectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMenuSection>
+          }
+          groupBy: {
+            args: Prisma.MenuSectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MenuSectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MenuSectionCountArgs<ExtArgs>
+            result: $Utils.Optional<MenuSectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      MenuItem: {
+        payload: Prisma.$MenuItemPayload<ExtArgs>
+        fields: Prisma.MenuItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MenuItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MenuItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuItemPayload>
+          }
+          findFirst: {
+            args: Prisma.MenuItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MenuItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuItemPayload>
+          }
+          findMany: {
+            args: Prisma.MenuItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuItemPayload>[]
+          }
+          create: {
+            args: Prisma.MenuItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuItemPayload>
+          }
+          createMany: {
+            args: Prisma.MenuItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MenuItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuItemPayload>[]
+          }
+          delete: {
+            args: Prisma.MenuItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuItemPayload>
+          }
+          update: {
+            args: Prisma.MenuItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.MenuItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MenuItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MenuItemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuItemPayload>[]
+          }
+          upsert: {
+            args: Prisma.MenuItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuItemPayload>
+          }
+          aggregate: {
+            args: Prisma.MenuItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMenuItem>
+          }
+          groupBy: {
+            args: Prisma.MenuItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MenuItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MenuItemCountArgs<ExtArgs>
+            result: $Utils.Optional<MenuItemCountAggregateOutputType> | number
+          }
+        }
+      }
+      Recipe: {
+        payload: Prisma.$RecipePayload<ExtArgs>
+        fields: Prisma.RecipeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RecipeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecipePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RecipeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecipePayload>
+          }
+          findFirst: {
+            args: Prisma.RecipeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecipePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RecipeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecipePayload>
+          }
+          findMany: {
+            args: Prisma.RecipeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecipePayload>[]
+          }
+          create: {
+            args: Prisma.RecipeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecipePayload>
+          }
+          createMany: {
+            args: Prisma.RecipeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RecipeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecipePayload>[]
+          }
+          delete: {
+            args: Prisma.RecipeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecipePayload>
+          }
+          update: {
+            args: Prisma.RecipeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecipePayload>
+          }
+          deleteMany: {
+            args: Prisma.RecipeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RecipeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RecipeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecipePayload>[]
+          }
+          upsert: {
+            args: Prisma.RecipeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecipePayload>
+          }
+          aggregate: {
+            args: Prisma.RecipeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRecipe>
+          }
+          groupBy: {
+            args: Prisma.RecipeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RecipeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RecipeCountArgs<ExtArgs>
+            result: $Utils.Optional<RecipeCountAggregateOutputType> | number
+          }
+        }
+      }
+      DiningCategory: {
+        payload: Prisma.$DiningCategoryPayload<ExtArgs>
+        fields: Prisma.DiningCategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DiningCategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiningCategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DiningCategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiningCategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.DiningCategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiningCategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DiningCategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiningCategoryPayload>
+          }
+          findMany: {
+            args: Prisma.DiningCategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiningCategoryPayload>[]
+          }
+          create: {
+            args: Prisma.DiningCategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiningCategoryPayload>
+          }
+          createMany: {
+            args: Prisma.DiningCategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DiningCategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiningCategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.DiningCategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiningCategoryPayload>
+          }
+          update: {
+            args: Prisma.DiningCategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiningCategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.DiningCategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DiningCategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DiningCategoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiningCategoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.DiningCategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiningCategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.DiningCategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDiningCategory>
+          }
+          groupBy: {
+            args: Prisma.DiningCategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DiningCategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DiningCategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<DiningCategoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      TopCategory: {
+        payload: Prisma.$TopCategoryPayload<ExtArgs>
+        fields: Prisma.TopCategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TopCategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TopCategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TopCategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TopCategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.TopCategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TopCategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TopCategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TopCategoryPayload>
+          }
+          findMany: {
+            args: Prisma.TopCategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TopCategoryPayload>[]
+          }
+          create: {
+            args: Prisma.TopCategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TopCategoryPayload>
+          }
+          createMany: {
+            args: Prisma.TopCategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TopCategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TopCategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.TopCategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TopCategoryPayload>
+          }
+          update: {
+            args: Prisma.TopCategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TopCategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.TopCategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TopCategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TopCategoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TopCategoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.TopCategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TopCategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.TopCategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTopCategory>
+          }
+          groupBy: {
+            args: Prisma.TopCategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TopCategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TopCategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<TopCategoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      WeeklyFeatured: {
+        payload: Prisma.$WeeklyFeaturedPayload<ExtArgs>
+        fields: Prisma.WeeklyFeaturedFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WeeklyFeaturedFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyFeaturedPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WeeklyFeaturedFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyFeaturedPayload>
+          }
+          findFirst: {
+            args: Prisma.WeeklyFeaturedFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyFeaturedPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WeeklyFeaturedFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyFeaturedPayload>
+          }
+          findMany: {
+            args: Prisma.WeeklyFeaturedFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyFeaturedPayload>[]
+          }
+          create: {
+            args: Prisma.WeeklyFeaturedCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyFeaturedPayload>
+          }
+          createMany: {
+            args: Prisma.WeeklyFeaturedCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WeeklyFeaturedCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyFeaturedPayload>[]
+          }
+          delete: {
+            args: Prisma.WeeklyFeaturedDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyFeaturedPayload>
+          }
+          update: {
+            args: Prisma.WeeklyFeaturedUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyFeaturedPayload>
+          }
+          deleteMany: {
+            args: Prisma.WeeklyFeaturedDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WeeklyFeaturedUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WeeklyFeaturedUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyFeaturedPayload>[]
+          }
+          upsert: {
+            args: Prisma.WeeklyFeaturedUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyFeaturedPayload>
+          }
+          aggregate: {
+            args: Prisma.WeeklyFeaturedAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWeeklyFeatured>
+          }
+          groupBy: {
+            args: Prisma.WeeklyFeaturedGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WeeklyFeaturedGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WeeklyFeaturedCountArgs<ExtArgs>
+            result: $Utils.Optional<WeeklyFeaturedCountAggregateOutputType> | number
+          }
+        }
+      }
+      WeeklySide: {
+        payload: Prisma.$WeeklySidePayload<ExtArgs>
+        fields: Prisma.WeeklySideFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WeeklySideFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklySidePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WeeklySideFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklySidePayload>
+          }
+          findFirst: {
+            args: Prisma.WeeklySideFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklySidePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WeeklySideFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklySidePayload>
+          }
+          findMany: {
+            args: Prisma.WeeklySideFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklySidePayload>[]
+          }
+          create: {
+            args: Prisma.WeeklySideCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklySidePayload>
+          }
+          createMany: {
+            args: Prisma.WeeklySideCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WeeklySideCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklySidePayload>[]
+          }
+          delete: {
+            args: Prisma.WeeklySideDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklySidePayload>
+          }
+          update: {
+            args: Prisma.WeeklySideUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklySidePayload>
+          }
+          deleteMany: {
+            args: Prisma.WeeklySideDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WeeklySideUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WeeklySideUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklySidePayload>[]
+          }
+          upsert: {
+            args: Prisma.WeeklySideUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklySidePayload>
+          }
+          aggregate: {
+            args: Prisma.WeeklySideAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWeeklySide>
+          }
+          groupBy: {
+            args: Prisma.WeeklySideGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WeeklySideGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WeeklySideCountArgs<ExtArgs>
+            result: $Utils.Optional<WeeklySideCountAggregateOutputType> | number
+          }
+        }
+      }
+      WellnessArticle: {
+        payload: Prisma.$WellnessArticlePayload<ExtArgs>
+        fields: Prisma.WellnessArticleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WellnessArticleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WellnessArticlePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WellnessArticleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WellnessArticlePayload>
+          }
+          findFirst: {
+            args: Prisma.WellnessArticleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WellnessArticlePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WellnessArticleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WellnessArticlePayload>
+          }
+          findMany: {
+            args: Prisma.WellnessArticleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WellnessArticlePayload>[]
+          }
+          create: {
+            args: Prisma.WellnessArticleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WellnessArticlePayload>
+          }
+          createMany: {
+            args: Prisma.WellnessArticleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WellnessArticleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WellnessArticlePayload>[]
+          }
+          delete: {
+            args: Prisma.WellnessArticleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WellnessArticlePayload>
+          }
+          update: {
+            args: Prisma.WellnessArticleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WellnessArticlePayload>
+          }
+          deleteMany: {
+            args: Prisma.WellnessArticleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WellnessArticleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WellnessArticleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WellnessArticlePayload>[]
+          }
+          upsert: {
+            args: Prisma.WellnessArticleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WellnessArticlePayload>
+          }
+          aggregate: {
+            args: Prisma.WellnessArticleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWellnessArticle>
+          }
+          groupBy: {
+            args: Prisma.WellnessArticleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WellnessArticleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WellnessArticleCountArgs<ExtArgs>
+            result: $Utils.Optional<WellnessArticleCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2242,6 +2962,14 @@ export namespace Prisma {
     roomImage?: RoomImageOmit
     roomTab?: RoomTabOmit
     roomTabParagraph?: RoomTabParagraphOmit
+    menuSection?: MenuSectionOmit
+    menuItem?: MenuItemOmit
+    recipe?: RecipeOmit
+    diningCategory?: DiningCategoryOmit
+    topCategory?: TopCategoryOmit
+    weeklyFeatured?: WeeklyFeaturedOmit
+    weeklySide?: WeeklySideOmit
+    wellnessArticle?: WellnessArticleOmit
   }
 
   /* Types for Logging */
@@ -2368,6 +3096,12 @@ export namespace Prisma {
     roomTypeHeroes: number
     roomImages: number
     roomTabImages: number
+    recipes: number
+    diningCategories: number
+    topCategories: number
+    weeklyFeatured: number
+    weeklySides: number
+    wellnessArticles: number
   }
 
   export type MediaAssetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2377,6 +3111,12 @@ export namespace Prisma {
     roomTypeHeroes?: boolean | MediaAssetCountOutputTypeCountRoomTypeHeroesArgs
     roomImages?: boolean | MediaAssetCountOutputTypeCountRoomImagesArgs
     roomTabImages?: boolean | MediaAssetCountOutputTypeCountRoomTabImagesArgs
+    recipes?: boolean | MediaAssetCountOutputTypeCountRecipesArgs
+    diningCategories?: boolean | MediaAssetCountOutputTypeCountDiningCategoriesArgs
+    topCategories?: boolean | MediaAssetCountOutputTypeCountTopCategoriesArgs
+    weeklyFeatured?: boolean | MediaAssetCountOutputTypeCountWeeklyFeaturedArgs
+    weeklySides?: boolean | MediaAssetCountOutputTypeCountWeeklySidesArgs
+    wellnessArticles?: boolean | MediaAssetCountOutputTypeCountWellnessArticlesArgs
   }
 
   // Custom InputTypes
@@ -2430,6 +3170,48 @@ export namespace Prisma {
    */
   export type MediaAssetCountOutputTypeCountRoomTabImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RoomTabWhereInput
+  }
+
+  /**
+   * MediaAssetCountOutputType without action
+   */
+  export type MediaAssetCountOutputTypeCountRecipesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecipeWhereInput
+  }
+
+  /**
+   * MediaAssetCountOutputType without action
+   */
+  export type MediaAssetCountOutputTypeCountDiningCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiningCategoryWhereInput
+  }
+
+  /**
+   * MediaAssetCountOutputType without action
+   */
+  export type MediaAssetCountOutputTypeCountTopCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TopCategoryWhereInput
+  }
+
+  /**
+   * MediaAssetCountOutputType without action
+   */
+  export type MediaAssetCountOutputTypeCountWeeklyFeaturedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WeeklyFeaturedWhereInput
+  }
+
+  /**
+   * MediaAssetCountOutputType without action
+   */
+  export type MediaAssetCountOutputTypeCountWeeklySidesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WeeklySideWhereInput
+  }
+
+  /**
+   * MediaAssetCountOutputType without action
+   */
+  export type MediaAssetCountOutputTypeCountWellnessArticlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WellnessArticleWhereInput
   }
 
 
@@ -2541,6 +3323,37 @@ export namespace Prisma {
    */
   export type RoomTabCountOutputTypeCountParagraphsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RoomTabParagraphWhereInput
+  }
+
+
+  /**
+   * Count Type MenuSectionCountOutputType
+   */
+
+  export type MenuSectionCountOutputType = {
+    items: number
+  }
+
+  export type MenuSectionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | MenuSectionCountOutputTypeCountItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MenuSectionCountOutputType without action
+   */
+  export type MenuSectionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSectionCountOutputType
+     */
+    select?: MenuSectionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MenuSectionCountOutputType without action
+   */
+  export type MenuSectionCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MenuItemWhereInput
   }
 
 
@@ -7067,6 +7880,12 @@ export namespace Prisma {
     roomTypeHeroes?: boolean | MediaAsset$roomTypeHeroesArgs<ExtArgs>
     roomImages?: boolean | MediaAsset$roomImagesArgs<ExtArgs>
     roomTabImages?: boolean | MediaAsset$roomTabImagesArgs<ExtArgs>
+    recipes?: boolean | MediaAsset$recipesArgs<ExtArgs>
+    diningCategories?: boolean | MediaAsset$diningCategoriesArgs<ExtArgs>
+    topCategories?: boolean | MediaAsset$topCategoriesArgs<ExtArgs>
+    weeklyFeatured?: boolean | MediaAsset$weeklyFeaturedArgs<ExtArgs>
+    weeklySides?: boolean | MediaAsset$weeklySidesArgs<ExtArgs>
+    wellnessArticles?: boolean | MediaAsset$wellnessArticlesArgs<ExtArgs>
     _count?: boolean | MediaAssetCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["mediaAsset"]>
 
@@ -7105,6 +7924,12 @@ export namespace Prisma {
     roomTypeHeroes?: boolean | MediaAsset$roomTypeHeroesArgs<ExtArgs>
     roomImages?: boolean | MediaAsset$roomImagesArgs<ExtArgs>
     roomTabImages?: boolean | MediaAsset$roomTabImagesArgs<ExtArgs>
+    recipes?: boolean | MediaAsset$recipesArgs<ExtArgs>
+    diningCategories?: boolean | MediaAsset$diningCategoriesArgs<ExtArgs>
+    topCategories?: boolean | MediaAsset$topCategoriesArgs<ExtArgs>
+    weeklyFeatured?: boolean | MediaAsset$weeklyFeaturedArgs<ExtArgs>
+    weeklySides?: boolean | MediaAsset$weeklySidesArgs<ExtArgs>
+    wellnessArticles?: boolean | MediaAsset$wellnessArticlesArgs<ExtArgs>
     _count?: boolean | MediaAssetCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type MediaAssetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7119,6 +7944,12 @@ export namespace Prisma {
       roomTypeHeroes: Prisma.$RoomTypePayload<ExtArgs>[]
       roomImages: Prisma.$RoomImagePayload<ExtArgs>[]
       roomTabImages: Prisma.$RoomTabPayload<ExtArgs>[]
+      recipes: Prisma.$RecipePayload<ExtArgs>[]
+      diningCategories: Prisma.$DiningCategoryPayload<ExtArgs>[]
+      topCategories: Prisma.$TopCategoryPayload<ExtArgs>[]
+      weeklyFeatured: Prisma.$WeeklyFeaturedPayload<ExtArgs>[]
+      weeklySides: Prisma.$WeeklySidePayload<ExtArgs>[]
+      wellnessArticles: Prisma.$WellnessArticlePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7527,6 +8358,12 @@ export namespace Prisma {
     roomTypeHeroes<T extends MediaAsset$roomTypeHeroesArgs<ExtArgs> = {}>(args?: Subset<T, MediaAsset$roomTypeHeroesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoomTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     roomImages<T extends MediaAsset$roomImagesArgs<ExtArgs> = {}>(args?: Subset<T, MediaAsset$roomImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoomImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     roomTabImages<T extends MediaAsset$roomTabImagesArgs<ExtArgs> = {}>(args?: Subset<T, MediaAsset$roomTabImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoomTabPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    recipes<T extends MediaAsset$recipesArgs<ExtArgs> = {}>(args?: Subset<T, MediaAsset$recipesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    diningCategories<T extends MediaAsset$diningCategoriesArgs<ExtArgs> = {}>(args?: Subset<T, MediaAsset$diningCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    topCategories<T extends MediaAsset$topCategoriesArgs<ExtArgs> = {}>(args?: Subset<T, MediaAsset$topCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    weeklyFeatured<T extends MediaAsset$weeklyFeaturedArgs<ExtArgs> = {}>(args?: Subset<T, MediaAsset$weeklyFeaturedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    weeklySides<T extends MediaAsset$weeklySidesArgs<ExtArgs> = {}>(args?: Subset<T, MediaAsset$weeklySidesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    wellnessArticles<T extends MediaAsset$wellnessArticlesArgs<ExtArgs> = {}>(args?: Subset<T, MediaAsset$wellnessArticlesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8096,6 +8933,150 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: RoomTabScalarFieldEnum | RoomTabScalarFieldEnum[]
+  }
+
+  /**
+   * MediaAsset.recipes
+   */
+  export type MediaAsset$recipesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeInclude<ExtArgs> | null
+    where?: RecipeWhereInput
+    orderBy?: RecipeOrderByWithRelationInput | RecipeOrderByWithRelationInput[]
+    cursor?: RecipeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RecipeScalarFieldEnum | RecipeScalarFieldEnum[]
+  }
+
+  /**
+   * MediaAsset.diningCategories
+   */
+  export type MediaAsset$diningCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryInclude<ExtArgs> | null
+    where?: DiningCategoryWhereInput
+    orderBy?: DiningCategoryOrderByWithRelationInput | DiningCategoryOrderByWithRelationInput[]
+    cursor?: DiningCategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DiningCategoryScalarFieldEnum | DiningCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * MediaAsset.topCategories
+   */
+  export type MediaAsset$topCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryInclude<ExtArgs> | null
+    where?: TopCategoryWhereInput
+    orderBy?: TopCategoryOrderByWithRelationInput | TopCategoryOrderByWithRelationInput[]
+    cursor?: TopCategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TopCategoryScalarFieldEnum | TopCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * MediaAsset.weeklyFeatured
+   */
+  export type MediaAsset$weeklyFeaturedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedInclude<ExtArgs> | null
+    where?: WeeklyFeaturedWhereInput
+    orderBy?: WeeklyFeaturedOrderByWithRelationInput | WeeklyFeaturedOrderByWithRelationInput[]
+    cursor?: WeeklyFeaturedWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WeeklyFeaturedScalarFieldEnum | WeeklyFeaturedScalarFieldEnum[]
+  }
+
+  /**
+   * MediaAsset.weeklySides
+   */
+  export type MediaAsset$weeklySidesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideInclude<ExtArgs> | null
+    where?: WeeklySideWhereInput
+    orderBy?: WeeklySideOrderByWithRelationInput | WeeklySideOrderByWithRelationInput[]
+    cursor?: WeeklySideWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WeeklySideScalarFieldEnum | WeeklySideScalarFieldEnum[]
+  }
+
+  /**
+   * MediaAsset.wellnessArticles
+   */
+  export type MediaAsset$wellnessArticlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleInclude<ExtArgs> | null
+    where?: WellnessArticleWhereInput
+    orderBy?: WellnessArticleOrderByWithRelationInput | WellnessArticleOrderByWithRelationInput[]
+    cursor?: WellnessArticleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WellnessArticleScalarFieldEnum | WellnessArticleScalarFieldEnum[]
   }
 
   /**
@@ -21337,6 +22318,8978 @@ export namespace Prisma {
 
 
   /**
+   * Model MenuSection
+   */
+
+  export type AggregateMenuSection = {
+    _count: MenuSectionCountAggregateOutputType | null
+    _avg: MenuSectionAvgAggregateOutputType | null
+    _sum: MenuSectionSumAggregateOutputType | null
+    _min: MenuSectionMinAggregateOutputType | null
+    _max: MenuSectionMaxAggregateOutputType | null
+  }
+
+  export type MenuSectionAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type MenuSectionSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type MenuSectionMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    order: number | null
+  }
+
+  export type MenuSectionMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    order: number | null
+  }
+
+  export type MenuSectionCountAggregateOutputType = {
+    id: number
+    title: number
+    order: number
+    _all: number
+  }
+
+
+  export type MenuSectionAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type MenuSectionSumAggregateInputType = {
+    order?: true
+  }
+
+  export type MenuSectionMinAggregateInputType = {
+    id?: true
+    title?: true
+    order?: true
+  }
+
+  export type MenuSectionMaxAggregateInputType = {
+    id?: true
+    title?: true
+    order?: true
+  }
+
+  export type MenuSectionCountAggregateInputType = {
+    id?: true
+    title?: true
+    order?: true
+    _all?: true
+  }
+
+  export type MenuSectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MenuSection to aggregate.
+     */
+    where?: MenuSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MenuSections to fetch.
+     */
+    orderBy?: MenuSectionOrderByWithRelationInput | MenuSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MenuSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MenuSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MenuSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MenuSections
+    **/
+    _count?: true | MenuSectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MenuSectionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MenuSectionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MenuSectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MenuSectionMaxAggregateInputType
+  }
+
+  export type GetMenuSectionAggregateType<T extends MenuSectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateMenuSection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMenuSection[P]>
+      : GetScalarType<T[P], AggregateMenuSection[P]>
+  }
+
+
+
+
+  export type MenuSectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MenuSectionWhereInput
+    orderBy?: MenuSectionOrderByWithAggregationInput | MenuSectionOrderByWithAggregationInput[]
+    by: MenuSectionScalarFieldEnum[] | MenuSectionScalarFieldEnum
+    having?: MenuSectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MenuSectionCountAggregateInputType | true
+    _avg?: MenuSectionAvgAggregateInputType
+    _sum?: MenuSectionSumAggregateInputType
+    _min?: MenuSectionMinAggregateInputType
+    _max?: MenuSectionMaxAggregateInputType
+  }
+
+  export type MenuSectionGroupByOutputType = {
+    id: string
+    title: string
+    order: number
+    _count: MenuSectionCountAggregateOutputType | null
+    _avg: MenuSectionAvgAggregateOutputType | null
+    _sum: MenuSectionSumAggregateOutputType | null
+    _min: MenuSectionMinAggregateOutputType | null
+    _max: MenuSectionMaxAggregateOutputType | null
+  }
+
+  type GetMenuSectionGroupByPayload<T extends MenuSectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MenuSectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MenuSectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MenuSectionGroupByOutputType[P]>
+            : GetScalarType<T[P], MenuSectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MenuSectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    order?: boolean
+    items?: boolean | MenuSection$itemsArgs<ExtArgs>
+    _count?: boolean | MenuSectionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["menuSection"]>
+
+  export type MenuSectionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    order?: boolean
+  }, ExtArgs["result"]["menuSection"]>
+
+  export type MenuSectionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    order?: boolean
+  }, ExtArgs["result"]["menuSection"]>
+
+  export type MenuSectionSelectScalar = {
+    id?: boolean
+    title?: boolean
+    order?: boolean
+  }
+
+  export type MenuSectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "order", ExtArgs["result"]["menuSection"]>
+  export type MenuSectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | MenuSection$itemsArgs<ExtArgs>
+    _count?: boolean | MenuSectionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MenuSectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type MenuSectionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $MenuSectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MenuSection"
+    objects: {
+      items: Prisma.$MenuItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      order: number
+    }, ExtArgs["result"]["menuSection"]>
+    composites: {}
+  }
+
+  type MenuSectionGetPayload<S extends boolean | null | undefined | MenuSectionDefaultArgs> = $Result.GetResult<Prisma.$MenuSectionPayload, S>
+
+  type MenuSectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MenuSectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MenuSectionCountAggregateInputType | true
+    }
+
+  export interface MenuSectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MenuSection'], meta: { name: 'MenuSection' } }
+    /**
+     * Find zero or one MenuSection that matches the filter.
+     * @param {MenuSectionFindUniqueArgs} args - Arguments to find a MenuSection
+     * @example
+     * // Get one MenuSection
+     * const menuSection = await prisma.menuSection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MenuSectionFindUniqueArgs>(args: SelectSubset<T, MenuSectionFindUniqueArgs<ExtArgs>>): Prisma__MenuSectionClient<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MenuSection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MenuSectionFindUniqueOrThrowArgs} args - Arguments to find a MenuSection
+     * @example
+     * // Get one MenuSection
+     * const menuSection = await prisma.menuSection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MenuSectionFindUniqueOrThrowArgs>(args: SelectSubset<T, MenuSectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MenuSectionClient<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MenuSection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuSectionFindFirstArgs} args - Arguments to find a MenuSection
+     * @example
+     * // Get one MenuSection
+     * const menuSection = await prisma.menuSection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MenuSectionFindFirstArgs>(args?: SelectSubset<T, MenuSectionFindFirstArgs<ExtArgs>>): Prisma__MenuSectionClient<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MenuSection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuSectionFindFirstOrThrowArgs} args - Arguments to find a MenuSection
+     * @example
+     * // Get one MenuSection
+     * const menuSection = await prisma.menuSection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MenuSectionFindFirstOrThrowArgs>(args?: SelectSubset<T, MenuSectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__MenuSectionClient<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MenuSections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuSectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MenuSections
+     * const menuSections = await prisma.menuSection.findMany()
+     * 
+     * // Get first 10 MenuSections
+     * const menuSections = await prisma.menuSection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const menuSectionWithIdOnly = await prisma.menuSection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MenuSectionFindManyArgs>(args?: SelectSubset<T, MenuSectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MenuSection.
+     * @param {MenuSectionCreateArgs} args - Arguments to create a MenuSection.
+     * @example
+     * // Create one MenuSection
+     * const MenuSection = await prisma.menuSection.create({
+     *   data: {
+     *     // ... data to create a MenuSection
+     *   }
+     * })
+     * 
+     */
+    create<T extends MenuSectionCreateArgs>(args: SelectSubset<T, MenuSectionCreateArgs<ExtArgs>>): Prisma__MenuSectionClient<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MenuSections.
+     * @param {MenuSectionCreateManyArgs} args - Arguments to create many MenuSections.
+     * @example
+     * // Create many MenuSections
+     * const menuSection = await prisma.menuSection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MenuSectionCreateManyArgs>(args?: SelectSubset<T, MenuSectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MenuSections and returns the data saved in the database.
+     * @param {MenuSectionCreateManyAndReturnArgs} args - Arguments to create many MenuSections.
+     * @example
+     * // Create many MenuSections
+     * const menuSection = await prisma.menuSection.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MenuSections and only return the `id`
+     * const menuSectionWithIdOnly = await prisma.menuSection.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MenuSectionCreateManyAndReturnArgs>(args?: SelectSubset<T, MenuSectionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MenuSection.
+     * @param {MenuSectionDeleteArgs} args - Arguments to delete one MenuSection.
+     * @example
+     * // Delete one MenuSection
+     * const MenuSection = await prisma.menuSection.delete({
+     *   where: {
+     *     // ... filter to delete one MenuSection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MenuSectionDeleteArgs>(args: SelectSubset<T, MenuSectionDeleteArgs<ExtArgs>>): Prisma__MenuSectionClient<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MenuSection.
+     * @param {MenuSectionUpdateArgs} args - Arguments to update one MenuSection.
+     * @example
+     * // Update one MenuSection
+     * const menuSection = await prisma.menuSection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MenuSectionUpdateArgs>(args: SelectSubset<T, MenuSectionUpdateArgs<ExtArgs>>): Prisma__MenuSectionClient<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MenuSections.
+     * @param {MenuSectionDeleteManyArgs} args - Arguments to filter MenuSections to delete.
+     * @example
+     * // Delete a few MenuSections
+     * const { count } = await prisma.menuSection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MenuSectionDeleteManyArgs>(args?: SelectSubset<T, MenuSectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MenuSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuSectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MenuSections
+     * const menuSection = await prisma.menuSection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MenuSectionUpdateManyArgs>(args: SelectSubset<T, MenuSectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MenuSections and returns the data updated in the database.
+     * @param {MenuSectionUpdateManyAndReturnArgs} args - Arguments to update many MenuSections.
+     * @example
+     * // Update many MenuSections
+     * const menuSection = await prisma.menuSection.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MenuSections and only return the `id`
+     * const menuSectionWithIdOnly = await prisma.menuSection.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MenuSectionUpdateManyAndReturnArgs>(args: SelectSubset<T, MenuSectionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MenuSection.
+     * @param {MenuSectionUpsertArgs} args - Arguments to update or create a MenuSection.
+     * @example
+     * // Update or create a MenuSection
+     * const menuSection = await prisma.menuSection.upsert({
+     *   create: {
+     *     // ... data to create a MenuSection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MenuSection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MenuSectionUpsertArgs>(args: SelectSubset<T, MenuSectionUpsertArgs<ExtArgs>>): Prisma__MenuSectionClient<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MenuSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuSectionCountArgs} args - Arguments to filter MenuSections to count.
+     * @example
+     * // Count the number of MenuSections
+     * const count = await prisma.menuSection.count({
+     *   where: {
+     *     // ... the filter for the MenuSections we want to count
+     *   }
+     * })
+    **/
+    count<T extends MenuSectionCountArgs>(
+      args?: Subset<T, MenuSectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MenuSectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MenuSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuSectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MenuSectionAggregateArgs>(args: Subset<T, MenuSectionAggregateArgs>): Prisma.PrismaPromise<GetMenuSectionAggregateType<T>>
+
+    /**
+     * Group by MenuSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuSectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MenuSectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MenuSectionGroupByArgs['orderBy'] }
+        : { orderBy?: MenuSectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MenuSectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMenuSectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MenuSection model
+   */
+  readonly fields: MenuSectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MenuSection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MenuSectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    items<T extends MenuSection$itemsArgs<ExtArgs> = {}>(args?: Subset<T, MenuSection$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MenuSection model
+   */
+  interface MenuSectionFieldRefs {
+    readonly id: FieldRef<"MenuSection", 'String'>
+    readonly title: FieldRef<"MenuSection", 'String'>
+    readonly order: FieldRef<"MenuSection", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MenuSection findUnique
+   */
+  export type MenuSectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which MenuSection to fetch.
+     */
+    where: MenuSectionWhereUniqueInput
+  }
+
+  /**
+   * MenuSection findUniqueOrThrow
+   */
+  export type MenuSectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which MenuSection to fetch.
+     */
+    where: MenuSectionWhereUniqueInput
+  }
+
+  /**
+   * MenuSection findFirst
+   */
+  export type MenuSectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which MenuSection to fetch.
+     */
+    where?: MenuSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MenuSections to fetch.
+     */
+    orderBy?: MenuSectionOrderByWithRelationInput | MenuSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MenuSections.
+     */
+    cursor?: MenuSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MenuSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MenuSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MenuSections.
+     */
+    distinct?: MenuSectionScalarFieldEnum | MenuSectionScalarFieldEnum[]
+  }
+
+  /**
+   * MenuSection findFirstOrThrow
+   */
+  export type MenuSectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which MenuSection to fetch.
+     */
+    where?: MenuSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MenuSections to fetch.
+     */
+    orderBy?: MenuSectionOrderByWithRelationInput | MenuSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MenuSections.
+     */
+    cursor?: MenuSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MenuSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MenuSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MenuSections.
+     */
+    distinct?: MenuSectionScalarFieldEnum | MenuSectionScalarFieldEnum[]
+  }
+
+  /**
+   * MenuSection findMany
+   */
+  export type MenuSectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which MenuSections to fetch.
+     */
+    where?: MenuSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MenuSections to fetch.
+     */
+    orderBy?: MenuSectionOrderByWithRelationInput | MenuSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MenuSections.
+     */
+    cursor?: MenuSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MenuSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MenuSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MenuSections.
+     */
+    distinct?: MenuSectionScalarFieldEnum | MenuSectionScalarFieldEnum[]
+  }
+
+  /**
+   * MenuSection create
+   */
+  export type MenuSectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuSectionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MenuSection.
+     */
+    data: XOR<MenuSectionCreateInput, MenuSectionUncheckedCreateInput>
+  }
+
+  /**
+   * MenuSection createMany
+   */
+  export type MenuSectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MenuSections.
+     */
+    data: MenuSectionCreateManyInput | MenuSectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MenuSection createManyAndReturn
+   */
+  export type MenuSectionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * The data used to create many MenuSections.
+     */
+    data: MenuSectionCreateManyInput | MenuSectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MenuSection update
+   */
+  export type MenuSectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuSectionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MenuSection.
+     */
+    data: XOR<MenuSectionUpdateInput, MenuSectionUncheckedUpdateInput>
+    /**
+     * Choose, which MenuSection to update.
+     */
+    where: MenuSectionWhereUniqueInput
+  }
+
+  /**
+   * MenuSection updateMany
+   */
+  export type MenuSectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MenuSections.
+     */
+    data: XOR<MenuSectionUpdateManyMutationInput, MenuSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which MenuSections to update
+     */
+    where?: MenuSectionWhereInput
+    /**
+     * Limit how many MenuSections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MenuSection updateManyAndReturn
+   */
+  export type MenuSectionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * The data used to update MenuSections.
+     */
+    data: XOR<MenuSectionUpdateManyMutationInput, MenuSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which MenuSections to update
+     */
+    where?: MenuSectionWhereInput
+    /**
+     * Limit how many MenuSections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MenuSection upsert
+   */
+  export type MenuSectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuSectionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MenuSection to update in case it exists.
+     */
+    where: MenuSectionWhereUniqueInput
+    /**
+     * In case the MenuSection found by the `where` argument doesn't exist, create a new MenuSection with this data.
+     */
+    create: XOR<MenuSectionCreateInput, MenuSectionUncheckedCreateInput>
+    /**
+     * In case the MenuSection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MenuSectionUpdateInput, MenuSectionUncheckedUpdateInput>
+  }
+
+  /**
+   * MenuSection delete
+   */
+  export type MenuSectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuSectionInclude<ExtArgs> | null
+    /**
+     * Filter which MenuSection to delete.
+     */
+    where: MenuSectionWhereUniqueInput
+  }
+
+  /**
+   * MenuSection deleteMany
+   */
+  export type MenuSectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MenuSections to delete
+     */
+    where?: MenuSectionWhereInput
+    /**
+     * Limit how many MenuSections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MenuSection.items
+   */
+  export type MenuSection$itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemInclude<ExtArgs> | null
+    where?: MenuItemWhereInput
+    orderBy?: MenuItemOrderByWithRelationInput | MenuItemOrderByWithRelationInput[]
+    cursor?: MenuItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MenuItemScalarFieldEnum | MenuItemScalarFieldEnum[]
+  }
+
+  /**
+   * MenuSection without action
+   */
+  export type MenuSectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuSection
+     */
+    select?: MenuSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuSection
+     */
+    omit?: MenuSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuSectionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MenuItem
+   */
+
+  export type AggregateMenuItem = {
+    _count: MenuItemCountAggregateOutputType | null
+    _avg: MenuItemAvgAggregateOutputType | null
+    _sum: MenuItemSumAggregateOutputType | null
+    _min: MenuItemMinAggregateOutputType | null
+    _max: MenuItemMaxAggregateOutputType | null
+  }
+
+  export type MenuItemAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type MenuItemSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type MenuItemMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    desc: string | null
+    cat: string | null
+    order: number | null
+    sectionId: string | null
+  }
+
+  export type MenuItemMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    desc: string | null
+    cat: string | null
+    order: number | null
+    sectionId: string | null
+  }
+
+  export type MenuItemCountAggregateOutputType = {
+    id: number
+    name: number
+    desc: number
+    cat: number
+    order: number
+    sectionId: number
+    _all: number
+  }
+
+
+  export type MenuItemAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type MenuItemSumAggregateInputType = {
+    order?: true
+  }
+
+  export type MenuItemMinAggregateInputType = {
+    id?: true
+    name?: true
+    desc?: true
+    cat?: true
+    order?: true
+    sectionId?: true
+  }
+
+  export type MenuItemMaxAggregateInputType = {
+    id?: true
+    name?: true
+    desc?: true
+    cat?: true
+    order?: true
+    sectionId?: true
+  }
+
+  export type MenuItemCountAggregateInputType = {
+    id?: true
+    name?: true
+    desc?: true
+    cat?: true
+    order?: true
+    sectionId?: true
+    _all?: true
+  }
+
+  export type MenuItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MenuItem to aggregate.
+     */
+    where?: MenuItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MenuItems to fetch.
+     */
+    orderBy?: MenuItemOrderByWithRelationInput | MenuItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MenuItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MenuItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MenuItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MenuItems
+    **/
+    _count?: true | MenuItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MenuItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MenuItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MenuItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MenuItemMaxAggregateInputType
+  }
+
+  export type GetMenuItemAggregateType<T extends MenuItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateMenuItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMenuItem[P]>
+      : GetScalarType<T[P], AggregateMenuItem[P]>
+  }
+
+
+
+
+  export type MenuItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MenuItemWhereInput
+    orderBy?: MenuItemOrderByWithAggregationInput | MenuItemOrderByWithAggregationInput[]
+    by: MenuItemScalarFieldEnum[] | MenuItemScalarFieldEnum
+    having?: MenuItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MenuItemCountAggregateInputType | true
+    _avg?: MenuItemAvgAggregateInputType
+    _sum?: MenuItemSumAggregateInputType
+    _min?: MenuItemMinAggregateInputType
+    _max?: MenuItemMaxAggregateInputType
+  }
+
+  export type MenuItemGroupByOutputType = {
+    id: string
+    name: string
+    desc: string
+    cat: string
+    order: number
+    sectionId: string
+    _count: MenuItemCountAggregateOutputType | null
+    _avg: MenuItemAvgAggregateOutputType | null
+    _sum: MenuItemSumAggregateOutputType | null
+    _min: MenuItemMinAggregateOutputType | null
+    _max: MenuItemMaxAggregateOutputType | null
+  }
+
+  type GetMenuItemGroupByPayload<T extends MenuItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MenuItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MenuItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MenuItemGroupByOutputType[P]>
+            : GetScalarType<T[P], MenuItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MenuItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    desc?: boolean
+    cat?: boolean
+    order?: boolean
+    sectionId?: boolean
+    section?: boolean | MenuSectionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["menuItem"]>
+
+  export type MenuItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    desc?: boolean
+    cat?: boolean
+    order?: boolean
+    sectionId?: boolean
+    section?: boolean | MenuSectionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["menuItem"]>
+
+  export type MenuItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    desc?: boolean
+    cat?: boolean
+    order?: boolean
+    sectionId?: boolean
+    section?: boolean | MenuSectionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["menuItem"]>
+
+  export type MenuItemSelectScalar = {
+    id?: boolean
+    name?: boolean
+    desc?: boolean
+    cat?: boolean
+    order?: boolean
+    sectionId?: boolean
+  }
+
+  export type MenuItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "desc" | "cat" | "order" | "sectionId", ExtArgs["result"]["menuItem"]>
+  export type MenuItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    section?: boolean | MenuSectionDefaultArgs<ExtArgs>
+  }
+  export type MenuItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    section?: boolean | MenuSectionDefaultArgs<ExtArgs>
+  }
+  export type MenuItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    section?: boolean | MenuSectionDefaultArgs<ExtArgs>
+  }
+
+  export type $MenuItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MenuItem"
+    objects: {
+      section: Prisma.$MenuSectionPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      desc: string
+      cat: string
+      order: number
+      sectionId: string
+    }, ExtArgs["result"]["menuItem"]>
+    composites: {}
+  }
+
+  type MenuItemGetPayload<S extends boolean | null | undefined | MenuItemDefaultArgs> = $Result.GetResult<Prisma.$MenuItemPayload, S>
+
+  type MenuItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MenuItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MenuItemCountAggregateInputType | true
+    }
+
+  export interface MenuItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MenuItem'], meta: { name: 'MenuItem' } }
+    /**
+     * Find zero or one MenuItem that matches the filter.
+     * @param {MenuItemFindUniqueArgs} args - Arguments to find a MenuItem
+     * @example
+     * // Get one MenuItem
+     * const menuItem = await prisma.menuItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MenuItemFindUniqueArgs>(args: SelectSubset<T, MenuItemFindUniqueArgs<ExtArgs>>): Prisma__MenuItemClient<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MenuItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MenuItemFindUniqueOrThrowArgs} args - Arguments to find a MenuItem
+     * @example
+     * // Get one MenuItem
+     * const menuItem = await prisma.menuItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MenuItemFindUniqueOrThrowArgs>(args: SelectSubset<T, MenuItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MenuItemClient<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MenuItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuItemFindFirstArgs} args - Arguments to find a MenuItem
+     * @example
+     * // Get one MenuItem
+     * const menuItem = await prisma.menuItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MenuItemFindFirstArgs>(args?: SelectSubset<T, MenuItemFindFirstArgs<ExtArgs>>): Prisma__MenuItemClient<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MenuItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuItemFindFirstOrThrowArgs} args - Arguments to find a MenuItem
+     * @example
+     * // Get one MenuItem
+     * const menuItem = await prisma.menuItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MenuItemFindFirstOrThrowArgs>(args?: SelectSubset<T, MenuItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__MenuItemClient<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MenuItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MenuItems
+     * const menuItems = await prisma.menuItem.findMany()
+     * 
+     * // Get first 10 MenuItems
+     * const menuItems = await prisma.menuItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const menuItemWithIdOnly = await prisma.menuItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MenuItemFindManyArgs>(args?: SelectSubset<T, MenuItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MenuItem.
+     * @param {MenuItemCreateArgs} args - Arguments to create a MenuItem.
+     * @example
+     * // Create one MenuItem
+     * const MenuItem = await prisma.menuItem.create({
+     *   data: {
+     *     // ... data to create a MenuItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends MenuItemCreateArgs>(args: SelectSubset<T, MenuItemCreateArgs<ExtArgs>>): Prisma__MenuItemClient<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MenuItems.
+     * @param {MenuItemCreateManyArgs} args - Arguments to create many MenuItems.
+     * @example
+     * // Create many MenuItems
+     * const menuItem = await prisma.menuItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MenuItemCreateManyArgs>(args?: SelectSubset<T, MenuItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MenuItems and returns the data saved in the database.
+     * @param {MenuItemCreateManyAndReturnArgs} args - Arguments to create many MenuItems.
+     * @example
+     * // Create many MenuItems
+     * const menuItem = await prisma.menuItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MenuItems and only return the `id`
+     * const menuItemWithIdOnly = await prisma.menuItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MenuItemCreateManyAndReturnArgs>(args?: SelectSubset<T, MenuItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MenuItem.
+     * @param {MenuItemDeleteArgs} args - Arguments to delete one MenuItem.
+     * @example
+     * // Delete one MenuItem
+     * const MenuItem = await prisma.menuItem.delete({
+     *   where: {
+     *     // ... filter to delete one MenuItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MenuItemDeleteArgs>(args: SelectSubset<T, MenuItemDeleteArgs<ExtArgs>>): Prisma__MenuItemClient<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MenuItem.
+     * @param {MenuItemUpdateArgs} args - Arguments to update one MenuItem.
+     * @example
+     * // Update one MenuItem
+     * const menuItem = await prisma.menuItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MenuItemUpdateArgs>(args: SelectSubset<T, MenuItemUpdateArgs<ExtArgs>>): Prisma__MenuItemClient<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MenuItems.
+     * @param {MenuItemDeleteManyArgs} args - Arguments to filter MenuItems to delete.
+     * @example
+     * // Delete a few MenuItems
+     * const { count } = await prisma.menuItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MenuItemDeleteManyArgs>(args?: SelectSubset<T, MenuItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MenuItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MenuItems
+     * const menuItem = await prisma.menuItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MenuItemUpdateManyArgs>(args: SelectSubset<T, MenuItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MenuItems and returns the data updated in the database.
+     * @param {MenuItemUpdateManyAndReturnArgs} args - Arguments to update many MenuItems.
+     * @example
+     * // Update many MenuItems
+     * const menuItem = await prisma.menuItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MenuItems and only return the `id`
+     * const menuItemWithIdOnly = await prisma.menuItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MenuItemUpdateManyAndReturnArgs>(args: SelectSubset<T, MenuItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MenuItem.
+     * @param {MenuItemUpsertArgs} args - Arguments to update or create a MenuItem.
+     * @example
+     * // Update or create a MenuItem
+     * const menuItem = await prisma.menuItem.upsert({
+     *   create: {
+     *     // ... data to create a MenuItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MenuItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MenuItemUpsertArgs>(args: SelectSubset<T, MenuItemUpsertArgs<ExtArgs>>): Prisma__MenuItemClient<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MenuItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuItemCountArgs} args - Arguments to filter MenuItems to count.
+     * @example
+     * // Count the number of MenuItems
+     * const count = await prisma.menuItem.count({
+     *   where: {
+     *     // ... the filter for the MenuItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends MenuItemCountArgs>(
+      args?: Subset<T, MenuItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MenuItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MenuItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MenuItemAggregateArgs>(args: Subset<T, MenuItemAggregateArgs>): Prisma.PrismaPromise<GetMenuItemAggregateType<T>>
+
+    /**
+     * Group by MenuItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MenuItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MenuItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MenuItemGroupByArgs['orderBy'] }
+        : { orderBy?: MenuItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MenuItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMenuItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MenuItem model
+   */
+  readonly fields: MenuItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MenuItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MenuItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    section<T extends MenuSectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MenuSectionDefaultArgs<ExtArgs>>): Prisma__MenuSectionClient<$Result.GetResult<Prisma.$MenuSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MenuItem model
+   */
+  interface MenuItemFieldRefs {
+    readonly id: FieldRef<"MenuItem", 'String'>
+    readonly name: FieldRef<"MenuItem", 'String'>
+    readonly desc: FieldRef<"MenuItem", 'String'>
+    readonly cat: FieldRef<"MenuItem", 'String'>
+    readonly order: FieldRef<"MenuItem", 'Int'>
+    readonly sectionId: FieldRef<"MenuItem", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MenuItem findUnique
+   */
+  export type MenuItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemInclude<ExtArgs> | null
+    /**
+     * Filter, which MenuItem to fetch.
+     */
+    where: MenuItemWhereUniqueInput
+  }
+
+  /**
+   * MenuItem findUniqueOrThrow
+   */
+  export type MenuItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemInclude<ExtArgs> | null
+    /**
+     * Filter, which MenuItem to fetch.
+     */
+    where: MenuItemWhereUniqueInput
+  }
+
+  /**
+   * MenuItem findFirst
+   */
+  export type MenuItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemInclude<ExtArgs> | null
+    /**
+     * Filter, which MenuItem to fetch.
+     */
+    where?: MenuItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MenuItems to fetch.
+     */
+    orderBy?: MenuItemOrderByWithRelationInput | MenuItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MenuItems.
+     */
+    cursor?: MenuItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MenuItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MenuItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MenuItems.
+     */
+    distinct?: MenuItemScalarFieldEnum | MenuItemScalarFieldEnum[]
+  }
+
+  /**
+   * MenuItem findFirstOrThrow
+   */
+  export type MenuItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemInclude<ExtArgs> | null
+    /**
+     * Filter, which MenuItem to fetch.
+     */
+    where?: MenuItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MenuItems to fetch.
+     */
+    orderBy?: MenuItemOrderByWithRelationInput | MenuItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MenuItems.
+     */
+    cursor?: MenuItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MenuItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MenuItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MenuItems.
+     */
+    distinct?: MenuItemScalarFieldEnum | MenuItemScalarFieldEnum[]
+  }
+
+  /**
+   * MenuItem findMany
+   */
+  export type MenuItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemInclude<ExtArgs> | null
+    /**
+     * Filter, which MenuItems to fetch.
+     */
+    where?: MenuItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MenuItems to fetch.
+     */
+    orderBy?: MenuItemOrderByWithRelationInput | MenuItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MenuItems.
+     */
+    cursor?: MenuItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MenuItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MenuItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MenuItems.
+     */
+    distinct?: MenuItemScalarFieldEnum | MenuItemScalarFieldEnum[]
+  }
+
+  /**
+   * MenuItem create
+   */
+  export type MenuItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MenuItem.
+     */
+    data: XOR<MenuItemCreateInput, MenuItemUncheckedCreateInput>
+  }
+
+  /**
+   * MenuItem createMany
+   */
+  export type MenuItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MenuItems.
+     */
+    data: MenuItemCreateManyInput | MenuItemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MenuItem createManyAndReturn
+   */
+  export type MenuItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * The data used to create many MenuItems.
+     */
+    data: MenuItemCreateManyInput | MenuItemCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MenuItem update
+   */
+  export type MenuItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MenuItem.
+     */
+    data: XOR<MenuItemUpdateInput, MenuItemUncheckedUpdateInput>
+    /**
+     * Choose, which MenuItem to update.
+     */
+    where: MenuItemWhereUniqueInput
+  }
+
+  /**
+   * MenuItem updateMany
+   */
+  export type MenuItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MenuItems.
+     */
+    data: XOR<MenuItemUpdateManyMutationInput, MenuItemUncheckedUpdateManyInput>
+    /**
+     * Filter which MenuItems to update
+     */
+    where?: MenuItemWhereInput
+    /**
+     * Limit how many MenuItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MenuItem updateManyAndReturn
+   */
+  export type MenuItemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * The data used to update MenuItems.
+     */
+    data: XOR<MenuItemUpdateManyMutationInput, MenuItemUncheckedUpdateManyInput>
+    /**
+     * Filter which MenuItems to update
+     */
+    where?: MenuItemWhereInput
+    /**
+     * Limit how many MenuItems to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MenuItem upsert
+   */
+  export type MenuItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MenuItem to update in case it exists.
+     */
+    where: MenuItemWhereUniqueInput
+    /**
+     * In case the MenuItem found by the `where` argument doesn't exist, create a new MenuItem with this data.
+     */
+    create: XOR<MenuItemCreateInput, MenuItemUncheckedCreateInput>
+    /**
+     * In case the MenuItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MenuItemUpdateInput, MenuItemUncheckedUpdateInput>
+  }
+
+  /**
+   * MenuItem delete
+   */
+  export type MenuItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemInclude<ExtArgs> | null
+    /**
+     * Filter which MenuItem to delete.
+     */
+    where: MenuItemWhereUniqueInput
+  }
+
+  /**
+   * MenuItem deleteMany
+   */
+  export type MenuItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MenuItems to delete
+     */
+    where?: MenuItemWhereInput
+    /**
+     * Limit how many MenuItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MenuItem without action
+   */
+  export type MenuItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MenuItem
+     */
+    select?: MenuItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MenuItem
+     */
+    omit?: MenuItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MenuItemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Recipe
+   */
+
+  export type AggregateRecipe = {
+    _count: RecipeCountAggregateOutputType | null
+    _avg: RecipeAvgAggregateOutputType | null
+    _sum: RecipeSumAggregateOutputType | null
+    _min: RecipeMinAggregateOutputType | null
+    _max: RecipeMaxAggregateOutputType | null
+  }
+
+  export type RecipeAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type RecipeSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type RecipeMinAggregateOutputType = {
+    id: string | null
+    label: string | null
+    title: string | null
+    desc: string | null
+    time: string | null
+    cat: string | null
+    gradientFrom: string | null
+    gradientTo: string | null
+    order: number | null
+    isFeatured: boolean | null
+    assetId: string | null
+    createdAt: Date | null
+  }
+
+  export type RecipeMaxAggregateOutputType = {
+    id: string | null
+    label: string | null
+    title: string | null
+    desc: string | null
+    time: string | null
+    cat: string | null
+    gradientFrom: string | null
+    gradientTo: string | null
+    order: number | null
+    isFeatured: boolean | null
+    assetId: string | null
+    createdAt: Date | null
+  }
+
+  export type RecipeCountAggregateOutputType = {
+    id: number
+    label: number
+    title: number
+    desc: number
+    time: number
+    cat: number
+    gradientFrom: number
+    gradientTo: number
+    order: number
+    isFeatured: number
+    assetId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type RecipeAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type RecipeSumAggregateInputType = {
+    order?: true
+  }
+
+  export type RecipeMinAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    desc?: true
+    time?: true
+    cat?: true
+    gradientFrom?: true
+    gradientTo?: true
+    order?: true
+    isFeatured?: true
+    assetId?: true
+    createdAt?: true
+  }
+
+  export type RecipeMaxAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    desc?: true
+    time?: true
+    cat?: true
+    gradientFrom?: true
+    gradientTo?: true
+    order?: true
+    isFeatured?: true
+    assetId?: true
+    createdAt?: true
+  }
+
+  export type RecipeCountAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    desc?: true
+    time?: true
+    cat?: true
+    gradientFrom?: true
+    gradientTo?: true
+    order?: true
+    isFeatured?: true
+    assetId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type RecipeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Recipe to aggregate.
+     */
+    where?: RecipeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Recipes to fetch.
+     */
+    orderBy?: RecipeOrderByWithRelationInput | RecipeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RecipeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Recipes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Recipes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Recipes
+    **/
+    _count?: true | RecipeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RecipeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RecipeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RecipeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RecipeMaxAggregateInputType
+  }
+
+  export type GetRecipeAggregateType<T extends RecipeAggregateArgs> = {
+        [P in keyof T & keyof AggregateRecipe]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRecipe[P]>
+      : GetScalarType<T[P], AggregateRecipe[P]>
+  }
+
+
+
+
+  export type RecipeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecipeWhereInput
+    orderBy?: RecipeOrderByWithAggregationInput | RecipeOrderByWithAggregationInput[]
+    by: RecipeScalarFieldEnum[] | RecipeScalarFieldEnum
+    having?: RecipeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RecipeCountAggregateInputType | true
+    _avg?: RecipeAvgAggregateInputType
+    _sum?: RecipeSumAggregateInputType
+    _min?: RecipeMinAggregateInputType
+    _max?: RecipeMaxAggregateInputType
+  }
+
+  export type RecipeGroupByOutputType = {
+    id: string
+    label: string
+    title: string
+    desc: string
+    time: string
+    cat: string
+    gradientFrom: string
+    gradientTo: string
+    order: number
+    isFeatured: boolean
+    assetId: string | null
+    createdAt: Date
+    _count: RecipeCountAggregateOutputType | null
+    _avg: RecipeAvgAggregateOutputType | null
+    _sum: RecipeSumAggregateOutputType | null
+    _min: RecipeMinAggregateOutputType | null
+    _max: RecipeMaxAggregateOutputType | null
+  }
+
+  type GetRecipeGroupByPayload<T extends RecipeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RecipeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RecipeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RecipeGroupByOutputType[P]>
+            : GetScalarType<T[P], RecipeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RecipeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    desc?: boolean
+    time?: boolean
+    cat?: boolean
+    gradientFrom?: boolean
+    gradientTo?: boolean
+    order?: boolean
+    isFeatured?: boolean
+    assetId?: boolean
+    createdAt?: boolean
+    asset?: boolean | Recipe$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["recipe"]>
+
+  export type RecipeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    desc?: boolean
+    time?: boolean
+    cat?: boolean
+    gradientFrom?: boolean
+    gradientTo?: boolean
+    order?: boolean
+    isFeatured?: boolean
+    assetId?: boolean
+    createdAt?: boolean
+    asset?: boolean | Recipe$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["recipe"]>
+
+  export type RecipeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    desc?: boolean
+    time?: boolean
+    cat?: boolean
+    gradientFrom?: boolean
+    gradientTo?: boolean
+    order?: boolean
+    isFeatured?: boolean
+    assetId?: boolean
+    createdAt?: boolean
+    asset?: boolean | Recipe$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["recipe"]>
+
+  export type RecipeSelectScalar = {
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    desc?: boolean
+    time?: boolean
+    cat?: boolean
+    gradientFrom?: boolean
+    gradientTo?: boolean
+    order?: boolean
+    isFeatured?: boolean
+    assetId?: boolean
+    createdAt?: boolean
+  }
+
+  export type RecipeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "title" | "desc" | "time" | "cat" | "gradientFrom" | "gradientTo" | "order" | "isFeatured" | "assetId" | "createdAt", ExtArgs["result"]["recipe"]>
+  export type RecipeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | Recipe$assetArgs<ExtArgs>
+  }
+  export type RecipeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | Recipe$assetArgs<ExtArgs>
+  }
+  export type RecipeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | Recipe$assetArgs<ExtArgs>
+  }
+
+  export type $RecipePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Recipe"
+    objects: {
+      asset: Prisma.$MediaAssetPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      label: string
+      title: string
+      desc: string
+      time: string
+      cat: string
+      gradientFrom: string
+      gradientTo: string
+      order: number
+      isFeatured: boolean
+      assetId: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["recipe"]>
+    composites: {}
+  }
+
+  type RecipeGetPayload<S extends boolean | null | undefined | RecipeDefaultArgs> = $Result.GetResult<Prisma.$RecipePayload, S>
+
+  type RecipeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RecipeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RecipeCountAggregateInputType | true
+    }
+
+  export interface RecipeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Recipe'], meta: { name: 'Recipe' } }
+    /**
+     * Find zero or one Recipe that matches the filter.
+     * @param {RecipeFindUniqueArgs} args - Arguments to find a Recipe
+     * @example
+     * // Get one Recipe
+     * const recipe = await prisma.recipe.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RecipeFindUniqueArgs>(args: SelectSubset<T, RecipeFindUniqueArgs<ExtArgs>>): Prisma__RecipeClient<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Recipe that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RecipeFindUniqueOrThrowArgs} args - Arguments to find a Recipe
+     * @example
+     * // Get one Recipe
+     * const recipe = await prisma.recipe.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RecipeFindUniqueOrThrowArgs>(args: SelectSubset<T, RecipeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RecipeClient<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Recipe that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecipeFindFirstArgs} args - Arguments to find a Recipe
+     * @example
+     * // Get one Recipe
+     * const recipe = await prisma.recipe.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RecipeFindFirstArgs>(args?: SelectSubset<T, RecipeFindFirstArgs<ExtArgs>>): Prisma__RecipeClient<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Recipe that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecipeFindFirstOrThrowArgs} args - Arguments to find a Recipe
+     * @example
+     * // Get one Recipe
+     * const recipe = await prisma.recipe.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RecipeFindFirstOrThrowArgs>(args?: SelectSubset<T, RecipeFindFirstOrThrowArgs<ExtArgs>>): Prisma__RecipeClient<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Recipes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecipeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Recipes
+     * const recipes = await prisma.recipe.findMany()
+     * 
+     * // Get first 10 Recipes
+     * const recipes = await prisma.recipe.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const recipeWithIdOnly = await prisma.recipe.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RecipeFindManyArgs>(args?: SelectSubset<T, RecipeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Recipe.
+     * @param {RecipeCreateArgs} args - Arguments to create a Recipe.
+     * @example
+     * // Create one Recipe
+     * const Recipe = await prisma.recipe.create({
+     *   data: {
+     *     // ... data to create a Recipe
+     *   }
+     * })
+     * 
+     */
+    create<T extends RecipeCreateArgs>(args: SelectSubset<T, RecipeCreateArgs<ExtArgs>>): Prisma__RecipeClient<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Recipes.
+     * @param {RecipeCreateManyArgs} args - Arguments to create many Recipes.
+     * @example
+     * // Create many Recipes
+     * const recipe = await prisma.recipe.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RecipeCreateManyArgs>(args?: SelectSubset<T, RecipeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Recipes and returns the data saved in the database.
+     * @param {RecipeCreateManyAndReturnArgs} args - Arguments to create many Recipes.
+     * @example
+     * // Create many Recipes
+     * const recipe = await prisma.recipe.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Recipes and only return the `id`
+     * const recipeWithIdOnly = await prisma.recipe.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RecipeCreateManyAndReturnArgs>(args?: SelectSubset<T, RecipeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Recipe.
+     * @param {RecipeDeleteArgs} args - Arguments to delete one Recipe.
+     * @example
+     * // Delete one Recipe
+     * const Recipe = await prisma.recipe.delete({
+     *   where: {
+     *     // ... filter to delete one Recipe
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RecipeDeleteArgs>(args: SelectSubset<T, RecipeDeleteArgs<ExtArgs>>): Prisma__RecipeClient<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Recipe.
+     * @param {RecipeUpdateArgs} args - Arguments to update one Recipe.
+     * @example
+     * // Update one Recipe
+     * const recipe = await prisma.recipe.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RecipeUpdateArgs>(args: SelectSubset<T, RecipeUpdateArgs<ExtArgs>>): Prisma__RecipeClient<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Recipes.
+     * @param {RecipeDeleteManyArgs} args - Arguments to filter Recipes to delete.
+     * @example
+     * // Delete a few Recipes
+     * const { count } = await prisma.recipe.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RecipeDeleteManyArgs>(args?: SelectSubset<T, RecipeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Recipes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecipeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Recipes
+     * const recipe = await prisma.recipe.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RecipeUpdateManyArgs>(args: SelectSubset<T, RecipeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Recipes and returns the data updated in the database.
+     * @param {RecipeUpdateManyAndReturnArgs} args - Arguments to update many Recipes.
+     * @example
+     * // Update many Recipes
+     * const recipe = await prisma.recipe.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Recipes and only return the `id`
+     * const recipeWithIdOnly = await prisma.recipe.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RecipeUpdateManyAndReturnArgs>(args: SelectSubset<T, RecipeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Recipe.
+     * @param {RecipeUpsertArgs} args - Arguments to update or create a Recipe.
+     * @example
+     * // Update or create a Recipe
+     * const recipe = await prisma.recipe.upsert({
+     *   create: {
+     *     // ... data to create a Recipe
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Recipe we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RecipeUpsertArgs>(args: SelectSubset<T, RecipeUpsertArgs<ExtArgs>>): Prisma__RecipeClient<$Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Recipes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecipeCountArgs} args - Arguments to filter Recipes to count.
+     * @example
+     * // Count the number of Recipes
+     * const count = await prisma.recipe.count({
+     *   where: {
+     *     // ... the filter for the Recipes we want to count
+     *   }
+     * })
+    **/
+    count<T extends RecipeCountArgs>(
+      args?: Subset<T, RecipeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RecipeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Recipe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecipeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RecipeAggregateArgs>(args: Subset<T, RecipeAggregateArgs>): Prisma.PrismaPromise<GetRecipeAggregateType<T>>
+
+    /**
+     * Group by Recipe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecipeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RecipeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RecipeGroupByArgs['orderBy'] }
+        : { orderBy?: RecipeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RecipeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRecipeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Recipe model
+   */
+  readonly fields: RecipeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Recipe.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RecipeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    asset<T extends Recipe$assetArgs<ExtArgs> = {}>(args?: Subset<T, Recipe$assetArgs<ExtArgs>>): Prisma__MediaAssetClient<$Result.GetResult<Prisma.$MediaAssetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Recipe model
+   */
+  interface RecipeFieldRefs {
+    readonly id: FieldRef<"Recipe", 'String'>
+    readonly label: FieldRef<"Recipe", 'String'>
+    readonly title: FieldRef<"Recipe", 'String'>
+    readonly desc: FieldRef<"Recipe", 'String'>
+    readonly time: FieldRef<"Recipe", 'String'>
+    readonly cat: FieldRef<"Recipe", 'String'>
+    readonly gradientFrom: FieldRef<"Recipe", 'String'>
+    readonly gradientTo: FieldRef<"Recipe", 'String'>
+    readonly order: FieldRef<"Recipe", 'Int'>
+    readonly isFeatured: FieldRef<"Recipe", 'Boolean'>
+    readonly assetId: FieldRef<"Recipe", 'String'>
+    readonly createdAt: FieldRef<"Recipe", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Recipe findUnique
+   */
+  export type RecipeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeInclude<ExtArgs> | null
+    /**
+     * Filter, which Recipe to fetch.
+     */
+    where: RecipeWhereUniqueInput
+  }
+
+  /**
+   * Recipe findUniqueOrThrow
+   */
+  export type RecipeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeInclude<ExtArgs> | null
+    /**
+     * Filter, which Recipe to fetch.
+     */
+    where: RecipeWhereUniqueInput
+  }
+
+  /**
+   * Recipe findFirst
+   */
+  export type RecipeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeInclude<ExtArgs> | null
+    /**
+     * Filter, which Recipe to fetch.
+     */
+    where?: RecipeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Recipes to fetch.
+     */
+    orderBy?: RecipeOrderByWithRelationInput | RecipeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Recipes.
+     */
+    cursor?: RecipeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Recipes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Recipes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Recipes.
+     */
+    distinct?: RecipeScalarFieldEnum | RecipeScalarFieldEnum[]
+  }
+
+  /**
+   * Recipe findFirstOrThrow
+   */
+  export type RecipeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeInclude<ExtArgs> | null
+    /**
+     * Filter, which Recipe to fetch.
+     */
+    where?: RecipeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Recipes to fetch.
+     */
+    orderBy?: RecipeOrderByWithRelationInput | RecipeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Recipes.
+     */
+    cursor?: RecipeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Recipes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Recipes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Recipes.
+     */
+    distinct?: RecipeScalarFieldEnum | RecipeScalarFieldEnum[]
+  }
+
+  /**
+   * Recipe findMany
+   */
+  export type RecipeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeInclude<ExtArgs> | null
+    /**
+     * Filter, which Recipes to fetch.
+     */
+    where?: RecipeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Recipes to fetch.
+     */
+    orderBy?: RecipeOrderByWithRelationInput | RecipeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Recipes.
+     */
+    cursor?: RecipeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Recipes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Recipes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Recipes.
+     */
+    distinct?: RecipeScalarFieldEnum | RecipeScalarFieldEnum[]
+  }
+
+  /**
+   * Recipe create
+   */
+  export type RecipeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Recipe.
+     */
+    data: XOR<RecipeCreateInput, RecipeUncheckedCreateInput>
+  }
+
+  /**
+   * Recipe createMany
+   */
+  export type RecipeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Recipes.
+     */
+    data: RecipeCreateManyInput | RecipeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Recipe createManyAndReturn
+   */
+  export type RecipeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * The data used to create many Recipes.
+     */
+    data: RecipeCreateManyInput | RecipeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Recipe update
+   */
+  export type RecipeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Recipe.
+     */
+    data: XOR<RecipeUpdateInput, RecipeUncheckedUpdateInput>
+    /**
+     * Choose, which Recipe to update.
+     */
+    where: RecipeWhereUniqueInput
+  }
+
+  /**
+   * Recipe updateMany
+   */
+  export type RecipeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Recipes.
+     */
+    data: XOR<RecipeUpdateManyMutationInput, RecipeUncheckedUpdateManyInput>
+    /**
+     * Filter which Recipes to update
+     */
+    where?: RecipeWhereInput
+    /**
+     * Limit how many Recipes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Recipe updateManyAndReturn
+   */
+  export type RecipeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * The data used to update Recipes.
+     */
+    data: XOR<RecipeUpdateManyMutationInput, RecipeUncheckedUpdateManyInput>
+    /**
+     * Filter which Recipes to update
+     */
+    where?: RecipeWhereInput
+    /**
+     * Limit how many Recipes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Recipe upsert
+   */
+  export type RecipeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Recipe to update in case it exists.
+     */
+    where: RecipeWhereUniqueInput
+    /**
+     * In case the Recipe found by the `where` argument doesn't exist, create a new Recipe with this data.
+     */
+    create: XOR<RecipeCreateInput, RecipeUncheckedCreateInput>
+    /**
+     * In case the Recipe was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RecipeUpdateInput, RecipeUncheckedUpdateInput>
+  }
+
+  /**
+   * Recipe delete
+   */
+  export type RecipeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeInclude<ExtArgs> | null
+    /**
+     * Filter which Recipe to delete.
+     */
+    where: RecipeWhereUniqueInput
+  }
+
+  /**
+   * Recipe deleteMany
+   */
+  export type RecipeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Recipes to delete
+     */
+    where?: RecipeWhereInput
+    /**
+     * Limit how many Recipes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Recipe.asset
+   */
+  export type Recipe$assetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaAsset
+     */
+    select?: MediaAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaAsset
+     */
+    omit?: MediaAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    where?: MediaAssetWhereInput
+  }
+
+  /**
+   * Recipe without action
+   */
+  export type RecipeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Recipe
+     */
+    select?: RecipeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Recipe
+     */
+    omit?: RecipeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecipeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DiningCategory
+   */
+
+  export type AggregateDiningCategory = {
+    _count: DiningCategoryCountAggregateOutputType | null
+    _avg: DiningCategoryAvgAggregateOutputType | null
+    _sum: DiningCategorySumAggregateOutputType | null
+    _min: DiningCategoryMinAggregateOutputType | null
+    _max: DiningCategoryMaxAggregateOutputType | null
+  }
+
+  export type DiningCategoryAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type DiningCategorySumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type DiningCategoryMinAggregateOutputType = {
+    id: string | null
+    label: string | null
+    title: string | null
+    order: number | null
+    assetId: string | null
+  }
+
+  export type DiningCategoryMaxAggregateOutputType = {
+    id: string | null
+    label: string | null
+    title: string | null
+    order: number | null
+    assetId: string | null
+  }
+
+  export type DiningCategoryCountAggregateOutputType = {
+    id: number
+    label: number
+    title: number
+    order: number
+    assetId: number
+    _all: number
+  }
+
+
+  export type DiningCategoryAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type DiningCategorySumAggregateInputType = {
+    order?: true
+  }
+
+  export type DiningCategoryMinAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    order?: true
+    assetId?: true
+  }
+
+  export type DiningCategoryMaxAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    order?: true
+    assetId?: true
+  }
+
+  export type DiningCategoryCountAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    order?: true
+    assetId?: true
+    _all?: true
+  }
+
+  export type DiningCategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiningCategory to aggregate.
+     */
+    where?: DiningCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiningCategories to fetch.
+     */
+    orderBy?: DiningCategoryOrderByWithRelationInput | DiningCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DiningCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiningCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiningCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DiningCategories
+    **/
+    _count?: true | DiningCategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DiningCategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DiningCategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DiningCategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DiningCategoryMaxAggregateInputType
+  }
+
+  export type GetDiningCategoryAggregateType<T extends DiningCategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateDiningCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDiningCategory[P]>
+      : GetScalarType<T[P], AggregateDiningCategory[P]>
+  }
+
+
+
+
+  export type DiningCategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiningCategoryWhereInput
+    orderBy?: DiningCategoryOrderByWithAggregationInput | DiningCategoryOrderByWithAggregationInput[]
+    by: DiningCategoryScalarFieldEnum[] | DiningCategoryScalarFieldEnum
+    having?: DiningCategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DiningCategoryCountAggregateInputType | true
+    _avg?: DiningCategoryAvgAggregateInputType
+    _sum?: DiningCategorySumAggregateInputType
+    _min?: DiningCategoryMinAggregateInputType
+    _max?: DiningCategoryMaxAggregateInputType
+  }
+
+  export type DiningCategoryGroupByOutputType = {
+    id: string
+    label: string
+    title: string
+    order: number
+    assetId: string | null
+    _count: DiningCategoryCountAggregateOutputType | null
+    _avg: DiningCategoryAvgAggregateOutputType | null
+    _sum: DiningCategorySumAggregateOutputType | null
+    _min: DiningCategoryMinAggregateOutputType | null
+    _max: DiningCategoryMaxAggregateOutputType | null
+  }
+
+  type GetDiningCategoryGroupByPayload<T extends DiningCategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DiningCategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DiningCategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DiningCategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], DiningCategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DiningCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    order?: boolean
+    assetId?: boolean
+    asset?: boolean | DiningCategory$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["diningCategory"]>
+
+  export type DiningCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    order?: boolean
+    assetId?: boolean
+    asset?: boolean | DiningCategory$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["diningCategory"]>
+
+  export type DiningCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    order?: boolean
+    assetId?: boolean
+    asset?: boolean | DiningCategory$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["diningCategory"]>
+
+  export type DiningCategorySelectScalar = {
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    order?: boolean
+    assetId?: boolean
+  }
+
+  export type DiningCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "title" | "order" | "assetId", ExtArgs["result"]["diningCategory"]>
+  export type DiningCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | DiningCategory$assetArgs<ExtArgs>
+  }
+  export type DiningCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | DiningCategory$assetArgs<ExtArgs>
+  }
+  export type DiningCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | DiningCategory$assetArgs<ExtArgs>
+  }
+
+  export type $DiningCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DiningCategory"
+    objects: {
+      asset: Prisma.$MediaAssetPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      label: string
+      title: string
+      order: number
+      assetId: string | null
+    }, ExtArgs["result"]["diningCategory"]>
+    composites: {}
+  }
+
+  type DiningCategoryGetPayload<S extends boolean | null | undefined | DiningCategoryDefaultArgs> = $Result.GetResult<Prisma.$DiningCategoryPayload, S>
+
+  type DiningCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DiningCategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DiningCategoryCountAggregateInputType | true
+    }
+
+  export interface DiningCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DiningCategory'], meta: { name: 'DiningCategory' } }
+    /**
+     * Find zero or one DiningCategory that matches the filter.
+     * @param {DiningCategoryFindUniqueArgs} args - Arguments to find a DiningCategory
+     * @example
+     * // Get one DiningCategory
+     * const diningCategory = await prisma.diningCategory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DiningCategoryFindUniqueArgs>(args: SelectSubset<T, DiningCategoryFindUniqueArgs<ExtArgs>>): Prisma__DiningCategoryClient<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DiningCategory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DiningCategoryFindUniqueOrThrowArgs} args - Arguments to find a DiningCategory
+     * @example
+     * // Get one DiningCategory
+     * const diningCategory = await prisma.diningCategory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DiningCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, DiningCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DiningCategoryClient<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiningCategory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiningCategoryFindFirstArgs} args - Arguments to find a DiningCategory
+     * @example
+     * // Get one DiningCategory
+     * const diningCategory = await prisma.diningCategory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DiningCategoryFindFirstArgs>(args?: SelectSubset<T, DiningCategoryFindFirstArgs<ExtArgs>>): Prisma__DiningCategoryClient<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiningCategory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiningCategoryFindFirstOrThrowArgs} args - Arguments to find a DiningCategory
+     * @example
+     * // Get one DiningCategory
+     * const diningCategory = await prisma.diningCategory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DiningCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, DiningCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__DiningCategoryClient<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DiningCategories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiningCategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DiningCategories
+     * const diningCategories = await prisma.diningCategory.findMany()
+     * 
+     * // Get first 10 DiningCategories
+     * const diningCategories = await prisma.diningCategory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const diningCategoryWithIdOnly = await prisma.diningCategory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DiningCategoryFindManyArgs>(args?: SelectSubset<T, DiningCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DiningCategory.
+     * @param {DiningCategoryCreateArgs} args - Arguments to create a DiningCategory.
+     * @example
+     * // Create one DiningCategory
+     * const DiningCategory = await prisma.diningCategory.create({
+     *   data: {
+     *     // ... data to create a DiningCategory
+     *   }
+     * })
+     * 
+     */
+    create<T extends DiningCategoryCreateArgs>(args: SelectSubset<T, DiningCategoryCreateArgs<ExtArgs>>): Prisma__DiningCategoryClient<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DiningCategories.
+     * @param {DiningCategoryCreateManyArgs} args - Arguments to create many DiningCategories.
+     * @example
+     * // Create many DiningCategories
+     * const diningCategory = await prisma.diningCategory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DiningCategoryCreateManyArgs>(args?: SelectSubset<T, DiningCategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DiningCategories and returns the data saved in the database.
+     * @param {DiningCategoryCreateManyAndReturnArgs} args - Arguments to create many DiningCategories.
+     * @example
+     * // Create many DiningCategories
+     * const diningCategory = await prisma.diningCategory.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DiningCategories and only return the `id`
+     * const diningCategoryWithIdOnly = await prisma.diningCategory.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DiningCategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, DiningCategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DiningCategory.
+     * @param {DiningCategoryDeleteArgs} args - Arguments to delete one DiningCategory.
+     * @example
+     * // Delete one DiningCategory
+     * const DiningCategory = await prisma.diningCategory.delete({
+     *   where: {
+     *     // ... filter to delete one DiningCategory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DiningCategoryDeleteArgs>(args: SelectSubset<T, DiningCategoryDeleteArgs<ExtArgs>>): Prisma__DiningCategoryClient<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DiningCategory.
+     * @param {DiningCategoryUpdateArgs} args - Arguments to update one DiningCategory.
+     * @example
+     * // Update one DiningCategory
+     * const diningCategory = await prisma.diningCategory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DiningCategoryUpdateArgs>(args: SelectSubset<T, DiningCategoryUpdateArgs<ExtArgs>>): Prisma__DiningCategoryClient<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DiningCategories.
+     * @param {DiningCategoryDeleteManyArgs} args - Arguments to filter DiningCategories to delete.
+     * @example
+     * // Delete a few DiningCategories
+     * const { count } = await prisma.diningCategory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DiningCategoryDeleteManyArgs>(args?: SelectSubset<T, DiningCategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiningCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiningCategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DiningCategories
+     * const diningCategory = await prisma.diningCategory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DiningCategoryUpdateManyArgs>(args: SelectSubset<T, DiningCategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiningCategories and returns the data updated in the database.
+     * @param {DiningCategoryUpdateManyAndReturnArgs} args - Arguments to update many DiningCategories.
+     * @example
+     * // Update many DiningCategories
+     * const diningCategory = await prisma.diningCategory.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DiningCategories and only return the `id`
+     * const diningCategoryWithIdOnly = await prisma.diningCategory.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DiningCategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, DiningCategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DiningCategory.
+     * @param {DiningCategoryUpsertArgs} args - Arguments to update or create a DiningCategory.
+     * @example
+     * // Update or create a DiningCategory
+     * const diningCategory = await prisma.diningCategory.upsert({
+     *   create: {
+     *     // ... data to create a DiningCategory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DiningCategory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DiningCategoryUpsertArgs>(args: SelectSubset<T, DiningCategoryUpsertArgs<ExtArgs>>): Prisma__DiningCategoryClient<$Result.GetResult<Prisma.$DiningCategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DiningCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiningCategoryCountArgs} args - Arguments to filter DiningCategories to count.
+     * @example
+     * // Count the number of DiningCategories
+     * const count = await prisma.diningCategory.count({
+     *   where: {
+     *     // ... the filter for the DiningCategories we want to count
+     *   }
+     * })
+    **/
+    count<T extends DiningCategoryCountArgs>(
+      args?: Subset<T, DiningCategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DiningCategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DiningCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiningCategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DiningCategoryAggregateArgs>(args: Subset<T, DiningCategoryAggregateArgs>): Prisma.PrismaPromise<GetDiningCategoryAggregateType<T>>
+
+    /**
+     * Group by DiningCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiningCategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DiningCategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DiningCategoryGroupByArgs['orderBy'] }
+        : { orderBy?: DiningCategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DiningCategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDiningCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DiningCategory model
+   */
+  readonly fields: DiningCategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DiningCategory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DiningCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    asset<T extends DiningCategory$assetArgs<ExtArgs> = {}>(args?: Subset<T, DiningCategory$assetArgs<ExtArgs>>): Prisma__MediaAssetClient<$Result.GetResult<Prisma.$MediaAssetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DiningCategory model
+   */
+  interface DiningCategoryFieldRefs {
+    readonly id: FieldRef<"DiningCategory", 'String'>
+    readonly label: FieldRef<"DiningCategory", 'String'>
+    readonly title: FieldRef<"DiningCategory", 'String'>
+    readonly order: FieldRef<"DiningCategory", 'Int'>
+    readonly assetId: FieldRef<"DiningCategory", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DiningCategory findUnique
+   */
+  export type DiningCategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which DiningCategory to fetch.
+     */
+    where: DiningCategoryWhereUniqueInput
+  }
+
+  /**
+   * DiningCategory findUniqueOrThrow
+   */
+  export type DiningCategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which DiningCategory to fetch.
+     */
+    where: DiningCategoryWhereUniqueInput
+  }
+
+  /**
+   * DiningCategory findFirst
+   */
+  export type DiningCategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which DiningCategory to fetch.
+     */
+    where?: DiningCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiningCategories to fetch.
+     */
+    orderBy?: DiningCategoryOrderByWithRelationInput | DiningCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiningCategories.
+     */
+    cursor?: DiningCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiningCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiningCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiningCategories.
+     */
+    distinct?: DiningCategoryScalarFieldEnum | DiningCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * DiningCategory findFirstOrThrow
+   */
+  export type DiningCategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which DiningCategory to fetch.
+     */
+    where?: DiningCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiningCategories to fetch.
+     */
+    orderBy?: DiningCategoryOrderByWithRelationInput | DiningCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiningCategories.
+     */
+    cursor?: DiningCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiningCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiningCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiningCategories.
+     */
+    distinct?: DiningCategoryScalarFieldEnum | DiningCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * DiningCategory findMany
+   */
+  export type DiningCategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which DiningCategories to fetch.
+     */
+    where?: DiningCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiningCategories to fetch.
+     */
+    orderBy?: DiningCategoryOrderByWithRelationInput | DiningCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DiningCategories.
+     */
+    cursor?: DiningCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiningCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiningCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiningCategories.
+     */
+    distinct?: DiningCategoryScalarFieldEnum | DiningCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * DiningCategory create
+   */
+  export type DiningCategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DiningCategory.
+     */
+    data: XOR<DiningCategoryCreateInput, DiningCategoryUncheckedCreateInput>
+  }
+
+  /**
+   * DiningCategory createMany
+   */
+  export type DiningCategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DiningCategories.
+     */
+    data: DiningCategoryCreateManyInput | DiningCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DiningCategory createManyAndReturn
+   */
+  export type DiningCategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many DiningCategories.
+     */
+    data: DiningCategoryCreateManyInput | DiningCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DiningCategory update
+   */
+  export type DiningCategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DiningCategory.
+     */
+    data: XOR<DiningCategoryUpdateInput, DiningCategoryUncheckedUpdateInput>
+    /**
+     * Choose, which DiningCategory to update.
+     */
+    where: DiningCategoryWhereUniqueInput
+  }
+
+  /**
+   * DiningCategory updateMany
+   */
+  export type DiningCategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DiningCategories.
+     */
+    data: XOR<DiningCategoryUpdateManyMutationInput, DiningCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which DiningCategories to update
+     */
+    where?: DiningCategoryWhereInput
+    /**
+     * Limit how many DiningCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiningCategory updateManyAndReturn
+   */
+  export type DiningCategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to update DiningCategories.
+     */
+    data: XOR<DiningCategoryUpdateManyMutationInput, DiningCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which DiningCategories to update
+     */
+    where?: DiningCategoryWhereInput
+    /**
+     * Limit how many DiningCategories to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DiningCategory upsert
+   */
+  export type DiningCategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DiningCategory to update in case it exists.
+     */
+    where: DiningCategoryWhereUniqueInput
+    /**
+     * In case the DiningCategory found by the `where` argument doesn't exist, create a new DiningCategory with this data.
+     */
+    create: XOR<DiningCategoryCreateInput, DiningCategoryUncheckedCreateInput>
+    /**
+     * In case the DiningCategory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DiningCategoryUpdateInput, DiningCategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * DiningCategory delete
+   */
+  export type DiningCategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryInclude<ExtArgs> | null
+    /**
+     * Filter which DiningCategory to delete.
+     */
+    where: DiningCategoryWhereUniqueInput
+  }
+
+  /**
+   * DiningCategory deleteMany
+   */
+  export type DiningCategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiningCategories to delete
+     */
+    where?: DiningCategoryWhereInput
+    /**
+     * Limit how many DiningCategories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiningCategory.asset
+   */
+  export type DiningCategory$assetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaAsset
+     */
+    select?: MediaAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaAsset
+     */
+    omit?: MediaAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    where?: MediaAssetWhereInput
+  }
+
+  /**
+   * DiningCategory without action
+   */
+  export type DiningCategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiningCategory
+     */
+    select?: DiningCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiningCategory
+     */
+    omit?: DiningCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiningCategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TopCategory
+   */
+
+  export type AggregateTopCategory = {
+    _count: TopCategoryCountAggregateOutputType | null
+    _avg: TopCategoryAvgAggregateOutputType | null
+    _sum: TopCategorySumAggregateOutputType | null
+    _min: TopCategoryMinAggregateOutputType | null
+    _max: TopCategoryMaxAggregateOutputType | null
+  }
+
+  export type TopCategoryAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type TopCategorySumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type TopCategoryMinAggregateOutputType = {
+    id: string | null
+    label: string | null
+    order: number | null
+    assetId: string | null
+  }
+
+  export type TopCategoryMaxAggregateOutputType = {
+    id: string | null
+    label: string | null
+    order: number | null
+    assetId: string | null
+  }
+
+  export type TopCategoryCountAggregateOutputType = {
+    id: number
+    label: number
+    order: number
+    assetId: number
+    _all: number
+  }
+
+
+  export type TopCategoryAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type TopCategorySumAggregateInputType = {
+    order?: true
+  }
+
+  export type TopCategoryMinAggregateInputType = {
+    id?: true
+    label?: true
+    order?: true
+    assetId?: true
+  }
+
+  export type TopCategoryMaxAggregateInputType = {
+    id?: true
+    label?: true
+    order?: true
+    assetId?: true
+  }
+
+  export type TopCategoryCountAggregateInputType = {
+    id?: true
+    label?: true
+    order?: true
+    assetId?: true
+    _all?: true
+  }
+
+  export type TopCategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TopCategory to aggregate.
+     */
+    where?: TopCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TopCategories to fetch.
+     */
+    orderBy?: TopCategoryOrderByWithRelationInput | TopCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TopCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TopCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TopCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TopCategories
+    **/
+    _count?: true | TopCategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TopCategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TopCategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TopCategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TopCategoryMaxAggregateInputType
+  }
+
+  export type GetTopCategoryAggregateType<T extends TopCategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateTopCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTopCategory[P]>
+      : GetScalarType<T[P], AggregateTopCategory[P]>
+  }
+
+
+
+
+  export type TopCategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TopCategoryWhereInput
+    orderBy?: TopCategoryOrderByWithAggregationInput | TopCategoryOrderByWithAggregationInput[]
+    by: TopCategoryScalarFieldEnum[] | TopCategoryScalarFieldEnum
+    having?: TopCategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TopCategoryCountAggregateInputType | true
+    _avg?: TopCategoryAvgAggregateInputType
+    _sum?: TopCategorySumAggregateInputType
+    _min?: TopCategoryMinAggregateInputType
+    _max?: TopCategoryMaxAggregateInputType
+  }
+
+  export type TopCategoryGroupByOutputType = {
+    id: string
+    label: string
+    order: number
+    assetId: string | null
+    _count: TopCategoryCountAggregateOutputType | null
+    _avg: TopCategoryAvgAggregateOutputType | null
+    _sum: TopCategorySumAggregateOutputType | null
+    _min: TopCategoryMinAggregateOutputType | null
+    _max: TopCategoryMaxAggregateOutputType | null
+  }
+
+  type GetTopCategoryGroupByPayload<T extends TopCategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TopCategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TopCategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TopCategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], TopCategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TopCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    order?: boolean
+    assetId?: boolean
+    asset?: boolean | TopCategory$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["topCategory"]>
+
+  export type TopCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    order?: boolean
+    assetId?: boolean
+    asset?: boolean | TopCategory$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["topCategory"]>
+
+  export type TopCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    order?: boolean
+    assetId?: boolean
+    asset?: boolean | TopCategory$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["topCategory"]>
+
+  export type TopCategorySelectScalar = {
+    id?: boolean
+    label?: boolean
+    order?: boolean
+    assetId?: boolean
+  }
+
+  export type TopCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "order" | "assetId", ExtArgs["result"]["topCategory"]>
+  export type TopCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | TopCategory$assetArgs<ExtArgs>
+  }
+  export type TopCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | TopCategory$assetArgs<ExtArgs>
+  }
+  export type TopCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | TopCategory$assetArgs<ExtArgs>
+  }
+
+  export type $TopCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TopCategory"
+    objects: {
+      asset: Prisma.$MediaAssetPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      label: string
+      order: number
+      assetId: string | null
+    }, ExtArgs["result"]["topCategory"]>
+    composites: {}
+  }
+
+  type TopCategoryGetPayload<S extends boolean | null | undefined | TopCategoryDefaultArgs> = $Result.GetResult<Prisma.$TopCategoryPayload, S>
+
+  type TopCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TopCategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TopCategoryCountAggregateInputType | true
+    }
+
+  export interface TopCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TopCategory'], meta: { name: 'TopCategory' } }
+    /**
+     * Find zero or one TopCategory that matches the filter.
+     * @param {TopCategoryFindUniqueArgs} args - Arguments to find a TopCategory
+     * @example
+     * // Get one TopCategory
+     * const topCategory = await prisma.topCategory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TopCategoryFindUniqueArgs>(args: SelectSubset<T, TopCategoryFindUniqueArgs<ExtArgs>>): Prisma__TopCategoryClient<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TopCategory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TopCategoryFindUniqueOrThrowArgs} args - Arguments to find a TopCategory
+     * @example
+     * // Get one TopCategory
+     * const topCategory = await prisma.topCategory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TopCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, TopCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TopCategoryClient<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TopCategory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopCategoryFindFirstArgs} args - Arguments to find a TopCategory
+     * @example
+     * // Get one TopCategory
+     * const topCategory = await prisma.topCategory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TopCategoryFindFirstArgs>(args?: SelectSubset<T, TopCategoryFindFirstArgs<ExtArgs>>): Prisma__TopCategoryClient<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TopCategory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopCategoryFindFirstOrThrowArgs} args - Arguments to find a TopCategory
+     * @example
+     * // Get one TopCategory
+     * const topCategory = await prisma.topCategory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TopCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, TopCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__TopCategoryClient<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TopCategories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopCategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TopCategories
+     * const topCategories = await prisma.topCategory.findMany()
+     * 
+     * // Get first 10 TopCategories
+     * const topCategories = await prisma.topCategory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const topCategoryWithIdOnly = await prisma.topCategory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TopCategoryFindManyArgs>(args?: SelectSubset<T, TopCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TopCategory.
+     * @param {TopCategoryCreateArgs} args - Arguments to create a TopCategory.
+     * @example
+     * // Create one TopCategory
+     * const TopCategory = await prisma.topCategory.create({
+     *   data: {
+     *     // ... data to create a TopCategory
+     *   }
+     * })
+     * 
+     */
+    create<T extends TopCategoryCreateArgs>(args: SelectSubset<T, TopCategoryCreateArgs<ExtArgs>>): Prisma__TopCategoryClient<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TopCategories.
+     * @param {TopCategoryCreateManyArgs} args - Arguments to create many TopCategories.
+     * @example
+     * // Create many TopCategories
+     * const topCategory = await prisma.topCategory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TopCategoryCreateManyArgs>(args?: SelectSubset<T, TopCategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TopCategories and returns the data saved in the database.
+     * @param {TopCategoryCreateManyAndReturnArgs} args - Arguments to create many TopCategories.
+     * @example
+     * // Create many TopCategories
+     * const topCategory = await prisma.topCategory.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TopCategories and only return the `id`
+     * const topCategoryWithIdOnly = await prisma.topCategory.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TopCategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, TopCategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TopCategory.
+     * @param {TopCategoryDeleteArgs} args - Arguments to delete one TopCategory.
+     * @example
+     * // Delete one TopCategory
+     * const TopCategory = await prisma.topCategory.delete({
+     *   where: {
+     *     // ... filter to delete one TopCategory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TopCategoryDeleteArgs>(args: SelectSubset<T, TopCategoryDeleteArgs<ExtArgs>>): Prisma__TopCategoryClient<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TopCategory.
+     * @param {TopCategoryUpdateArgs} args - Arguments to update one TopCategory.
+     * @example
+     * // Update one TopCategory
+     * const topCategory = await prisma.topCategory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TopCategoryUpdateArgs>(args: SelectSubset<T, TopCategoryUpdateArgs<ExtArgs>>): Prisma__TopCategoryClient<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TopCategories.
+     * @param {TopCategoryDeleteManyArgs} args - Arguments to filter TopCategories to delete.
+     * @example
+     * // Delete a few TopCategories
+     * const { count } = await prisma.topCategory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TopCategoryDeleteManyArgs>(args?: SelectSubset<T, TopCategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TopCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopCategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TopCategories
+     * const topCategory = await prisma.topCategory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TopCategoryUpdateManyArgs>(args: SelectSubset<T, TopCategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TopCategories and returns the data updated in the database.
+     * @param {TopCategoryUpdateManyAndReturnArgs} args - Arguments to update many TopCategories.
+     * @example
+     * // Update many TopCategories
+     * const topCategory = await prisma.topCategory.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TopCategories and only return the `id`
+     * const topCategoryWithIdOnly = await prisma.topCategory.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TopCategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, TopCategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TopCategory.
+     * @param {TopCategoryUpsertArgs} args - Arguments to update or create a TopCategory.
+     * @example
+     * // Update or create a TopCategory
+     * const topCategory = await prisma.topCategory.upsert({
+     *   create: {
+     *     // ... data to create a TopCategory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TopCategory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TopCategoryUpsertArgs>(args: SelectSubset<T, TopCategoryUpsertArgs<ExtArgs>>): Prisma__TopCategoryClient<$Result.GetResult<Prisma.$TopCategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TopCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopCategoryCountArgs} args - Arguments to filter TopCategories to count.
+     * @example
+     * // Count the number of TopCategories
+     * const count = await prisma.topCategory.count({
+     *   where: {
+     *     // ... the filter for the TopCategories we want to count
+     *   }
+     * })
+    **/
+    count<T extends TopCategoryCountArgs>(
+      args?: Subset<T, TopCategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TopCategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TopCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopCategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TopCategoryAggregateArgs>(args: Subset<T, TopCategoryAggregateArgs>): Prisma.PrismaPromise<GetTopCategoryAggregateType<T>>
+
+    /**
+     * Group by TopCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopCategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TopCategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TopCategoryGroupByArgs['orderBy'] }
+        : { orderBy?: TopCategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TopCategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTopCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TopCategory model
+   */
+  readonly fields: TopCategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TopCategory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TopCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    asset<T extends TopCategory$assetArgs<ExtArgs> = {}>(args?: Subset<T, TopCategory$assetArgs<ExtArgs>>): Prisma__MediaAssetClient<$Result.GetResult<Prisma.$MediaAssetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TopCategory model
+   */
+  interface TopCategoryFieldRefs {
+    readonly id: FieldRef<"TopCategory", 'String'>
+    readonly label: FieldRef<"TopCategory", 'String'>
+    readonly order: FieldRef<"TopCategory", 'Int'>
+    readonly assetId: FieldRef<"TopCategory", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TopCategory findUnique
+   */
+  export type TopCategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which TopCategory to fetch.
+     */
+    where: TopCategoryWhereUniqueInput
+  }
+
+  /**
+   * TopCategory findUniqueOrThrow
+   */
+  export type TopCategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which TopCategory to fetch.
+     */
+    where: TopCategoryWhereUniqueInput
+  }
+
+  /**
+   * TopCategory findFirst
+   */
+  export type TopCategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which TopCategory to fetch.
+     */
+    where?: TopCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TopCategories to fetch.
+     */
+    orderBy?: TopCategoryOrderByWithRelationInput | TopCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TopCategories.
+     */
+    cursor?: TopCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TopCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TopCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TopCategories.
+     */
+    distinct?: TopCategoryScalarFieldEnum | TopCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * TopCategory findFirstOrThrow
+   */
+  export type TopCategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which TopCategory to fetch.
+     */
+    where?: TopCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TopCategories to fetch.
+     */
+    orderBy?: TopCategoryOrderByWithRelationInput | TopCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TopCategories.
+     */
+    cursor?: TopCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TopCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TopCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TopCategories.
+     */
+    distinct?: TopCategoryScalarFieldEnum | TopCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * TopCategory findMany
+   */
+  export type TopCategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which TopCategories to fetch.
+     */
+    where?: TopCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TopCategories to fetch.
+     */
+    orderBy?: TopCategoryOrderByWithRelationInput | TopCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TopCategories.
+     */
+    cursor?: TopCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TopCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TopCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TopCategories.
+     */
+    distinct?: TopCategoryScalarFieldEnum | TopCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * TopCategory create
+   */
+  export type TopCategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TopCategory.
+     */
+    data: XOR<TopCategoryCreateInput, TopCategoryUncheckedCreateInput>
+  }
+
+  /**
+   * TopCategory createMany
+   */
+  export type TopCategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TopCategories.
+     */
+    data: TopCategoryCreateManyInput | TopCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TopCategory createManyAndReturn
+   */
+  export type TopCategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many TopCategories.
+     */
+    data: TopCategoryCreateManyInput | TopCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TopCategory update
+   */
+  export type TopCategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TopCategory.
+     */
+    data: XOR<TopCategoryUpdateInput, TopCategoryUncheckedUpdateInput>
+    /**
+     * Choose, which TopCategory to update.
+     */
+    where: TopCategoryWhereUniqueInput
+  }
+
+  /**
+   * TopCategory updateMany
+   */
+  export type TopCategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TopCategories.
+     */
+    data: XOR<TopCategoryUpdateManyMutationInput, TopCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which TopCategories to update
+     */
+    where?: TopCategoryWhereInput
+    /**
+     * Limit how many TopCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TopCategory updateManyAndReturn
+   */
+  export type TopCategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to update TopCategories.
+     */
+    data: XOR<TopCategoryUpdateManyMutationInput, TopCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which TopCategories to update
+     */
+    where?: TopCategoryWhereInput
+    /**
+     * Limit how many TopCategories to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TopCategory upsert
+   */
+  export type TopCategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TopCategory to update in case it exists.
+     */
+    where: TopCategoryWhereUniqueInput
+    /**
+     * In case the TopCategory found by the `where` argument doesn't exist, create a new TopCategory with this data.
+     */
+    create: XOR<TopCategoryCreateInput, TopCategoryUncheckedCreateInput>
+    /**
+     * In case the TopCategory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TopCategoryUpdateInput, TopCategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * TopCategory delete
+   */
+  export type TopCategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryInclude<ExtArgs> | null
+    /**
+     * Filter which TopCategory to delete.
+     */
+    where: TopCategoryWhereUniqueInput
+  }
+
+  /**
+   * TopCategory deleteMany
+   */
+  export type TopCategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TopCategories to delete
+     */
+    where?: TopCategoryWhereInput
+    /**
+     * Limit how many TopCategories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TopCategory.asset
+   */
+  export type TopCategory$assetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaAsset
+     */
+    select?: MediaAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaAsset
+     */
+    omit?: MediaAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    where?: MediaAssetWhereInput
+  }
+
+  /**
+   * TopCategory without action
+   */
+  export type TopCategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopCategory
+     */
+    select?: TopCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TopCategory
+     */
+    omit?: TopCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TopCategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WeeklyFeatured
+   */
+
+  export type AggregateWeeklyFeatured = {
+    _count: WeeklyFeaturedCountAggregateOutputType | null
+    _min: WeeklyFeaturedMinAggregateOutputType | null
+    _max: WeeklyFeaturedMaxAggregateOutputType | null
+  }
+
+  export type WeeklyFeaturedMinAggregateOutputType = {
+    id: string | null
+    label: string | null
+    title: string | null
+    assetId: string | null
+  }
+
+  export type WeeklyFeaturedMaxAggregateOutputType = {
+    id: string | null
+    label: string | null
+    title: string | null
+    assetId: string | null
+  }
+
+  export type WeeklyFeaturedCountAggregateOutputType = {
+    id: number
+    label: number
+    title: number
+    assetId: number
+    _all: number
+  }
+
+
+  export type WeeklyFeaturedMinAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    assetId?: true
+  }
+
+  export type WeeklyFeaturedMaxAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    assetId?: true
+  }
+
+  export type WeeklyFeaturedCountAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    assetId?: true
+    _all?: true
+  }
+
+  export type WeeklyFeaturedAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WeeklyFeatured to aggregate.
+     */
+    where?: WeeklyFeaturedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklyFeatureds to fetch.
+     */
+    orderBy?: WeeklyFeaturedOrderByWithRelationInput | WeeklyFeaturedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WeeklyFeaturedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklyFeatureds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklyFeatureds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WeeklyFeatureds
+    **/
+    _count?: true | WeeklyFeaturedCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WeeklyFeaturedMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WeeklyFeaturedMaxAggregateInputType
+  }
+
+  export type GetWeeklyFeaturedAggregateType<T extends WeeklyFeaturedAggregateArgs> = {
+        [P in keyof T & keyof AggregateWeeklyFeatured]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWeeklyFeatured[P]>
+      : GetScalarType<T[P], AggregateWeeklyFeatured[P]>
+  }
+
+
+
+
+  export type WeeklyFeaturedGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WeeklyFeaturedWhereInput
+    orderBy?: WeeklyFeaturedOrderByWithAggregationInput | WeeklyFeaturedOrderByWithAggregationInput[]
+    by: WeeklyFeaturedScalarFieldEnum[] | WeeklyFeaturedScalarFieldEnum
+    having?: WeeklyFeaturedScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WeeklyFeaturedCountAggregateInputType | true
+    _min?: WeeklyFeaturedMinAggregateInputType
+    _max?: WeeklyFeaturedMaxAggregateInputType
+  }
+
+  export type WeeklyFeaturedGroupByOutputType = {
+    id: string
+    label: string
+    title: string
+    assetId: string | null
+    _count: WeeklyFeaturedCountAggregateOutputType | null
+    _min: WeeklyFeaturedMinAggregateOutputType | null
+    _max: WeeklyFeaturedMaxAggregateOutputType | null
+  }
+
+  type GetWeeklyFeaturedGroupByPayload<T extends WeeklyFeaturedGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WeeklyFeaturedGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WeeklyFeaturedGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WeeklyFeaturedGroupByOutputType[P]>
+            : GetScalarType<T[P], WeeklyFeaturedGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WeeklyFeaturedSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    assetId?: boolean
+    asset?: boolean | WeeklyFeatured$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["weeklyFeatured"]>
+
+  export type WeeklyFeaturedSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    assetId?: boolean
+    asset?: boolean | WeeklyFeatured$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["weeklyFeatured"]>
+
+  export type WeeklyFeaturedSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    assetId?: boolean
+    asset?: boolean | WeeklyFeatured$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["weeklyFeatured"]>
+
+  export type WeeklyFeaturedSelectScalar = {
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    assetId?: boolean
+  }
+
+  export type WeeklyFeaturedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "title" | "assetId", ExtArgs["result"]["weeklyFeatured"]>
+  export type WeeklyFeaturedInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | WeeklyFeatured$assetArgs<ExtArgs>
+  }
+  export type WeeklyFeaturedIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | WeeklyFeatured$assetArgs<ExtArgs>
+  }
+  export type WeeklyFeaturedIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | WeeklyFeatured$assetArgs<ExtArgs>
+  }
+
+  export type $WeeklyFeaturedPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WeeklyFeatured"
+    objects: {
+      asset: Prisma.$MediaAssetPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      label: string
+      title: string
+      assetId: string | null
+    }, ExtArgs["result"]["weeklyFeatured"]>
+    composites: {}
+  }
+
+  type WeeklyFeaturedGetPayload<S extends boolean | null | undefined | WeeklyFeaturedDefaultArgs> = $Result.GetResult<Prisma.$WeeklyFeaturedPayload, S>
+
+  type WeeklyFeaturedCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WeeklyFeaturedFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WeeklyFeaturedCountAggregateInputType | true
+    }
+
+  export interface WeeklyFeaturedDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WeeklyFeatured'], meta: { name: 'WeeklyFeatured' } }
+    /**
+     * Find zero or one WeeklyFeatured that matches the filter.
+     * @param {WeeklyFeaturedFindUniqueArgs} args - Arguments to find a WeeklyFeatured
+     * @example
+     * // Get one WeeklyFeatured
+     * const weeklyFeatured = await prisma.weeklyFeatured.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WeeklyFeaturedFindUniqueArgs>(args: SelectSubset<T, WeeklyFeaturedFindUniqueArgs<ExtArgs>>): Prisma__WeeklyFeaturedClient<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one WeeklyFeatured that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WeeklyFeaturedFindUniqueOrThrowArgs} args - Arguments to find a WeeklyFeatured
+     * @example
+     * // Get one WeeklyFeatured
+     * const weeklyFeatured = await prisma.weeklyFeatured.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WeeklyFeaturedFindUniqueOrThrowArgs>(args: SelectSubset<T, WeeklyFeaturedFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WeeklyFeaturedClient<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WeeklyFeatured that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyFeaturedFindFirstArgs} args - Arguments to find a WeeklyFeatured
+     * @example
+     * // Get one WeeklyFeatured
+     * const weeklyFeatured = await prisma.weeklyFeatured.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WeeklyFeaturedFindFirstArgs>(args?: SelectSubset<T, WeeklyFeaturedFindFirstArgs<ExtArgs>>): Prisma__WeeklyFeaturedClient<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WeeklyFeatured that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyFeaturedFindFirstOrThrowArgs} args - Arguments to find a WeeklyFeatured
+     * @example
+     * // Get one WeeklyFeatured
+     * const weeklyFeatured = await prisma.weeklyFeatured.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WeeklyFeaturedFindFirstOrThrowArgs>(args?: SelectSubset<T, WeeklyFeaturedFindFirstOrThrowArgs<ExtArgs>>): Prisma__WeeklyFeaturedClient<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more WeeklyFeatureds that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyFeaturedFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WeeklyFeatureds
+     * const weeklyFeatureds = await prisma.weeklyFeatured.findMany()
+     * 
+     * // Get first 10 WeeklyFeatureds
+     * const weeklyFeatureds = await prisma.weeklyFeatured.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const weeklyFeaturedWithIdOnly = await prisma.weeklyFeatured.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WeeklyFeaturedFindManyArgs>(args?: SelectSubset<T, WeeklyFeaturedFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a WeeklyFeatured.
+     * @param {WeeklyFeaturedCreateArgs} args - Arguments to create a WeeklyFeatured.
+     * @example
+     * // Create one WeeklyFeatured
+     * const WeeklyFeatured = await prisma.weeklyFeatured.create({
+     *   data: {
+     *     // ... data to create a WeeklyFeatured
+     *   }
+     * })
+     * 
+     */
+    create<T extends WeeklyFeaturedCreateArgs>(args: SelectSubset<T, WeeklyFeaturedCreateArgs<ExtArgs>>): Prisma__WeeklyFeaturedClient<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many WeeklyFeatureds.
+     * @param {WeeklyFeaturedCreateManyArgs} args - Arguments to create many WeeklyFeatureds.
+     * @example
+     * // Create many WeeklyFeatureds
+     * const weeklyFeatured = await prisma.weeklyFeatured.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WeeklyFeaturedCreateManyArgs>(args?: SelectSubset<T, WeeklyFeaturedCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WeeklyFeatureds and returns the data saved in the database.
+     * @param {WeeklyFeaturedCreateManyAndReturnArgs} args - Arguments to create many WeeklyFeatureds.
+     * @example
+     * // Create many WeeklyFeatureds
+     * const weeklyFeatured = await prisma.weeklyFeatured.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WeeklyFeatureds and only return the `id`
+     * const weeklyFeaturedWithIdOnly = await prisma.weeklyFeatured.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WeeklyFeaturedCreateManyAndReturnArgs>(args?: SelectSubset<T, WeeklyFeaturedCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a WeeklyFeatured.
+     * @param {WeeklyFeaturedDeleteArgs} args - Arguments to delete one WeeklyFeatured.
+     * @example
+     * // Delete one WeeklyFeatured
+     * const WeeklyFeatured = await prisma.weeklyFeatured.delete({
+     *   where: {
+     *     // ... filter to delete one WeeklyFeatured
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WeeklyFeaturedDeleteArgs>(args: SelectSubset<T, WeeklyFeaturedDeleteArgs<ExtArgs>>): Prisma__WeeklyFeaturedClient<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one WeeklyFeatured.
+     * @param {WeeklyFeaturedUpdateArgs} args - Arguments to update one WeeklyFeatured.
+     * @example
+     * // Update one WeeklyFeatured
+     * const weeklyFeatured = await prisma.weeklyFeatured.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WeeklyFeaturedUpdateArgs>(args: SelectSubset<T, WeeklyFeaturedUpdateArgs<ExtArgs>>): Prisma__WeeklyFeaturedClient<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more WeeklyFeatureds.
+     * @param {WeeklyFeaturedDeleteManyArgs} args - Arguments to filter WeeklyFeatureds to delete.
+     * @example
+     * // Delete a few WeeklyFeatureds
+     * const { count } = await prisma.weeklyFeatured.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WeeklyFeaturedDeleteManyArgs>(args?: SelectSubset<T, WeeklyFeaturedDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WeeklyFeatureds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyFeaturedUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WeeklyFeatureds
+     * const weeklyFeatured = await prisma.weeklyFeatured.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WeeklyFeaturedUpdateManyArgs>(args: SelectSubset<T, WeeklyFeaturedUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WeeklyFeatureds and returns the data updated in the database.
+     * @param {WeeklyFeaturedUpdateManyAndReturnArgs} args - Arguments to update many WeeklyFeatureds.
+     * @example
+     * // Update many WeeklyFeatureds
+     * const weeklyFeatured = await prisma.weeklyFeatured.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more WeeklyFeatureds and only return the `id`
+     * const weeklyFeaturedWithIdOnly = await prisma.weeklyFeatured.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WeeklyFeaturedUpdateManyAndReturnArgs>(args: SelectSubset<T, WeeklyFeaturedUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one WeeklyFeatured.
+     * @param {WeeklyFeaturedUpsertArgs} args - Arguments to update or create a WeeklyFeatured.
+     * @example
+     * // Update or create a WeeklyFeatured
+     * const weeklyFeatured = await prisma.weeklyFeatured.upsert({
+     *   create: {
+     *     // ... data to create a WeeklyFeatured
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WeeklyFeatured we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WeeklyFeaturedUpsertArgs>(args: SelectSubset<T, WeeklyFeaturedUpsertArgs<ExtArgs>>): Prisma__WeeklyFeaturedClient<$Result.GetResult<Prisma.$WeeklyFeaturedPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of WeeklyFeatureds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyFeaturedCountArgs} args - Arguments to filter WeeklyFeatureds to count.
+     * @example
+     * // Count the number of WeeklyFeatureds
+     * const count = await prisma.weeklyFeatured.count({
+     *   where: {
+     *     // ... the filter for the WeeklyFeatureds we want to count
+     *   }
+     * })
+    **/
+    count<T extends WeeklyFeaturedCountArgs>(
+      args?: Subset<T, WeeklyFeaturedCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WeeklyFeaturedCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WeeklyFeatured.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyFeaturedAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WeeklyFeaturedAggregateArgs>(args: Subset<T, WeeklyFeaturedAggregateArgs>): Prisma.PrismaPromise<GetWeeklyFeaturedAggregateType<T>>
+
+    /**
+     * Group by WeeklyFeatured.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyFeaturedGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WeeklyFeaturedGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WeeklyFeaturedGroupByArgs['orderBy'] }
+        : { orderBy?: WeeklyFeaturedGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WeeklyFeaturedGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWeeklyFeaturedGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WeeklyFeatured model
+   */
+  readonly fields: WeeklyFeaturedFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WeeklyFeatured.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WeeklyFeaturedClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    asset<T extends WeeklyFeatured$assetArgs<ExtArgs> = {}>(args?: Subset<T, WeeklyFeatured$assetArgs<ExtArgs>>): Prisma__MediaAssetClient<$Result.GetResult<Prisma.$MediaAssetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WeeklyFeatured model
+   */
+  interface WeeklyFeaturedFieldRefs {
+    readonly id: FieldRef<"WeeklyFeatured", 'String'>
+    readonly label: FieldRef<"WeeklyFeatured", 'String'>
+    readonly title: FieldRef<"WeeklyFeatured", 'String'>
+    readonly assetId: FieldRef<"WeeklyFeatured", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WeeklyFeatured findUnique
+   */
+  export type WeeklyFeaturedFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklyFeatured to fetch.
+     */
+    where: WeeklyFeaturedWhereUniqueInput
+  }
+
+  /**
+   * WeeklyFeatured findUniqueOrThrow
+   */
+  export type WeeklyFeaturedFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklyFeatured to fetch.
+     */
+    where: WeeklyFeaturedWhereUniqueInput
+  }
+
+  /**
+   * WeeklyFeatured findFirst
+   */
+  export type WeeklyFeaturedFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklyFeatured to fetch.
+     */
+    where?: WeeklyFeaturedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklyFeatureds to fetch.
+     */
+    orderBy?: WeeklyFeaturedOrderByWithRelationInput | WeeklyFeaturedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WeeklyFeatureds.
+     */
+    cursor?: WeeklyFeaturedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklyFeatureds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklyFeatureds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WeeklyFeatureds.
+     */
+    distinct?: WeeklyFeaturedScalarFieldEnum | WeeklyFeaturedScalarFieldEnum[]
+  }
+
+  /**
+   * WeeklyFeatured findFirstOrThrow
+   */
+  export type WeeklyFeaturedFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklyFeatured to fetch.
+     */
+    where?: WeeklyFeaturedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklyFeatureds to fetch.
+     */
+    orderBy?: WeeklyFeaturedOrderByWithRelationInput | WeeklyFeaturedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WeeklyFeatureds.
+     */
+    cursor?: WeeklyFeaturedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklyFeatureds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklyFeatureds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WeeklyFeatureds.
+     */
+    distinct?: WeeklyFeaturedScalarFieldEnum | WeeklyFeaturedScalarFieldEnum[]
+  }
+
+  /**
+   * WeeklyFeatured findMany
+   */
+  export type WeeklyFeaturedFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklyFeatureds to fetch.
+     */
+    where?: WeeklyFeaturedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklyFeatureds to fetch.
+     */
+    orderBy?: WeeklyFeaturedOrderByWithRelationInput | WeeklyFeaturedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WeeklyFeatureds.
+     */
+    cursor?: WeeklyFeaturedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklyFeatureds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklyFeatureds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WeeklyFeatureds.
+     */
+    distinct?: WeeklyFeaturedScalarFieldEnum | WeeklyFeaturedScalarFieldEnum[]
+  }
+
+  /**
+   * WeeklyFeatured create
+   */
+  export type WeeklyFeaturedCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WeeklyFeatured.
+     */
+    data?: XOR<WeeklyFeaturedCreateInput, WeeklyFeaturedUncheckedCreateInput>
+  }
+
+  /**
+   * WeeklyFeatured createMany
+   */
+  export type WeeklyFeaturedCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WeeklyFeatureds.
+     */
+    data: WeeklyFeaturedCreateManyInput | WeeklyFeaturedCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WeeklyFeatured createManyAndReturn
+   */
+  export type WeeklyFeaturedCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * The data used to create many WeeklyFeatureds.
+     */
+    data: WeeklyFeaturedCreateManyInput | WeeklyFeaturedCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WeeklyFeatured update
+   */
+  export type WeeklyFeaturedUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WeeklyFeatured.
+     */
+    data: XOR<WeeklyFeaturedUpdateInput, WeeklyFeaturedUncheckedUpdateInput>
+    /**
+     * Choose, which WeeklyFeatured to update.
+     */
+    where: WeeklyFeaturedWhereUniqueInput
+  }
+
+  /**
+   * WeeklyFeatured updateMany
+   */
+  export type WeeklyFeaturedUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WeeklyFeatureds.
+     */
+    data: XOR<WeeklyFeaturedUpdateManyMutationInput, WeeklyFeaturedUncheckedUpdateManyInput>
+    /**
+     * Filter which WeeklyFeatureds to update
+     */
+    where?: WeeklyFeaturedWhereInput
+    /**
+     * Limit how many WeeklyFeatureds to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * WeeklyFeatured updateManyAndReturn
+   */
+  export type WeeklyFeaturedUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * The data used to update WeeklyFeatureds.
+     */
+    data: XOR<WeeklyFeaturedUpdateManyMutationInput, WeeklyFeaturedUncheckedUpdateManyInput>
+    /**
+     * Filter which WeeklyFeatureds to update
+     */
+    where?: WeeklyFeaturedWhereInput
+    /**
+     * Limit how many WeeklyFeatureds to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WeeklyFeatured upsert
+   */
+  export type WeeklyFeaturedUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WeeklyFeatured to update in case it exists.
+     */
+    where: WeeklyFeaturedWhereUniqueInput
+    /**
+     * In case the WeeklyFeatured found by the `where` argument doesn't exist, create a new WeeklyFeatured with this data.
+     */
+    create: XOR<WeeklyFeaturedCreateInput, WeeklyFeaturedUncheckedCreateInput>
+    /**
+     * In case the WeeklyFeatured was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WeeklyFeaturedUpdateInput, WeeklyFeaturedUncheckedUpdateInput>
+  }
+
+  /**
+   * WeeklyFeatured delete
+   */
+  export type WeeklyFeaturedDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedInclude<ExtArgs> | null
+    /**
+     * Filter which WeeklyFeatured to delete.
+     */
+    where: WeeklyFeaturedWhereUniqueInput
+  }
+
+  /**
+   * WeeklyFeatured deleteMany
+   */
+  export type WeeklyFeaturedDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WeeklyFeatureds to delete
+     */
+    where?: WeeklyFeaturedWhereInput
+    /**
+     * Limit how many WeeklyFeatureds to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * WeeklyFeatured.asset
+   */
+  export type WeeklyFeatured$assetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaAsset
+     */
+    select?: MediaAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaAsset
+     */
+    omit?: MediaAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    where?: MediaAssetWhereInput
+  }
+
+  /**
+   * WeeklyFeatured without action
+   */
+  export type WeeklyFeaturedDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyFeatured
+     */
+    select?: WeeklyFeaturedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyFeatured
+     */
+    omit?: WeeklyFeaturedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyFeaturedInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WeeklySide
+   */
+
+  export type AggregateWeeklySide = {
+    _count: WeeklySideCountAggregateOutputType | null
+    _avg: WeeklySideAvgAggregateOutputType | null
+    _sum: WeeklySideSumAggregateOutputType | null
+    _min: WeeklySideMinAggregateOutputType | null
+    _max: WeeklySideMaxAggregateOutputType | null
+  }
+
+  export type WeeklySideAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type WeeklySideSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type WeeklySideMinAggregateOutputType = {
+    id: string | null
+    label: string | null
+    title: string | null
+    order: number | null
+    assetId: string | null
+  }
+
+  export type WeeklySideMaxAggregateOutputType = {
+    id: string | null
+    label: string | null
+    title: string | null
+    order: number | null
+    assetId: string | null
+  }
+
+  export type WeeklySideCountAggregateOutputType = {
+    id: number
+    label: number
+    title: number
+    order: number
+    assetId: number
+    _all: number
+  }
+
+
+  export type WeeklySideAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type WeeklySideSumAggregateInputType = {
+    order?: true
+  }
+
+  export type WeeklySideMinAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    order?: true
+    assetId?: true
+  }
+
+  export type WeeklySideMaxAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    order?: true
+    assetId?: true
+  }
+
+  export type WeeklySideCountAggregateInputType = {
+    id?: true
+    label?: true
+    title?: true
+    order?: true
+    assetId?: true
+    _all?: true
+  }
+
+  export type WeeklySideAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WeeklySide to aggregate.
+     */
+    where?: WeeklySideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklySides to fetch.
+     */
+    orderBy?: WeeklySideOrderByWithRelationInput | WeeklySideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WeeklySideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklySides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklySides.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WeeklySides
+    **/
+    _count?: true | WeeklySideCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WeeklySideAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WeeklySideSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WeeklySideMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WeeklySideMaxAggregateInputType
+  }
+
+  export type GetWeeklySideAggregateType<T extends WeeklySideAggregateArgs> = {
+        [P in keyof T & keyof AggregateWeeklySide]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWeeklySide[P]>
+      : GetScalarType<T[P], AggregateWeeklySide[P]>
+  }
+
+
+
+
+  export type WeeklySideGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WeeklySideWhereInput
+    orderBy?: WeeklySideOrderByWithAggregationInput | WeeklySideOrderByWithAggregationInput[]
+    by: WeeklySideScalarFieldEnum[] | WeeklySideScalarFieldEnum
+    having?: WeeklySideScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WeeklySideCountAggregateInputType | true
+    _avg?: WeeklySideAvgAggregateInputType
+    _sum?: WeeklySideSumAggregateInputType
+    _min?: WeeklySideMinAggregateInputType
+    _max?: WeeklySideMaxAggregateInputType
+  }
+
+  export type WeeklySideGroupByOutputType = {
+    id: string
+    label: string
+    title: string
+    order: number
+    assetId: string | null
+    _count: WeeklySideCountAggregateOutputType | null
+    _avg: WeeklySideAvgAggregateOutputType | null
+    _sum: WeeklySideSumAggregateOutputType | null
+    _min: WeeklySideMinAggregateOutputType | null
+    _max: WeeklySideMaxAggregateOutputType | null
+  }
+
+  type GetWeeklySideGroupByPayload<T extends WeeklySideGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WeeklySideGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WeeklySideGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WeeklySideGroupByOutputType[P]>
+            : GetScalarType<T[P], WeeklySideGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WeeklySideSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    order?: boolean
+    assetId?: boolean
+    asset?: boolean | WeeklySide$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["weeklySide"]>
+
+  export type WeeklySideSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    order?: boolean
+    assetId?: boolean
+    asset?: boolean | WeeklySide$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["weeklySide"]>
+
+  export type WeeklySideSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    order?: boolean
+    assetId?: boolean
+    asset?: boolean | WeeklySide$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["weeklySide"]>
+
+  export type WeeklySideSelectScalar = {
+    id?: boolean
+    label?: boolean
+    title?: boolean
+    order?: boolean
+    assetId?: boolean
+  }
+
+  export type WeeklySideOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "title" | "order" | "assetId", ExtArgs["result"]["weeklySide"]>
+  export type WeeklySideInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | WeeklySide$assetArgs<ExtArgs>
+  }
+  export type WeeklySideIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | WeeklySide$assetArgs<ExtArgs>
+  }
+  export type WeeklySideIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | WeeklySide$assetArgs<ExtArgs>
+  }
+
+  export type $WeeklySidePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WeeklySide"
+    objects: {
+      asset: Prisma.$MediaAssetPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      label: string
+      title: string
+      order: number
+      assetId: string | null
+    }, ExtArgs["result"]["weeklySide"]>
+    composites: {}
+  }
+
+  type WeeklySideGetPayload<S extends boolean | null | undefined | WeeklySideDefaultArgs> = $Result.GetResult<Prisma.$WeeklySidePayload, S>
+
+  type WeeklySideCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WeeklySideFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WeeklySideCountAggregateInputType | true
+    }
+
+  export interface WeeklySideDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WeeklySide'], meta: { name: 'WeeklySide' } }
+    /**
+     * Find zero or one WeeklySide that matches the filter.
+     * @param {WeeklySideFindUniqueArgs} args - Arguments to find a WeeklySide
+     * @example
+     * // Get one WeeklySide
+     * const weeklySide = await prisma.weeklySide.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WeeklySideFindUniqueArgs>(args: SelectSubset<T, WeeklySideFindUniqueArgs<ExtArgs>>): Prisma__WeeklySideClient<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one WeeklySide that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WeeklySideFindUniqueOrThrowArgs} args - Arguments to find a WeeklySide
+     * @example
+     * // Get one WeeklySide
+     * const weeklySide = await prisma.weeklySide.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WeeklySideFindUniqueOrThrowArgs>(args: SelectSubset<T, WeeklySideFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WeeklySideClient<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WeeklySide that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklySideFindFirstArgs} args - Arguments to find a WeeklySide
+     * @example
+     * // Get one WeeklySide
+     * const weeklySide = await prisma.weeklySide.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WeeklySideFindFirstArgs>(args?: SelectSubset<T, WeeklySideFindFirstArgs<ExtArgs>>): Prisma__WeeklySideClient<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WeeklySide that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklySideFindFirstOrThrowArgs} args - Arguments to find a WeeklySide
+     * @example
+     * // Get one WeeklySide
+     * const weeklySide = await prisma.weeklySide.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WeeklySideFindFirstOrThrowArgs>(args?: SelectSubset<T, WeeklySideFindFirstOrThrowArgs<ExtArgs>>): Prisma__WeeklySideClient<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more WeeklySides that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklySideFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WeeklySides
+     * const weeklySides = await prisma.weeklySide.findMany()
+     * 
+     * // Get first 10 WeeklySides
+     * const weeklySides = await prisma.weeklySide.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const weeklySideWithIdOnly = await prisma.weeklySide.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WeeklySideFindManyArgs>(args?: SelectSubset<T, WeeklySideFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a WeeklySide.
+     * @param {WeeklySideCreateArgs} args - Arguments to create a WeeklySide.
+     * @example
+     * // Create one WeeklySide
+     * const WeeklySide = await prisma.weeklySide.create({
+     *   data: {
+     *     // ... data to create a WeeklySide
+     *   }
+     * })
+     * 
+     */
+    create<T extends WeeklySideCreateArgs>(args: SelectSubset<T, WeeklySideCreateArgs<ExtArgs>>): Prisma__WeeklySideClient<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many WeeklySides.
+     * @param {WeeklySideCreateManyArgs} args - Arguments to create many WeeklySides.
+     * @example
+     * // Create many WeeklySides
+     * const weeklySide = await prisma.weeklySide.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WeeklySideCreateManyArgs>(args?: SelectSubset<T, WeeklySideCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WeeklySides and returns the data saved in the database.
+     * @param {WeeklySideCreateManyAndReturnArgs} args - Arguments to create many WeeklySides.
+     * @example
+     * // Create many WeeklySides
+     * const weeklySide = await prisma.weeklySide.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WeeklySides and only return the `id`
+     * const weeklySideWithIdOnly = await prisma.weeklySide.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WeeklySideCreateManyAndReturnArgs>(args?: SelectSubset<T, WeeklySideCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a WeeklySide.
+     * @param {WeeklySideDeleteArgs} args - Arguments to delete one WeeklySide.
+     * @example
+     * // Delete one WeeklySide
+     * const WeeklySide = await prisma.weeklySide.delete({
+     *   where: {
+     *     // ... filter to delete one WeeklySide
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WeeklySideDeleteArgs>(args: SelectSubset<T, WeeklySideDeleteArgs<ExtArgs>>): Prisma__WeeklySideClient<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one WeeklySide.
+     * @param {WeeklySideUpdateArgs} args - Arguments to update one WeeklySide.
+     * @example
+     * // Update one WeeklySide
+     * const weeklySide = await prisma.weeklySide.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WeeklySideUpdateArgs>(args: SelectSubset<T, WeeklySideUpdateArgs<ExtArgs>>): Prisma__WeeklySideClient<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more WeeklySides.
+     * @param {WeeklySideDeleteManyArgs} args - Arguments to filter WeeklySides to delete.
+     * @example
+     * // Delete a few WeeklySides
+     * const { count } = await prisma.weeklySide.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WeeklySideDeleteManyArgs>(args?: SelectSubset<T, WeeklySideDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WeeklySides.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklySideUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WeeklySides
+     * const weeklySide = await prisma.weeklySide.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WeeklySideUpdateManyArgs>(args: SelectSubset<T, WeeklySideUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WeeklySides and returns the data updated in the database.
+     * @param {WeeklySideUpdateManyAndReturnArgs} args - Arguments to update many WeeklySides.
+     * @example
+     * // Update many WeeklySides
+     * const weeklySide = await prisma.weeklySide.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more WeeklySides and only return the `id`
+     * const weeklySideWithIdOnly = await prisma.weeklySide.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WeeklySideUpdateManyAndReturnArgs>(args: SelectSubset<T, WeeklySideUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one WeeklySide.
+     * @param {WeeklySideUpsertArgs} args - Arguments to update or create a WeeklySide.
+     * @example
+     * // Update or create a WeeklySide
+     * const weeklySide = await prisma.weeklySide.upsert({
+     *   create: {
+     *     // ... data to create a WeeklySide
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WeeklySide we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WeeklySideUpsertArgs>(args: SelectSubset<T, WeeklySideUpsertArgs<ExtArgs>>): Prisma__WeeklySideClient<$Result.GetResult<Prisma.$WeeklySidePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of WeeklySides.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklySideCountArgs} args - Arguments to filter WeeklySides to count.
+     * @example
+     * // Count the number of WeeklySides
+     * const count = await prisma.weeklySide.count({
+     *   where: {
+     *     // ... the filter for the WeeklySides we want to count
+     *   }
+     * })
+    **/
+    count<T extends WeeklySideCountArgs>(
+      args?: Subset<T, WeeklySideCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WeeklySideCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WeeklySide.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklySideAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WeeklySideAggregateArgs>(args: Subset<T, WeeklySideAggregateArgs>): Prisma.PrismaPromise<GetWeeklySideAggregateType<T>>
+
+    /**
+     * Group by WeeklySide.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklySideGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WeeklySideGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WeeklySideGroupByArgs['orderBy'] }
+        : { orderBy?: WeeklySideGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WeeklySideGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWeeklySideGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WeeklySide model
+   */
+  readonly fields: WeeklySideFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WeeklySide.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WeeklySideClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    asset<T extends WeeklySide$assetArgs<ExtArgs> = {}>(args?: Subset<T, WeeklySide$assetArgs<ExtArgs>>): Prisma__MediaAssetClient<$Result.GetResult<Prisma.$MediaAssetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WeeklySide model
+   */
+  interface WeeklySideFieldRefs {
+    readonly id: FieldRef<"WeeklySide", 'String'>
+    readonly label: FieldRef<"WeeklySide", 'String'>
+    readonly title: FieldRef<"WeeklySide", 'String'>
+    readonly order: FieldRef<"WeeklySide", 'Int'>
+    readonly assetId: FieldRef<"WeeklySide", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WeeklySide findUnique
+   */
+  export type WeeklySideFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklySide to fetch.
+     */
+    where: WeeklySideWhereUniqueInput
+  }
+
+  /**
+   * WeeklySide findUniqueOrThrow
+   */
+  export type WeeklySideFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklySide to fetch.
+     */
+    where: WeeklySideWhereUniqueInput
+  }
+
+  /**
+   * WeeklySide findFirst
+   */
+  export type WeeklySideFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklySide to fetch.
+     */
+    where?: WeeklySideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklySides to fetch.
+     */
+    orderBy?: WeeklySideOrderByWithRelationInput | WeeklySideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WeeklySides.
+     */
+    cursor?: WeeklySideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklySides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklySides.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WeeklySides.
+     */
+    distinct?: WeeklySideScalarFieldEnum | WeeklySideScalarFieldEnum[]
+  }
+
+  /**
+   * WeeklySide findFirstOrThrow
+   */
+  export type WeeklySideFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklySide to fetch.
+     */
+    where?: WeeklySideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklySides to fetch.
+     */
+    orderBy?: WeeklySideOrderByWithRelationInput | WeeklySideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WeeklySides.
+     */
+    cursor?: WeeklySideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklySides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklySides.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WeeklySides.
+     */
+    distinct?: WeeklySideScalarFieldEnum | WeeklySideScalarFieldEnum[]
+  }
+
+  /**
+   * WeeklySide findMany
+   */
+  export type WeeklySideFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklySides to fetch.
+     */
+    where?: WeeklySideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklySides to fetch.
+     */
+    orderBy?: WeeklySideOrderByWithRelationInput | WeeklySideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WeeklySides.
+     */
+    cursor?: WeeklySideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklySides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklySides.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WeeklySides.
+     */
+    distinct?: WeeklySideScalarFieldEnum | WeeklySideScalarFieldEnum[]
+  }
+
+  /**
+   * WeeklySide create
+   */
+  export type WeeklySideCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WeeklySide.
+     */
+    data: XOR<WeeklySideCreateInput, WeeklySideUncheckedCreateInput>
+  }
+
+  /**
+   * WeeklySide createMany
+   */
+  export type WeeklySideCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WeeklySides.
+     */
+    data: WeeklySideCreateManyInput | WeeklySideCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WeeklySide createManyAndReturn
+   */
+  export type WeeklySideCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * The data used to create many WeeklySides.
+     */
+    data: WeeklySideCreateManyInput | WeeklySideCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WeeklySide update
+   */
+  export type WeeklySideUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WeeklySide.
+     */
+    data: XOR<WeeklySideUpdateInput, WeeklySideUncheckedUpdateInput>
+    /**
+     * Choose, which WeeklySide to update.
+     */
+    where: WeeklySideWhereUniqueInput
+  }
+
+  /**
+   * WeeklySide updateMany
+   */
+  export type WeeklySideUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WeeklySides.
+     */
+    data: XOR<WeeklySideUpdateManyMutationInput, WeeklySideUncheckedUpdateManyInput>
+    /**
+     * Filter which WeeklySides to update
+     */
+    where?: WeeklySideWhereInput
+    /**
+     * Limit how many WeeklySides to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * WeeklySide updateManyAndReturn
+   */
+  export type WeeklySideUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * The data used to update WeeklySides.
+     */
+    data: XOR<WeeklySideUpdateManyMutationInput, WeeklySideUncheckedUpdateManyInput>
+    /**
+     * Filter which WeeklySides to update
+     */
+    where?: WeeklySideWhereInput
+    /**
+     * Limit how many WeeklySides to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WeeklySide upsert
+   */
+  export type WeeklySideUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WeeklySide to update in case it exists.
+     */
+    where: WeeklySideWhereUniqueInput
+    /**
+     * In case the WeeklySide found by the `where` argument doesn't exist, create a new WeeklySide with this data.
+     */
+    create: XOR<WeeklySideCreateInput, WeeklySideUncheckedCreateInput>
+    /**
+     * In case the WeeklySide was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WeeklySideUpdateInput, WeeklySideUncheckedUpdateInput>
+  }
+
+  /**
+   * WeeklySide delete
+   */
+  export type WeeklySideDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideInclude<ExtArgs> | null
+    /**
+     * Filter which WeeklySide to delete.
+     */
+    where: WeeklySideWhereUniqueInput
+  }
+
+  /**
+   * WeeklySide deleteMany
+   */
+  export type WeeklySideDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WeeklySides to delete
+     */
+    where?: WeeklySideWhereInput
+    /**
+     * Limit how many WeeklySides to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * WeeklySide.asset
+   */
+  export type WeeklySide$assetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaAsset
+     */
+    select?: MediaAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaAsset
+     */
+    omit?: MediaAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    where?: MediaAssetWhereInput
+  }
+
+  /**
+   * WeeklySide without action
+   */
+  export type WeeklySideDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklySide
+     */
+    select?: WeeklySideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklySide
+     */
+    omit?: WeeklySideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklySideInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WellnessArticle
+   */
+
+  export type AggregateWellnessArticle = {
+    _count: WellnessArticleCountAggregateOutputType | null
+    _avg: WellnessArticleAvgAggregateOutputType | null
+    _sum: WellnessArticleSumAggregateOutputType | null
+    _min: WellnessArticleMinAggregateOutputType | null
+    _max: WellnessArticleMaxAggregateOutputType | null
+  }
+
+  export type WellnessArticleAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type WellnessArticleSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type WellnessArticleMinAggregateOutputType = {
+    id: string | null
+    cat: string | null
+    title: string | null
+    excerpt: string | null
+    readTime: string | null
+    isHero: boolean | null
+    order: number | null
+    assetId: string | null
+    createdAt: Date | null
+  }
+
+  export type WellnessArticleMaxAggregateOutputType = {
+    id: string | null
+    cat: string | null
+    title: string | null
+    excerpt: string | null
+    readTime: string | null
+    isHero: boolean | null
+    order: number | null
+    assetId: string | null
+    createdAt: Date | null
+  }
+
+  export type WellnessArticleCountAggregateOutputType = {
+    id: number
+    cat: number
+    title: number
+    excerpt: number
+    readTime: number
+    isHero: number
+    order: number
+    assetId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type WellnessArticleAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type WellnessArticleSumAggregateInputType = {
+    order?: true
+  }
+
+  export type WellnessArticleMinAggregateInputType = {
+    id?: true
+    cat?: true
+    title?: true
+    excerpt?: true
+    readTime?: true
+    isHero?: true
+    order?: true
+    assetId?: true
+    createdAt?: true
+  }
+
+  export type WellnessArticleMaxAggregateInputType = {
+    id?: true
+    cat?: true
+    title?: true
+    excerpt?: true
+    readTime?: true
+    isHero?: true
+    order?: true
+    assetId?: true
+    createdAt?: true
+  }
+
+  export type WellnessArticleCountAggregateInputType = {
+    id?: true
+    cat?: true
+    title?: true
+    excerpt?: true
+    readTime?: true
+    isHero?: true
+    order?: true
+    assetId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type WellnessArticleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WellnessArticle to aggregate.
+     */
+    where?: WellnessArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WellnessArticles to fetch.
+     */
+    orderBy?: WellnessArticleOrderByWithRelationInput | WellnessArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WellnessArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WellnessArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WellnessArticles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WellnessArticles
+    **/
+    _count?: true | WellnessArticleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WellnessArticleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WellnessArticleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WellnessArticleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WellnessArticleMaxAggregateInputType
+  }
+
+  export type GetWellnessArticleAggregateType<T extends WellnessArticleAggregateArgs> = {
+        [P in keyof T & keyof AggregateWellnessArticle]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWellnessArticle[P]>
+      : GetScalarType<T[P], AggregateWellnessArticle[P]>
+  }
+
+
+
+
+  export type WellnessArticleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WellnessArticleWhereInput
+    orderBy?: WellnessArticleOrderByWithAggregationInput | WellnessArticleOrderByWithAggregationInput[]
+    by: WellnessArticleScalarFieldEnum[] | WellnessArticleScalarFieldEnum
+    having?: WellnessArticleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WellnessArticleCountAggregateInputType | true
+    _avg?: WellnessArticleAvgAggregateInputType
+    _sum?: WellnessArticleSumAggregateInputType
+    _min?: WellnessArticleMinAggregateInputType
+    _max?: WellnessArticleMaxAggregateInputType
+  }
+
+  export type WellnessArticleGroupByOutputType = {
+    id: string
+    cat: string
+    title: string
+    excerpt: string
+    readTime: string
+    isHero: boolean
+    order: number
+    assetId: string | null
+    createdAt: Date
+    _count: WellnessArticleCountAggregateOutputType | null
+    _avg: WellnessArticleAvgAggregateOutputType | null
+    _sum: WellnessArticleSumAggregateOutputType | null
+    _min: WellnessArticleMinAggregateOutputType | null
+    _max: WellnessArticleMaxAggregateOutputType | null
+  }
+
+  type GetWellnessArticleGroupByPayload<T extends WellnessArticleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WellnessArticleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WellnessArticleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WellnessArticleGroupByOutputType[P]>
+            : GetScalarType<T[P], WellnessArticleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WellnessArticleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cat?: boolean
+    title?: boolean
+    excerpt?: boolean
+    readTime?: boolean
+    isHero?: boolean
+    order?: boolean
+    assetId?: boolean
+    createdAt?: boolean
+    asset?: boolean | WellnessArticle$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["wellnessArticle"]>
+
+  export type WellnessArticleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cat?: boolean
+    title?: boolean
+    excerpt?: boolean
+    readTime?: boolean
+    isHero?: boolean
+    order?: boolean
+    assetId?: boolean
+    createdAt?: boolean
+    asset?: boolean | WellnessArticle$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["wellnessArticle"]>
+
+  export type WellnessArticleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cat?: boolean
+    title?: boolean
+    excerpt?: boolean
+    readTime?: boolean
+    isHero?: boolean
+    order?: boolean
+    assetId?: boolean
+    createdAt?: boolean
+    asset?: boolean | WellnessArticle$assetArgs<ExtArgs>
+  }, ExtArgs["result"]["wellnessArticle"]>
+
+  export type WellnessArticleSelectScalar = {
+    id?: boolean
+    cat?: boolean
+    title?: boolean
+    excerpt?: boolean
+    readTime?: boolean
+    isHero?: boolean
+    order?: boolean
+    assetId?: boolean
+    createdAt?: boolean
+  }
+
+  export type WellnessArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cat" | "title" | "excerpt" | "readTime" | "isHero" | "order" | "assetId" | "createdAt", ExtArgs["result"]["wellnessArticle"]>
+  export type WellnessArticleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | WellnessArticle$assetArgs<ExtArgs>
+  }
+  export type WellnessArticleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | WellnessArticle$assetArgs<ExtArgs>
+  }
+  export type WellnessArticleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    asset?: boolean | WellnessArticle$assetArgs<ExtArgs>
+  }
+
+  export type $WellnessArticlePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WellnessArticle"
+    objects: {
+      asset: Prisma.$MediaAssetPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      cat: string
+      title: string
+      excerpt: string
+      readTime: string
+      isHero: boolean
+      order: number
+      assetId: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["wellnessArticle"]>
+    composites: {}
+  }
+
+  type WellnessArticleGetPayload<S extends boolean | null | undefined | WellnessArticleDefaultArgs> = $Result.GetResult<Prisma.$WellnessArticlePayload, S>
+
+  type WellnessArticleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WellnessArticleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WellnessArticleCountAggregateInputType | true
+    }
+
+  export interface WellnessArticleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WellnessArticle'], meta: { name: 'WellnessArticle' } }
+    /**
+     * Find zero or one WellnessArticle that matches the filter.
+     * @param {WellnessArticleFindUniqueArgs} args - Arguments to find a WellnessArticle
+     * @example
+     * // Get one WellnessArticle
+     * const wellnessArticle = await prisma.wellnessArticle.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WellnessArticleFindUniqueArgs>(args: SelectSubset<T, WellnessArticleFindUniqueArgs<ExtArgs>>): Prisma__WellnessArticleClient<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one WellnessArticle that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WellnessArticleFindUniqueOrThrowArgs} args - Arguments to find a WellnessArticle
+     * @example
+     * // Get one WellnessArticle
+     * const wellnessArticle = await prisma.wellnessArticle.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WellnessArticleFindUniqueOrThrowArgs>(args: SelectSubset<T, WellnessArticleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WellnessArticleClient<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WellnessArticle that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WellnessArticleFindFirstArgs} args - Arguments to find a WellnessArticle
+     * @example
+     * // Get one WellnessArticle
+     * const wellnessArticle = await prisma.wellnessArticle.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WellnessArticleFindFirstArgs>(args?: SelectSubset<T, WellnessArticleFindFirstArgs<ExtArgs>>): Prisma__WellnessArticleClient<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WellnessArticle that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WellnessArticleFindFirstOrThrowArgs} args - Arguments to find a WellnessArticle
+     * @example
+     * // Get one WellnessArticle
+     * const wellnessArticle = await prisma.wellnessArticle.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WellnessArticleFindFirstOrThrowArgs>(args?: SelectSubset<T, WellnessArticleFindFirstOrThrowArgs<ExtArgs>>): Prisma__WellnessArticleClient<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more WellnessArticles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WellnessArticleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WellnessArticles
+     * const wellnessArticles = await prisma.wellnessArticle.findMany()
+     * 
+     * // Get first 10 WellnessArticles
+     * const wellnessArticles = await prisma.wellnessArticle.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const wellnessArticleWithIdOnly = await prisma.wellnessArticle.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WellnessArticleFindManyArgs>(args?: SelectSubset<T, WellnessArticleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a WellnessArticle.
+     * @param {WellnessArticleCreateArgs} args - Arguments to create a WellnessArticle.
+     * @example
+     * // Create one WellnessArticle
+     * const WellnessArticle = await prisma.wellnessArticle.create({
+     *   data: {
+     *     // ... data to create a WellnessArticle
+     *   }
+     * })
+     * 
+     */
+    create<T extends WellnessArticleCreateArgs>(args: SelectSubset<T, WellnessArticleCreateArgs<ExtArgs>>): Prisma__WellnessArticleClient<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many WellnessArticles.
+     * @param {WellnessArticleCreateManyArgs} args - Arguments to create many WellnessArticles.
+     * @example
+     * // Create many WellnessArticles
+     * const wellnessArticle = await prisma.wellnessArticle.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WellnessArticleCreateManyArgs>(args?: SelectSubset<T, WellnessArticleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WellnessArticles and returns the data saved in the database.
+     * @param {WellnessArticleCreateManyAndReturnArgs} args - Arguments to create many WellnessArticles.
+     * @example
+     * // Create many WellnessArticles
+     * const wellnessArticle = await prisma.wellnessArticle.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WellnessArticles and only return the `id`
+     * const wellnessArticleWithIdOnly = await prisma.wellnessArticle.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WellnessArticleCreateManyAndReturnArgs>(args?: SelectSubset<T, WellnessArticleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a WellnessArticle.
+     * @param {WellnessArticleDeleteArgs} args - Arguments to delete one WellnessArticle.
+     * @example
+     * // Delete one WellnessArticle
+     * const WellnessArticle = await prisma.wellnessArticle.delete({
+     *   where: {
+     *     // ... filter to delete one WellnessArticle
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WellnessArticleDeleteArgs>(args: SelectSubset<T, WellnessArticleDeleteArgs<ExtArgs>>): Prisma__WellnessArticleClient<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one WellnessArticle.
+     * @param {WellnessArticleUpdateArgs} args - Arguments to update one WellnessArticle.
+     * @example
+     * // Update one WellnessArticle
+     * const wellnessArticle = await prisma.wellnessArticle.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WellnessArticleUpdateArgs>(args: SelectSubset<T, WellnessArticleUpdateArgs<ExtArgs>>): Prisma__WellnessArticleClient<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more WellnessArticles.
+     * @param {WellnessArticleDeleteManyArgs} args - Arguments to filter WellnessArticles to delete.
+     * @example
+     * // Delete a few WellnessArticles
+     * const { count } = await prisma.wellnessArticle.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WellnessArticleDeleteManyArgs>(args?: SelectSubset<T, WellnessArticleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WellnessArticles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WellnessArticleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WellnessArticles
+     * const wellnessArticle = await prisma.wellnessArticle.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WellnessArticleUpdateManyArgs>(args: SelectSubset<T, WellnessArticleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WellnessArticles and returns the data updated in the database.
+     * @param {WellnessArticleUpdateManyAndReturnArgs} args - Arguments to update many WellnessArticles.
+     * @example
+     * // Update many WellnessArticles
+     * const wellnessArticle = await prisma.wellnessArticle.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more WellnessArticles and only return the `id`
+     * const wellnessArticleWithIdOnly = await prisma.wellnessArticle.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WellnessArticleUpdateManyAndReturnArgs>(args: SelectSubset<T, WellnessArticleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one WellnessArticle.
+     * @param {WellnessArticleUpsertArgs} args - Arguments to update or create a WellnessArticle.
+     * @example
+     * // Update or create a WellnessArticle
+     * const wellnessArticle = await prisma.wellnessArticle.upsert({
+     *   create: {
+     *     // ... data to create a WellnessArticle
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WellnessArticle we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WellnessArticleUpsertArgs>(args: SelectSubset<T, WellnessArticleUpsertArgs<ExtArgs>>): Prisma__WellnessArticleClient<$Result.GetResult<Prisma.$WellnessArticlePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of WellnessArticles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WellnessArticleCountArgs} args - Arguments to filter WellnessArticles to count.
+     * @example
+     * // Count the number of WellnessArticles
+     * const count = await prisma.wellnessArticle.count({
+     *   where: {
+     *     // ... the filter for the WellnessArticles we want to count
+     *   }
+     * })
+    **/
+    count<T extends WellnessArticleCountArgs>(
+      args?: Subset<T, WellnessArticleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WellnessArticleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WellnessArticle.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WellnessArticleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WellnessArticleAggregateArgs>(args: Subset<T, WellnessArticleAggregateArgs>): Prisma.PrismaPromise<GetWellnessArticleAggregateType<T>>
+
+    /**
+     * Group by WellnessArticle.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WellnessArticleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WellnessArticleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WellnessArticleGroupByArgs['orderBy'] }
+        : { orderBy?: WellnessArticleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WellnessArticleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWellnessArticleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WellnessArticle model
+   */
+  readonly fields: WellnessArticleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WellnessArticle.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WellnessArticleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    asset<T extends WellnessArticle$assetArgs<ExtArgs> = {}>(args?: Subset<T, WellnessArticle$assetArgs<ExtArgs>>): Prisma__MediaAssetClient<$Result.GetResult<Prisma.$MediaAssetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WellnessArticle model
+   */
+  interface WellnessArticleFieldRefs {
+    readonly id: FieldRef<"WellnessArticle", 'String'>
+    readonly cat: FieldRef<"WellnessArticle", 'String'>
+    readonly title: FieldRef<"WellnessArticle", 'String'>
+    readonly excerpt: FieldRef<"WellnessArticle", 'String'>
+    readonly readTime: FieldRef<"WellnessArticle", 'String'>
+    readonly isHero: FieldRef<"WellnessArticle", 'Boolean'>
+    readonly order: FieldRef<"WellnessArticle", 'Int'>
+    readonly assetId: FieldRef<"WellnessArticle", 'String'>
+    readonly createdAt: FieldRef<"WellnessArticle", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WellnessArticle findUnique
+   */
+  export type WellnessArticleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which WellnessArticle to fetch.
+     */
+    where: WellnessArticleWhereUniqueInput
+  }
+
+  /**
+   * WellnessArticle findUniqueOrThrow
+   */
+  export type WellnessArticleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which WellnessArticle to fetch.
+     */
+    where: WellnessArticleWhereUniqueInput
+  }
+
+  /**
+   * WellnessArticle findFirst
+   */
+  export type WellnessArticleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which WellnessArticle to fetch.
+     */
+    where?: WellnessArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WellnessArticles to fetch.
+     */
+    orderBy?: WellnessArticleOrderByWithRelationInput | WellnessArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WellnessArticles.
+     */
+    cursor?: WellnessArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WellnessArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WellnessArticles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WellnessArticles.
+     */
+    distinct?: WellnessArticleScalarFieldEnum | WellnessArticleScalarFieldEnum[]
+  }
+
+  /**
+   * WellnessArticle findFirstOrThrow
+   */
+  export type WellnessArticleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which WellnessArticle to fetch.
+     */
+    where?: WellnessArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WellnessArticles to fetch.
+     */
+    orderBy?: WellnessArticleOrderByWithRelationInput | WellnessArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WellnessArticles.
+     */
+    cursor?: WellnessArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WellnessArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WellnessArticles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WellnessArticles.
+     */
+    distinct?: WellnessArticleScalarFieldEnum | WellnessArticleScalarFieldEnum[]
+  }
+
+  /**
+   * WellnessArticle findMany
+   */
+  export type WellnessArticleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which WellnessArticles to fetch.
+     */
+    where?: WellnessArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WellnessArticles to fetch.
+     */
+    orderBy?: WellnessArticleOrderByWithRelationInput | WellnessArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WellnessArticles.
+     */
+    cursor?: WellnessArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WellnessArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WellnessArticles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WellnessArticles.
+     */
+    distinct?: WellnessArticleScalarFieldEnum | WellnessArticleScalarFieldEnum[]
+  }
+
+  /**
+   * WellnessArticle create
+   */
+  export type WellnessArticleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WellnessArticle.
+     */
+    data: XOR<WellnessArticleCreateInput, WellnessArticleUncheckedCreateInput>
+  }
+
+  /**
+   * WellnessArticle createMany
+   */
+  export type WellnessArticleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WellnessArticles.
+     */
+    data: WellnessArticleCreateManyInput | WellnessArticleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WellnessArticle createManyAndReturn
+   */
+  export type WellnessArticleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * The data used to create many WellnessArticles.
+     */
+    data: WellnessArticleCreateManyInput | WellnessArticleCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WellnessArticle update
+   */
+  export type WellnessArticleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WellnessArticle.
+     */
+    data: XOR<WellnessArticleUpdateInput, WellnessArticleUncheckedUpdateInput>
+    /**
+     * Choose, which WellnessArticle to update.
+     */
+    where: WellnessArticleWhereUniqueInput
+  }
+
+  /**
+   * WellnessArticle updateMany
+   */
+  export type WellnessArticleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WellnessArticles.
+     */
+    data: XOR<WellnessArticleUpdateManyMutationInput, WellnessArticleUncheckedUpdateManyInput>
+    /**
+     * Filter which WellnessArticles to update
+     */
+    where?: WellnessArticleWhereInput
+    /**
+     * Limit how many WellnessArticles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * WellnessArticle updateManyAndReturn
+   */
+  export type WellnessArticleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * The data used to update WellnessArticles.
+     */
+    data: XOR<WellnessArticleUpdateManyMutationInput, WellnessArticleUncheckedUpdateManyInput>
+    /**
+     * Filter which WellnessArticles to update
+     */
+    where?: WellnessArticleWhereInput
+    /**
+     * Limit how many WellnessArticles to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WellnessArticle upsert
+   */
+  export type WellnessArticleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WellnessArticle to update in case it exists.
+     */
+    where: WellnessArticleWhereUniqueInput
+    /**
+     * In case the WellnessArticle found by the `where` argument doesn't exist, create a new WellnessArticle with this data.
+     */
+    create: XOR<WellnessArticleCreateInput, WellnessArticleUncheckedCreateInput>
+    /**
+     * In case the WellnessArticle was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WellnessArticleUpdateInput, WellnessArticleUncheckedUpdateInput>
+  }
+
+  /**
+   * WellnessArticle delete
+   */
+  export type WellnessArticleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleInclude<ExtArgs> | null
+    /**
+     * Filter which WellnessArticle to delete.
+     */
+    where: WellnessArticleWhereUniqueInput
+  }
+
+  /**
+   * WellnessArticle deleteMany
+   */
+  export type WellnessArticleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WellnessArticles to delete
+     */
+    where?: WellnessArticleWhereInput
+    /**
+     * Limit how many WellnessArticles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * WellnessArticle.asset
+   */
+  export type WellnessArticle$assetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaAsset
+     */
+    select?: MediaAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaAsset
+     */
+    omit?: MediaAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaAssetInclude<ExtArgs> | null
+    where?: MediaAssetWhereInput
+  }
+
+  /**
+   * WellnessArticle without action
+   */
+  export type WellnessArticleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WellnessArticle
+     */
+    select?: WellnessArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WellnessArticle
+     */
+    omit?: WellnessArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WellnessArticleInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -21558,6 +31511,102 @@ export namespace Prisma {
   };
 
   export type RoomTabParagraphScalarFieldEnum = (typeof RoomTabParagraphScalarFieldEnum)[keyof typeof RoomTabParagraphScalarFieldEnum]
+
+
+  export const MenuSectionScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    order: 'order'
+  };
+
+  export type MenuSectionScalarFieldEnum = (typeof MenuSectionScalarFieldEnum)[keyof typeof MenuSectionScalarFieldEnum]
+
+
+  export const MenuItemScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    desc: 'desc',
+    cat: 'cat',
+    order: 'order',
+    sectionId: 'sectionId'
+  };
+
+  export type MenuItemScalarFieldEnum = (typeof MenuItemScalarFieldEnum)[keyof typeof MenuItemScalarFieldEnum]
+
+
+  export const RecipeScalarFieldEnum: {
+    id: 'id',
+    label: 'label',
+    title: 'title',
+    desc: 'desc',
+    time: 'time',
+    cat: 'cat',
+    gradientFrom: 'gradientFrom',
+    gradientTo: 'gradientTo',
+    order: 'order',
+    isFeatured: 'isFeatured',
+    assetId: 'assetId',
+    createdAt: 'createdAt'
+  };
+
+  export type RecipeScalarFieldEnum = (typeof RecipeScalarFieldEnum)[keyof typeof RecipeScalarFieldEnum]
+
+
+  export const DiningCategoryScalarFieldEnum: {
+    id: 'id',
+    label: 'label',
+    title: 'title',
+    order: 'order',
+    assetId: 'assetId'
+  };
+
+  export type DiningCategoryScalarFieldEnum = (typeof DiningCategoryScalarFieldEnum)[keyof typeof DiningCategoryScalarFieldEnum]
+
+
+  export const TopCategoryScalarFieldEnum: {
+    id: 'id',
+    label: 'label',
+    order: 'order',
+    assetId: 'assetId'
+  };
+
+  export type TopCategoryScalarFieldEnum = (typeof TopCategoryScalarFieldEnum)[keyof typeof TopCategoryScalarFieldEnum]
+
+
+  export const WeeklyFeaturedScalarFieldEnum: {
+    id: 'id',
+    label: 'label',
+    title: 'title',
+    assetId: 'assetId'
+  };
+
+  export type WeeklyFeaturedScalarFieldEnum = (typeof WeeklyFeaturedScalarFieldEnum)[keyof typeof WeeklyFeaturedScalarFieldEnum]
+
+
+  export const WeeklySideScalarFieldEnum: {
+    id: 'id',
+    label: 'label',
+    title: 'title',
+    order: 'order',
+    assetId: 'assetId'
+  };
+
+  export type WeeklySideScalarFieldEnum = (typeof WeeklySideScalarFieldEnum)[keyof typeof WeeklySideScalarFieldEnum]
+
+
+  export const WellnessArticleScalarFieldEnum: {
+    id: 'id',
+    cat: 'cat',
+    title: 'title',
+    excerpt: 'excerpt',
+    readTime: 'readTime',
+    isHero: 'isHero',
+    order: 'order',
+    assetId: 'assetId',
+    createdAt: 'createdAt'
+  };
+
+  export type WellnessArticleScalarFieldEnum = (typeof WellnessArticleScalarFieldEnum)[keyof typeof WellnessArticleScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -21939,6 +31988,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeListRelationFilter
     roomImages?: RoomImageListRelationFilter
     roomTabImages?: RoomTabListRelationFilter
+    recipes?: RecipeListRelationFilter
+    diningCategories?: DiningCategoryListRelationFilter
+    topCategories?: TopCategoryListRelationFilter
+    weeklyFeatured?: WeeklyFeaturedListRelationFilter
+    weeklySides?: WeeklySideListRelationFilter
+    wellnessArticles?: WellnessArticleListRelationFilter
   }
 
   export type MediaAssetOrderByWithRelationInput = {
@@ -21954,6 +32009,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeOrderByRelationAggregateInput
     roomImages?: RoomImageOrderByRelationAggregateInput
     roomTabImages?: RoomTabOrderByRelationAggregateInput
+    recipes?: RecipeOrderByRelationAggregateInput
+    diningCategories?: DiningCategoryOrderByRelationAggregateInput
+    topCategories?: TopCategoryOrderByRelationAggregateInput
+    weeklyFeatured?: WeeklyFeaturedOrderByRelationAggregateInput
+    weeklySides?: WeeklySideOrderByRelationAggregateInput
+    wellnessArticles?: WellnessArticleOrderByRelationAggregateInput
   }
 
   export type MediaAssetWhereUniqueInput = Prisma.AtLeast<{
@@ -21972,6 +32033,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeListRelationFilter
     roomImages?: RoomImageListRelationFilter
     roomTabImages?: RoomTabListRelationFilter
+    recipes?: RecipeListRelationFilter
+    diningCategories?: DiningCategoryListRelationFilter
+    topCategories?: TopCategoryListRelationFilter
+    weeklyFeatured?: WeeklyFeaturedListRelationFilter
+    weeklySides?: WeeklySideListRelationFilter
+    wellnessArticles?: WellnessArticleListRelationFilter
   }, "id">
 
   export type MediaAssetOrderByWithAggregationInput = {
@@ -22766,6 +32833,500 @@ export namespace Prisma {
     order?: IntWithAggregatesFilter<"RoomTabParagraph"> | number
   }
 
+  export type MenuSectionWhereInput = {
+    AND?: MenuSectionWhereInput | MenuSectionWhereInput[]
+    OR?: MenuSectionWhereInput[]
+    NOT?: MenuSectionWhereInput | MenuSectionWhereInput[]
+    id?: StringFilter<"MenuSection"> | string
+    title?: StringFilter<"MenuSection"> | string
+    order?: IntFilter<"MenuSection"> | number
+    items?: MenuItemListRelationFilter
+  }
+
+  export type MenuSectionOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    items?: MenuItemOrderByRelationAggregateInput
+  }
+
+  export type MenuSectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MenuSectionWhereInput | MenuSectionWhereInput[]
+    OR?: MenuSectionWhereInput[]
+    NOT?: MenuSectionWhereInput | MenuSectionWhereInput[]
+    title?: StringFilter<"MenuSection"> | string
+    order?: IntFilter<"MenuSection"> | number
+    items?: MenuItemListRelationFilter
+  }, "id">
+
+  export type MenuSectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    _count?: MenuSectionCountOrderByAggregateInput
+    _avg?: MenuSectionAvgOrderByAggregateInput
+    _max?: MenuSectionMaxOrderByAggregateInput
+    _min?: MenuSectionMinOrderByAggregateInput
+    _sum?: MenuSectionSumOrderByAggregateInput
+  }
+
+  export type MenuSectionScalarWhereWithAggregatesInput = {
+    AND?: MenuSectionScalarWhereWithAggregatesInput | MenuSectionScalarWhereWithAggregatesInput[]
+    OR?: MenuSectionScalarWhereWithAggregatesInput[]
+    NOT?: MenuSectionScalarWhereWithAggregatesInput | MenuSectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MenuSection"> | string
+    title?: StringWithAggregatesFilter<"MenuSection"> | string
+    order?: IntWithAggregatesFilter<"MenuSection"> | number
+  }
+
+  export type MenuItemWhereInput = {
+    AND?: MenuItemWhereInput | MenuItemWhereInput[]
+    OR?: MenuItemWhereInput[]
+    NOT?: MenuItemWhereInput | MenuItemWhereInput[]
+    id?: StringFilter<"MenuItem"> | string
+    name?: StringFilter<"MenuItem"> | string
+    desc?: StringFilter<"MenuItem"> | string
+    cat?: StringFilter<"MenuItem"> | string
+    order?: IntFilter<"MenuItem"> | number
+    sectionId?: StringFilter<"MenuItem"> | string
+    section?: XOR<MenuSectionScalarRelationFilter, MenuSectionWhereInput>
+  }
+
+  export type MenuItemOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    desc?: SortOrder
+    cat?: SortOrder
+    order?: SortOrder
+    sectionId?: SortOrder
+    section?: MenuSectionOrderByWithRelationInput
+  }
+
+  export type MenuItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MenuItemWhereInput | MenuItemWhereInput[]
+    OR?: MenuItemWhereInput[]
+    NOT?: MenuItemWhereInput | MenuItemWhereInput[]
+    name?: StringFilter<"MenuItem"> | string
+    desc?: StringFilter<"MenuItem"> | string
+    cat?: StringFilter<"MenuItem"> | string
+    order?: IntFilter<"MenuItem"> | number
+    sectionId?: StringFilter<"MenuItem"> | string
+    section?: XOR<MenuSectionScalarRelationFilter, MenuSectionWhereInput>
+  }, "id">
+
+  export type MenuItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    desc?: SortOrder
+    cat?: SortOrder
+    order?: SortOrder
+    sectionId?: SortOrder
+    _count?: MenuItemCountOrderByAggregateInput
+    _avg?: MenuItemAvgOrderByAggregateInput
+    _max?: MenuItemMaxOrderByAggregateInput
+    _min?: MenuItemMinOrderByAggregateInput
+    _sum?: MenuItemSumOrderByAggregateInput
+  }
+
+  export type MenuItemScalarWhereWithAggregatesInput = {
+    AND?: MenuItemScalarWhereWithAggregatesInput | MenuItemScalarWhereWithAggregatesInput[]
+    OR?: MenuItemScalarWhereWithAggregatesInput[]
+    NOT?: MenuItemScalarWhereWithAggregatesInput | MenuItemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MenuItem"> | string
+    name?: StringWithAggregatesFilter<"MenuItem"> | string
+    desc?: StringWithAggregatesFilter<"MenuItem"> | string
+    cat?: StringWithAggregatesFilter<"MenuItem"> | string
+    order?: IntWithAggregatesFilter<"MenuItem"> | number
+    sectionId?: StringWithAggregatesFilter<"MenuItem"> | string
+  }
+
+  export type RecipeWhereInput = {
+    AND?: RecipeWhereInput | RecipeWhereInput[]
+    OR?: RecipeWhereInput[]
+    NOT?: RecipeWhereInput | RecipeWhereInput[]
+    id?: StringFilter<"Recipe"> | string
+    label?: StringFilter<"Recipe"> | string
+    title?: StringFilter<"Recipe"> | string
+    desc?: StringFilter<"Recipe"> | string
+    time?: StringFilter<"Recipe"> | string
+    cat?: StringFilter<"Recipe"> | string
+    gradientFrom?: StringFilter<"Recipe"> | string
+    gradientTo?: StringFilter<"Recipe"> | string
+    order?: IntFilter<"Recipe"> | number
+    isFeatured?: BoolFilter<"Recipe"> | boolean
+    assetId?: StringNullableFilter<"Recipe"> | string | null
+    createdAt?: DateTimeFilter<"Recipe"> | Date | string
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }
+
+  export type RecipeOrderByWithRelationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    time?: SortOrder
+    cat?: SortOrder
+    gradientFrom?: SortOrder
+    gradientTo?: SortOrder
+    order?: SortOrder
+    isFeatured?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    asset?: MediaAssetOrderByWithRelationInput
+  }
+
+  export type RecipeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: RecipeWhereInput | RecipeWhereInput[]
+    OR?: RecipeWhereInput[]
+    NOT?: RecipeWhereInput | RecipeWhereInput[]
+    label?: StringFilter<"Recipe"> | string
+    title?: StringFilter<"Recipe"> | string
+    desc?: StringFilter<"Recipe"> | string
+    time?: StringFilter<"Recipe"> | string
+    cat?: StringFilter<"Recipe"> | string
+    gradientFrom?: StringFilter<"Recipe"> | string
+    gradientTo?: StringFilter<"Recipe"> | string
+    order?: IntFilter<"Recipe"> | number
+    isFeatured?: BoolFilter<"Recipe"> | boolean
+    assetId?: StringNullableFilter<"Recipe"> | string | null
+    createdAt?: DateTimeFilter<"Recipe"> | Date | string
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }, "id">
+
+  export type RecipeOrderByWithAggregationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    time?: SortOrder
+    cat?: SortOrder
+    gradientFrom?: SortOrder
+    gradientTo?: SortOrder
+    order?: SortOrder
+    isFeatured?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: RecipeCountOrderByAggregateInput
+    _avg?: RecipeAvgOrderByAggregateInput
+    _max?: RecipeMaxOrderByAggregateInput
+    _min?: RecipeMinOrderByAggregateInput
+    _sum?: RecipeSumOrderByAggregateInput
+  }
+
+  export type RecipeScalarWhereWithAggregatesInput = {
+    AND?: RecipeScalarWhereWithAggregatesInput | RecipeScalarWhereWithAggregatesInput[]
+    OR?: RecipeScalarWhereWithAggregatesInput[]
+    NOT?: RecipeScalarWhereWithAggregatesInput | RecipeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Recipe"> | string
+    label?: StringWithAggregatesFilter<"Recipe"> | string
+    title?: StringWithAggregatesFilter<"Recipe"> | string
+    desc?: StringWithAggregatesFilter<"Recipe"> | string
+    time?: StringWithAggregatesFilter<"Recipe"> | string
+    cat?: StringWithAggregatesFilter<"Recipe"> | string
+    gradientFrom?: StringWithAggregatesFilter<"Recipe"> | string
+    gradientTo?: StringWithAggregatesFilter<"Recipe"> | string
+    order?: IntWithAggregatesFilter<"Recipe"> | number
+    isFeatured?: BoolWithAggregatesFilter<"Recipe"> | boolean
+    assetId?: StringNullableWithAggregatesFilter<"Recipe"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Recipe"> | Date | string
+  }
+
+  export type DiningCategoryWhereInput = {
+    AND?: DiningCategoryWhereInput | DiningCategoryWhereInput[]
+    OR?: DiningCategoryWhereInput[]
+    NOT?: DiningCategoryWhereInput | DiningCategoryWhereInput[]
+    id?: StringFilter<"DiningCategory"> | string
+    label?: StringFilter<"DiningCategory"> | string
+    title?: StringFilter<"DiningCategory"> | string
+    order?: IntFilter<"DiningCategory"> | number
+    assetId?: StringNullableFilter<"DiningCategory"> | string | null
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }
+
+  export type DiningCategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    asset?: MediaAssetOrderByWithRelationInput
+  }
+
+  export type DiningCategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DiningCategoryWhereInput | DiningCategoryWhereInput[]
+    OR?: DiningCategoryWhereInput[]
+    NOT?: DiningCategoryWhereInput | DiningCategoryWhereInput[]
+    label?: StringFilter<"DiningCategory"> | string
+    title?: StringFilter<"DiningCategory"> | string
+    order?: IntFilter<"DiningCategory"> | number
+    assetId?: StringNullableFilter<"DiningCategory"> | string | null
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }, "id">
+
+  export type DiningCategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    _count?: DiningCategoryCountOrderByAggregateInput
+    _avg?: DiningCategoryAvgOrderByAggregateInput
+    _max?: DiningCategoryMaxOrderByAggregateInput
+    _min?: DiningCategoryMinOrderByAggregateInput
+    _sum?: DiningCategorySumOrderByAggregateInput
+  }
+
+  export type DiningCategoryScalarWhereWithAggregatesInput = {
+    AND?: DiningCategoryScalarWhereWithAggregatesInput | DiningCategoryScalarWhereWithAggregatesInput[]
+    OR?: DiningCategoryScalarWhereWithAggregatesInput[]
+    NOT?: DiningCategoryScalarWhereWithAggregatesInput | DiningCategoryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DiningCategory"> | string
+    label?: StringWithAggregatesFilter<"DiningCategory"> | string
+    title?: StringWithAggregatesFilter<"DiningCategory"> | string
+    order?: IntWithAggregatesFilter<"DiningCategory"> | number
+    assetId?: StringNullableWithAggregatesFilter<"DiningCategory"> | string | null
+  }
+
+  export type TopCategoryWhereInput = {
+    AND?: TopCategoryWhereInput | TopCategoryWhereInput[]
+    OR?: TopCategoryWhereInput[]
+    NOT?: TopCategoryWhereInput | TopCategoryWhereInput[]
+    id?: StringFilter<"TopCategory"> | string
+    label?: StringFilter<"TopCategory"> | string
+    order?: IntFilter<"TopCategory"> | number
+    assetId?: StringNullableFilter<"TopCategory"> | string | null
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }
+
+  export type TopCategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    asset?: MediaAssetOrderByWithRelationInput
+  }
+
+  export type TopCategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TopCategoryWhereInput | TopCategoryWhereInput[]
+    OR?: TopCategoryWhereInput[]
+    NOT?: TopCategoryWhereInput | TopCategoryWhereInput[]
+    label?: StringFilter<"TopCategory"> | string
+    order?: IntFilter<"TopCategory"> | number
+    assetId?: StringNullableFilter<"TopCategory"> | string | null
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }, "id">
+
+  export type TopCategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    _count?: TopCategoryCountOrderByAggregateInput
+    _avg?: TopCategoryAvgOrderByAggregateInput
+    _max?: TopCategoryMaxOrderByAggregateInput
+    _min?: TopCategoryMinOrderByAggregateInput
+    _sum?: TopCategorySumOrderByAggregateInput
+  }
+
+  export type TopCategoryScalarWhereWithAggregatesInput = {
+    AND?: TopCategoryScalarWhereWithAggregatesInput | TopCategoryScalarWhereWithAggregatesInput[]
+    OR?: TopCategoryScalarWhereWithAggregatesInput[]
+    NOT?: TopCategoryScalarWhereWithAggregatesInput | TopCategoryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TopCategory"> | string
+    label?: StringWithAggregatesFilter<"TopCategory"> | string
+    order?: IntWithAggregatesFilter<"TopCategory"> | number
+    assetId?: StringNullableWithAggregatesFilter<"TopCategory"> | string | null
+  }
+
+  export type WeeklyFeaturedWhereInput = {
+    AND?: WeeklyFeaturedWhereInput | WeeklyFeaturedWhereInput[]
+    OR?: WeeklyFeaturedWhereInput[]
+    NOT?: WeeklyFeaturedWhereInput | WeeklyFeaturedWhereInput[]
+    id?: StringFilter<"WeeklyFeatured"> | string
+    label?: StringFilter<"WeeklyFeatured"> | string
+    title?: StringFilter<"WeeklyFeatured"> | string
+    assetId?: StringNullableFilter<"WeeklyFeatured"> | string | null
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }
+
+  export type WeeklyFeaturedOrderByWithRelationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    asset?: MediaAssetOrderByWithRelationInput
+  }
+
+  export type WeeklyFeaturedWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WeeklyFeaturedWhereInput | WeeklyFeaturedWhereInput[]
+    OR?: WeeklyFeaturedWhereInput[]
+    NOT?: WeeklyFeaturedWhereInput | WeeklyFeaturedWhereInput[]
+    label?: StringFilter<"WeeklyFeatured"> | string
+    title?: StringFilter<"WeeklyFeatured"> | string
+    assetId?: StringNullableFilter<"WeeklyFeatured"> | string | null
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }, "id">
+
+  export type WeeklyFeaturedOrderByWithAggregationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    _count?: WeeklyFeaturedCountOrderByAggregateInput
+    _max?: WeeklyFeaturedMaxOrderByAggregateInput
+    _min?: WeeklyFeaturedMinOrderByAggregateInput
+  }
+
+  export type WeeklyFeaturedScalarWhereWithAggregatesInput = {
+    AND?: WeeklyFeaturedScalarWhereWithAggregatesInput | WeeklyFeaturedScalarWhereWithAggregatesInput[]
+    OR?: WeeklyFeaturedScalarWhereWithAggregatesInput[]
+    NOT?: WeeklyFeaturedScalarWhereWithAggregatesInput | WeeklyFeaturedScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WeeklyFeatured"> | string
+    label?: StringWithAggregatesFilter<"WeeklyFeatured"> | string
+    title?: StringWithAggregatesFilter<"WeeklyFeatured"> | string
+    assetId?: StringNullableWithAggregatesFilter<"WeeklyFeatured"> | string | null
+  }
+
+  export type WeeklySideWhereInput = {
+    AND?: WeeklySideWhereInput | WeeklySideWhereInput[]
+    OR?: WeeklySideWhereInput[]
+    NOT?: WeeklySideWhereInput | WeeklySideWhereInput[]
+    id?: StringFilter<"WeeklySide"> | string
+    label?: StringFilter<"WeeklySide"> | string
+    title?: StringFilter<"WeeklySide"> | string
+    order?: IntFilter<"WeeklySide"> | number
+    assetId?: StringNullableFilter<"WeeklySide"> | string | null
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }
+
+  export type WeeklySideOrderByWithRelationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    asset?: MediaAssetOrderByWithRelationInput
+  }
+
+  export type WeeklySideWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WeeklySideWhereInput | WeeklySideWhereInput[]
+    OR?: WeeklySideWhereInput[]
+    NOT?: WeeklySideWhereInput | WeeklySideWhereInput[]
+    label?: StringFilter<"WeeklySide"> | string
+    title?: StringFilter<"WeeklySide"> | string
+    order?: IntFilter<"WeeklySide"> | number
+    assetId?: StringNullableFilter<"WeeklySide"> | string | null
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }, "id">
+
+  export type WeeklySideOrderByWithAggregationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    _count?: WeeklySideCountOrderByAggregateInput
+    _avg?: WeeklySideAvgOrderByAggregateInput
+    _max?: WeeklySideMaxOrderByAggregateInput
+    _min?: WeeklySideMinOrderByAggregateInput
+    _sum?: WeeklySideSumOrderByAggregateInput
+  }
+
+  export type WeeklySideScalarWhereWithAggregatesInput = {
+    AND?: WeeklySideScalarWhereWithAggregatesInput | WeeklySideScalarWhereWithAggregatesInput[]
+    OR?: WeeklySideScalarWhereWithAggregatesInput[]
+    NOT?: WeeklySideScalarWhereWithAggregatesInput | WeeklySideScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WeeklySide"> | string
+    label?: StringWithAggregatesFilter<"WeeklySide"> | string
+    title?: StringWithAggregatesFilter<"WeeklySide"> | string
+    order?: IntWithAggregatesFilter<"WeeklySide"> | number
+    assetId?: StringNullableWithAggregatesFilter<"WeeklySide"> | string | null
+  }
+
+  export type WellnessArticleWhereInput = {
+    AND?: WellnessArticleWhereInput | WellnessArticleWhereInput[]
+    OR?: WellnessArticleWhereInput[]
+    NOT?: WellnessArticleWhereInput | WellnessArticleWhereInput[]
+    id?: StringFilter<"WellnessArticle"> | string
+    cat?: StringFilter<"WellnessArticle"> | string
+    title?: StringFilter<"WellnessArticle"> | string
+    excerpt?: StringFilter<"WellnessArticle"> | string
+    readTime?: StringFilter<"WellnessArticle"> | string
+    isHero?: BoolFilter<"WellnessArticle"> | boolean
+    order?: IntFilter<"WellnessArticle"> | number
+    assetId?: StringNullableFilter<"WellnessArticle"> | string | null
+    createdAt?: DateTimeFilter<"WellnessArticle"> | Date | string
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }
+
+  export type WellnessArticleOrderByWithRelationInput = {
+    id?: SortOrder
+    cat?: SortOrder
+    title?: SortOrder
+    excerpt?: SortOrder
+    readTime?: SortOrder
+    isHero?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    asset?: MediaAssetOrderByWithRelationInput
+  }
+
+  export type WellnessArticleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WellnessArticleWhereInput | WellnessArticleWhereInput[]
+    OR?: WellnessArticleWhereInput[]
+    NOT?: WellnessArticleWhereInput | WellnessArticleWhereInput[]
+    cat?: StringFilter<"WellnessArticle"> | string
+    title?: StringFilter<"WellnessArticle"> | string
+    excerpt?: StringFilter<"WellnessArticle"> | string
+    readTime?: StringFilter<"WellnessArticle"> | string
+    isHero?: BoolFilter<"WellnessArticle"> | boolean
+    order?: IntFilter<"WellnessArticle"> | number
+    assetId?: StringNullableFilter<"WellnessArticle"> | string | null
+    createdAt?: DateTimeFilter<"WellnessArticle"> | Date | string
+    asset?: XOR<MediaAssetNullableScalarRelationFilter, MediaAssetWhereInput> | null
+  }, "id">
+
+  export type WellnessArticleOrderByWithAggregationInput = {
+    id?: SortOrder
+    cat?: SortOrder
+    title?: SortOrder
+    excerpt?: SortOrder
+    readTime?: SortOrder
+    isHero?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: WellnessArticleCountOrderByAggregateInput
+    _avg?: WellnessArticleAvgOrderByAggregateInput
+    _max?: WellnessArticleMaxOrderByAggregateInput
+    _min?: WellnessArticleMinOrderByAggregateInput
+    _sum?: WellnessArticleSumOrderByAggregateInput
+  }
+
+  export type WellnessArticleScalarWhereWithAggregatesInput = {
+    AND?: WellnessArticleScalarWhereWithAggregatesInput | WellnessArticleScalarWhereWithAggregatesInput[]
+    OR?: WellnessArticleScalarWhereWithAggregatesInput[]
+    NOT?: WellnessArticleScalarWhereWithAggregatesInput | WellnessArticleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WellnessArticle"> | string
+    cat?: StringWithAggregatesFilter<"WellnessArticle"> | string
+    title?: StringWithAggregatesFilter<"WellnessArticle"> | string
+    excerpt?: StringWithAggregatesFilter<"WellnessArticle"> | string
+    readTime?: StringWithAggregatesFilter<"WellnessArticle"> | string
+    isHero?: BoolWithAggregatesFilter<"WellnessArticle"> | boolean
+    order?: IntWithAggregatesFilter<"WellnessArticle"> | number
+    assetId?: StringNullableWithAggregatesFilter<"WellnessArticle"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"WellnessArticle"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
@@ -23051,6 +33612,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
     roomImages?: RoomImageCreateNestedManyWithoutAssetInput
     roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetUncheckedCreateInput = {
@@ -23066,6 +33633,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
     roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
     roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetUpdateInput = {
@@ -23081,6 +33654,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
     roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
     roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetUncheckedUpdateInput = {
@@ -23096,6 +33675,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
     roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
     roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetCreateManyInput = {
@@ -23918,6 +34503,507 @@ export namespace Prisma {
     order?: IntFieldUpdateOperationsInput | number
   }
 
+  export type MenuSectionCreateInput = {
+    id?: string
+    title: string
+    order?: number
+    items?: MenuItemCreateNestedManyWithoutSectionInput
+  }
+
+  export type MenuSectionUncheckedCreateInput = {
+    id?: string
+    title: string
+    order?: number
+    items?: MenuItemUncheckedCreateNestedManyWithoutSectionInput
+  }
+
+  export type MenuSectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    items?: MenuItemUpdateManyWithoutSectionNestedInput
+  }
+
+  export type MenuSectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    items?: MenuItemUncheckedUpdateManyWithoutSectionNestedInput
+  }
+
+  export type MenuSectionCreateManyInput = {
+    id?: string
+    title: string
+    order?: number
+  }
+
+  export type MenuSectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MenuSectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MenuItemCreateInput = {
+    id?: string
+    name: string
+    desc: string
+    cat: string
+    order?: number
+    section: MenuSectionCreateNestedOneWithoutItemsInput
+  }
+
+  export type MenuItemUncheckedCreateInput = {
+    id?: string
+    name: string
+    desc: string
+    cat: string
+    order?: number
+    sectionId: string
+  }
+
+  export type MenuItemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    section?: MenuSectionUpdateOneRequiredWithoutItemsNestedInput
+  }
+
+  export type MenuItemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    sectionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MenuItemCreateManyInput = {
+    id?: string
+    name: string
+    desc: string
+    cat: string
+    order?: number
+    sectionId: string
+  }
+
+  export type MenuItemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MenuItemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    sectionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RecipeCreateInput = {
+    id?: string
+    label: string
+    title: string
+    desc: string
+    time: string
+    cat: string
+    gradientFrom: string
+    gradientTo: string
+    order?: number
+    isFeatured?: boolean
+    createdAt?: Date | string
+    asset?: MediaAssetCreateNestedOneWithoutRecipesInput
+  }
+
+  export type RecipeUncheckedCreateInput = {
+    id?: string
+    label: string
+    title: string
+    desc: string
+    time: string
+    cat: string
+    gradientFrom: string
+    gradientTo: string
+    order?: number
+    isFeatured?: boolean
+    assetId?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RecipeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    gradientFrom?: StringFieldUpdateOperationsInput | string
+    gradientTo?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    asset?: MediaAssetUpdateOneWithoutRecipesNestedInput
+  }
+
+  export type RecipeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    gradientFrom?: StringFieldUpdateOperationsInput | string
+    gradientTo?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RecipeCreateManyInput = {
+    id?: string
+    label: string
+    title: string
+    desc: string
+    time: string
+    cat: string
+    gradientFrom: string
+    gradientTo: string
+    order?: number
+    isFeatured?: boolean
+    assetId?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RecipeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    gradientFrom?: StringFieldUpdateOperationsInput | string
+    gradientTo?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RecipeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    gradientFrom?: StringFieldUpdateOperationsInput | string
+    gradientTo?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DiningCategoryCreateInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+    asset?: MediaAssetCreateNestedOneWithoutDiningCategoriesInput
+  }
+
+  export type DiningCategoryUncheckedCreateInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+    assetId?: string | null
+  }
+
+  export type DiningCategoryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    asset?: MediaAssetUpdateOneWithoutDiningCategoriesNestedInput
+  }
+
+  export type DiningCategoryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DiningCategoryCreateManyInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+    assetId?: string | null
+  }
+
+  export type DiningCategoryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DiningCategoryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TopCategoryCreateInput = {
+    id?: string
+    label: string
+    order?: number
+    asset?: MediaAssetCreateNestedOneWithoutTopCategoriesInput
+  }
+
+  export type TopCategoryUncheckedCreateInput = {
+    id?: string
+    label: string
+    order?: number
+    assetId?: string | null
+  }
+
+  export type TopCategoryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    asset?: MediaAssetUpdateOneWithoutTopCategoriesNestedInput
+  }
+
+  export type TopCategoryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TopCategoryCreateManyInput = {
+    id?: string
+    label: string
+    order?: number
+    assetId?: string | null
+  }
+
+  export type TopCategoryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TopCategoryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WeeklyFeaturedCreateInput = {
+    id?: string
+    label?: string
+    title?: string
+    asset?: MediaAssetCreateNestedOneWithoutWeeklyFeaturedInput
+  }
+
+  export type WeeklyFeaturedUncheckedCreateInput = {
+    id?: string
+    label?: string
+    title?: string
+    assetId?: string | null
+  }
+
+  export type WeeklyFeaturedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    asset?: MediaAssetUpdateOneWithoutWeeklyFeaturedNestedInput
+  }
+
+  export type WeeklyFeaturedUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WeeklyFeaturedCreateManyInput = {
+    id?: string
+    label?: string
+    title?: string
+    assetId?: string | null
+  }
+
+  export type WeeklyFeaturedUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WeeklyFeaturedUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WeeklySideCreateInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+    asset?: MediaAssetCreateNestedOneWithoutWeeklySidesInput
+  }
+
+  export type WeeklySideUncheckedCreateInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+    assetId?: string | null
+  }
+
+  export type WeeklySideUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    asset?: MediaAssetUpdateOneWithoutWeeklySidesNestedInput
+  }
+
+  export type WeeklySideUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WeeklySideCreateManyInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+    assetId?: string | null
+  }
+
+  export type WeeklySideUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type WeeklySideUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WellnessArticleCreateInput = {
+    id?: string
+    cat: string
+    title: string
+    excerpt: string
+    readTime: string
+    isHero?: boolean
+    order?: number
+    createdAt?: Date | string
+    asset?: MediaAssetCreateNestedOneWithoutWellnessArticlesInput
+  }
+
+  export type WellnessArticleUncheckedCreateInput = {
+    id?: string
+    cat: string
+    title: string
+    excerpt: string
+    readTime: string
+    isHero?: boolean
+    order?: number
+    assetId?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WellnessArticleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    readTime?: StringFieldUpdateOperationsInput | string
+    isHero?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    asset?: MediaAssetUpdateOneWithoutWellnessArticlesNestedInput
+  }
+
+  export type WellnessArticleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    readTime?: StringFieldUpdateOperationsInput | string
+    isHero?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WellnessArticleCreateManyInput = {
+    id?: string
+    cat: string
+    title: string
+    excerpt: string
+    readTime: string
+    isHero?: boolean
+    order?: number
+    assetId?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WellnessArticleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    readTime?: StringFieldUpdateOperationsInput | string
+    isHero?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WellnessArticleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    readTime?: StringFieldUpdateOperationsInput | string
+    isHero?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
+    assetId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -24272,6 +35358,42 @@ export namespace Prisma {
     none?: RoomTabWhereInput
   }
 
+  export type RecipeListRelationFilter = {
+    every?: RecipeWhereInput
+    some?: RecipeWhereInput
+    none?: RecipeWhereInput
+  }
+
+  export type DiningCategoryListRelationFilter = {
+    every?: DiningCategoryWhereInput
+    some?: DiningCategoryWhereInput
+    none?: DiningCategoryWhereInput
+  }
+
+  export type TopCategoryListRelationFilter = {
+    every?: TopCategoryWhereInput
+    some?: TopCategoryWhereInput
+    none?: TopCategoryWhereInput
+  }
+
+  export type WeeklyFeaturedListRelationFilter = {
+    every?: WeeklyFeaturedWhereInput
+    some?: WeeklyFeaturedWhereInput
+    none?: WeeklyFeaturedWhereInput
+  }
+
+  export type WeeklySideListRelationFilter = {
+    every?: WeeklySideWhereInput
+    some?: WeeklySideWhereInput
+    none?: WeeklySideWhereInput
+  }
+
+  export type WellnessArticleListRelationFilter = {
+    every?: WellnessArticleWhereInput
+    some?: WellnessArticleWhereInput
+    none?: WellnessArticleWhereInput
+  }
+
   export type HeroSlideOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -24293,6 +35415,30 @@ export namespace Prisma {
   }
 
   export type RoomTabOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RecipeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DiningCategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TopCategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WeeklyFeaturedOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WeeklySideOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WellnessArticleOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -24832,6 +35978,293 @@ export namespace Prisma {
     order?: SortOrder
   }
 
+  export type MenuItemListRelationFilter = {
+    every?: MenuItemWhereInput
+    some?: MenuItemWhereInput
+    none?: MenuItemWhereInput
+  }
+
+  export type MenuItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MenuSectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+  }
+
+  export type MenuSectionAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type MenuSectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+  }
+
+  export type MenuSectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+  }
+
+  export type MenuSectionSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type MenuSectionScalarRelationFilter = {
+    is?: MenuSectionWhereInput
+    isNot?: MenuSectionWhereInput
+  }
+
+  export type MenuItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    desc?: SortOrder
+    cat?: SortOrder
+    order?: SortOrder
+    sectionId?: SortOrder
+  }
+
+  export type MenuItemAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type MenuItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    desc?: SortOrder
+    cat?: SortOrder
+    order?: SortOrder
+    sectionId?: SortOrder
+  }
+
+  export type MenuItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    desc?: SortOrder
+    cat?: SortOrder
+    order?: SortOrder
+    sectionId?: SortOrder
+  }
+
+  export type MenuItemSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type RecipeCountOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    time?: SortOrder
+    cat?: SortOrder
+    gradientFrom?: SortOrder
+    gradientTo?: SortOrder
+    order?: SortOrder
+    isFeatured?: SortOrder
+    assetId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RecipeAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type RecipeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    time?: SortOrder
+    cat?: SortOrder
+    gradientFrom?: SortOrder
+    gradientTo?: SortOrder
+    order?: SortOrder
+    isFeatured?: SortOrder
+    assetId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RecipeMinOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    desc?: SortOrder
+    time?: SortOrder
+    cat?: SortOrder
+    gradientFrom?: SortOrder
+    gradientTo?: SortOrder
+    order?: SortOrder
+    isFeatured?: SortOrder
+    assetId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RecipeSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type DiningCategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type DiningCategoryAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type DiningCategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type DiningCategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type DiningCategorySumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type TopCategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type TopCategoryAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type TopCategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type TopCategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type TopCategorySumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type WeeklyFeaturedCountOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type WeeklyFeaturedMaxOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type WeeklyFeaturedMinOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type WeeklySideCountOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type WeeklySideAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type WeeklySideMaxOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type WeeklySideMinOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+  }
+
+  export type WeeklySideSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type WellnessArticleCountOrderByAggregateInput = {
+    id?: SortOrder
+    cat?: SortOrder
+    title?: SortOrder
+    excerpt?: SortOrder
+    readTime?: SortOrder
+    isHero?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WellnessArticleAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type WellnessArticleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    cat?: SortOrder
+    title?: SortOrder
+    excerpt?: SortOrder
+    readTime?: SortOrder
+    isHero?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WellnessArticleMinOrderByAggregateInput = {
+    id?: SortOrder
+    cat?: SortOrder
+    title?: SortOrder
+    excerpt?: SortOrder
+    readTime?: SortOrder
+    isHero?: SortOrder
+    order?: SortOrder
+    assetId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WellnessArticleSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -25014,6 +36447,48 @@ export namespace Prisma {
     connect?: RoomTabWhereUniqueInput | RoomTabWhereUniqueInput[]
   }
 
+  export type RecipeCreateNestedManyWithoutAssetInput = {
+    create?: XOR<RecipeCreateWithoutAssetInput, RecipeUncheckedCreateWithoutAssetInput> | RecipeCreateWithoutAssetInput[] | RecipeUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: RecipeCreateOrConnectWithoutAssetInput | RecipeCreateOrConnectWithoutAssetInput[]
+    createMany?: RecipeCreateManyAssetInputEnvelope
+    connect?: RecipeWhereUniqueInput | RecipeWhereUniqueInput[]
+  }
+
+  export type DiningCategoryCreateNestedManyWithoutAssetInput = {
+    create?: XOR<DiningCategoryCreateWithoutAssetInput, DiningCategoryUncheckedCreateWithoutAssetInput> | DiningCategoryCreateWithoutAssetInput[] | DiningCategoryUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: DiningCategoryCreateOrConnectWithoutAssetInput | DiningCategoryCreateOrConnectWithoutAssetInput[]
+    createMany?: DiningCategoryCreateManyAssetInputEnvelope
+    connect?: DiningCategoryWhereUniqueInput | DiningCategoryWhereUniqueInput[]
+  }
+
+  export type TopCategoryCreateNestedManyWithoutAssetInput = {
+    create?: XOR<TopCategoryCreateWithoutAssetInput, TopCategoryUncheckedCreateWithoutAssetInput> | TopCategoryCreateWithoutAssetInput[] | TopCategoryUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: TopCategoryCreateOrConnectWithoutAssetInput | TopCategoryCreateOrConnectWithoutAssetInput[]
+    createMany?: TopCategoryCreateManyAssetInputEnvelope
+    connect?: TopCategoryWhereUniqueInput | TopCategoryWhereUniqueInput[]
+  }
+
+  export type WeeklyFeaturedCreateNestedManyWithoutAssetInput = {
+    create?: XOR<WeeklyFeaturedCreateWithoutAssetInput, WeeklyFeaturedUncheckedCreateWithoutAssetInput> | WeeklyFeaturedCreateWithoutAssetInput[] | WeeklyFeaturedUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WeeklyFeaturedCreateOrConnectWithoutAssetInput | WeeklyFeaturedCreateOrConnectWithoutAssetInput[]
+    createMany?: WeeklyFeaturedCreateManyAssetInputEnvelope
+    connect?: WeeklyFeaturedWhereUniqueInput | WeeklyFeaturedWhereUniqueInput[]
+  }
+
+  export type WeeklySideCreateNestedManyWithoutAssetInput = {
+    create?: XOR<WeeklySideCreateWithoutAssetInput, WeeklySideUncheckedCreateWithoutAssetInput> | WeeklySideCreateWithoutAssetInput[] | WeeklySideUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WeeklySideCreateOrConnectWithoutAssetInput | WeeklySideCreateOrConnectWithoutAssetInput[]
+    createMany?: WeeklySideCreateManyAssetInputEnvelope
+    connect?: WeeklySideWhereUniqueInput | WeeklySideWhereUniqueInput[]
+  }
+
+  export type WellnessArticleCreateNestedManyWithoutAssetInput = {
+    create?: XOR<WellnessArticleCreateWithoutAssetInput, WellnessArticleUncheckedCreateWithoutAssetInput> | WellnessArticleCreateWithoutAssetInput[] | WellnessArticleUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WellnessArticleCreateOrConnectWithoutAssetInput | WellnessArticleCreateOrConnectWithoutAssetInput[]
+    createMany?: WellnessArticleCreateManyAssetInputEnvelope
+    connect?: WellnessArticleWhereUniqueInput | WellnessArticleWhereUniqueInput[]
+  }
+
   export type HeroSlideUncheckedCreateNestedManyWithoutAssetInput = {
     create?: XOR<HeroSlideCreateWithoutAssetInput, HeroSlideUncheckedCreateWithoutAssetInput> | HeroSlideCreateWithoutAssetInput[] | HeroSlideUncheckedCreateWithoutAssetInput[]
     connectOrCreate?: HeroSlideCreateOrConnectWithoutAssetInput | HeroSlideCreateOrConnectWithoutAssetInput[]
@@ -25054,6 +36529,48 @@ export namespace Prisma {
     connectOrCreate?: RoomTabCreateOrConnectWithoutImageInput | RoomTabCreateOrConnectWithoutImageInput[]
     createMany?: RoomTabCreateManyImageInputEnvelope
     connect?: RoomTabWhereUniqueInput | RoomTabWhereUniqueInput[]
+  }
+
+  export type RecipeUncheckedCreateNestedManyWithoutAssetInput = {
+    create?: XOR<RecipeCreateWithoutAssetInput, RecipeUncheckedCreateWithoutAssetInput> | RecipeCreateWithoutAssetInput[] | RecipeUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: RecipeCreateOrConnectWithoutAssetInput | RecipeCreateOrConnectWithoutAssetInput[]
+    createMany?: RecipeCreateManyAssetInputEnvelope
+    connect?: RecipeWhereUniqueInput | RecipeWhereUniqueInput[]
+  }
+
+  export type DiningCategoryUncheckedCreateNestedManyWithoutAssetInput = {
+    create?: XOR<DiningCategoryCreateWithoutAssetInput, DiningCategoryUncheckedCreateWithoutAssetInput> | DiningCategoryCreateWithoutAssetInput[] | DiningCategoryUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: DiningCategoryCreateOrConnectWithoutAssetInput | DiningCategoryCreateOrConnectWithoutAssetInput[]
+    createMany?: DiningCategoryCreateManyAssetInputEnvelope
+    connect?: DiningCategoryWhereUniqueInput | DiningCategoryWhereUniqueInput[]
+  }
+
+  export type TopCategoryUncheckedCreateNestedManyWithoutAssetInput = {
+    create?: XOR<TopCategoryCreateWithoutAssetInput, TopCategoryUncheckedCreateWithoutAssetInput> | TopCategoryCreateWithoutAssetInput[] | TopCategoryUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: TopCategoryCreateOrConnectWithoutAssetInput | TopCategoryCreateOrConnectWithoutAssetInput[]
+    createMany?: TopCategoryCreateManyAssetInputEnvelope
+    connect?: TopCategoryWhereUniqueInput | TopCategoryWhereUniqueInput[]
+  }
+
+  export type WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput = {
+    create?: XOR<WeeklyFeaturedCreateWithoutAssetInput, WeeklyFeaturedUncheckedCreateWithoutAssetInput> | WeeklyFeaturedCreateWithoutAssetInput[] | WeeklyFeaturedUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WeeklyFeaturedCreateOrConnectWithoutAssetInput | WeeklyFeaturedCreateOrConnectWithoutAssetInput[]
+    createMany?: WeeklyFeaturedCreateManyAssetInputEnvelope
+    connect?: WeeklyFeaturedWhereUniqueInput | WeeklyFeaturedWhereUniqueInput[]
+  }
+
+  export type WeeklySideUncheckedCreateNestedManyWithoutAssetInput = {
+    create?: XOR<WeeklySideCreateWithoutAssetInput, WeeklySideUncheckedCreateWithoutAssetInput> | WeeklySideCreateWithoutAssetInput[] | WeeklySideUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WeeklySideCreateOrConnectWithoutAssetInput | WeeklySideCreateOrConnectWithoutAssetInput[]
+    createMany?: WeeklySideCreateManyAssetInputEnvelope
+    connect?: WeeklySideWhereUniqueInput | WeeklySideWhereUniqueInput[]
+  }
+
+  export type WellnessArticleUncheckedCreateNestedManyWithoutAssetInput = {
+    create?: XOR<WellnessArticleCreateWithoutAssetInput, WellnessArticleUncheckedCreateWithoutAssetInput> | WellnessArticleCreateWithoutAssetInput[] | WellnessArticleUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WellnessArticleCreateOrConnectWithoutAssetInput | WellnessArticleCreateOrConnectWithoutAssetInput[]
+    createMany?: WellnessArticleCreateManyAssetInputEnvelope
+    connect?: WellnessArticleWhereUniqueInput | WellnessArticleWhereUniqueInput[]
   }
 
   export type HeroSlideUpdateManyWithoutAssetNestedInput = {
@@ -25140,6 +36657,90 @@ export namespace Prisma {
     deleteMany?: RoomTabScalarWhereInput | RoomTabScalarWhereInput[]
   }
 
+  export type RecipeUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<RecipeCreateWithoutAssetInput, RecipeUncheckedCreateWithoutAssetInput> | RecipeCreateWithoutAssetInput[] | RecipeUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: RecipeCreateOrConnectWithoutAssetInput | RecipeCreateOrConnectWithoutAssetInput[]
+    upsert?: RecipeUpsertWithWhereUniqueWithoutAssetInput | RecipeUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: RecipeCreateManyAssetInputEnvelope
+    set?: RecipeWhereUniqueInput | RecipeWhereUniqueInput[]
+    disconnect?: RecipeWhereUniqueInput | RecipeWhereUniqueInput[]
+    delete?: RecipeWhereUniqueInput | RecipeWhereUniqueInput[]
+    connect?: RecipeWhereUniqueInput | RecipeWhereUniqueInput[]
+    update?: RecipeUpdateWithWhereUniqueWithoutAssetInput | RecipeUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: RecipeUpdateManyWithWhereWithoutAssetInput | RecipeUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: RecipeScalarWhereInput | RecipeScalarWhereInput[]
+  }
+
+  export type DiningCategoryUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<DiningCategoryCreateWithoutAssetInput, DiningCategoryUncheckedCreateWithoutAssetInput> | DiningCategoryCreateWithoutAssetInput[] | DiningCategoryUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: DiningCategoryCreateOrConnectWithoutAssetInput | DiningCategoryCreateOrConnectWithoutAssetInput[]
+    upsert?: DiningCategoryUpsertWithWhereUniqueWithoutAssetInput | DiningCategoryUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: DiningCategoryCreateManyAssetInputEnvelope
+    set?: DiningCategoryWhereUniqueInput | DiningCategoryWhereUniqueInput[]
+    disconnect?: DiningCategoryWhereUniqueInput | DiningCategoryWhereUniqueInput[]
+    delete?: DiningCategoryWhereUniqueInput | DiningCategoryWhereUniqueInput[]
+    connect?: DiningCategoryWhereUniqueInput | DiningCategoryWhereUniqueInput[]
+    update?: DiningCategoryUpdateWithWhereUniqueWithoutAssetInput | DiningCategoryUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: DiningCategoryUpdateManyWithWhereWithoutAssetInput | DiningCategoryUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: DiningCategoryScalarWhereInput | DiningCategoryScalarWhereInput[]
+  }
+
+  export type TopCategoryUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<TopCategoryCreateWithoutAssetInput, TopCategoryUncheckedCreateWithoutAssetInput> | TopCategoryCreateWithoutAssetInput[] | TopCategoryUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: TopCategoryCreateOrConnectWithoutAssetInput | TopCategoryCreateOrConnectWithoutAssetInput[]
+    upsert?: TopCategoryUpsertWithWhereUniqueWithoutAssetInput | TopCategoryUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: TopCategoryCreateManyAssetInputEnvelope
+    set?: TopCategoryWhereUniqueInput | TopCategoryWhereUniqueInput[]
+    disconnect?: TopCategoryWhereUniqueInput | TopCategoryWhereUniqueInput[]
+    delete?: TopCategoryWhereUniqueInput | TopCategoryWhereUniqueInput[]
+    connect?: TopCategoryWhereUniqueInput | TopCategoryWhereUniqueInput[]
+    update?: TopCategoryUpdateWithWhereUniqueWithoutAssetInput | TopCategoryUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: TopCategoryUpdateManyWithWhereWithoutAssetInput | TopCategoryUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: TopCategoryScalarWhereInput | TopCategoryScalarWhereInput[]
+  }
+
+  export type WeeklyFeaturedUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<WeeklyFeaturedCreateWithoutAssetInput, WeeklyFeaturedUncheckedCreateWithoutAssetInput> | WeeklyFeaturedCreateWithoutAssetInput[] | WeeklyFeaturedUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WeeklyFeaturedCreateOrConnectWithoutAssetInput | WeeklyFeaturedCreateOrConnectWithoutAssetInput[]
+    upsert?: WeeklyFeaturedUpsertWithWhereUniqueWithoutAssetInput | WeeklyFeaturedUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: WeeklyFeaturedCreateManyAssetInputEnvelope
+    set?: WeeklyFeaturedWhereUniqueInput | WeeklyFeaturedWhereUniqueInput[]
+    disconnect?: WeeklyFeaturedWhereUniqueInput | WeeklyFeaturedWhereUniqueInput[]
+    delete?: WeeklyFeaturedWhereUniqueInput | WeeklyFeaturedWhereUniqueInput[]
+    connect?: WeeklyFeaturedWhereUniqueInput | WeeklyFeaturedWhereUniqueInput[]
+    update?: WeeklyFeaturedUpdateWithWhereUniqueWithoutAssetInput | WeeklyFeaturedUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: WeeklyFeaturedUpdateManyWithWhereWithoutAssetInput | WeeklyFeaturedUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: WeeklyFeaturedScalarWhereInput | WeeklyFeaturedScalarWhereInput[]
+  }
+
+  export type WeeklySideUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<WeeklySideCreateWithoutAssetInput, WeeklySideUncheckedCreateWithoutAssetInput> | WeeklySideCreateWithoutAssetInput[] | WeeklySideUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WeeklySideCreateOrConnectWithoutAssetInput | WeeklySideCreateOrConnectWithoutAssetInput[]
+    upsert?: WeeklySideUpsertWithWhereUniqueWithoutAssetInput | WeeklySideUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: WeeklySideCreateManyAssetInputEnvelope
+    set?: WeeklySideWhereUniqueInput | WeeklySideWhereUniqueInput[]
+    disconnect?: WeeklySideWhereUniqueInput | WeeklySideWhereUniqueInput[]
+    delete?: WeeklySideWhereUniqueInput | WeeklySideWhereUniqueInput[]
+    connect?: WeeklySideWhereUniqueInput | WeeklySideWhereUniqueInput[]
+    update?: WeeklySideUpdateWithWhereUniqueWithoutAssetInput | WeeklySideUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: WeeklySideUpdateManyWithWhereWithoutAssetInput | WeeklySideUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: WeeklySideScalarWhereInput | WeeklySideScalarWhereInput[]
+  }
+
+  export type WellnessArticleUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<WellnessArticleCreateWithoutAssetInput, WellnessArticleUncheckedCreateWithoutAssetInput> | WellnessArticleCreateWithoutAssetInput[] | WellnessArticleUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WellnessArticleCreateOrConnectWithoutAssetInput | WellnessArticleCreateOrConnectWithoutAssetInput[]
+    upsert?: WellnessArticleUpsertWithWhereUniqueWithoutAssetInput | WellnessArticleUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: WellnessArticleCreateManyAssetInputEnvelope
+    set?: WellnessArticleWhereUniqueInput | WellnessArticleWhereUniqueInput[]
+    disconnect?: WellnessArticleWhereUniqueInput | WellnessArticleWhereUniqueInput[]
+    delete?: WellnessArticleWhereUniqueInput | WellnessArticleWhereUniqueInput[]
+    connect?: WellnessArticleWhereUniqueInput | WellnessArticleWhereUniqueInput[]
+    update?: WellnessArticleUpdateWithWhereUniqueWithoutAssetInput | WellnessArticleUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: WellnessArticleUpdateManyWithWhereWithoutAssetInput | WellnessArticleUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: WellnessArticleScalarWhereInput | WellnessArticleScalarWhereInput[]
+  }
+
   export type HeroSlideUncheckedUpdateManyWithoutAssetNestedInput = {
     create?: XOR<HeroSlideCreateWithoutAssetInput, HeroSlideUncheckedCreateWithoutAssetInput> | HeroSlideCreateWithoutAssetInput[] | HeroSlideUncheckedCreateWithoutAssetInput[]
     connectOrCreate?: HeroSlideCreateOrConnectWithoutAssetInput | HeroSlideCreateOrConnectWithoutAssetInput[]
@@ -25222,6 +36823,90 @@ export namespace Prisma {
     update?: RoomTabUpdateWithWhereUniqueWithoutImageInput | RoomTabUpdateWithWhereUniqueWithoutImageInput[]
     updateMany?: RoomTabUpdateManyWithWhereWithoutImageInput | RoomTabUpdateManyWithWhereWithoutImageInput[]
     deleteMany?: RoomTabScalarWhereInput | RoomTabScalarWhereInput[]
+  }
+
+  export type RecipeUncheckedUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<RecipeCreateWithoutAssetInput, RecipeUncheckedCreateWithoutAssetInput> | RecipeCreateWithoutAssetInput[] | RecipeUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: RecipeCreateOrConnectWithoutAssetInput | RecipeCreateOrConnectWithoutAssetInput[]
+    upsert?: RecipeUpsertWithWhereUniqueWithoutAssetInput | RecipeUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: RecipeCreateManyAssetInputEnvelope
+    set?: RecipeWhereUniqueInput | RecipeWhereUniqueInput[]
+    disconnect?: RecipeWhereUniqueInput | RecipeWhereUniqueInput[]
+    delete?: RecipeWhereUniqueInput | RecipeWhereUniqueInput[]
+    connect?: RecipeWhereUniqueInput | RecipeWhereUniqueInput[]
+    update?: RecipeUpdateWithWhereUniqueWithoutAssetInput | RecipeUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: RecipeUpdateManyWithWhereWithoutAssetInput | RecipeUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: RecipeScalarWhereInput | RecipeScalarWhereInput[]
+  }
+
+  export type DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<DiningCategoryCreateWithoutAssetInput, DiningCategoryUncheckedCreateWithoutAssetInput> | DiningCategoryCreateWithoutAssetInput[] | DiningCategoryUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: DiningCategoryCreateOrConnectWithoutAssetInput | DiningCategoryCreateOrConnectWithoutAssetInput[]
+    upsert?: DiningCategoryUpsertWithWhereUniqueWithoutAssetInput | DiningCategoryUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: DiningCategoryCreateManyAssetInputEnvelope
+    set?: DiningCategoryWhereUniqueInput | DiningCategoryWhereUniqueInput[]
+    disconnect?: DiningCategoryWhereUniqueInput | DiningCategoryWhereUniqueInput[]
+    delete?: DiningCategoryWhereUniqueInput | DiningCategoryWhereUniqueInput[]
+    connect?: DiningCategoryWhereUniqueInput | DiningCategoryWhereUniqueInput[]
+    update?: DiningCategoryUpdateWithWhereUniqueWithoutAssetInput | DiningCategoryUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: DiningCategoryUpdateManyWithWhereWithoutAssetInput | DiningCategoryUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: DiningCategoryScalarWhereInput | DiningCategoryScalarWhereInput[]
+  }
+
+  export type TopCategoryUncheckedUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<TopCategoryCreateWithoutAssetInput, TopCategoryUncheckedCreateWithoutAssetInput> | TopCategoryCreateWithoutAssetInput[] | TopCategoryUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: TopCategoryCreateOrConnectWithoutAssetInput | TopCategoryCreateOrConnectWithoutAssetInput[]
+    upsert?: TopCategoryUpsertWithWhereUniqueWithoutAssetInput | TopCategoryUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: TopCategoryCreateManyAssetInputEnvelope
+    set?: TopCategoryWhereUniqueInput | TopCategoryWhereUniqueInput[]
+    disconnect?: TopCategoryWhereUniqueInput | TopCategoryWhereUniqueInput[]
+    delete?: TopCategoryWhereUniqueInput | TopCategoryWhereUniqueInput[]
+    connect?: TopCategoryWhereUniqueInput | TopCategoryWhereUniqueInput[]
+    update?: TopCategoryUpdateWithWhereUniqueWithoutAssetInput | TopCategoryUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: TopCategoryUpdateManyWithWhereWithoutAssetInput | TopCategoryUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: TopCategoryScalarWhereInput | TopCategoryScalarWhereInput[]
+  }
+
+  export type WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<WeeklyFeaturedCreateWithoutAssetInput, WeeklyFeaturedUncheckedCreateWithoutAssetInput> | WeeklyFeaturedCreateWithoutAssetInput[] | WeeklyFeaturedUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WeeklyFeaturedCreateOrConnectWithoutAssetInput | WeeklyFeaturedCreateOrConnectWithoutAssetInput[]
+    upsert?: WeeklyFeaturedUpsertWithWhereUniqueWithoutAssetInput | WeeklyFeaturedUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: WeeklyFeaturedCreateManyAssetInputEnvelope
+    set?: WeeklyFeaturedWhereUniqueInput | WeeklyFeaturedWhereUniqueInput[]
+    disconnect?: WeeklyFeaturedWhereUniqueInput | WeeklyFeaturedWhereUniqueInput[]
+    delete?: WeeklyFeaturedWhereUniqueInput | WeeklyFeaturedWhereUniqueInput[]
+    connect?: WeeklyFeaturedWhereUniqueInput | WeeklyFeaturedWhereUniqueInput[]
+    update?: WeeklyFeaturedUpdateWithWhereUniqueWithoutAssetInput | WeeklyFeaturedUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: WeeklyFeaturedUpdateManyWithWhereWithoutAssetInput | WeeklyFeaturedUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: WeeklyFeaturedScalarWhereInput | WeeklyFeaturedScalarWhereInput[]
+  }
+
+  export type WeeklySideUncheckedUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<WeeklySideCreateWithoutAssetInput, WeeklySideUncheckedCreateWithoutAssetInput> | WeeklySideCreateWithoutAssetInput[] | WeeklySideUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WeeklySideCreateOrConnectWithoutAssetInput | WeeklySideCreateOrConnectWithoutAssetInput[]
+    upsert?: WeeklySideUpsertWithWhereUniqueWithoutAssetInput | WeeklySideUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: WeeklySideCreateManyAssetInputEnvelope
+    set?: WeeklySideWhereUniqueInput | WeeklySideWhereUniqueInput[]
+    disconnect?: WeeklySideWhereUniqueInput | WeeklySideWhereUniqueInput[]
+    delete?: WeeklySideWhereUniqueInput | WeeklySideWhereUniqueInput[]
+    connect?: WeeklySideWhereUniqueInput | WeeklySideWhereUniqueInput[]
+    update?: WeeklySideUpdateWithWhereUniqueWithoutAssetInput | WeeklySideUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: WeeklySideUpdateManyWithWhereWithoutAssetInput | WeeklySideUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: WeeklySideScalarWhereInput | WeeklySideScalarWhereInput[]
+  }
+
+  export type WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<WellnessArticleCreateWithoutAssetInput, WellnessArticleUncheckedCreateWithoutAssetInput> | WellnessArticleCreateWithoutAssetInput[] | WellnessArticleUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: WellnessArticleCreateOrConnectWithoutAssetInput | WellnessArticleCreateOrConnectWithoutAssetInput[]
+    upsert?: WellnessArticleUpsertWithWhereUniqueWithoutAssetInput | WellnessArticleUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: WellnessArticleCreateManyAssetInputEnvelope
+    set?: WellnessArticleWhereUniqueInput | WellnessArticleWhereUniqueInput[]
+    disconnect?: WellnessArticleWhereUniqueInput | WellnessArticleWhereUniqueInput[]
+    delete?: WellnessArticleWhereUniqueInput | WellnessArticleWhereUniqueInput[]
+    connect?: WellnessArticleWhereUniqueInput | WellnessArticleWhereUniqueInput[]
+    update?: WellnessArticleUpdateWithWhereUniqueWithoutAssetInput | WellnessArticleUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: WellnessArticleUpdateManyWithWhereWithoutAssetInput | WellnessArticleUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: WellnessArticleScalarWhereInput | WellnessArticleScalarWhereInput[]
   }
 
   export type MediaAssetCreateNestedOneWithoutHeroSlidesInput = {
@@ -25606,6 +37291,158 @@ export namespace Prisma {
     upsert?: RoomTabUpsertWithoutParagraphsInput
     connect?: RoomTabWhereUniqueInput
     update?: XOR<XOR<RoomTabUpdateToOneWithWhereWithoutParagraphsInput, RoomTabUpdateWithoutParagraphsInput>, RoomTabUncheckedUpdateWithoutParagraphsInput>
+  }
+
+  export type MenuItemCreateNestedManyWithoutSectionInput = {
+    create?: XOR<MenuItemCreateWithoutSectionInput, MenuItemUncheckedCreateWithoutSectionInput> | MenuItemCreateWithoutSectionInput[] | MenuItemUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: MenuItemCreateOrConnectWithoutSectionInput | MenuItemCreateOrConnectWithoutSectionInput[]
+    createMany?: MenuItemCreateManySectionInputEnvelope
+    connect?: MenuItemWhereUniqueInput | MenuItemWhereUniqueInput[]
+  }
+
+  export type MenuItemUncheckedCreateNestedManyWithoutSectionInput = {
+    create?: XOR<MenuItemCreateWithoutSectionInput, MenuItemUncheckedCreateWithoutSectionInput> | MenuItemCreateWithoutSectionInput[] | MenuItemUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: MenuItemCreateOrConnectWithoutSectionInput | MenuItemCreateOrConnectWithoutSectionInput[]
+    createMany?: MenuItemCreateManySectionInputEnvelope
+    connect?: MenuItemWhereUniqueInput | MenuItemWhereUniqueInput[]
+  }
+
+  export type MenuItemUpdateManyWithoutSectionNestedInput = {
+    create?: XOR<MenuItemCreateWithoutSectionInput, MenuItemUncheckedCreateWithoutSectionInput> | MenuItemCreateWithoutSectionInput[] | MenuItemUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: MenuItemCreateOrConnectWithoutSectionInput | MenuItemCreateOrConnectWithoutSectionInput[]
+    upsert?: MenuItemUpsertWithWhereUniqueWithoutSectionInput | MenuItemUpsertWithWhereUniqueWithoutSectionInput[]
+    createMany?: MenuItemCreateManySectionInputEnvelope
+    set?: MenuItemWhereUniqueInput | MenuItemWhereUniqueInput[]
+    disconnect?: MenuItemWhereUniqueInput | MenuItemWhereUniqueInput[]
+    delete?: MenuItemWhereUniqueInput | MenuItemWhereUniqueInput[]
+    connect?: MenuItemWhereUniqueInput | MenuItemWhereUniqueInput[]
+    update?: MenuItemUpdateWithWhereUniqueWithoutSectionInput | MenuItemUpdateWithWhereUniqueWithoutSectionInput[]
+    updateMany?: MenuItemUpdateManyWithWhereWithoutSectionInput | MenuItemUpdateManyWithWhereWithoutSectionInput[]
+    deleteMany?: MenuItemScalarWhereInput | MenuItemScalarWhereInput[]
+  }
+
+  export type MenuItemUncheckedUpdateManyWithoutSectionNestedInput = {
+    create?: XOR<MenuItemCreateWithoutSectionInput, MenuItemUncheckedCreateWithoutSectionInput> | MenuItemCreateWithoutSectionInput[] | MenuItemUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: MenuItemCreateOrConnectWithoutSectionInput | MenuItemCreateOrConnectWithoutSectionInput[]
+    upsert?: MenuItemUpsertWithWhereUniqueWithoutSectionInput | MenuItemUpsertWithWhereUniqueWithoutSectionInput[]
+    createMany?: MenuItemCreateManySectionInputEnvelope
+    set?: MenuItemWhereUniqueInput | MenuItemWhereUniqueInput[]
+    disconnect?: MenuItemWhereUniqueInput | MenuItemWhereUniqueInput[]
+    delete?: MenuItemWhereUniqueInput | MenuItemWhereUniqueInput[]
+    connect?: MenuItemWhereUniqueInput | MenuItemWhereUniqueInput[]
+    update?: MenuItemUpdateWithWhereUniqueWithoutSectionInput | MenuItemUpdateWithWhereUniqueWithoutSectionInput[]
+    updateMany?: MenuItemUpdateManyWithWhereWithoutSectionInput | MenuItemUpdateManyWithWhereWithoutSectionInput[]
+    deleteMany?: MenuItemScalarWhereInput | MenuItemScalarWhereInput[]
+  }
+
+  export type MenuSectionCreateNestedOneWithoutItemsInput = {
+    create?: XOR<MenuSectionCreateWithoutItemsInput, MenuSectionUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: MenuSectionCreateOrConnectWithoutItemsInput
+    connect?: MenuSectionWhereUniqueInput
+  }
+
+  export type MenuSectionUpdateOneRequiredWithoutItemsNestedInput = {
+    create?: XOR<MenuSectionCreateWithoutItemsInput, MenuSectionUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: MenuSectionCreateOrConnectWithoutItemsInput
+    upsert?: MenuSectionUpsertWithoutItemsInput
+    connect?: MenuSectionWhereUniqueInput
+    update?: XOR<XOR<MenuSectionUpdateToOneWithWhereWithoutItemsInput, MenuSectionUpdateWithoutItemsInput>, MenuSectionUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type MediaAssetCreateNestedOneWithoutRecipesInput = {
+    create?: XOR<MediaAssetCreateWithoutRecipesInput, MediaAssetUncheckedCreateWithoutRecipesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutRecipesInput
+    connect?: MediaAssetWhereUniqueInput
+  }
+
+  export type MediaAssetUpdateOneWithoutRecipesNestedInput = {
+    create?: XOR<MediaAssetCreateWithoutRecipesInput, MediaAssetUncheckedCreateWithoutRecipesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutRecipesInput
+    upsert?: MediaAssetUpsertWithoutRecipesInput
+    disconnect?: MediaAssetWhereInput | boolean
+    delete?: MediaAssetWhereInput | boolean
+    connect?: MediaAssetWhereUniqueInput
+    update?: XOR<XOR<MediaAssetUpdateToOneWithWhereWithoutRecipesInput, MediaAssetUpdateWithoutRecipesInput>, MediaAssetUncheckedUpdateWithoutRecipesInput>
+  }
+
+  export type MediaAssetCreateNestedOneWithoutDiningCategoriesInput = {
+    create?: XOR<MediaAssetCreateWithoutDiningCategoriesInput, MediaAssetUncheckedCreateWithoutDiningCategoriesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutDiningCategoriesInput
+    connect?: MediaAssetWhereUniqueInput
+  }
+
+  export type MediaAssetUpdateOneWithoutDiningCategoriesNestedInput = {
+    create?: XOR<MediaAssetCreateWithoutDiningCategoriesInput, MediaAssetUncheckedCreateWithoutDiningCategoriesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutDiningCategoriesInput
+    upsert?: MediaAssetUpsertWithoutDiningCategoriesInput
+    disconnect?: MediaAssetWhereInput | boolean
+    delete?: MediaAssetWhereInput | boolean
+    connect?: MediaAssetWhereUniqueInput
+    update?: XOR<XOR<MediaAssetUpdateToOneWithWhereWithoutDiningCategoriesInput, MediaAssetUpdateWithoutDiningCategoriesInput>, MediaAssetUncheckedUpdateWithoutDiningCategoriesInput>
+  }
+
+  export type MediaAssetCreateNestedOneWithoutTopCategoriesInput = {
+    create?: XOR<MediaAssetCreateWithoutTopCategoriesInput, MediaAssetUncheckedCreateWithoutTopCategoriesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutTopCategoriesInput
+    connect?: MediaAssetWhereUniqueInput
+  }
+
+  export type MediaAssetUpdateOneWithoutTopCategoriesNestedInput = {
+    create?: XOR<MediaAssetCreateWithoutTopCategoriesInput, MediaAssetUncheckedCreateWithoutTopCategoriesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutTopCategoriesInput
+    upsert?: MediaAssetUpsertWithoutTopCategoriesInput
+    disconnect?: MediaAssetWhereInput | boolean
+    delete?: MediaAssetWhereInput | boolean
+    connect?: MediaAssetWhereUniqueInput
+    update?: XOR<XOR<MediaAssetUpdateToOneWithWhereWithoutTopCategoriesInput, MediaAssetUpdateWithoutTopCategoriesInput>, MediaAssetUncheckedUpdateWithoutTopCategoriesInput>
+  }
+
+  export type MediaAssetCreateNestedOneWithoutWeeklyFeaturedInput = {
+    create?: XOR<MediaAssetCreateWithoutWeeklyFeaturedInput, MediaAssetUncheckedCreateWithoutWeeklyFeaturedInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutWeeklyFeaturedInput
+    connect?: MediaAssetWhereUniqueInput
+  }
+
+  export type MediaAssetUpdateOneWithoutWeeklyFeaturedNestedInput = {
+    create?: XOR<MediaAssetCreateWithoutWeeklyFeaturedInput, MediaAssetUncheckedCreateWithoutWeeklyFeaturedInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutWeeklyFeaturedInput
+    upsert?: MediaAssetUpsertWithoutWeeklyFeaturedInput
+    disconnect?: MediaAssetWhereInput | boolean
+    delete?: MediaAssetWhereInput | boolean
+    connect?: MediaAssetWhereUniqueInput
+    update?: XOR<XOR<MediaAssetUpdateToOneWithWhereWithoutWeeklyFeaturedInput, MediaAssetUpdateWithoutWeeklyFeaturedInput>, MediaAssetUncheckedUpdateWithoutWeeklyFeaturedInput>
+  }
+
+  export type MediaAssetCreateNestedOneWithoutWeeklySidesInput = {
+    create?: XOR<MediaAssetCreateWithoutWeeklySidesInput, MediaAssetUncheckedCreateWithoutWeeklySidesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutWeeklySidesInput
+    connect?: MediaAssetWhereUniqueInput
+  }
+
+  export type MediaAssetUpdateOneWithoutWeeklySidesNestedInput = {
+    create?: XOR<MediaAssetCreateWithoutWeeklySidesInput, MediaAssetUncheckedCreateWithoutWeeklySidesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutWeeklySidesInput
+    upsert?: MediaAssetUpsertWithoutWeeklySidesInput
+    disconnect?: MediaAssetWhereInput | boolean
+    delete?: MediaAssetWhereInput | boolean
+    connect?: MediaAssetWhereUniqueInput
+    update?: XOR<XOR<MediaAssetUpdateToOneWithWhereWithoutWeeklySidesInput, MediaAssetUpdateWithoutWeeklySidesInput>, MediaAssetUncheckedUpdateWithoutWeeklySidesInput>
+  }
+
+  export type MediaAssetCreateNestedOneWithoutWellnessArticlesInput = {
+    create?: XOR<MediaAssetCreateWithoutWellnessArticlesInput, MediaAssetUncheckedCreateWithoutWellnessArticlesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutWellnessArticlesInput
+    connect?: MediaAssetWhereUniqueInput
+  }
+
+  export type MediaAssetUpdateOneWithoutWellnessArticlesNestedInput = {
+    create?: XOR<MediaAssetCreateWithoutWellnessArticlesInput, MediaAssetUncheckedCreateWithoutWellnessArticlesInput>
+    connectOrCreate?: MediaAssetCreateOrConnectWithoutWellnessArticlesInput
+    upsert?: MediaAssetUpsertWithoutWellnessArticlesInput
+    disconnect?: MediaAssetWhereInput | boolean
+    delete?: MediaAssetWhereInput | boolean
+    connect?: MediaAssetWhereUniqueInput
+    update?: XOR<XOR<MediaAssetUpdateToOneWithWhereWithoutWellnessArticlesInput, MediaAssetUpdateWithoutWellnessArticlesInput>, MediaAssetUncheckedUpdateWithoutWellnessArticlesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -26262,6 +38099,168 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type RecipeCreateWithoutAssetInput = {
+    id?: string
+    label: string
+    title: string
+    desc: string
+    time: string
+    cat: string
+    gradientFrom: string
+    gradientTo: string
+    order?: number
+    isFeatured?: boolean
+    createdAt?: Date | string
+  }
+
+  export type RecipeUncheckedCreateWithoutAssetInput = {
+    id?: string
+    label: string
+    title: string
+    desc: string
+    time: string
+    cat: string
+    gradientFrom: string
+    gradientTo: string
+    order?: number
+    isFeatured?: boolean
+    createdAt?: Date | string
+  }
+
+  export type RecipeCreateOrConnectWithoutAssetInput = {
+    where: RecipeWhereUniqueInput
+    create: XOR<RecipeCreateWithoutAssetInput, RecipeUncheckedCreateWithoutAssetInput>
+  }
+
+  export type RecipeCreateManyAssetInputEnvelope = {
+    data: RecipeCreateManyAssetInput | RecipeCreateManyAssetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DiningCategoryCreateWithoutAssetInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+  }
+
+  export type DiningCategoryUncheckedCreateWithoutAssetInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+  }
+
+  export type DiningCategoryCreateOrConnectWithoutAssetInput = {
+    where: DiningCategoryWhereUniqueInput
+    create: XOR<DiningCategoryCreateWithoutAssetInput, DiningCategoryUncheckedCreateWithoutAssetInput>
+  }
+
+  export type DiningCategoryCreateManyAssetInputEnvelope = {
+    data: DiningCategoryCreateManyAssetInput | DiningCategoryCreateManyAssetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TopCategoryCreateWithoutAssetInput = {
+    id?: string
+    label: string
+    order?: number
+  }
+
+  export type TopCategoryUncheckedCreateWithoutAssetInput = {
+    id?: string
+    label: string
+    order?: number
+  }
+
+  export type TopCategoryCreateOrConnectWithoutAssetInput = {
+    where: TopCategoryWhereUniqueInput
+    create: XOR<TopCategoryCreateWithoutAssetInput, TopCategoryUncheckedCreateWithoutAssetInput>
+  }
+
+  export type TopCategoryCreateManyAssetInputEnvelope = {
+    data: TopCategoryCreateManyAssetInput | TopCategoryCreateManyAssetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WeeklyFeaturedCreateWithoutAssetInput = {
+    id?: string
+    label?: string
+    title?: string
+  }
+
+  export type WeeklyFeaturedUncheckedCreateWithoutAssetInput = {
+    id?: string
+    label?: string
+    title?: string
+  }
+
+  export type WeeklyFeaturedCreateOrConnectWithoutAssetInput = {
+    where: WeeklyFeaturedWhereUniqueInput
+    create: XOR<WeeklyFeaturedCreateWithoutAssetInput, WeeklyFeaturedUncheckedCreateWithoutAssetInput>
+  }
+
+  export type WeeklyFeaturedCreateManyAssetInputEnvelope = {
+    data: WeeklyFeaturedCreateManyAssetInput | WeeklyFeaturedCreateManyAssetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WeeklySideCreateWithoutAssetInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+  }
+
+  export type WeeklySideUncheckedCreateWithoutAssetInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+  }
+
+  export type WeeklySideCreateOrConnectWithoutAssetInput = {
+    where: WeeklySideWhereUniqueInput
+    create: XOR<WeeklySideCreateWithoutAssetInput, WeeklySideUncheckedCreateWithoutAssetInput>
+  }
+
+  export type WeeklySideCreateManyAssetInputEnvelope = {
+    data: WeeklySideCreateManyAssetInput | WeeklySideCreateManyAssetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WellnessArticleCreateWithoutAssetInput = {
+    id?: string
+    cat: string
+    title: string
+    excerpt: string
+    readTime: string
+    isHero?: boolean
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type WellnessArticleUncheckedCreateWithoutAssetInput = {
+    id?: string
+    cat: string
+    title: string
+    excerpt: string
+    readTime: string
+    isHero?: boolean
+    order?: number
+    createdAt?: Date | string
+  }
+
+  export type WellnessArticleCreateOrConnectWithoutAssetInput = {
+    where: WellnessArticleWhereUniqueInput
+    create: XOR<WellnessArticleCreateWithoutAssetInput, WellnessArticleUncheckedCreateWithoutAssetInput>
+  }
+
+  export type WellnessArticleCreateManyAssetInputEnvelope = {
+    data: WellnessArticleCreateManyAssetInput | WellnessArticleCreateManyAssetInput[]
+    skipDuplicates?: boolean
+  }
+
   export type HeroSlideUpsertWithWhereUniqueWithoutAssetInput = {
     where: HeroSlideWhereUniqueInput
     update: XOR<HeroSlideUpdateWithoutAssetInput, HeroSlideUncheckedUpdateWithoutAssetInput>
@@ -26441,6 +38440,177 @@ export namespace Prisma {
     imageId?: StringNullableFilter<"RoomTab"> | string | null
   }
 
+  export type RecipeUpsertWithWhereUniqueWithoutAssetInput = {
+    where: RecipeWhereUniqueInput
+    update: XOR<RecipeUpdateWithoutAssetInput, RecipeUncheckedUpdateWithoutAssetInput>
+    create: XOR<RecipeCreateWithoutAssetInput, RecipeUncheckedCreateWithoutAssetInput>
+  }
+
+  export type RecipeUpdateWithWhereUniqueWithoutAssetInput = {
+    where: RecipeWhereUniqueInput
+    data: XOR<RecipeUpdateWithoutAssetInput, RecipeUncheckedUpdateWithoutAssetInput>
+  }
+
+  export type RecipeUpdateManyWithWhereWithoutAssetInput = {
+    where: RecipeScalarWhereInput
+    data: XOR<RecipeUpdateManyMutationInput, RecipeUncheckedUpdateManyWithoutAssetInput>
+  }
+
+  export type RecipeScalarWhereInput = {
+    AND?: RecipeScalarWhereInput | RecipeScalarWhereInput[]
+    OR?: RecipeScalarWhereInput[]
+    NOT?: RecipeScalarWhereInput | RecipeScalarWhereInput[]
+    id?: StringFilter<"Recipe"> | string
+    label?: StringFilter<"Recipe"> | string
+    title?: StringFilter<"Recipe"> | string
+    desc?: StringFilter<"Recipe"> | string
+    time?: StringFilter<"Recipe"> | string
+    cat?: StringFilter<"Recipe"> | string
+    gradientFrom?: StringFilter<"Recipe"> | string
+    gradientTo?: StringFilter<"Recipe"> | string
+    order?: IntFilter<"Recipe"> | number
+    isFeatured?: BoolFilter<"Recipe"> | boolean
+    assetId?: StringNullableFilter<"Recipe"> | string | null
+    createdAt?: DateTimeFilter<"Recipe"> | Date | string
+  }
+
+  export type DiningCategoryUpsertWithWhereUniqueWithoutAssetInput = {
+    where: DiningCategoryWhereUniqueInput
+    update: XOR<DiningCategoryUpdateWithoutAssetInput, DiningCategoryUncheckedUpdateWithoutAssetInput>
+    create: XOR<DiningCategoryCreateWithoutAssetInput, DiningCategoryUncheckedCreateWithoutAssetInput>
+  }
+
+  export type DiningCategoryUpdateWithWhereUniqueWithoutAssetInput = {
+    where: DiningCategoryWhereUniqueInput
+    data: XOR<DiningCategoryUpdateWithoutAssetInput, DiningCategoryUncheckedUpdateWithoutAssetInput>
+  }
+
+  export type DiningCategoryUpdateManyWithWhereWithoutAssetInput = {
+    where: DiningCategoryScalarWhereInput
+    data: XOR<DiningCategoryUpdateManyMutationInput, DiningCategoryUncheckedUpdateManyWithoutAssetInput>
+  }
+
+  export type DiningCategoryScalarWhereInput = {
+    AND?: DiningCategoryScalarWhereInput | DiningCategoryScalarWhereInput[]
+    OR?: DiningCategoryScalarWhereInput[]
+    NOT?: DiningCategoryScalarWhereInput | DiningCategoryScalarWhereInput[]
+    id?: StringFilter<"DiningCategory"> | string
+    label?: StringFilter<"DiningCategory"> | string
+    title?: StringFilter<"DiningCategory"> | string
+    order?: IntFilter<"DiningCategory"> | number
+    assetId?: StringNullableFilter<"DiningCategory"> | string | null
+  }
+
+  export type TopCategoryUpsertWithWhereUniqueWithoutAssetInput = {
+    where: TopCategoryWhereUniqueInput
+    update: XOR<TopCategoryUpdateWithoutAssetInput, TopCategoryUncheckedUpdateWithoutAssetInput>
+    create: XOR<TopCategoryCreateWithoutAssetInput, TopCategoryUncheckedCreateWithoutAssetInput>
+  }
+
+  export type TopCategoryUpdateWithWhereUniqueWithoutAssetInput = {
+    where: TopCategoryWhereUniqueInput
+    data: XOR<TopCategoryUpdateWithoutAssetInput, TopCategoryUncheckedUpdateWithoutAssetInput>
+  }
+
+  export type TopCategoryUpdateManyWithWhereWithoutAssetInput = {
+    where: TopCategoryScalarWhereInput
+    data: XOR<TopCategoryUpdateManyMutationInput, TopCategoryUncheckedUpdateManyWithoutAssetInput>
+  }
+
+  export type TopCategoryScalarWhereInput = {
+    AND?: TopCategoryScalarWhereInput | TopCategoryScalarWhereInput[]
+    OR?: TopCategoryScalarWhereInput[]
+    NOT?: TopCategoryScalarWhereInput | TopCategoryScalarWhereInput[]
+    id?: StringFilter<"TopCategory"> | string
+    label?: StringFilter<"TopCategory"> | string
+    order?: IntFilter<"TopCategory"> | number
+    assetId?: StringNullableFilter<"TopCategory"> | string | null
+  }
+
+  export type WeeklyFeaturedUpsertWithWhereUniqueWithoutAssetInput = {
+    where: WeeklyFeaturedWhereUniqueInput
+    update: XOR<WeeklyFeaturedUpdateWithoutAssetInput, WeeklyFeaturedUncheckedUpdateWithoutAssetInput>
+    create: XOR<WeeklyFeaturedCreateWithoutAssetInput, WeeklyFeaturedUncheckedCreateWithoutAssetInput>
+  }
+
+  export type WeeklyFeaturedUpdateWithWhereUniqueWithoutAssetInput = {
+    where: WeeklyFeaturedWhereUniqueInput
+    data: XOR<WeeklyFeaturedUpdateWithoutAssetInput, WeeklyFeaturedUncheckedUpdateWithoutAssetInput>
+  }
+
+  export type WeeklyFeaturedUpdateManyWithWhereWithoutAssetInput = {
+    where: WeeklyFeaturedScalarWhereInput
+    data: XOR<WeeklyFeaturedUpdateManyMutationInput, WeeklyFeaturedUncheckedUpdateManyWithoutAssetInput>
+  }
+
+  export type WeeklyFeaturedScalarWhereInput = {
+    AND?: WeeklyFeaturedScalarWhereInput | WeeklyFeaturedScalarWhereInput[]
+    OR?: WeeklyFeaturedScalarWhereInput[]
+    NOT?: WeeklyFeaturedScalarWhereInput | WeeklyFeaturedScalarWhereInput[]
+    id?: StringFilter<"WeeklyFeatured"> | string
+    label?: StringFilter<"WeeklyFeatured"> | string
+    title?: StringFilter<"WeeklyFeatured"> | string
+    assetId?: StringNullableFilter<"WeeklyFeatured"> | string | null
+  }
+
+  export type WeeklySideUpsertWithWhereUniqueWithoutAssetInput = {
+    where: WeeklySideWhereUniqueInput
+    update: XOR<WeeklySideUpdateWithoutAssetInput, WeeklySideUncheckedUpdateWithoutAssetInput>
+    create: XOR<WeeklySideCreateWithoutAssetInput, WeeklySideUncheckedCreateWithoutAssetInput>
+  }
+
+  export type WeeklySideUpdateWithWhereUniqueWithoutAssetInput = {
+    where: WeeklySideWhereUniqueInput
+    data: XOR<WeeklySideUpdateWithoutAssetInput, WeeklySideUncheckedUpdateWithoutAssetInput>
+  }
+
+  export type WeeklySideUpdateManyWithWhereWithoutAssetInput = {
+    where: WeeklySideScalarWhereInput
+    data: XOR<WeeklySideUpdateManyMutationInput, WeeklySideUncheckedUpdateManyWithoutAssetInput>
+  }
+
+  export type WeeklySideScalarWhereInput = {
+    AND?: WeeklySideScalarWhereInput | WeeklySideScalarWhereInput[]
+    OR?: WeeklySideScalarWhereInput[]
+    NOT?: WeeklySideScalarWhereInput | WeeklySideScalarWhereInput[]
+    id?: StringFilter<"WeeklySide"> | string
+    label?: StringFilter<"WeeklySide"> | string
+    title?: StringFilter<"WeeklySide"> | string
+    order?: IntFilter<"WeeklySide"> | number
+    assetId?: StringNullableFilter<"WeeklySide"> | string | null
+  }
+
+  export type WellnessArticleUpsertWithWhereUniqueWithoutAssetInput = {
+    where: WellnessArticleWhereUniqueInput
+    update: XOR<WellnessArticleUpdateWithoutAssetInput, WellnessArticleUncheckedUpdateWithoutAssetInput>
+    create: XOR<WellnessArticleCreateWithoutAssetInput, WellnessArticleUncheckedCreateWithoutAssetInput>
+  }
+
+  export type WellnessArticleUpdateWithWhereUniqueWithoutAssetInput = {
+    where: WellnessArticleWhereUniqueInput
+    data: XOR<WellnessArticleUpdateWithoutAssetInput, WellnessArticleUncheckedUpdateWithoutAssetInput>
+  }
+
+  export type WellnessArticleUpdateManyWithWhereWithoutAssetInput = {
+    where: WellnessArticleScalarWhereInput
+    data: XOR<WellnessArticleUpdateManyMutationInput, WellnessArticleUncheckedUpdateManyWithoutAssetInput>
+  }
+
+  export type WellnessArticleScalarWhereInput = {
+    AND?: WellnessArticleScalarWhereInput | WellnessArticleScalarWhereInput[]
+    OR?: WellnessArticleScalarWhereInput[]
+    NOT?: WellnessArticleScalarWhereInput | WellnessArticleScalarWhereInput[]
+    id?: StringFilter<"WellnessArticle"> | string
+    cat?: StringFilter<"WellnessArticle"> | string
+    title?: StringFilter<"WellnessArticle"> | string
+    excerpt?: StringFilter<"WellnessArticle"> | string
+    readTime?: StringFilter<"WellnessArticle"> | string
+    isHero?: BoolFilter<"WellnessArticle"> | boolean
+    order?: IntFilter<"WellnessArticle"> | number
+    assetId?: StringNullableFilter<"WellnessArticle"> | string | null
+    createdAt?: DateTimeFilter<"WellnessArticle"> | Date | string
+  }
+
   export type MediaAssetCreateWithoutHeroSlidesInput = {
     id?: string
     title: string
@@ -26453,6 +38623,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
     roomImages?: RoomImageCreateNestedManyWithoutAssetInput
     roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetUncheckedCreateWithoutHeroSlidesInput = {
@@ -26467,6 +38643,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
     roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
     roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetCreateOrConnectWithoutHeroSlidesInput = {
@@ -26497,6 +38679,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
     roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
     roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetUncheckedUpdateWithoutHeroSlidesInput = {
@@ -26511,6 +38699,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
     roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
     roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type SectionOneImageCreateWithoutSectionInput = {
@@ -26582,6 +38776,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
     roomImages?: RoomImageCreateNestedManyWithoutAssetInput
     roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetUncheckedCreateWithoutSectionOneImagesInput = {
@@ -26596,6 +38796,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
     roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
     roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetCreateOrConnectWithoutSectionOneImagesInput = {
@@ -26651,6 +38857,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
     roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
     roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetUncheckedUpdateWithoutSectionOneImagesInput = {
@@ -26665,6 +38877,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
     roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
     roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetCreateWithoutRoomSlidesInput = {
@@ -26679,6 +38897,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
     roomImages?: RoomImageCreateNestedManyWithoutAssetInput
     roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetUncheckedCreateWithoutRoomSlidesInput = {
@@ -26693,6 +38917,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
     roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
     roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetCreateOrConnectWithoutRoomSlidesInput = {
@@ -26723,6 +38953,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
     roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
     roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetUncheckedUpdateWithoutRoomSlidesInput = {
@@ -26737,6 +38973,12 @@ export namespace Prisma {
     roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
     roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
     roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetCreateWithoutRoomTypeHeroesInput = {
@@ -26751,6 +38993,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideCreateNestedManyWithoutAssetInput
     roomImages?: RoomImageCreateNestedManyWithoutAssetInput
     roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetUncheckedCreateWithoutRoomTypeHeroesInput = {
@@ -26765,6 +39013,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideUncheckedCreateNestedManyWithoutAssetInput
     roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
     roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetCreateOrConnectWithoutRoomTypeHeroesInput = {
@@ -26893,6 +39147,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideUpdateManyWithoutAssetNestedInput
     roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
     roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetUncheckedUpdateWithoutRoomTypeHeroesInput = {
@@ -26907,6 +39167,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideUncheckedUpdateManyWithoutAssetNestedInput
     roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
     roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type RoomImageUpsertWithWhereUniqueWithoutRoomTypeInput = {
@@ -27125,6 +39391,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideCreateNestedManyWithoutAssetInput
     roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
     roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetUncheckedCreateWithoutRoomImagesInput = {
@@ -27139,6 +39411,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideUncheckedCreateNestedManyWithoutAssetInput
     roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
     roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetCreateOrConnectWithoutRoomImagesInput = {
@@ -27220,6 +39498,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideUpdateManyWithoutAssetNestedInput
     roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
     roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetUncheckedUpdateWithoutRoomImagesInput = {
@@ -27234,6 +39518,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideUncheckedUpdateManyWithoutAssetNestedInput
     roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
     roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type RoomTypeCreateWithoutTabsInput = {
@@ -27293,6 +39583,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideCreateNestedManyWithoutAssetInput
     roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
     roomImages?: RoomImageCreateNestedManyWithoutAssetInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetUncheckedCreateWithoutRoomTabImagesInput = {
@@ -27307,6 +39603,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideUncheckedCreateNestedManyWithoutAssetInput
     roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
     roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
   }
 
   export type MediaAssetCreateOrConnectWithoutRoomTabImagesInput = {
@@ -27410,6 +39712,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideUpdateManyWithoutAssetNestedInput
     roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
     roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
   }
 
   export type MediaAssetUncheckedUpdateWithoutRoomTabImagesInput = {
@@ -27424,6 +39732,12 @@ export namespace Prisma {
     roomSlides?: RoomSlideUncheckedUpdateManyWithoutAssetNestedInput
     roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
     roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type RoomTabParagraphUpsertWithWhereUniqueWithoutTabInput = {
@@ -27530,6 +39844,676 @@ export namespace Prisma {
     videoSrc?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MenuItemCreateWithoutSectionInput = {
+    id?: string
+    name: string
+    desc: string
+    cat: string
+    order?: number
+  }
+
+  export type MenuItemUncheckedCreateWithoutSectionInput = {
+    id?: string
+    name: string
+    desc: string
+    cat: string
+    order?: number
+  }
+
+  export type MenuItemCreateOrConnectWithoutSectionInput = {
+    where: MenuItemWhereUniqueInput
+    create: XOR<MenuItemCreateWithoutSectionInput, MenuItemUncheckedCreateWithoutSectionInput>
+  }
+
+  export type MenuItemCreateManySectionInputEnvelope = {
+    data: MenuItemCreateManySectionInput | MenuItemCreateManySectionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MenuItemUpsertWithWhereUniqueWithoutSectionInput = {
+    where: MenuItemWhereUniqueInput
+    update: XOR<MenuItemUpdateWithoutSectionInput, MenuItemUncheckedUpdateWithoutSectionInput>
+    create: XOR<MenuItemCreateWithoutSectionInput, MenuItemUncheckedCreateWithoutSectionInput>
+  }
+
+  export type MenuItemUpdateWithWhereUniqueWithoutSectionInput = {
+    where: MenuItemWhereUniqueInput
+    data: XOR<MenuItemUpdateWithoutSectionInput, MenuItemUncheckedUpdateWithoutSectionInput>
+  }
+
+  export type MenuItemUpdateManyWithWhereWithoutSectionInput = {
+    where: MenuItemScalarWhereInput
+    data: XOR<MenuItemUpdateManyMutationInput, MenuItemUncheckedUpdateManyWithoutSectionInput>
+  }
+
+  export type MenuItemScalarWhereInput = {
+    AND?: MenuItemScalarWhereInput | MenuItemScalarWhereInput[]
+    OR?: MenuItemScalarWhereInput[]
+    NOT?: MenuItemScalarWhereInput | MenuItemScalarWhereInput[]
+    id?: StringFilter<"MenuItem"> | string
+    name?: StringFilter<"MenuItem"> | string
+    desc?: StringFilter<"MenuItem"> | string
+    cat?: StringFilter<"MenuItem"> | string
+    order?: IntFilter<"MenuItem"> | number
+    sectionId?: StringFilter<"MenuItem"> | string
+  }
+
+  export type MenuSectionCreateWithoutItemsInput = {
+    id?: string
+    title: string
+    order?: number
+  }
+
+  export type MenuSectionUncheckedCreateWithoutItemsInput = {
+    id?: string
+    title: string
+    order?: number
+  }
+
+  export type MenuSectionCreateOrConnectWithoutItemsInput = {
+    where: MenuSectionWhereUniqueInput
+    create: XOR<MenuSectionCreateWithoutItemsInput, MenuSectionUncheckedCreateWithoutItemsInput>
+  }
+
+  export type MenuSectionUpsertWithoutItemsInput = {
+    update: XOR<MenuSectionUpdateWithoutItemsInput, MenuSectionUncheckedUpdateWithoutItemsInput>
+    create: XOR<MenuSectionCreateWithoutItemsInput, MenuSectionUncheckedCreateWithoutItemsInput>
+    where?: MenuSectionWhereInput
+  }
+
+  export type MenuSectionUpdateToOneWithWhereWithoutItemsInput = {
+    where?: MenuSectionWhereInput
+    data: XOR<MenuSectionUpdateWithoutItemsInput, MenuSectionUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type MenuSectionUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MenuSectionUncheckedUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MediaAssetCreateWithoutRecipesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetUncheckedCreateWithoutRecipesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideUncheckedCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageUncheckedCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideUncheckedCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetCreateOrConnectWithoutRecipesInput = {
+    where: MediaAssetWhereUniqueInput
+    create: XOR<MediaAssetCreateWithoutRecipesInput, MediaAssetUncheckedCreateWithoutRecipesInput>
+  }
+
+  export type MediaAssetUpsertWithoutRecipesInput = {
+    update: XOR<MediaAssetUpdateWithoutRecipesInput, MediaAssetUncheckedUpdateWithoutRecipesInput>
+    create: XOR<MediaAssetCreateWithoutRecipesInput, MediaAssetUncheckedCreateWithoutRecipesInput>
+    where?: MediaAssetWhereInput
+  }
+
+  export type MediaAssetUpdateToOneWithWhereWithoutRecipesInput = {
+    where?: MediaAssetWhereInput
+    data: XOR<MediaAssetUpdateWithoutRecipesInput, MediaAssetUncheckedUpdateWithoutRecipesInput>
+  }
+
+  export type MediaAssetUpdateWithoutRecipesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetUncheckedUpdateWithoutRecipesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUncheckedUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUncheckedUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetCreateWithoutDiningCategoriesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetUncheckedCreateWithoutDiningCategoriesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideUncheckedCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageUncheckedCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideUncheckedCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetCreateOrConnectWithoutDiningCategoriesInput = {
+    where: MediaAssetWhereUniqueInput
+    create: XOR<MediaAssetCreateWithoutDiningCategoriesInput, MediaAssetUncheckedCreateWithoutDiningCategoriesInput>
+  }
+
+  export type MediaAssetUpsertWithoutDiningCategoriesInput = {
+    update: XOR<MediaAssetUpdateWithoutDiningCategoriesInput, MediaAssetUncheckedUpdateWithoutDiningCategoriesInput>
+    create: XOR<MediaAssetCreateWithoutDiningCategoriesInput, MediaAssetUncheckedCreateWithoutDiningCategoriesInput>
+    where?: MediaAssetWhereInput
+  }
+
+  export type MediaAssetUpdateToOneWithWhereWithoutDiningCategoriesInput = {
+    where?: MediaAssetWhereInput
+    data: XOR<MediaAssetUpdateWithoutDiningCategoriesInput, MediaAssetUncheckedUpdateWithoutDiningCategoriesInput>
+  }
+
+  export type MediaAssetUpdateWithoutDiningCategoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetUncheckedUpdateWithoutDiningCategoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUncheckedUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUncheckedUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetCreateWithoutTopCategoriesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetUncheckedCreateWithoutTopCategoriesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideUncheckedCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageUncheckedCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideUncheckedCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetCreateOrConnectWithoutTopCategoriesInput = {
+    where: MediaAssetWhereUniqueInput
+    create: XOR<MediaAssetCreateWithoutTopCategoriesInput, MediaAssetUncheckedCreateWithoutTopCategoriesInput>
+  }
+
+  export type MediaAssetUpsertWithoutTopCategoriesInput = {
+    update: XOR<MediaAssetUpdateWithoutTopCategoriesInput, MediaAssetUncheckedUpdateWithoutTopCategoriesInput>
+    create: XOR<MediaAssetCreateWithoutTopCategoriesInput, MediaAssetUncheckedCreateWithoutTopCategoriesInput>
+    where?: MediaAssetWhereInput
+  }
+
+  export type MediaAssetUpdateToOneWithWhereWithoutTopCategoriesInput = {
+    where?: MediaAssetWhereInput
+    data: XOR<MediaAssetUpdateWithoutTopCategoriesInput, MediaAssetUncheckedUpdateWithoutTopCategoriesInput>
+  }
+
+  export type MediaAssetUpdateWithoutTopCategoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetUncheckedUpdateWithoutTopCategoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUncheckedUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUncheckedUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetCreateWithoutWeeklyFeaturedInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetUncheckedCreateWithoutWeeklyFeaturedInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideUncheckedCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageUncheckedCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideUncheckedCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetCreateOrConnectWithoutWeeklyFeaturedInput = {
+    where: MediaAssetWhereUniqueInput
+    create: XOR<MediaAssetCreateWithoutWeeklyFeaturedInput, MediaAssetUncheckedCreateWithoutWeeklyFeaturedInput>
+  }
+
+  export type MediaAssetUpsertWithoutWeeklyFeaturedInput = {
+    update: XOR<MediaAssetUpdateWithoutWeeklyFeaturedInput, MediaAssetUncheckedUpdateWithoutWeeklyFeaturedInput>
+    create: XOR<MediaAssetCreateWithoutWeeklyFeaturedInput, MediaAssetUncheckedCreateWithoutWeeklyFeaturedInput>
+    where?: MediaAssetWhereInput
+  }
+
+  export type MediaAssetUpdateToOneWithWhereWithoutWeeklyFeaturedInput = {
+    where?: MediaAssetWhereInput
+    data: XOR<MediaAssetUpdateWithoutWeeklyFeaturedInput, MediaAssetUncheckedUpdateWithoutWeeklyFeaturedInput>
+  }
+
+  export type MediaAssetUpdateWithoutWeeklyFeaturedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetUncheckedUpdateWithoutWeeklyFeaturedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUncheckedUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUncheckedUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetCreateWithoutWeeklySidesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetUncheckedCreateWithoutWeeklySidesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideUncheckedCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageUncheckedCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideUncheckedCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    wellnessArticles?: WellnessArticleUncheckedCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetCreateOrConnectWithoutWeeklySidesInput = {
+    where: MediaAssetWhereUniqueInput
+    create: XOR<MediaAssetCreateWithoutWeeklySidesInput, MediaAssetUncheckedCreateWithoutWeeklySidesInput>
+  }
+
+  export type MediaAssetUpsertWithoutWeeklySidesInput = {
+    update: XOR<MediaAssetUpdateWithoutWeeklySidesInput, MediaAssetUncheckedUpdateWithoutWeeklySidesInput>
+    create: XOR<MediaAssetCreateWithoutWeeklySidesInput, MediaAssetUncheckedCreateWithoutWeeklySidesInput>
+    where?: MediaAssetWhereInput
+  }
+
+  export type MediaAssetUpdateToOneWithWhereWithoutWeeklySidesInput = {
+    where?: MediaAssetWhereInput
+    data: XOR<MediaAssetUpdateWithoutWeeklySidesInput, MediaAssetUncheckedUpdateWithoutWeeklySidesInput>
+  }
+
+  export type MediaAssetUpdateWithoutWeeklySidesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetUncheckedUpdateWithoutWeeklySidesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUncheckedUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUncheckedUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    wellnessArticles?: WellnessArticleUncheckedUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetCreateWithoutWellnessArticlesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabCreateNestedManyWithoutImageInput
+    recipes?: RecipeCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetUncheckedCreateWithoutWellnessArticlesInput = {
+    id?: string
+    title: string
+    imageUrl: string
+    publicId: string
+    resourceType?: string
+    createdAt?: Date | string
+    heroSlides?: HeroSlideUncheckedCreateNestedManyWithoutAssetInput
+    sectionOneImages?: SectionOneImageUncheckedCreateNestedManyWithoutAssetInput
+    roomSlides?: RoomSlideUncheckedCreateNestedManyWithoutAssetInput
+    roomTypeHeroes?: RoomTypeUncheckedCreateNestedManyWithoutHeroImageInput
+    roomImages?: RoomImageUncheckedCreateNestedManyWithoutAssetInput
+    roomTabImages?: RoomTabUncheckedCreateNestedManyWithoutImageInput
+    recipes?: RecipeUncheckedCreateNestedManyWithoutAssetInput
+    diningCategories?: DiningCategoryUncheckedCreateNestedManyWithoutAssetInput
+    topCategories?: TopCategoryUncheckedCreateNestedManyWithoutAssetInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedCreateNestedManyWithoutAssetInput
+    weeklySides?: WeeklySideUncheckedCreateNestedManyWithoutAssetInput
+  }
+
+  export type MediaAssetCreateOrConnectWithoutWellnessArticlesInput = {
+    where: MediaAssetWhereUniqueInput
+    create: XOR<MediaAssetCreateWithoutWellnessArticlesInput, MediaAssetUncheckedCreateWithoutWellnessArticlesInput>
+  }
+
+  export type MediaAssetUpsertWithoutWellnessArticlesInput = {
+    update: XOR<MediaAssetUpdateWithoutWellnessArticlesInput, MediaAssetUncheckedUpdateWithoutWellnessArticlesInput>
+    create: XOR<MediaAssetCreateWithoutWellnessArticlesInput, MediaAssetUncheckedCreateWithoutWellnessArticlesInput>
+    where?: MediaAssetWhereInput
+  }
+
+  export type MediaAssetUpdateToOneWithWhereWithoutWellnessArticlesInput = {
+    where?: MediaAssetWhereInput
+    data: XOR<MediaAssetUpdateWithoutWellnessArticlesInput, MediaAssetUncheckedUpdateWithoutWellnessArticlesInput>
+  }
+
+  export type MediaAssetUpdateWithoutWellnessArticlesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUpdateManyWithoutAssetNestedInput
+  }
+
+  export type MediaAssetUncheckedUpdateWithoutWellnessArticlesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    publicId?: StringFieldUpdateOperationsInput | string
+    resourceType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    heroSlides?: HeroSlideUncheckedUpdateManyWithoutAssetNestedInput
+    sectionOneImages?: SectionOneImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomSlides?: RoomSlideUncheckedUpdateManyWithoutAssetNestedInput
+    roomTypeHeroes?: RoomTypeUncheckedUpdateManyWithoutHeroImageNestedInput
+    roomImages?: RoomImageUncheckedUpdateManyWithoutAssetNestedInput
+    roomTabImages?: RoomTabUncheckedUpdateManyWithoutImageNestedInput
+    recipes?: RecipeUncheckedUpdateManyWithoutAssetNestedInput
+    diningCategories?: DiningCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    topCategories?: TopCategoryUncheckedUpdateManyWithoutAssetNestedInput
+    weeklyFeatured?: WeeklyFeaturedUncheckedUpdateManyWithoutAssetNestedInput
+    weeklySides?: WeeklySideUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -27669,6 +40653,57 @@ export namespace Prisma {
     guests?: string | null
     videoSrc?: string | null
     order?: number
+  }
+
+  export type RecipeCreateManyAssetInput = {
+    id?: string
+    label: string
+    title: string
+    desc: string
+    time: string
+    cat: string
+    gradientFrom: string
+    gradientTo: string
+    order?: number
+    isFeatured?: boolean
+    createdAt?: Date | string
+  }
+
+  export type DiningCategoryCreateManyAssetInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+  }
+
+  export type TopCategoryCreateManyAssetInput = {
+    id?: string
+    label: string
+    order?: number
+  }
+
+  export type WeeklyFeaturedCreateManyAssetInput = {
+    id?: string
+    label?: string
+    title?: string
+  }
+
+  export type WeeklySideCreateManyAssetInput = {
+    id?: string
+    label: string
+    title: string
+    order?: number
+  }
+
+  export type WellnessArticleCreateManyAssetInput = {
+    id?: string
+    cat: string
+    title: string
+    excerpt: string
+    readTime: string
+    isHero?: boolean
+    order?: number
+    createdAt?: Date | string
   }
 
   export type HeroSlideUpdateWithoutAssetInput = {
@@ -27856,6 +40891,159 @@ export namespace Prisma {
     order?: IntFieldUpdateOperationsInput | number
   }
 
+  export type RecipeUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    gradientFrom?: StringFieldUpdateOperationsInput | string
+    gradientTo?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RecipeUncheckedUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    gradientFrom?: StringFieldUpdateOperationsInput | string
+    gradientTo?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RecipeUncheckedUpdateManyWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    gradientFrom?: StringFieldUpdateOperationsInput | string
+    gradientTo?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DiningCategoryUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DiningCategoryUncheckedUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DiningCategoryUncheckedUpdateManyWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TopCategoryUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TopCategoryUncheckedUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TopCategoryUncheckedUpdateManyWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type WeeklyFeaturedUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WeeklyFeaturedUncheckedUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WeeklyFeaturedUncheckedUpdateManyWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WeeklySideUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type WeeklySideUncheckedUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type WeeklySideUncheckedUpdateManyWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type WellnessArticleUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    readTime?: StringFieldUpdateOperationsInput | string
+    isHero?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WellnessArticleUncheckedUpdateWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    readTime?: StringFieldUpdateOperationsInput | string
+    isHero?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WellnessArticleUncheckedUpdateManyWithoutAssetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    readTime?: StringFieldUpdateOperationsInput | string
+    isHero?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type SectionOneImageCreateManySectionInput = {
     id?: string
     order: number
@@ -28035,6 +41223,38 @@ export namespace Prisma {
   export type RoomTabParagraphUncheckedUpdateManyWithoutTabInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MenuItemCreateManySectionInput = {
+    id?: string
+    name: string
+    desc: string
+    cat: string
+    order?: number
+  }
+
+  export type MenuItemUpdateWithoutSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MenuItemUncheckedUpdateWithoutSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MenuItemUncheckedUpdateManyWithoutSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+    cat?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
   }
 
